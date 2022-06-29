@@ -1,0 +1,708 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>JS</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="3714a98b-7f76-4e46-bf8c-9f6f7796747e" class="page sans"><header><h1 class="page-title">JS</h1></header><div class="page-body"><hr id="b6f7d7e2-65ea-4ca5-858b-eadfb9e0cc3c"/><ul id="4caf2b4d-f4a3-42f1-a056-f1570f4711b0" class="toggle"><li><details open=""><summary><a href="https://www.notion.so/Debounce-Throttle-b859e31d49674819ab37151055e72f83"><strong>Kỹ thuật debounce, throttling và cách code thực tế </strong></a></summary></details></li></ul><ul id="d7f1e7db-d470-4265-bf07-3c2b4372cc3f" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Function programming</strong></mark></summary><ul id="d994a672-c65d-4309-84c5-9bb4c6b32cf1" class="bulleted-list"><li style="list-style-type:disc">Functional Programming là phương pháp lập trình lấy function làm đơn vị thao tác cơ bản.</li></ul><ul id="fcd4ecb3-5f26-4c93-a9c3-80bb51bba0b1" class="bulleted-list"><li style="list-style-type:disc"> Các nguyên tắc trong FP:<ul id="806d8c94-1f20-4f04-9618-8cfeb59b8bc1" class="bulleted-list"><li style="list-style-type:circle"><strong>Immutability</strong>: tính bất biến. Cái nào đã khai báo một lần thì mãi mãi như vậy, không bao giờ thay đổi nữa.</li></ul><ul id="3acce3ab-cdd0-4049-aa97-7d145b140664" class="bulleted-list"><li style="list-style-type:circle"><strong>Purity</strong>: tính thuần khiết, thuần tuý không bị pha tạp. <ul id="a63bd7c2-8063-467e-b75c-0b78530a9adb" class="bulleted-list"><li style="list-style-type:square">Tất cả các hàm đều phải là pure function, không có hiệu ứng phụ (side effect), không được tác động lên bất cứ giá trị nào bên ngoài nó, cũng nói không với chỉnh sửa tham số input. </li></ul><ul id="b14eed01-7302-4fc1-8742-a878e0d7fc57" class="bulleted-list"><li style="list-style-type:square">Đặc điểm quan trọng nữa của pure function là với mỗi tập giá trị đầu vào nhất định, luôn có 1 và chỉ 1 kết quả trả về tương ứng. Đây là tính chất của hàm số toán học. </li></ul><ul id="0ef82f85-b036-4940-bc6a-9babf7d17352" class="bulleted-list"><li style="list-style-type:square">Pure function trong Functional Programming thường ngắn gọn, đơn giản và chỉ xử lý duy nhất 1 vấn đề logic.</li></ul><pre id="f180570a-2f5c-438f-b9bd-1edf7a43fc07" class="code"><code>// not pure function
+const getDuration = (timestamp) =&gt; {
+  return Date.now() - timestamp;
+};
+
+// pure function
+const add = (a, b) =&gt; {
+  return a + b;
+};</code></pre></li></ul></li></ul><ul id="d884ebdb-1214-46ca-b4f1-427ab584abef" class="bulleted-list"><li style="list-style-type:disc"><strong>Higher order function</strong>: là một khái niệm đến từ Toán học. Bất cứ hàm nào tiếp nhận 1 function như tham số, hoặc trả về 1 function như kết quả, thì đều được coi là higher-order function.</li></ul><ul id="c8680fae-6fd7-45ee-a143-fe0ca4c6074f" class="bulleted-list"><li style="list-style-type:disc"><strong><strong>Function Composition: </strong></strong>Đây là <a href="https://www.mathsisfun.com/sets/functions-composition.html">khái niệm Toán học</a> mà tiếng Việt ta gọi là &quot;hàm hợp&quot;, hay &quot;hàm phức hợp&quot;. Mọi thứ trong Functional Programming đều có nguồn gốc Toán học. <ul id="3419d6cf-eb92-46a8-98f3-2f26a384b37a" class="bulleted-list"><li style="list-style-type:circle">Function Composition là sự phối hợp, liên kết nhiều hàm lại với nhau, thành một hàm lớn, nhiều chức năng hơn.</li></ul><ul id="d4244bf8-ce6f-44e4-80ca-96e51e57ae1b" class="bulleted-list"><li style="list-style-type:circle">Hoặc dễ hiểu đây là cách chúng ta kết hợp nhiều function lại với nhau. Kết quả của function này sẽ được sử dụng cho function tiếp theo. Cứ như vậy nó sẽ tạo thành một chuỗi các function thực hiện các nhiệm vụ theo thứ tự.</li></ul><ul id="9fa672bd-b6f0-4955-8413-a725b54cd37c" class="bulleted-list"><li style="list-style-type:circle">Có 2 kỹ thuật căn bản trong Function Composition là <code>compose</code> và <code>pipe</code>.<ul id="486c4a88-f959-4762-aeed-1550b0195336" class="bulleted-list"><li style="list-style-type:square"><strong>compose</strong>: trong toán học cơ bản với <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y = f(g(x))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">))</span></span></span></span></span><span>﻿</span></span> ta tính g(x) trước rồi truyền cho f() là ra kết quả, từ phải sang trái. Ý tưởng của <code>compose</code>
+ là xếp cuốn chiếu các hàm lại với nhau, theo thứ tự từ trái sang phải để tạo ra một hàm mới, mà khi được thực thi, nó sẽ lần lượt gọi các hàm đã truyền vào trước đó theo thứ tự ngược lại, từ phải sang trái (<code>Right to left</code>)</li></ul><ul id="c9ca3002-7002-437e-b2ca-132e3cb2d369" class="bulleted-list"><li style="list-style-type:square"><strong><strong>Pipe: </strong></strong>Một biến thể của <code>compose</code> là <code>pipe</code>, vận hành theo chiều ngược lại. Ta có thể implement bằng cách đảo vị trí <code>f</code> và <code>g</code> (<code>Left to right</code>)</li></ul></li></ul></li></ul><ul id="4c1928fc-1b2c-4283-b402-8da30434d0db" class="bulleted-list"><li style="list-style-type:disc"> <strong><strong>Currying function: </strong></strong>là một HOF, biến đổi 1 function n tham số thành n hàm nhận vào duy nhất 1 tham số</li></ul></details></li></ul><ul id="2f98b3d3-254b-4800-b1a2-1dd066861f66" class="toggle"><li><details open=""><summary><strong>Từ khóa “</strong><mark class="highlight-red"><strong>this</strong></mark><strong>” trong JS</strong></summary><ul id="afa9d88d-7553-40d6-a7f2-0f890788de9c" class="bulleted-list"><li style="list-style-type:disc">Từ khoá &quot;this&quot; trong javascript tham chiếu đến một đối tượng có thuộc tính là một hàm.</li></ul><ul id="a85054ef-0e1a-492d-8b7b-5a767ecd24bf" class="bulleted-list"><li style="list-style-type:disc">Giá trị của &quot;this&quot; phụ thuộc vào đối tượng đang gọi hàm.</li></ul></details></li></ul><ul id="30c366b2-cd69-4029-afe0-f0f7092741d9" class="toggle"><li><details open=""><summary><strong>Giải thích cách hoạt động của </strong><strong><code>this</code></strong><strong> trong JavaScript</strong></summary><ul id="85986c11-86f3-4be0-b889-a5895d0b5073" class="bulleted-list"><li style="list-style-type:disc">Không có lời giải thích đơn giản nào cho <code><strong>this</strong></code>; nó là một trong những khái niệm khó hiểu nhất trong JavaScript. Giá trị của <code><strong>this</strong></code> phụ thuộc vào cách hàm được gọi.  Các quy tắc sau được áp dụng:<ul id="49c4c371-426c-41b0-9051-2f83dc3be924" class="bulleted-list"><li style="list-style-type:circle">Nếu từ khóa <code><strong>new</strong></code> được sử dụng khi gọi hàm, thì bên trong hàm này là một đối tượng hoàn toàn mới.</li></ul><ul id="98daf1e9-04b2-47ca-b79e-82cba3598795" class="bulleted-list"><li style="list-style-type:circle">Nếu <code><strong>apply, call</strong></code><code> </code>hoặc <code><strong>bind</strong></code> được sử dụng để gọi / tạo một hàm, thì bên trong hàm này là đối tượng được truyền vào dưới dạng đối số.</li></ul><ul id="b3c0a6e2-80c6-47f6-8d21-fef6708699f1" class="bulleted-list"><li style="list-style-type:circle">Nếu một hàm được gọi là một phương thức, chẳng hạn như <code><strong>obj.method ()</strong></code> – thì <code><strong>this</strong></code> là đối tượng mà hàm là thuộc tính của nó.</li></ul><ul id="eb26dde1-ec4d-4ac0-9667-52c86a2e03aa" class="bulleted-list"><li style="list-style-type:circle">Nếu một hàm được gọi dưới dạng một lệnh gọi hàm miễn phí, nghĩa là nó được gọi mà không có bất kỳ điều kiện nào ở trên, thì đây là đối tượng toàn cục. Trong trình duyệt, nó là đối tượng <code><strong>window</strong></code>. Nếu ở chế độ nghiêm ngặt (<code>&#x27;use strict&#x27;</code>), <code><strong>this</strong></code> sẽ là <code>undefined</code> thay vì đối tượng toàn cục.</li></ul><ul id="45a5b411-338d-48d6-89fa-0b238e926607" class="bulleted-list"><li style="list-style-type:circle">Nếu áp dụng nhiều quy tắc trên, quy tắc nào cao hơn sẽ được ưu tiên và sẽ đặt giá trị này.</li></ul><ul id="252ba88e-3389-4d6f-a1f4-eff1edb326f3" class="bulleted-list"><li style="list-style-type:circle">Nếu hàm là một arrow function ES2015, nó sẽ bỏ qua tất cả các quy tắc ở trên và nhận <code><strong>this</strong></code> của phạm vi xung quanh tại thời điểm nó được tạo.</li></ul></li></ul></details></li></ul><ul id="c9196765-bff3-48fa-a959-8b4867c02c7c" class="toggle"><li><details open=""><summary><strong>Phân biệt </strong><mark class="highlight-red"><strong>call</strong></mark><strong>, </strong><mark class="highlight-red"><strong>apply</strong></mark><strong>, </strong><mark class="highlight-red"><strong>bind</strong></mark><strong> </strong></summary><ul id="54d2f898-57aa-408b-abf3-defa80284dd8" class="bulleted-list"><li style="list-style-type:disc">cả 3 đều dùng để thay đổi context của từ khóa this</li></ul><ul id="29c52577-4d86-41e7-9416-201800951de4" class="bulleted-list"><li style="list-style-type:disc">thiết đặt và thay đổi giá trị “<strong>this</strong>” theo ý muốn</li></ul><ul id="b0b30ae2-7423-4d85-a866-9899d6eabb74" class="bulleted-list"><li style="list-style-type:disc">cả 3 hàm đều là các prototype của function. Nên chỉ có Function mới gọi được 3 hàm này.</li></ul><ul id="58d0c4f6-dc0b-40d9-accf-2d707b9bdd4c" class="bulleted-list"><li style="list-style-type:disc">Về cơ bản là giống nhau về cách sử dụng nhưng khác nhau về cách gọi và cách truyền tham số<ul id="479b07b5-e032-4668-91b8-d59bbf2dea3c" class="bulleted-list"><li style="list-style-type:circle"><strong>call</strong>: gọi trực tiếp hàm và cho phép truyền vào 1 object và ds những tham số ngăn cách bởi dấu phẩy</li></ul><ul id="ac92651f-21a4-404e-ac9b-44446679e25b" class="bulleted-list"><li style="list-style-type:circle"><strong>apply</strong>: giống như call nhưng nó truyền tham số là 1 array</li></ul><ul id="4063cce8-c3cb-4516-aa2c-59c1ead1f131" class="bulleted-list"><li style="list-style-type:circle"><strong>bind</strong>: không gọi trực tiếp mà nó sẽ trả về 1 hàm mới và truyền danh sách tham số ngăn cách bởi dấy phẩy</li></ul></li></ul></details></li></ul><ul id="d65a27b0-d610-4e57-99cc-3fd8efda8bf8" class="toggle"><li><details open=""><summary><strong>Giải thích cơ chế hoisting trong JS</strong></summary><ul id="be9aaff8-1df4-4327-91de-19c2cee04962" class="bulleted-list"><li style="list-style-type:disc">Hoisting là một hành vi mặc định của Javascript di chuyển việc khai báo lên đầu trong scope của nó.</li></ul><ul id="53388e00-03d8-4530-8e7b-0d72fe937510" class="toggle"><li><details open=""><summary><strong>Giải thích thêm về  cách bộ máy JS hoạt động:</strong></summary><ul id="2f12a9ee-c4f1-4ebc-bdc7-2c1d17beaec4" class="bulleted-list"><li style="list-style-type:disc">Khi bộ máy JS xử lý đoạn code của bạn , nó tạo ra 1 cái gọi là bối cảnh thực thi (execution context). Có 2 quá trình liên quan đến việc tạo cái bối cảnh thực thi này:<ul id="5f7b748a-71d4-4598-91f0-85d510d5373d" class="bulleted-list"><li style="list-style-type:circle"><strong>GD1</strong> (creation) : Trong giai đoạn này các biến và function được thêm vào bộ nhớ. Bộ máy JS sẽ đi qua một lượt đoạn code của bạn và thêm tất cả các biến vào bộ nhớ máy tính. <strong>Nhưng nó chưa gán giá trị cho các biến này.</strong> Trong khi đó các function thì lại được <strong>thêm toàn bộ vào bộ nhớ bao gồm cả tên và khối code bên trong nó.</strong></li></ul><ul id="190ddb5c-db8f-40b1-b0e7-ffc97fbcc099" class="bulleted-list"><li style="list-style-type:circle"><strong>GD2</strong> (execution) : Trong giai đoạn này giá trị sẽ được gán cho các biến và function sẽ được gọi. Nên kể cả bạn khởi tạo 1 biến với giá trị ban đầu thì ở giai đoạn 2 này biến mới được gán giá trị. Ở giai đoạn 1 giá trị không được gán cho biến , nó được thêm vào bộ nhớ với giá trị khởi tạo là undefined.</li></ul></li></ul><ul id="abc5bff9-b96f-4faa-919d-f485ddc157bd" class="bulleted-list"><li style="list-style-type:disc">Trước khi function được thực thi , nó đã được thêm vào bộ nhớ trong giai đoạn 1 (creation) nên bộ máy Javascript biết function này nằm ở đâu. <strong>Nó không chuyển cái function này lên trên đầu.</strong></li></ul><ul id="2e270886-8c03-4201-b72c-36518f101aa4" class="bulleted-list"><li style="list-style-type:disc">Đối với biến quá trình cũng giống như vậy nhưng có 1 chút khác biệt. Các biến cũng được thêm vào bộ nhớ trong giai đoạn 1 nhưng không có giá trị nào được gán cho chúng. Trong JS khi một biến được khai báo mà không có giá trị nào bộ máy JS tự động thêm giá trị <strong>undefined</strong></li></ul></details></li></ul></details></li></ul><ul id="ce85ded0-055d-437f-b8eb-16f32b3ae310" class="toggle"><li><details open=""><summary><strong>Temporal dead zone là gì  ?</strong></summary><ul id="3fa77146-f51a-41f6-b02c-7213bee8894a" class="bulleted-list"><li style="list-style-type:disc">Từ es6 trở lên giới thiệu 2 từ khóa <strong>let</strong> và <strong>const</strong> để khai báo biến. </li></ul><ul id="c88f98e2-0539-4976-8249-21cae132c34f" class="bulleted-list"><li style="list-style-type:disc">Điểm khác biệt so với var là <strong>ở giai đoạn 1 (creation)</strong> <strong>chúng không được khởi tạo với giá trị undefined như với var.</strong> </li></ul><ul id="7a498649-3ff7-4721-b77c-3d6d6f8ca17c" class="bulleted-list"><li style="list-style-type:disc">Thay vào đó: chúng được set 1 chế độ đặc biệt gọi là <mark class="highlight-red"><strong>Temporal Dead Zone</strong></mark>. Đây là 1 khoảng thời gian giữa việc khai báo và khởi tạo biến. </li></ul><ul id="4ec8d3b1-1bbf-4997-b709-004ef0281792" class="bulleted-list"><li style="list-style-type:disc">Trong giai đoạn này bạn sẽ không thể truy cập vào biến đó được. </li></ul><ul id="454b697a-fbdc-4ceb-8d14-5fb323bb7da9" class="bulleted-list"><li style="list-style-type:disc">Điều này có nghĩa là chúng vẫn tồn tại ở đó nhưng bạn sẽ không thể truy cập được cho đến khi bạn khởi tạo giá trị cho biến sẽ được thực hiện ở giai đoạn 2.</li></ul></details></li></ul><ul id="7adf6b0b-bfe2-40f2-b1f6-97a8d734ebe2" class="toggle"><li><details open=""><summary><strong>Ép kiểu ngầm trong JS là gì </strong></summary><ul id="b928b489-7fdb-420f-b638-b1133b118d03" class="bulleted-list"><li style="list-style-type:disc">là sự chuyển đổi tự động của giá trị từ kiểu dữ liệu này sang kiểu dữ liệu khác</li></ul><ul id="e52a6220-2882-4753-806f-13e88e2a653f" class="bulleted-list"><li style="list-style-type:disc">Ví dụ:<ul id="4f7e16c4-4984-43ef-845d-a10272acb2ab" class="bulleted-list"><li style="list-style-type:circle">số + chuỗi = chuỗi</li></ul><ul id="6fc46ace-d19f-4e93-9521-a0131e9566f0" class="bulleted-list"><li style="list-style-type:circle">số - chuỗi = số</li></ul><ul id="198e0201-2b5f-4b6d-bb86-411828bb6a34" class="bulleted-list"><li style="list-style-type:circle">boolean sử dụng toán tử logic<ul id="688df6c1-7dd8-4091-a5e8-682326b382d3" class="bulleted-list"><li style="list-style-type:square">Falsy: null, undefined, 0, 0n, -0, NaN, “”</li></ul><ul id="398aebfd-61a0-4fc2-9555-79ecc6daaa26" class="bulleted-list"><li style="list-style-type:square">Truethy: là những giá  trị khác falsy</li></ul></li></ul></li></ul></details></li></ul><ul id="25edee57-a1bd-4bd1-ad82-6c886cfcbbb0" class="toggle"><li><details open=""><summary><strong>JS là static hay dynamic</strong></summary><ul id="3dd3f624-96be-4d6c-8460-ed39fd44a49e" class="bulleted-list"><li style="list-style-type:disc">là dynamic, kiểu dữ liệu của biến được kiểm tra trong khi đang chạy chương trình</li></ul><ul id="acea08fd-3a12-4663-956f-e387f96ea96e" class="bulleted-list"><li style="list-style-type:disc">Đối với static thì nó sẽ kiểm tra sau khi biên dịch xong</li></ul></details></li></ul><ul id="967bafb0-3752-40c7-a47f-d01edb9c8494" class="toggle"><li><details open=""><summary><strong>Higher order function là gì (HOC)</strong></summary><ul id="e360a30f-aab2-497d-b47e-6b7d7b128e68" class="bulleted-list"><li style="list-style-type:disc">là 1 hàm nhận vào tham số là hàm khác hoặc return về 1 hàm, hoặc cả 2 vừa nhận vừa return về 1 hàm</li></ul></details></li></ul><ul id="9590eab2-22ad-46a0-a4e8-6aa0f2801668" class="toggle"><li><details open=""><summary><strong>Scope trong JS</strong></summary><ul id="8d3a0691-95b8-466e-96ca-80b81b580f53" class="bulleted-list"><li style="list-style-type:disc">là khái niệm nhắm xác định phạm vi hoạt động của biến</li></ul><ul id="096ebb06-99ea-416b-9036-a63ae00208de" class="bulleted-list"><li style="list-style-type:disc">Các loại scope<ul id="31d89b4b-eb79-43ae-8740-ed6baefaaba2" class="bulleted-list"><li style="list-style-type:circle"><strong>Global scope: </strong><ul id="efab0ef3-0bce-4553-88da-45e56f2b8567" class="bulleted-list"><li style="list-style-type:square">biến được định nghĩa ở bên ngoài function</li></ul><ul id="030f9a23-12bc-4eb6-b699-d56ad7cffd5c" class="bulleted-list"><li style="list-style-type:square">sẽ được sử dụng và thay thế ở bất cứ đâu</li></ul><ul id="5ef34509-84c0-4185-8c9c-a7649dbfe38e" class="bulleted-list"><li style="list-style-type:square">nếu ta định nghĩa 1 biến mà không dùng từ khóa nào thì mặc định nó thuộc global scope</li></ul></li></ul><ul id="9663872e-597d-4e89-9eb4-892256c45e63" class="bulleted-list"><li style="list-style-type:circle"><strong>Local scope: </strong><ul id="6cf70faa-7ac5-4cb6-8304-bac691d7f73e" class="bulleted-list"><li style="list-style-type:square">biến được định nghĩa bên trong 1 function</li></ul><ul id="6e049ddf-c81c-4f8f-94fb-ee243b85adb8" class="bulleted-list"><li style="list-style-type:square">mỗi function khi gọi sẽ tạo ra 1 scope mới</li></ul><ul id="1a238513-afaa-4bcd-936f-83cc1cf5e807" class="bulleted-list"><li style="list-style-type:square">mỗi function sẽ tạo ra 1 local scope khác nhau, cho nên ta có thể khai báo các biến trùng tên ở các scope local</li></ul></li></ul><ul id="a66ac30c-be3f-4578-810a-7684dbc306df" class="bulleted-list"><li style="list-style-type:circle"><strong>Lexical scope:</strong><ul id="8cde8698-2792-4a38-bb42-0a4595a073d8" class="bulleted-list"><li style="list-style-type:square">Ví dụ ta có fn A nằm trong fn B, mà trong A có các biến tham chiếu đến fn B thì ta nói fn A có lexical scope và lexical scope của A chính là scope của nó  + với scope của fn B</li></ul></li></ul><ul id="d726ef48-8aee-4871-ad08-28d5478425e8" class="bulleted-list"><li style="list-style-type:circle">Ngoài ra ta còn có block statements ( if/else, switch case, for loop)<ul id="16ba74c3-20f4-4e57-94ff-f121faf2432d" class="bulleted-list"><li style="list-style-type:square">Không giống như function nó không tạo ra local scope mới mà nó giữ nguyên scope của nó</li></ul><ul id="895d0bcc-8e1a-4aee-ac6c-02d29762cee2" class="bulleted-list"><li style="list-style-type:square">Các biến khai báo bằng var nó sẽ không tạo ra local scope trong block statements</li></ul><ul id="0fa242bd-128a-4ca5-8457-7332fb8514ba" class="bulleted-list"><li style="list-style-type:square">let và const giúp tạo local scope bên trong 1 block</li></ul><ul id="903d27f8-928c-4242-99e3-ed9945fce2d5" class="bulleted-list"><li style="list-style-type:square">Biên được khai báo trong block {} thì chỉ truy cập được trong block đó thôi, bên ngoài không truy cập được</li></ul></li></ul></li></ul></details></li></ul><ul id="b8893394-df5c-4318-88b8-730c1e690ec5" class="toggle"><li><details open=""><summary><strong>scope chain trong JS?</strong></summary><ul id="0026a379-ac4a-42de-bb5f-eac22ebe3e80" class="bulleted-list"><li style="list-style-type:disc">JS sử dụng scope để tìm kiếm biến</li></ul><ul id="29e11fee-2640-442c-bfe1-adf237af589d" class="bulleted-list"><li style="list-style-type:disc">Nếu không tìm thấy biến bên trong function scope thì nó sẽ tiếp tục tìm biến đó ra phạm vi bên ngoài</li></ul><ul id="dd673eb5-9247-43ea-bf86-64417895d074" class="bulleted-list"><li style="list-style-type:disc">Nếu không có sẽ tiếp tục tìm ở global scope </li></ul><p id="b05e7e25-62aa-4a55-8ee4-c1a78e38ce67" class=""><strong>→ Nếu không có nữa sẽ có lỗi tham chiếu được đưa ra</strong></p></details></li></ul><ul id="e6a80f79-0507-489a-9c01-7bc783535476" class="toggle"><li><details open=""><summary><strong>Closures trong JS là gì ?</strong></summary><ul id="31355961-0fa8-495a-9a3f-173ff442a0f6" class="bulleted-list"><li style="list-style-type:disc">là 1 hàm mà có khả năng ghi nhớ nơi nó được tạo ra và truy cập được các biến ở bên ngoài phạm vi của nó</li></ul><p id="2c704359-e091-46f1-90c5-64ac2fe3b39d" class="">→ Vì lexical scope là khái niệm đi với function nên có thể coi closure là tập hợp gồm function và lexical scope của function đó</p><ul id="33630520-c4d1-4b85-a803-48bfc16e5d39" class="bulleted-list"><li style="list-style-type:disc">Giúp ta viết code ngắn gọn hơn, đồng thời ứng dụng được tính <strong>private</strong> trong OOP</li></ul></details></li></ul><ul id="17bac84f-8608-4239-bc98-f16e58998b87" class="toggle"><li><details open=""><summary><strong>Currying Function là gì ?</strong></summary><ul id="d8867df8-e310-48bb-a1da-06ce6f7053d6" class="bulleted-list"><li style="list-style-type:disc">Biến đổi 1 hàm nhiều tham sô thành n hàm nhận vào 1 tham số</li></ul><ul id="6408c795-f91f-4645-898d-b0269b1d8459" class="bulleted-list"><li style="list-style-type:disc">Về bản chất ta không thay đổi chức năng của hàm mà chỉ thay đổi cách gọi hàm</li></ul></details></li></ul><ul id="d358e1bf-ca7a-478f-ab44-2101715feff1" class="toggle"><li><details open=""><summary><strong>var, let, const khác nhau gì ?</strong></summary><ul id="7bad06a3-5e49-4d9c-9f56-dffc7c617ad3" class="bulleted-list"><li style="list-style-type:disc">về mặt scope<ul id="476c1ffa-3901-4adc-88bf-e06fb97c8a29" class="bulleted-list"><li style="list-style-type:circle">let, const giúp tạo local scope bên trong block statements</li></ul><ul id="0f5edf29-a047-4498-840e-04557f967d9b" class="bulleted-list"><li style="list-style-type:circle">var rất khó xác định scope cụ thể nên bây giờ cũng tránh sử dụng var, ngoài ra các biến khai báo bằng var đều bị hoisting</li></ul></li></ul><ul id="975d0533-9cda-49d5-a99f-cbb9a0285942" class="bulleted-list"><li style="list-style-type:disc">Về mặt giá trị<ul id="15ea2d5b-5040-4d86-9374-a327cd3be147" class="bulleted-list"><li style="list-style-type:circle">const là bất biến ta không thể gán lại giá trị cho biến được khai báo với const </li></ul><ul id="07015109-71cd-4490-8c95-7d65601a971a" class="bulleted-list"><li style="list-style-type:circle">var, let thì có thể gán lại giá trị cho biến</li></ul></li></ul></details></li></ul><ul id="6c1074af-442c-42cb-a5ca-06e8240e5e78" class="toggle"><li><details open=""><summary><strong>null ≠ undefined như thế nào ?</strong></summary><ul id="2af0b966-fd6c-4293-a569-b15ff1a8a28a" class="bulleted-list"><li style="list-style-type:disc">Khi ta khai báo nhưng chưa gán giá trị cho biến đó thì nó là <strong>undefined</strong> </li></ul><ul id="1adc4ac6-878c-479f-8d71-eb12267863cf" class="bulleted-list"><li style="list-style-type:disc">Khi ta lấy giá trị của một biến mà chưa khai báo thì nó sẽ gây ra lỗi <strong>is not define</strong></li></ul><ul id="44560213-9849-4ae0-97b2-828f0828bc2d" class="bulleted-list"><li style="list-style-type:disc"><strong>Null</strong> có nghĩa là giá trị rỗng hoặc giá trị không tồn tại, nó có thể được sử dụng để gán cho một biến như là một đại diện không có giá trị.</li></ul><ul id="df5c1054-d271-43cb-96a9-ffe08da320a7" class="bulleted-list"><li style="list-style-type:disc"><strong>Null</strong> typeof là <strong>object</strong> còn <strong>undefined</strong> typeof là <strong>undefined</strong></li></ul><ul id="045f1cb9-42c0-4965-953b-31d3679aa0ce" class="bulleted-list"><li style="list-style-type:disc">null == undefined = true </li></ul><ul id="23b96db0-1d31-4072-960d-9eb72db9b7a2" class="bulleted-list"><li style="list-style-type:disc">null === undefined = false</li></ul></details></li></ul><ul id="372c93ae-5aeb-42a5-8dd8-c2585085bf37" class="toggle"><li><details open=""><summary><strong>Prototype trong JS là gì ?</strong></summary><ul id="bd1af0ab-dfcb-4716-ace2-972ae03d4404" class="bulleted-list"><li style="list-style-type:disc">Prototype là khái niệm cốt lõi trong JavaScript và là cơ chế quan trọng trong việc thực thi mô hình OOP trong JavaScript. </li></ul><ul id="a343b915-9119-4dde-a333-4407af937b14" class="bulleted-list"><li style="list-style-type:disc">Tất cả các object trong javascript đều có một prototype, và các object này kế thừa các thuộc tính (properties) cũng như phương thức (methods) từ prototype của mình.</li></ul><ul id="b6325473-e579-43d2-aa1d-bcef84375bc1" class="bulleted-list"><li style="list-style-type:disc">Trong JavaScript, trừ <em>undefined</em>, toàn bộ các kiểu còn lại đều là object. </li></ul><ul id="f3629937-4dde-4509-b1c1-748582f40736" class="bulleted-list"><li style="list-style-type:disc">Các kiểu string, số, boolean lần lượt là object dạng <em>String</em>, <em>Number,</em> <em>Boolean</em>. Mảng là object dạng <em>Array</em>, hàm là object dạng <em>Function</em></li></ul><ul id="f5c181dc-3c0f-47b9-9c5b-38aac081756b" class="bulleted-list"><li style="list-style-type:disc">Trước kia (ES5) trong JavaScript <strong>không có khái niệm class</strong>, do vậy, để <strong>kế thừa các trường/hàm </strong>của một object, ta phải sử dụng prototype.</li></ul><ul id="a7bf7fe8-ba5a-47a0-98e7-93ec315ece85" class="bulleted-list"><li style="list-style-type:disc">Khi ta gọi property hoặc function của một object, JavaScript sẽ tìm trong chính object đó, nếu không có thì tìm lên cha của nó. Do đó, ta có thể gọi các hàm <em>toUpperCase</em>, <em>trim </em>trong String là do các hàm đó đã tồn tại trong <em>String.prototype</em></li></ul><ul id="7327aa01-fee0-4c21-a38d-86516f5bddb7" class="bulleted-list"><li style="list-style-type:disc">Khi ta thêm function cho prototype, toàn bộ những thằng con của nó cũng học được function tương tự.</li></ul><ul id="d30144d0-cb10-41a4-b7fc-be6712bc3fcf" class="bulleted-list"><li style="list-style-type:disc"><strong>Giới hạn của prototype trong JavaScript:</strong><ul id="b6079d1c-a741-4f4a-a624-8584373ac1cd" class="bulleted-list"><li style="list-style-type:circle">Không được phép kế thừa prototype vòng tròn.</li></ul><ul id="c5bd9fba-12b3-4fa1-9cba-0f635755bdc9" class="bulleted-list"><li style="list-style-type:circle">Giá trị của <code>__proto__</code> có thể là <code>null</code> hoặc là một object, nhưng các kiểu dữ liệu khác đều bị bỏ qua.</li></ul><ul id="bd677528-c150-4c1f-9ea6-a318749d8111" class="bulleted-list"><li style="list-style-type:circle">Prototype không hỗ trợ thay đổi giá trị thuộc tính</li></ul></li></ul><ul id="5acc054a-b667-48ec-9904-72b9751de112" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Tóm lại:</strong></mark></summary><ul id="bea1f055-dc6d-45e5-85f6-4797cfdfee75" class="bulleted-list"><li style="list-style-type:disc">Trong JavaScript, tất cả các object đều có thuộc tính ẩn <code>[[Prototype]]</code> với giá trị là <code>null</code> hoặc kiểu object.</li></ul><ul id="06bbdc54-d02c-422f-a523-338b28a8ccf9" class="bulleted-list"><li style="list-style-type:disc">Bạn có thể sử dụng <code>obj.__proto__</code> như là một <strong>getter/setter</strong> để truy cập vào <code>[[Prototype]]</code>.</li></ul><ul id="f4c63676-912a-4d87-bdca-5e300d4db166" class="bulleted-list"><li style="list-style-type:disc">Object ứng với <code>[[Prototype]]</code> được gọi là một prototype.</li></ul><ul id="5667a240-8a58-4b61-95f2-2c7057985819" class="bulleted-list"><li style="list-style-type:disc">Khi truy cập một thuộc tính hay phương thức trong object mà nó không tồn tại thì JavaScript sẽ tự động tìm kiếm trong prototype.</li></ul><ul id="eab28795-2dd1-45f1-977e-3142fa3a222a" class="bulleted-list"><li style="list-style-type:disc">Prototype chỉ hỗ trợ việc đọc, không hỗ trợ ghi/xóa thuộc tính trực tiếp trên prototype.</li></ul><ul id="14fccf4c-ee81-4cef-a9a4-34914d96d861" class="bulleted-list"><li style="list-style-type:disc">Khi bạn gọi <code>obj.method()</code> và <code>method()</code> được lấy từ prototype, giá trị của <code>this</code> vẫn tham chiếu đến <code>obj</code> chứ không phải prototype.</li></ul><ul id="ac46ef0c-6dd1-4444-a125-524d432c6d0c" class="bulleted-list"><li style="list-style-type:disc">Vòng lặp <code>for...in</code> duyệt tất cả các thuộc tính trong object và thuộc tính của prototype thông qua kế thừa.</li></ul></details></li></ul></details></li></ul><ul id="c5c68b9d-3b5a-43d0-abb7-6ff58b4660d8" class="toggle"><li><details open=""><summary><strong>Class trong JS? </strong></summary><ul id="b03142da-7607-4e75-a6fd-3b8eecfdd129" class="bulleted-list"><li style="list-style-type:disc">sử dung oop mà không cần dùng prototype</li></ul><ul id="2a2d00fa-cece-4836-b1c9-1823ef809fae" class="bulleted-list"><li style="list-style-type:disc">không bị hoistring như function, cần khai báo trước khi sử dụng</li></ul><ul id="c7419da4-35cd-4ae1-8c2f-09bd1ff1dfdd" class="bulleted-list"><li style="list-style-type:disc">tuân thủ use strict </li></ul><ul id="19243d9c-75c1-49ec-af89-0c7b935ec7d9" class="bulleted-list"><li style="list-style-type:disc">sử dụng extends để kế thừa</li></ul></details></li></ul><ul id="b5b2cbd4-f566-4c7c-a00c-455959e1eadf" class="toggle"><li><details open=""><summary><strong>Constructor trong JS</strong></summary><ul id="b66b42b3-bd72-4453-a687-f7734b1f652e" class="bulleted-list"><li style="list-style-type:disc">Dùng để tạo ra các thuộc tính mặc định của đối tượng trong JS</li></ul><ul id="65e19796-8adf-4dbf-a2a3-98855426fa1b" class="bulleted-list"><li style="list-style-type:disc">khi chúng ta muốn tạo ra 1 đối tượng với những thuộc tính và phường thức giống nhau nhưng khác giá trị</li></ul></details></li></ul><ul id="5ef016c6-bb99-4a7f-9e45-3a8e27395e13" class="toggle"><li><details open=""><summary><strong>Arrow Function là gì </strong></summary><ul id="8e479c6f-4adb-4b43-bf65-2dd130b0827f" class="bulleted-list"><li style="list-style-type:disc">Arrow function được giới thiệu từ phiên bản ES6 của javascript.</li></ul><ul id="2e14b756-3fea-45e7-94e0-377376502d08" class="bulleted-list"><li style="list-style-type:disc">Nó cung cấp một cú pháp mới và ngắn hơn cho khai báo hàm. </li></ul><ul id="a39f03a0-357a-4b24-be92-e6ec4ae79f20" class="bulleted-list"><li style="list-style-type:disc">Hàm arrow có thể sử dụng như là một biểu thức hàm. Ta sẽ so sánh khai báo hàm thông thường với hàm arrow.</li></ul><ul id="2a54fe8b-0866-481c-80c7-81cd611a6253" class="bulleted-list"><li style="list-style-type:disc">Sự khác biệt lớn nhất giữa nhất giữa hàm truyền thống với arrow, là ở từ khoá <mark class="highlight-red"><strong>this</strong></mark>.<ul id="7b82cbb9-8231-4bd5-b3de-4538818d8b5e" class="bulleted-list"><li style="list-style-type:circle">Như định nghĩa, từ khoá this tham chiếu đến đối tượng chứa hàm được gọi.</li></ul><ul id="ea9669f8-7de9-4d4d-a039-ba2288f1bcbc" class="bulleted-list"><li style="list-style-type:circle">Còn ở hàm arrow, không có ràng buộc nào của từ khóa this.</li></ul><ul id="3bb94b88-56f0-4ed2-b6cf-8bc85a9caf0f" class="bulleted-list"><li style="list-style-type:circle">Từ khoá this trong hàm arrow, không tham chiếu đến đối tượng đang gọi nó. Nó kế thừa giá trị của nó từ phạm vi cha là <code>window object</code> trong trường hợp này.</li></ul></li></ul></details></li></ul><ul id="ad5d6ff0-5cdb-455b-9920-4fa1501525de" class="toggle"><li><details open=""><summary><strong>Destructuring, spread operator và rest parameter ?</strong></summary><ul id="a5474995-5d5b-4ad1-ae57-47255ce2ae80" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid"><strong>Destructuring</strong></span><strong>: </strong>Là một cú pháp cho phép bạn gán các thuộc tính của một Object hoặc một Array. Điều này có thể làm giảm đáng kể các dòng mã cần thiết để thao tác dữ liệu trong các cấu trúc này</li></ul><ul id="2459584b-f5c9-40f6-82b2-e1d705167e84" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid"><strong>Spread operator: </strong></span>Là ba dấu chấm <mark class="highlight-yellow_background"><strong>(...)</strong></mark>, có thể chuyển đổi một mảng thành một chuỗi các tham số được phân tách bằng dấu phẩy. Spread có thể tao ra một cấu trúc dữ liệu shallow copy để tăng tính thao tác dữ liệu.</li></ul><ul id="a3c1dfac-73ef-4013-8ce9-1e94da8cf258" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid"><strong>Rest parameter: </strong></span>Là một cú pháp tạo ra một array từ một số lượng giá trị không xác định Giúp chúng ta có thể định nghĩa một hàm với số lượng tham số có thể thay đổi tuỳ ý. Hay nói theo cách khác khi chúng ta không biết chắc chắn số lượng tham số cần có của một hàm chúng ta có thể sử dụng rest parameter</li></ul></details></li></ul><ul id="5a859cb9-a820-45e8-b552-81b4cbf38bb6" class="toggle"><li><details open=""><summary><strong>Generator trong JS </strong></summary><ul id="24a45188-1feb-42b5-87e8-eca39d10e334" class="bulleted-list"><li style="list-style-type:disc">es6</li></ul><ul id="79d0b027-caf1-493b-b71f-b53727b7f01d" class="bulleted-list"><li style="list-style-type:disc">là function có khả năng hoãn lại quá trình thực thi mà vẫn giữ nguyên context</li></ul><ul id="df3dbedc-c60c-4457-94e2-c52146e977bd" class="bulleted-list"><li style="list-style-type:disc">Nó có khả năng tạm dừng trước khi hàm kết thúc và có khả năng thực hiện lại tại 1 thời điểm khác, khác với những function bình thường là thực thi hết tất cả câu lệnh trong function</li></ul></details></li></ul><ul id="295d9f54-c57e-4cd2-a805-6806f0c9c0de" class="toggle"><li><details open=""><summary><strong>ES6 có gì nổi bật</strong></summary><ul id="65807fa7-3f19-4de7-89e2-643439bb3e8c" class="bulleted-list"><li style="list-style-type:disc">let, const</li></ul><ul id="c72818de-919c-482d-b143-02b3ae9e9ac9" class="bulleted-list"><li style="list-style-type:disc">arrow function</li></ul><ul id="3c371919-a3e7-4596-9158-fd6f3f51c46c" class="bulleted-list"><li style="list-style-type:disc">generator function</li></ul><ul id="37879640-4a5c-4ee7-abe3-320cd534225f" class="bulleted-list"><li style="list-style-type:disc">Destructuring, spread operator và rest parameter</li></ul><ul id="e3e3db79-e844-46e1-a7a0-8f41ac9e9032" class="bulleted-list"><li style="list-style-type:disc">class</li></ul><ul id="f307877f-ad69-4940-a340-ac39f5c007f3" class="bulleted-list"><li style="list-style-type:disc">async/await</li></ul><ul id="8da0da0a-4714-4f0a-b103-efea76047fbb" class="bulleted-list"><li style="list-style-type:disc">module </li></ul><ul id="fb796d64-3ed2-40b7-b0cc-c4636cf47b58" class="bulleted-list"><li style="list-style-type:disc">map, set</li></ul><ul id="d6ccc8ce-6552-4ffd-8567-5e344ab4f47d" class="bulleted-list"><li style="list-style-type:disc">template literal</li></ul></details></li></ul><ul id="e9e99c2c-3d37-4383-9256-6411494d9b39" class="toggle"><li><details open=""><summary><strong>const ≠ Object.freeze() gì ?</strong></summary><ul id="d2f253a5-03b6-49fa-bd81-77f40f9836b6" class="bulleted-list"><li style="list-style-type:disc">const là 1 key dùng để ràng buộc các biến không thể thay đổi giá trị </li></ul><ul id="efbb6f7a-84fd-4454-9b5e-f882f3edf4ad" class="bulleted-list"><li style="list-style-type:disc">object.freeze() hoạt động với giá trị đối tượng. Làm đối tượng trở nên bất biến. Chỉ read không được write các thuộc tính trong đối tượng</li></ul></details></li></ul><ul id="a3438d12-e7d5-4ddd-a1a2-1e45af76a9bf" class="toggle"><li><details open=""><summary><strong>Proxy trong JS là gì</strong></summary><ul id="13dd2833-fbdb-45bc-928c-be116e4e2c03" class="bulleted-list"><li style="list-style-type:disc"><strong>Proxy</strong> là một class được giới thiệu từ ES6, cho phép bạn can thiệp và thay đổi hành vi của một đối tượng (object). </li></ul><ul id="5de41593-ab71-49f8-bb83-a7d2a95a1f12" class="bulleted-list"><li style="list-style-type:disc">Các hành vi này bao gồm: truy xuất/thiết lập (getter/setter) thuộc tính của một đối tượng, thay đổi prototype, gọi hàm, khởi tạo đối tượng bằng từ khóa <code>new</code></li></ul><ul id="495401a7-6589-4f84-99cb-16a8a1481d60" class="bulleted-list"><li style="list-style-type:disc">Chúng ta có thể áp dụng Proxy cho bất cứ object nào trong JavaScript, kể cả mảng, hàm hay một proxy khác.</li></ul></details></li></ul><ul id="80571c0a-4b72-47f7-9928-fb037a28316a" class="toggle"><li><details open=""><summary><strong>Memoization là gì?</strong></summary><ul id="61cd393d-87c5-46d7-822f-f8033ad52839" class="bulleted-list"><li style="list-style-type:disc">là một kỹ thuật tối ưu, nhằm tăng tốc chương trình bằng cách lưu trữ kết quả của các câu gọi function và trả về các kết quả này khi function được gọi với cùng input đã gọi.</li></ul></details></li></ul><ul id="80bd7508-96fe-4720-98dc-919550165803" class="toggle"><li><details open=""><summary><strong>Có thể dùng những vòng lặp nào trong JS (for-loop) ?</strong></summary><ul id="3e96b039-18e1-4f0d-b26c-d1441511cc44" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background"><strong>map</strong></mark>: để thực hiện một chức năng trên mỗi phàn tử của một mảng. Sử dụng <mark class="highlight-yellow_background"><strong>map</strong></mark> nếu chúng ta muốn thực hiện cùng một thao tác hoặc chuyển đổi trên từng phần tử của mảng và lấy lại một array mới có cùng <mark class="highlight-yellow_background"><strong>length</strong></mark> với các <mark class="highlight-yellow_background"><strong>value</strong></mark> được chuyển đổi.</li></ul><ul id="a2a4951b-8e0b-4a5f-b2c2-672bd0e4673f" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background"><strong>filter</strong></mark>: khi chúng ta muốn xoá các mục không thoã mãn điều kiện. Mỗi phần tử của mãng được truyền cho hàm callback. Trên mỗi lần lặp nếu callback trả về true, thì phần tử đó sẽ được thêm vào mảng mới và ngược lại</li></ul><ul id="54a08b11-6e5b-4c78-8fe6-1dd004674d03" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background"><strong>reduce</strong></mark>: sử dụng để lặp qua các phần tử của mảng sau đó tính toán và trả về 1 kết quả cuối cùng. Thường được sử dụng để giải quyết các bài toán như lặp qua một mảng → xử lý gì đó → trả về một kết quả cuối cùng</li></ul><ul id="05763a26-55b8-4283-89b8-6471a188a0b0" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background"><strong>for...in</strong></mark>: dùng để lặp lại trong một object. Số lượng vòng lặp sẽ tương ứng với số lượng thuộc tính trong object. Array cũng là object nên ta có thể sử dụng cho cả array, nhưng key sẽ là giá trị index của phần tử</li></ul><ul id="7c8bb4b0-3df6-447a-acd4-5f2ba3ce2097" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background"><strong>for...of</strong></mark>: dùng để lặp các đối tượng từ Array, String, Map, WeakMap, Set, ... <mark class="highlight-yellow_background">Đặc biệt có thể dùng bất đồng bộ trong vòng lặp</mark></li></ul><ul id="3d9da74e-5aee-46df-9131-5a250f7864c6" class="bulleted-list"><li style="list-style-type:disc">for, do while, forEach, while</li></ul></details></li></ul><ul id="4bb2bd00-effc-4316-8556-a82b88f212d5" class="toggle"><li><details open=""><summary> <strong>CORS</strong></summary><ul id="fac520cd-eac9-4e0b-a128-3228456b5689" class="bulleted-list"><li style="list-style-type:disc">(Cross-Origin Resource Sharing) là một kĩ thuật được sinh ra để làm cho việc tương tác giữa client và server được dễ dàng hơn, nó cho phép JavaScript ở một trang web có thể tạo request lên một REST API được host ở một domain khác.</li></ul><ul id="ef58d47e-efe3-4836-8bfd-72590acd0e77" class="bulleted-list"><li style="list-style-type:disc">Hiểu sâu hơn đó chính là chia sẻ tài nguyên có nhiều nguồn gốc khác nhau. Chính sách nguồn gốc giống nhau của trình duyệt là một cơ chế bảo mật quan trọng. Khách hàng từ các nguồn khác nhau không thể truy cập tài nguyên của nhau nếu không được phép. Định nghĩa của tương đồng là <mark class="highlight-yellow_background">protocol</mark>, <mark class="highlight-yellow_background">domain</mark> và <mark class="highlight-yellow_background">port</mark> của liên kết truy cập là giống nhau. </li></ul></details></li></ul><ul id="27d84e6d-9052-43c3-b336-2dbf0949689b" class="toggle"><li><details open=""><summary><strong>Xử lý bất đồng bộ là gì ?</strong></summary><p id="f4a4c550-52d6-4b1f-b505-bab0e71be1ef" class="">Giả sử bạn có một nhiệm vụ bao gồm 2 công việc tốn thời gian, tạm gọi là A và B.<strong></strong></p><ul id="fe7eeb8e-3ac3-4021-92ac-a42e610cba98" class="bulleted-list"><li style="list-style-type:disc"><strong>Xử lý đồng bộ: </strong><ul id="aecb0b7a-eeb5-4c97-b706-4c3df1bf0a80" class="bulleted-list"><li style="list-style-type:circle">bạn sẽ thực hiện công việc A</li></ul><ul id="8b79cba0-1e8b-48a9-9c8e-fe0ab4965f2f" class="bulleted-list"><li style="list-style-type:circle">đợi A hoàn thành xong thì sẽ thực hiện B </li></ul><ul id="e904c3a0-b25a-47ec-b746-6a7556aa7d6f" class="bulleted-list"><li style="list-style-type:circle">rồi lại đợi B hoàn thành thì nhiệm vụ cuối cùng mới coi như xong. </li></ul><ul id="dc20ace8-c04d-4850-b2a0-df4957520906" class="bulleted-list"><li style="list-style-type:circle">Nghĩa là thời gian để hoàn thành nhiệm vụ là tổng của thời gian hoàn thành A và B. Hơn nữa, trong khoảng thời gian này bạn sẽ không thể thực hiện thêm 1 hành động nào khác </li></ul><ul id="a940ccb9-c8ec-46dc-b0cb-4eff7f8a3f6f" class="bulleted-list"><li style="list-style-type:circle">Điều này rõ ràng làm giảm hiệu năng và trải nghiệm người dùng đối với chương trình.</li></ul></li></ul><ul id="ee84958d-32dc-4e70-a3db-0cfedd0995c1" class="bulleted-list"><li style="list-style-type:disc"><strong>Xử lý đa luồng: </strong><ul id="ce812706-21e9-4a7e-8713-efa81bfabd90" class="bulleted-list"><li style="list-style-type:circle">Để khắc phục tình trạng này, các ngôn ngữ lập trình như C/C++, Java,... sẽ sử dụng <strong>cơ chế đa luồng (multi-thread)</strong>. </li></ul><ul id="40e07c79-775b-4abf-b372-a8d1330bc1c7" class="bulleted-list"><li style="list-style-type:circle">Nghĩa là mỗi công việc tốn thời gian sẽ được thực hiện trên một thread riêng biệt mà không can thiệp vào thread chính. </li></ul><ul id="7d4b8153-0e68-48b0-9353-49c4396c86a8" class="bulleted-list"><li style="list-style-type:circle">Bạn vẫn có thể thực hiện các công việc tốn thời gian mà vẫn có thể bắt các sự kiện ở thread chính.</li></ul><ul id="42752603-040c-483b-ab7b-9c6b25151690" class="bulleted-list"><li style="list-style-type:circle">Với ví dụ trên, thời gian để hoàn thành nhiệm vụ sẽ chỉ bằng thời gian hoàn thành của A hoặc B. Cái nào thực hiện xong trước sẽ đợi cái còn lại hoàn thành thì nhiệm vụ sẽ kết thúc.<strong></strong></li></ul></li></ul><ul id="fb340e6a-652f-40e8-aedd-08e137323dda" class="bulleted-list"><li style="list-style-type:disc"><strong>Xử lý bất đồng bộ:</strong><ul id="68b751dc-91fe-4d2d-9afa-ce09c3cf38c3" class="bulleted-list"><li style="list-style-type:circle">Tuy nhiên, JavaScript lại là một câu chuyện khác. Hai nền tảng quan trọng với JavaScript đều là <strong>single-thread. </strong></li></ul><ul id="7958f640-f698-4708-9c97-477d3449fbda" class="bulleted-list"><li style="list-style-type:circle">Chính vì vậy, bạn không thể xử lý đa luồng với JavaScript được mà phải sử dụng cơ chế <strong>xử lý bất đồng bộ</strong></li></ul><ul id="86231f92-2df9-42a2-965b-b634cd2048e4" class="bulleted-list"><li style="list-style-type:circle">Với cách xử lý bất đồng bộ, khi A bắt đầu thực hiện, chương trình tiếp tục thực hiện B mà không đợi A kết thúc. </li></ul><ul id="f975bb3e-a56d-4ddc-9520-cb73b51fcc27" class="bulleted-list"><li style="list-style-type:circle">Việc mà bạn cần làm ở đây là cung cấp một phương thức để chương trình thực hiện khi A hoặc B kết thúc.</li></ul></li></ul></details></li></ul><ul id="b5745545-8a82-4f4a-98db-27fc46eb027e" class="toggle"><li><details open=""><summary><a href="https://www.notion.so/Callback-Asynchronous-574f492417c6462c925c927766468258"><strong>Callback function là gì, Promise là gì, async await là gì? so sánh?</strong></a></summary><ul id="3287d41f-8143-4fd4-8b1d-00eeae039b05" class="toggle"><li><details open=""><summary><strong>callback function</strong></summary><ul id="7a58f204-eaa5-4661-938d-c694ac3f72d7" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">Là một hàm sẽ được thực hiện sau khi một khác đã thực hiện xong</mark></li></ul><ul id="f332b4a3-444a-42d5-938a-b3d9289a211c" class="bulleted-list"><li style="list-style-type:disc">Trong JS, hàm là các Object dạng function. Do đó các hàm có thể lấy các hàm làm đối số và có thể được trả về bởi các hàm khác. Các hàm thực hiện điều này gọi là <strong><mark class="highlight-yellow_background">HOC</mark></strong>. </li></ul><ul id="03cf8fcd-595c-4358-b511-d1262d7ff32c" class="bulleted-list"><li style="list-style-type:disc">Bất kỳ hàm nào được truyền dưới dạng đối số thì đều được gọi là hàm <mark class="highlight-yellow_background"><strong>callback</strong></mark></li></ul></details></li></ul><ul id="cdb4f5e5-6461-40e1-94eb-62e80dd8cf37" class="toggle"><li><details open=""><summary><strong>Promise</strong></summary><ul id="cc425f77-06ba-43ca-89aa-24a2f6112ba6" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">Là một đối tượng sẽ trả về một giá trị trong tương lai</mark>. </li></ul><ul id="040ecb69-233e-4529-8fe3-cd66f81aed09" class="bulleted-list"><li style="list-style-type:disc">Rõ hơn thì một object <strong><mark class="highlight-yellow_background">Promise</mark></strong> đại diện cho một giá trị ở thời điểm hiện tại có thể chưa tồn tại, nhưng sẽ được xử lý và có giá trị vào một thời gian nào đó trong tương lai.</li></ul><ul id="0d0ef57e-aca0-4b14-bd28-f95af159aed4" class="bulleted-list"><li style="list-style-type:disc">Ta thường hay gặp các trường hợp sử dụng quá nhiều <mark class="highlight-yellow_background"><strong>callback</strong></mark> dãn đến tình trạng gọi <mark class="highlight-yellow_background"><strong>callback hell</strong></mark>, nên <mark class="highlight-yellow_background"><strong>promise</strong></mark> là cách để giải quyết vấn đề trên</li></ul><ul id="ee72d96a-896c-41ff-b2da-f9b4c0e0e8c6" class="bulleted-list"><li style="list-style-type:disc">Việc sử dụng promise sẽ giúp cho việc cử lý không đồng bộ sẽ trở nên đồng bộ và gọn gàng hơn.</li></ul><ul id="e2b6b99b-1379-4dde-a03e-bdf327f63483" class="bulleted-list"><li style="list-style-type:disc"><strong>Promise có 3 trạng thái</strong><ul id="d25e0902-0495-4007-b935-f98eb6668d11" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-yellow_background">Pending (đang xử lý)</mark></li></ul><ul id="c4b36c2e-1941-442e-9c0b-56f4b3076ccc" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-yellow_background">Fulfilled (đã hoàn thành)</mark></li></ul><ul id="5d7aae89-6be8-40e3-a72a-13d445dac8b9" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-yellow_background">Rejected (đã bị từ chối)</mark></li></ul></li></ul></details></li></ul><ul id="01ea9797-a542-4d5e-8005-bea131013586" class="toggle"><li><details open=""><summary><strong>Async await</strong></summary><ul id="a970b634-ec19-4565-9836-d6f8f0dac7ff" class="bulleted-list"><li style="list-style-type:disc">Trước đây, để làm việc với code bất đồng bộ, chúng ta sử dụng callback và promise, <mark class="highlight-yellow_background"><strong>Async/Await</strong></mark> là một cách mới để viết code bất đồng bộ.</li></ul><ul id="038dbc2e-f916-4655-9a33-306364c93e1b" class="bulleted-list"><li style="list-style-type:disc">Nó được xây dựng trên Promise và tương thích với tất cả Promise dựa trên API</li></ul><ul id="54a6ccb2-c5d9-466e-b1cf-b7b72bb38a5f" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background"><strong>Async</strong></mark> được dùng để khai báo một hàm bất đồng bộ<ul id="fd83ad6e-a581-4fff-8dcb-e43c851ef396" class="bulleted-list"><li style="list-style-type:circle">Tự động biến đổi một hàm thông thường thành một Promise.</li></ul><ul id="166c57f2-e96c-450d-bcfc-9b0e0b77ba34" class="bulleted-list"><li style="list-style-type:circle">Khi gọi tới hàm async nó sẽ xử lý mọi thứ và được trả về kết quả trong hàm của nó.</li></ul><ul id="08eb1ac7-ff2b-4478-8fc4-19801f8429b1" class="bulleted-list"><li style="list-style-type:circle">Async cho phép sử dụng Await</li></ul></li></ul><ul id="93e19a22-6d71-4461-8696-f9a622877023" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background"><strong>Await</strong></mark> được sử dụng để chờ một Promise. Nó chỉ có thể được sử dụng bên trong một khối Async.<ul id="5d4f883c-c10c-4f81-a670-cb8cc5ac8007" class="bulleted-list"><li style="list-style-type:circle">Khi được đặt trước một Promise, nó sẽ đợi cho đến khi Promise kết thúc và trả về kết quả.</li></ul><ul id="93e0cebc-800c-40a3-81ce-9b5e876ed533" class="bulleted-list"><li style="list-style-type:circle">Await chỉ làm việc với Promises, nó không hoạt động với callbacks.</li></ul><ul id="50a72b66-441a-4be1-b3ff-4e554d16619b" class="bulleted-list"><li style="list-style-type:circle">Await chỉ có thể được sử dụng bên trong các function async.</li></ul></li></ul><ul id="54b40e53-86e7-4ff1-ab44-1f9d56d63f25" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background"><strong>Dùng Async Await vì</strong></mark>:<ul id="d4ff1c25-83b2-47f5-a0d8-f874d2993e96" class="bulleted-list"><li style="list-style-type:circle">Ngắn gọn, sạch sẽ: viết code tuần tự, làm cho số lượng code viết giảm đáng kể.</li></ul><ul id="fc9fb925-3494-4b46-adfb-97d797250b4a" class="bulleted-list"><li style="list-style-type:circle">Xử lý lỗi: giúp ta xử lý cả error đồng bộ lẫn bất đồng bộ theo cùng 1 cấu trúc</li></ul><ul id="da94394a-2995-4085-9f7f-121f0885b5c6" class="bulleted-list"><li style="list-style-type:circle">Câu lệnh điều kiện: giúp ta xử lý những câu điều kiện dựa vào kết quả trả về một cách dễ hiểu và nhanh hơn</li></ul><ul id="7382b37a-9286-4000-8065-de72471ded43" class="bulleted-list"><li style="list-style-type:circle">Debug: việc debug trở nên dễ dàng hơn</li></ul></li></ul><ul id="f432d842-7237-4094-a6d6-269f91c918dd" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background"><strong>Async / Await làm cho promise lỗi thời ?</strong></mark><ul id="e0973271-0d84-4e9e-b09c-567ede160126" class="bulleted-list"><li style="list-style-type:circle">Khi làm việc với Async / Await, thật ra chúng ta vẫn đang sử dụng ngầm Promises.</li></ul><ul id="041e6b59-109c-42b9-9be4-2af881a8c5a5" class="bulleted-list"><li style="list-style-type:circle">Vì thế, kể cả khi đang sử dụng Async / Await cần một sự hiểu biết tốt về Promises sẽ rất tốt cho chúng ta.</li></ul><ul id="77cec8b6-cc5f-4722-a8d1-cd6fd08088d5" class="bulleted-list"><li style="list-style-type:circle">Ngoài ra, có những trường hợp mà Async / Await không sử dụng được và chúng ta phải sử dụng Promises.</li></ul><ul id="040f499b-075b-4afd-81f8-13a4999bd7b5" class="bulleted-list"><li style="list-style-type:circle">Ví dụ khi ta sử dụng để gọi song song các tác vụ bất đồng bộ và không phụ thuộc vào nhau thì async await không giải quyết được, nhưng <mark class="highlight-yellow_background"><strong>Promise.all()</strong></mark> có thể làm được</li></ul></li></ul></details></li></ul></details></li></ul><ul id="7c21bc1f-2cf4-45e5-8445-470e62a33b18" class="toggle"><li><details open=""><summary><a href="https://www.notion.so/Shallow-Deep-Copy-2331df1919544a089db204d0aaae3ac5"><strong>Shallow copy và deep copy trong js</strong></a></summary><ul id="d7e9179f-4171-4cc3-9b90-b948949eccd2" class="bulleted-list"><li style="list-style-type:disc"><strong>shallow copy</strong>: nhiệm vụ của nó chỉ copy những giá trị nông, nghĩa là nó sao chép những giá trị đối tượng bình thường nhưng các giá trị lồng nhau vẫn sử dụng để tham chiếu (reference) đến đối tượng ban đầu.</li></ul><ul id="785f0ce7-2b9d-4dc7-910f-c5abdeaf94c2" class="bulleted-list"><li style="list-style-type:disc"><strong>deep copy</strong>: đơn giản cũng giống với shallow copy nhưng các giá trị của reference trong object gốc không thay đổi trong object đã clone</li></ul></details></li></ul><ul id="af98e18c-6895-4b26-9de6-f18abb6c8d5b" class="toggle"><li><details open=""><summary><strong>localStorage &amp; sessionStorage &amp; cookies</strong></summary><ul id="70d88245-e9d8-431d-aff3-13173819a580" class="toggle"><li><details open=""><summary><mark class="highlight-yellow_background"><strong>sessionStorage</strong></mark><strong>:</strong> Dữ liệu chỉ tồn tại cho đến khi người dùng đóng tab hoặc đóng trình duyệt, còn lại mọi thứ đều giống localStorage</summary></details></li></ul><ul id="e9b79395-7100-41ec-93e2-b0f9a623067d" class="toggle"><li><details open=""><summary><mark class="highlight-yellow_background"><strong>cookie</strong></mark><strong>:</strong> Thường có khoảng thời gian sống nhất định và tuỳ thuộc vào mục đích sử dụng sẽ có khoảng thời gian sử dụng khác nhau, ngoài hạn sử dụng cookie còn có thời gian sống (max-age) </summary><ul id="a5000ec6-db69-42f7-bfb3-18d0cba29fed" class="bulleted-list"><li style="list-style-type:disc">Khả năng lưu trữ thông thường khoảng 4 KB</li></ul><ul id="0ad7c594-d199-47dc-a5b8-3cd03ab6bf6a" class="bulleted-list"><li style="list-style-type:disc">Thông tin được gửi lên server</li></ul><ul id="c4d412c3-40a4-4085-b4ce-24e77066ad18" class="bulleted-list"><li style="list-style-type:disc">Có thể đọc ở phía máy chủ khác với Local/Session Storage chỉ đọc được ở phía máy khách.</li></ul></details></li></ul><ul id="d4287b96-f16c-4f33-b684-c9d7ddb64bd5" class="toggle"><li><details open=""><summary><mark class="highlight-yellow_background"><strong>localStorage</strong></mark><strong>: </strong>Dữ liệu được lưu trữ vô thời hạn, dữ liệu sẽ không mất đi trừ khi sử dụng chức năng xoá của trình duyệt hoặc dùng localStorage API để xoá.</summary><ul id="1528f9be-7493-4c07-9afe-3ee8743b5868" class="bulleted-list"><li style="list-style-type:disc"> Khả năng lưu trữ khoảng 5MB. </li></ul><ul id="5d456eaf-44d2-406b-8ab1-67592d9131fa" class="bulleted-list"><li style="list-style-type:disc">Dữ liệu không được gửi đi đến server thông qua các request header.</li></ul><ul id="7b8cce72-2027-4c93-bf03-d53e1db4b59c" class="bulleted-list"><li style="list-style-type:disc">Được lưu trữ trên trình duyệt của người dùng nên việc sử dụng sẽ không ảnh hưởng đến hiệu suất của trang web nhưng sẽ làm nặng trình duyệt (rất nhỏ gần như không đáng kể).</li></ul></details></li></ul></details></li></ul><ul id="e7b5b628-3f85-4a00-a2ae-adaf1b89b9d0" class="toggle"><li><details open=""><summary><strong>Map, Set, WeakMap, WeakSet là gì?</strong></summary><ul id="3a42b265-e0a0-4772-878d-e1124095123b" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Map</strong></mark> trong JavaScript là một <strong>cấu trúc dữ liệu</strong> cho phép lưu trữ dữ liệu theo kiểu <strong>key-value</strong>, tương tự như object. Tuy nhiên, chúng khác nhau ở chỗ là:</summary><ul id="4b7edf9a-cbc3-48ff-9ac9-6756d3702f07" class="bulleted-list"><li style="list-style-type:disc"><strong>Object</strong> chỉ cho phép sử dụng String hay Symbol làm key</li></ul><ul id="3cd38d9d-4748-4b23-9adc-233a295ae1dd" class="bulleted-list"><li style="list-style-type:disc"><strong>Map</strong> cho phép mọi kiểu dữ liệu (String, Number, Boolean, NaN, Object,...) có thể làm key và Map có thuộc tính <strong>size</strong> và một số phương thức đặc trưng</li></ul><ul id="69c8fee0-df28-4539-8a43-6f0b03ec17a3" class="bulleted-list"><li style="list-style-type:disc">Một số phương thức và thuộc tính của Map:<ul id="33fce7cd-00bc-47e4-bdbb-1c9558eaa603" class="bulleted-list"><li style="list-style-type:circle"><code>new Map([iterable])</code>: khởi tạo Map với tham số là một iterable object (không bắt buộc) với mỗi phần tử có dạng <code>[key, value]</code>.</li></ul><ul id="8c8c2ca3-ba1e-40e1-8607-ac0661371742" class="bulleted-list"><li style="list-style-type:circle"><code>map.set(key, value)</code>: lưu <code>value</code> bởi <code>key</code> và trả về <code>map</code>.</li></ul><ul id="3dc3c587-d615-43bb-973c-76166f43d491" class="bulleted-list"><li style="list-style-type:circle"><code>map.get(key)</code>: trả về <code>value</code> bởi <code>key</code>, nếu <code>key</code> không tồn tại thì trả về <code>undefined</code>.</li></ul><ul id="aa5a1288-faad-4819-bf76-1f85e979abd1" class="bulleted-list"><li style="list-style-type:circle"><code>map.has(key)</code>: trả về <code>true</code> nếu <code>key</code> tồn tại, ngược lại thì trả về <code>false</code>.</li></ul><ul id="28189622-b5d1-47f4-8598-c8a801089a69" class="bulleted-list"><li style="list-style-type:circle"><code>map.delete(key)</code>: xóa giá trị ứng với <code>key</code> và trả về <code>true</code> nếu <code>key</code> tồn tại, ngược lại thì trả về <code>false</code>.</li></ul><ul id="46799a7c-827e-477b-a14c-7592a73da730" class="bulleted-list"><li style="list-style-type:circle"><code>map.clear()</code>: xóa tất cả các phần tử trong <code>map</code>.</li></ul><ul id="67c03de8-94b8-4668-9e9b-424094d83dfc" class="bulleted-list"><li style="list-style-type:circle"><code>map.size</code>: trả về số phần tử hiện tại có trong <code>map</code>.</li></ul></li></ul></details></li></ul><ul id="a5e8f5ea-9611-4c7e-aed0-e56d644988e7" class="toggle"><li><details open=""><summary><strong><mark class="highlight-red">Set</mark></strong><strong> trong Javascript </strong>là một loại object cho phép bạn lưu trữ dữ liệu một cách duy nhất, không trùng lặp.</summary><ul id="62cf9671-028b-456b-a290-6d43d0e3c95e" class="bulleted-list"><li style="list-style-type:disc">Set là một loại object</li></ul><ul id="25da6b46-6f6d-4feb-ae33-4b4fa3af749c" class="bulleted-list"><li style="list-style-type:disc">Dữ liệu trong set là duy nhất và không trùng lặp. Không trùng lặp ở đây được hiểu là các phần tử không được giống nhau. </li></ul><ul id="349c2d6d-9ac9-49cc-b639-fa56beb8f930" class="bulleted-list"><li style="list-style-type:disc">Có thể lưu <code>NaN </code>và <code>undefined</code> vào Set trong JavaScript.</li></ul><ul id="71f3faad-dafc-46da-86a4-516f3f831371" class="bulleted-list"><li style="list-style-type:disc">Các phương thức của Set là:<ul id="71717593-6ed9-400b-af64-f1e8ebbf97a0" class="bulleted-list"><li style="list-style-type:circle"><code>new Set(iterable)</code>: khởi tạo Set bằng cách truyền vào một iterable object (không bắt buộc), trường hợp không truyền vào tham số nào thì Set sẽ rỗng.</li></ul><ul id="e0016643-6462-4fc8-b76f-344ca703401e" class="bulleted-list"><li style="list-style-type:circle"><code>set.add(value)</code>: thêm phần tử <code>value</code> vào Set và trả về chính Set đó.</li></ul><ul id="3b7b5073-42c6-4cf4-b0b7-0bf94b73f967" class="bulleted-list"><li style="list-style-type:circle"><code>set.delete(value)</code>: xóa một phần tử trong Set và trả về <code>true</code> nếu giá trị <code>value</code> tồn tại trong Set, ngược lại trả về <code>false</code>.</li></ul><ul id="4b8a6150-5f3e-4554-bdd8-a0cced1418de" class="bulleted-list"><li style="list-style-type:circle"><code>set.has(value)</code>: trả về <code>true</code> nếu giá trị <code>value</code> tồn tại trong Set, ngược lại thì trả về <code>false</code>.</li></ul><ul id="45c3ca75-4834-4c57-8745-72e421152954" class="bulleted-list"><li style="list-style-type:circle"><code>set.clear()</code>: xóa tất cả các phần tử trong Set.</li></ul><ul id="16bfd87f-257e-4c77-93f1-783a2dbec3ec" class="bulleted-list"><li style="list-style-type:circle"><code>set.size</code>: trả về số lượng phần tử trong Set.</li></ul></li></ul><p id="15c7376b-c3c2-4b64-8975-77f6ec2c8528" class=""><a href="https://completejavascript.com/ban-biet-gi-ve-set-trong-javascript/">https://completejavascript.com/ban-biet-gi-ve-set-trong-javascript/</a></p></details></li></ul><ul id="57dfc999-ab18-4b64-9952-38604d2f9fc1" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>WeakMap </strong></mark></summary><ul id="e89d372e-40bd-4edf-a077-a085009f6ac4" class="bulleted-list"><li style="list-style-type:disc">WeakMap trong JavaScript tương tự như Map, cho phép lưu trữ dữ liệu theo kiểu <code>key-value</code>. Tuy nhiên, WeakMap chỉ chấp nhận <strong>object</strong> làm <strong>key </strong>còn map thì cho phép tất cả mọi kiểu dữ liệu</li></ul><ul id="47a09d2a-d70d-4ced-addc-f9823bf653be" class="bulleted-list"><li style="list-style-type:disc">Khi object bị hủy, object tương ứng trong WeakMap sẽ bị giải phóng vì không còn cách nào để truy cập vào object đó nữa.<pre id="828d15cb-5dd5-4955-a613-96d66915106e" class="code"><code>let alex = { name: &quot;Alex&quot; };
+
+// khai báo map và sử dụng biến alex làm key cho map
+let map = new Map();
+map.set(alex, &quot;1&quot;);
+
+// ghi đè giá trị của biến alex
+alex = null;
+
+// mặc dù biến alex bị gán bằng null, nhưng object alex vẫn tồn tại trong map
+console.log(map.size); // 1
+for (let item of map) {
+  console.log(item);
+  /**
+   * [{name: &#x27;Alex&#x27;}, &#x27;1&#x27;]
+   */
+}
+// Để hủy ta phải dùng method delete trong map</code></pre><pre id="b2edf0a5-7638-4134-ad15-17a1a8dcd405" class="code"><code>let alex = { name: &quot;Alex&quot; };
+
+// khai báo map và sử dụng biến alex làm key cho weakMap
+let weakMap = new WeakMap();
+weakMap.set(alex, &quot;1&quot;);
+
+// ghi đè giá trị của biến alex
+alex = null;
+
+// Sau khi biến alex bị gán bằng null, 
+// không còn cách nào có thể truy cập vào phần tử với key là alex trước đó. 
+// Vì vậy, object với alex sẽ bị hủy.</code></pre></li></ul><ul id="4045b090-570b-42ea-a329-abcfc4057d8e" class="bulleted-list"><li style="list-style-type:disc">WeakMap không phải iterable object nên không có cách nào để duyệt hết các phần tử trong WeakMap (như cách dùng <code>for...of</code> với Map).</li></ul><ul id="b95b53af-848f-481b-9658-0828480f1652" class="bulleted-list"><li style="list-style-type:disc">Ứng dụng của weakMap:<ul id="6ad1bf9a-d04e-4f94-a6ef-98155d4fdfd9" class="bulleted-list"><li style="list-style-type:circle">Lưu dữ liệu ví dụ lưu lại số lần truy cập của một đối tượng user</li></ul><ul id="f4d7d288-01a8-4765-a038-dbc0d74c2557" class="bulleted-list"><li style="list-style-type:circle">Caching dữ liệu</li></ul></li></ul><ul id="7a8c4860-10ab-43dd-ab4f-59306ae7dc68" class="bulleted-list"><li style="list-style-type:disc">Các phương thức của WeakMap là:<ul id="422365aa-f4bb-4998-83a4-4d5cfffff3ce" class="bulleted-list"><li style="list-style-type:circle"><code>weakMap.set(key, value)</code>: lưu giá trị <code>value</code> vào thuộc tính <code>key</code> và trả về chính WeakMap.</li></ul><ul id="56959760-b409-4a70-8572-7475f832bec2" class="bulleted-list"><li style="list-style-type:circle"><code>weakMap.get(key)</code>: trả về giá trị của thuộc tính <code>key</code>, nếu <code>key</code> không tồn tại thì trả về <code>undefined</code>.</li></ul><ul id="13700d2a-da8f-4740-92a9-055475fde26e" class="bulleted-list"><li style="list-style-type:circle"><code>weakMap.delete(key)</code>: xóa thuộc tính <code>key</code> trong WeakMap, nếu <code>key</code> tồn tại thì trả về <code>true</code>, ngược lại thì trả về <code>false</code>.</li></ul><ul id="0e40179e-a482-43c4-866d-0799a2103b3a" class="bulleted-list"><li style="list-style-type:circle"><code>weakMap.has(key)</code>: trả về <code>true</code> nếu <code>key</code> tồn tại trong <code>weakMap</code>, ngược lại thì trả về <code>false</code>.</li></ul></li></ul><p id="f03bee29-5cd5-4c62-af7c-5411485e93eb" class=""><a href="https://completejavascript.com/weakmap-trong-javascript/">https://completejavascript.com/weakmap-trong-javascript/</a></p></details></li></ul><ul id="622e56a4-923c-492e-9eda-adc2381e3bf8" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>WeakSet </strong></mark></summary><ul id="1d580f04-f364-4de5-b427-06ac354f2642" class="bulleted-list"><li style="list-style-type:disc">WeakSet trong JavaScript tương tự như Set, cho phép <strong>lưu trữ dữ liệu một cách duy nhất</strong>, không trùng lặp. Tuy nhiên, WeakSet chỉ chấp nhận phần tử kiểu object.</li></ul><ul id="b28f2d9d-ab4f-4016-9ee5-b387324882b8" class="bulleted-list"><li style="list-style-type:disc">Khi object bị hủy, object tương ứng trong WeakSet sẽ bị giải phóng vì không còn cách nào để truy cập vào object đó nữa.</li></ul><ul id="afb59275-8b82-42ba-88f8-011357b5612a" class="bulleted-list"><li style="list-style-type:disc">WeakSet không phải iterable object nên không có cách nào để duyệt hết các phần tử trong WeakSet (như cách dùng <code>for...of</code>
+ với Set).</li></ul><ul id="94601801-7373-45d4-b2b8-61cf993fb6a0" class="bulleted-list"><li style="list-style-type:disc">Các phương thức của WeakSet là:<ul id="133bb0c2-73f9-4e81-9055-dbfb99d5158a" class="bulleted-list"><li style="list-style-type:circle"><code>weakSet.add(value)</code>: lưu giá trị <code>value</code> vào WeakSet và trả về chính WeakSet.</li></ul><ul id="4d84ce8e-0582-4814-91c4-ce16855ddea8" class="bulleted-list"><li style="list-style-type:circle"><code>weakSet.delete(value)</code>: xóa phần tử <code>value</code> trong WeakSet, nếu <code>value</code> tồn tại thì trả về <code>true</code>, ngược lại thì trả về <code>false</code>.</li></ul><ul id="fa72d384-0254-4a6e-bda8-55ad4ae7ae4b" class="bulleted-list"><li style="list-style-type:circle"><code>weakSet.has(value)</code>: trả về <code>true</code> nếu <code>value</code> tồn tại trong <code>weakSet</code>, ngược lại thì trả về <code>false</code>.</li></ul></li></ul></details></li></ul></details></li></ul><ul id="3589908c-8281-470e-8c51-7b8237f88f8a" class="toggle"><li><details open=""><summary><strong>Sự khác biệt giữa </strong><strong><code>Set</code></strong><strong>, </strong><strong><code>WeakSet</code></strong><strong>, </strong><strong><code>Map </code></strong><strong>và </strong><strong><code>WeakMap</code></strong><strong> trong JavaScript là gì?</strong></summary><ul id="d087eed3-d789-4cb2-bba1-f2bf301a8a1d" class="bulleted-list"><li style="list-style-type:disc"><code><strong>WeakSet</strong></code><code> </code>và <code><strong>Set</strong></code><strong> </strong>đều là tập hợp các giá trị duy nhất. Sự khác biệt chính là <code><strong>WeakSet</strong></code><code> </code>chỉ lưu trữ đối tượng và không thể chứa các giá trị tùy ý thuộc bất kỳ loại nào, nhưng các <code><strong>Set</strong></code>thì có thể.</li></ul><ul id="5b81ae76-135d-4e0c-ad8a-ae5cefdf4164" class="bulleted-list"><li style="list-style-type:disc">Sets hữu ích khi bạn cần nối từng dữ liệu một vào cấu trúc dữ liệu nhưng cũng muốn loại bỏ các phần trùng lặp. Các hoạt động tập hợp có giá trị trung bình là <code><strong>O(1)</strong></code>, điều này làm cho chúng tiết kiệm thời gian.</li></ul><ul id="bc3993c0-5b7d-4c17-ab37-8c2d40b6ac39" class="bulleted-list"><li style="list-style-type:disc"><code><strong>WeakMap</strong></code> và <code><strong>Map</strong></code> là tập hợp các cặp khóa / giá trị. Sự khác biệt chính là trong <code><strong>WeakMap</strong></code>, các khóa phải là các đối tượng. Trong <code><strong>Map</strong></code>, các khóa có thể thuộc bất kỳ loại nào.</li></ul><ul id="9253bf12-1185-4c65-83b9-ed427ee96a22" class="bulleted-list"><li style="list-style-type:disc">Cũng cần biết rằng các giá trị <code><strong>WeakMap</strong></code> không thể được lặp lại và chúng giữ một tham chiếu yếu (weak reference) đến khóa. Ví dụ: nếu bạn xóa thủ công một khóa được tham chiếu trong <code><strong>WeakMap</strong></code>, khóa đó sẽ được thu gom.</li></ul></details></li></ul><ul id="5678fc95-6ce3-44b0-ad5f-1e8b5638255f" class="toggle"><li><details open=""><summary><strong>setTimeout, setInterval</strong></summary><ul id="6bd0c475-363d-41d9-a630-a263e24d6d90" class="bulleted-list"><li style="list-style-type:disc">Là những hàm cho phép bạn thực hiện một đoạn mã Javascript tại một thời điểm nào đó trong tương lai. Nó được gọi là &quot;lập lịch một cuộc gọi&quot; (scheduling a call)<ul id="f207a866-8078-4ac2-a5ae-2b5f8abb9b5e" class="bulleted-list"><li style="list-style-type:circle"><strong><mark class="highlight-yellow_background">setTimeout</mark></strong>: sử dụng để thực thi một hàm hoặc đoạn mã được chỉ định chỉ một lần sau một khoảng thời gian nhất định.</li></ul><ul id="92e71d96-aa27-4e57-a7c0-a957c64cde14" class="bulleted-list"><li style="list-style-type:circle"><strong><mark class="highlight-yellow_background">setInterval</mark></strong>: sử dụng để thực thi một hàm hoặc đoạn mã được chỉ định lặp đi lặp lại vào những khoảng thời gian cố định.</li></ul></li></ul><ul id="64bc15a6-63a0-49fa-857d-51be9b2d164f" class="bulleted-list"><li style="list-style-type:disc">Dừng thực thi bộ đếm thời gian sử dụng: <mark class="highlight-yellow_background"><strong>clearTimeout() </strong></mark>và <strong><mark class="highlight-yellow_background">clearInterval()</mark></strong></li></ul></details></li></ul><ul id="e41d46bb-84ff-45f7-bef2-a3e48af6b0e1" class="toggle"><li><details open=""><summary><strong>Event loop trong JS</strong></summary><ul id="a584b5cd-23b2-4e3b-a952-d83c81c88aca" class="bulleted-list"><li style="list-style-type:disc"><strong><mark class="highlight-yellow_background">Event Loop</mark></strong> là cơ chế giúp Javascript có thể thực hiện nhiều thao tác cùng một lúc (concurrent model)</li></ul><ul id="ebecbd11-d2c0-4a43-9055-9c7b378b2e93" class="bulleted-list"><li style="list-style-type:disc"><a href="https://viblo.asia/p/cuoi-cung-thi-event-loop-la-gi-LzD5dX705jY">Cuối cùng thì event loop là gì ?</a></li></ul><ul id="69d688fd-7f17-4b4b-bba0-a15b57e52c1a" class="bulleted-list"><li style="list-style-type:disc"><a href="https://dynonguyen.com/event-loop-bat-dong-bo-trong-javascript/">Event loop trong JS</a></li></ul><hr id="3258e3a3-3044-4ac6-8938-e29adb92ada8"/><ul id="3886c40d-4e77-4fc0-b09c-9bd8c92b77ba" class="bulleted-list"><li style="list-style-type:disc">Do JS đơn luồng nên nó chỉ xử lý được duy nhất một tác vụ trong cùng một thời điểm, điều này rất khác với các ngôn ngữ đa luồng (multi-thread) khác như C#, Java, PHP với mỗi tác vụ thì nó sẽ chia ra một luồng để xử lý.</li></ul><ul id="8b1da6ea-4b57-4542-8e85-c5ccdce94f17" class="bulleted-list"><li style="list-style-type:disc">Nếu như thế thì JS rất dễ rơi vào tình trạng <strong>Blocking</strong> nếu gặp phải các tác vụ mất nhiều thời gian như xử lý nhiều request, call APIs, … </li></ul><ul id="608528a6-c477-4887-bd67-c01489c94ed5" class="bulleted-list"><li style="list-style-type:disc">Event Loop ra đời để giải quyết vấn đề này, khiến JS chỉ đơn luồng như cân tất nhiều tác vụ cùng lúc </li></ul><ul id="434f88b4-3ada-427c-a865-e741c8f07889" class="bulleted-list"><li style="list-style-type:disc"> Về Event Loop thì cần biết thêm 2 khái niệm đó chính là:<ul id="944e16e6-d7a4-4fd5-9035-306cc35907a4" class="bulleted-list"><li style="list-style-type:circle"><strong>Web APIs</strong>: bản chất Runtime của Javascript chỉ có 1 luồng và không thể chạy multi-thread, vì thế browser đã viết thêm một Web APIs để bọc runtime này lại (tương tự dưới NodeJS sẽ dùng C++ để bọc V8 lại). Web APIs này sẽ giúp cho JS có thể hoạt động một cách bất đồng bộ như multi-thread.</li></ul><ul id="02daa64f-622f-4c55-8547-b2e7bcb43e38" class="bulleted-list"><li style="list-style-type:circle"><strong>Callback Queue</strong>: Như tên của nó là hàng đợi các callback do thằng Web APIs ở trên trả về.</li></ul></li></ul><ul id="e549229a-d9ec-4401-88d1-95f6d3ae4ac0" class="bulleted-list"><li style="list-style-type:disc"><strong>Cách hoạt động:</strong><ul id="69c74310-e1c3-49e9-b2cf-368dbbe89c9b" class="bulleted-list"><li style="list-style-type:circle">Khi hàm main được chạy thì các đoạn code trong main sẽ được thực thi. Nó sẽ lần lượt đẩy các hàm vào bên trong call stack theo nguyên tắc LIFO</li></ul><ul id="c39249e5-3327-4745-b366-bb65ca17399c" class="bulleted-list"><li style="list-style-type:circle">Các hàm hay tác vụ liên quan đến Events (click, change, listener, …), AJAX (Call APIs), Timing (setTimeout, setInterval) sẽ được đẩy từ call stack sang Web APIs. Còn lại thì sẽ được thực thi trong call stack đến khi nào xong thì pop nó ra cho hàm bên dưới được thực thi.</li></ul><ul id="8cbda4b0-bfe9-4190-b7bb-15750046bff5" class="bulleted-list"><li style="list-style-type:circle">Ở Web APIs sẽ tận dụng các nhân của thiết bị để xử lý riêng biệt các tác vụ này. Sau khi hoàn tất thì Web APIs sẽ trả về một callback và đẩy nó vào trong Callback Queue.</li></ul><ul id="442fc0bb-badf-4ca4-987c-19006b7c1a04" class="bulleted-list"><li style="list-style-type:circle">Callack Queue hoạt động theo nguyên tắc của queue là FIFO (vào trước ra trước) không như stack.</li></ul><ul id="c38ac4a9-950e-44d1-8c3e-2e4bbc8dd8e8" class="bulleted-list"><li style="list-style-type:circle">Event loop hiểu nôm na là một vòng lặp vô tận, nó luôn trực chờ ở đó để quan sát Callback Queue và bé Call stack.</li></ul><ul id="d47c1b6a-8593-4248-b3b2-66f4329b294f" class="bulleted-list"><li style="list-style-type:circle">Bất kể khi nào mà call stack trống (tất cả các hàm được pop ra) thì nó sẽ nắm các thằng callback ở trong Callback Queue và ném vào trong Call Stack để tiếp tục thực thi.</li></ul></li></ul></details></li></ul><p id="593153b1-e1dc-413a-bccd-f41dc59b25d0" class="">
+</p></div></article></body></html>

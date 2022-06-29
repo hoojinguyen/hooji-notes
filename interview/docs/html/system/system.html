@@ -1,0 +1,680 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>SYSTEM</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="5529f740-4773-4a4b-bc30-d32d74a855bb" class="page sans"><header><h1 class="page-title">SYSTEM</h1></header><div class="page-body"><p id="93a231fa-2aa9-48cc-85eb-86fee406382a" class="">
+</p><hr id="418c9d01-9042-4dd0-bc9e-8291fc6cf2a7"/><ul id="703298c7-bbbf-4958-bcce-3604270413ce" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>HTTP ≠ HTTPS, SSL</strong></mark></summary><ul id="9dca09f0-ae8b-41f6-896a-5c803e1510c6" class="bulleted-list"><li style="list-style-type:disc"><strong>HTTP</strong>: giao thức không bảo mật, mọi dữ liệu truyền trên internet sẽ không được mã hoá, nghĩa là khi ta submit một form trên trang đó (VD: đăng nhập bằng password, gửi thông tin tài khoản ngân hàng, hay thậm chí các tin nhắn thông thường) thì mọi thông tin bạn nhập và gửi nếu để ai đó trên internet bắt được gói tin, bạn sẽ bị lộ những thông tin đó.</li></ul><ul id="45bd2da9-0dd0-4d01-963a-c00e2a3dc6ec" class="bulleted-list"><li style="list-style-type:disc"><strong>HTTPS</strong>: giao thức bảo mật, giúp cho gói tin gửi tới server được mã hoá khi đi trên internet, ai đó có bắt được gói tin họ cũng không thể đọc được thông tin nằm trong gói tin đó.<ul id="a9b8b8a7-3efd-4a6b-97be-0636e0678d9f" class="bulleted-list"><li style="list-style-type:circle"><strong>HTTPS </strong>sử dụng giao thức <strong>SSL (còn gọi là TLS) </strong>để mã hoá dữ liệu của <strong>HTTP</strong></li></ul><ul id="55279f64-858e-4fdb-98ee-82e5d45db854" class="bulleted-list"><li style="list-style-type:circle">Cách giao thức <strong>SSL</strong> hoạt động: <a href="https://blog.daovanhung.com/post/cach-hoat-dong-cua-ssl-va-https">https://blog.daovanhung.com/post/cach-hoat-dong-cua-ssl-va-https</a></li></ul></li></ul></details></li></ul><ul id="eb569e5e-14d6-40d3-b281-fab038e7e966" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>stateless ≠ stateful</strong></mark></summary><ul id="f9b122e2-3af4-41eb-b126-340ad46314dc" class="bulleted-list"><li style="list-style-type:disc"><strong>stateless</strong>: là design không lưu dữ liệu của client trên server. Có nghĩa là sau khi client gửi dữ liệu lên server, server thực thi xong, trả kết quả thì “quan hệ” giữa client và server bị “cắt đứt” – server không lưu bất cứ dữ liệu gì của client.</li></ul><ul id="b78d497f-9ded-48a5-92fb-dca229400599" class="bulleted-list"><li style="list-style-type:disc"><strong>stateful</strong>: là một design ngược với stateless, server cần lưu dữ liệu của client, điều đó đồng nghĩa với việc ràng buộc giữa client và server vẫn được giữ sau mỗi request (yêu cầu) của client. Data được lưu lại phía server có thể làm đầu vào (input parameters) cho lần kế tiếp, hoặc là dữ kiện dùng trong quá trình xử lý hay phục vụ cho bất cứ nhu cầu nào phụ thuộc vào bussiness (nghiệp vụ) cài đặt.</li></ul></details></li></ul><ul id="31569025-14cb-446e-8cd4-d0a8df2d9c67" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Vertical scale ≠ Horizontal scale</strong></mark></summary><ul id="5381f5f2-aeec-49f1-bb41-2473bb984e52" class="bulleted-list"><li style="list-style-type:disc"><strong>scaling vertically</strong>: mở rộng theo chiều dọc, là cách mở rộng server hiện tại bằng cách nâng cấp độ mạnh (power) bằng cách nâng cấp CPU, Ram, Storage, v.V… Vertical-scaling thường bị giới hạn bởi vượt quá khả năng về cấu hình vật lý hiện đại hay độ trễ khi “chẳng may” Server bị downtime để nâng cấp hay deploy hệ thống.</li></ul><ul id="b5206c51-30e3-4eb8-8f91-4ea5d44c3097" class="bulleted-list"><li style="list-style-type:disc"><strong>scaling horizontally</strong>: mở rộng theo chiều ngang, là cách mở rộng bằng cách thêm nhiều Node/Server vào một mạng lưới đang có, làm tăng khả năng chịu tải có hệ thống. Cách làm này rẻ và dễ làm hơn so với Vertical-scaling, đặc biệt là rất dễ dàng downsize cũng như upsize hệ thống.</li></ul></details></li></ul><ul id="91581408-4e48-4cd4-9142-07ac6e8dfb6b" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>CDN</strong></mark></summary><ul id="b3cd6048-7735-4320-9168-7beaab742ea4" class="bulleted-list"><li style="list-style-type:disc">CDN là một nhóm server đặt tại nhiều vị trái khác nhau để hỗ trợ nội dung được trải dài ở nhiều khu vực vị trí địa lý khác nhau.</li></ul><ul id="99e799c8-6994-4d6b-b425-ccfbe59c6faf" class="bulleted-list"><li style="list-style-type:disc">CDN cũng được gọi là “distribution networks”. Ý tưởng là tạo được nhiều điểm truy cập (Point of Presence – PoPs) ngoài server gốc. Việc này giúp website quản lý tốt traffic hơn bằng cách xử lý nhanh hơn yêu cầu của khách, tăng trải nghiệm người dùng.</li></ul><ul id="160a52ea-e105-439a-8ca0-a13bc0d22fc9" class="bulleted-list"><li style="list-style-type:disc">Cách CDN hoạt động:<ul id="2f50bf04-0e6e-4a42-8453-547c9e37264d" class="bulleted-list"><li style="list-style-type:circle">Trong mạng lưới Content Delivery. Mỗi điểm hiện diện (location) được gọi là một <strong>PoPs</strong>.</li></ul><ul id="f1224228-80cd-4c2f-9c60-715a43aa6f26" class="bulleted-list"><li style="list-style-type:circle">Để tăng thời gian phản hồi giữa client và server (người dùng và trang web), các PoPs (node trong mạng lưới) sẽ<strong> lưu nội dung trang web vào bộ nhớ (cached)</strong> của mình và làm mới nó thường xuyên.</li></ul><ul id="9cfccbaa-284f-4b89-a008-cf026ba8e09e" class="bulleted-list"><li style="list-style-type:circle">Khi người dùng yêu cầu nội dung trang web, người dùng sẽ không trực tiếp truy cập tới trang web (ở bờ Tây nước Mỹ chẳng hạn) mà chỉ truy cập với một điểm CDN <strong>gần mình nhất</strong>.</li></ul></li></ul><ul id="6303ead9-762c-4636-a6a3-f2490626937d" class="bulleted-list"><li style="list-style-type:disc">Khi nào nên sử dụng?<ul id="b2e4fc51-b683-405f-a59c-b1a9b7a6942b" class="bulleted-list"><li style="list-style-type:circle">Nếu content của bạn chỉ có <strong>một lượng nhỏ truy cập </strong>ở vị trí địa lí <strong>gần nơi đặt máy chủ</strong>, không cần thiết phải dùng CDN.</li></ul><ul id="ea9aecf6-915f-4f0d-9db5-a93ea80be310" class="bulleted-list"><li style="list-style-type:circle">Ngược lại, nếu nội dung của bạn được truy cập và sử dụng ở khắp nơi trên thế giới. Đăng kí tham gia mạng lưới CDN là cần thiết giúp <strong>tăng trải nghiệm người dùng</strong>.</li></ul></li></ul></details></li></ul><ul id="736e65b8-f1ce-401e-9f97-010e73f6ca08" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>DNS</strong></mark></summary><ul id="2754cb86-4c78-4af3-8671-9c9bb34376ef" class="bulleted-list"><li style="list-style-type:disc">DNS là viết tắt của Domain Name System tạm dịch là &quot;Hệ thống phân giải tên miền&quot;. Về bản chất cách để máy tính truy cập được một trang web là nhờ địa chỉ IP. </li></ul><ul id="d689d34e-7dc9-489e-b689-54cf511d66fa" class="bulleted-list"><li style="list-style-type:disc">Ví dụ bạn muốn truy cập vào <strong>google.com</strong> thì tức là browser đang request tới IP máy chủ của google. </li></ul><ul id="ab3975b6-1f35-417d-87c8-2d5acdf52398" class="bulleted-list"><li style="list-style-type:disc">Tuy nhiên có cả triệu website và bạn phải nhớ địa chỉ IP của từng trang web, điều đó là bất khả thi và chưa kể trường hợp địa chỉ IP của trang web đó có thể thay đổi liên tục. Đó cũng chính là nguyên nhân mà DNS được sinh ra. </li></ul><ul id="f8e4cc76-c480-464e-aa7f-3ad8745a7a93" class="bulleted-list"><li style="list-style-type:disc">DNS sẽ đóng vai trò như một cuốn danh bạ, thay vì phải nhớ 1 dãy IP loằng ngoằng thì bạn sẽ nhớ đến tên miền của trang web đó</li></ul><ul id="873f866b-b3a5-486d-aa8d-ddd86e1e2e4f" class="bulleted-list"><li style="list-style-type:disc">Ví dụ như <strong>google.com</strong> và tất nhiên như vậy sẽ thân thiện với người sử dụng hơn, và DNS sẽ có vai trò là phân giải tên miền thành địa chỉ IP tương ứng nhờ đó browser có thể gửi request tới server.</li></ul></details></li></ul><ul id="eca46f7c-be47-46da-8a2e-e128659ef834" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Load balancer</strong></mark></summary><ul id="6083e6e4-5c64-4272-acbf-d0b20a4edac6" class="bulleted-list"><li style="list-style-type:disc">Load Balancing là quá trình của việc phân phối lưu lượng truy cập một cách hiệu quả thông qua nhiều server hay còn được gọi là <code>server farm </code>hay <code>server pool</code></li></ul><ul id="98fa30ae-7c03-465d-9a35-b63bbad31606" class="bulleted-list"><li style="list-style-type:disc">Việc phân phối đồng một cách đồng đều sẽ cải thiện khả năng đáp ứng và tăng tính khả dụng của các ứng dụng. </li></ul><ul id="0d290cb4-a202-4801-97a5-ba4c5220b2a3" class="bulleted-list"><li style="list-style-type:disc">Phương pháp này ngày càng cần thiết vì các ứng dụng ngày nay đã phức tạp hơn, cùng với nhu cầu của người sử dụng tăng và lưu lượng truy cập tăng lên.</li></ul><ul id="e9946c4d-dbad-4bd7-9c28-24edd55972b0" class="bulleted-list"><li style="list-style-type:disc">Load balancer đã giải quyết được các vấn đề như:<ul id="c1e44a49-aa12-4923-8a43-c6173de2ce50" class="bulleted-list"><li style="list-style-type:circle">Performance: dễ dàng scale up (vertical scaling) và scale out (horizontal scaling)</li></ul><ul id="1a006715-f479-4fba-956c-4a62e8a90566" class="bulleted-list"><li style="list-style-type:circle">Availability: có server dự phòng và cơ chế tự động khôi phục. Nếu 1 server bị lỗi sẽ không ảnh hưởng đến toàn bộ hệ thống</li></ul><ul id="e89a4493-e258-417e-a98a-52db7457b528" class="bulleted-list"><li style="list-style-type:circle">Economy: triển khai một server có hiệu năng lớn thì đắt hơn so với một cụm server có hiệu năng nhỏ. Chi phí để duy trì một cụm server nhỏ thì rẻ hơn và dễ dàng thêm hoặc nâng cấp server trong cụm này so với việc nâng cấp và thay thế một server lớn</li></ul></li></ul><ul id="f4cd7839-7a8c-40e8-bcd7-8a4694c36205" class="bulleted-list"><li style="list-style-type:disc">Load balancer có 3 kiến trúc cơ bản:<ul id="13ff30fe-f9c3-482c-a1ad-6efab380b1e1" class="bulleted-list"><li style="list-style-type:circle">Dựa trên DNS</li></ul><ul id="524931ee-bbb3-4eac-9a3a-6149d1d37d6f" class="bulleted-list"><li style="list-style-type:circle">Dựa trên phần cứng</li></ul><ul id="fbc1bc5f-c3ae-496d-8a1c-f35fbfb8df32" class="bulleted-list"><li style="list-style-type:circle">Dựa trên phần mềm</li></ul></li></ul><ul id="ae4260fb-9f25-4b44-8ef0-e068363c0b34" class="bulleted-list"><li style="list-style-type:disc">Các thuật toán cơ bản: <ul id="20e044fd-5b28-4fb2-895d-f3943c6fa68d" class="bulleted-list"><li style="list-style-type:circle">Round Robin</li></ul><ul id="8287d6de-78db-46a9-8ab1-e6fc38ae2c53" class="bulleted-list"><li style="list-style-type:circle">Weighted Round Robin</li></ul><ul id="ab899b56-3e08-4b08-9b47-a0f8b3c615fd" class="bulleted-list"><li style="list-style-type:circle">Dynamic Round Robin</li></ul><ul id="284648ea-854a-42bd-86a0-4fcc10f63efd" class="bulleted-list"><li style="list-style-type:circle">Fastest</li></ul><ul id="895058ab-78f8-48ff-9bf6-96190194db2d" class="bulleted-list"><li style="list-style-type:circle">Least Connections</li></ul></li></ul><p id="c3681212-d6d9-4ed0-9050-e80ff8e0327f" class=""><span style="border-bottom:0.05em solid"><strong>Link</strong></span>: <a href="https://anonystick.com/blog-developer/load-balancer-neu-ban-khong-hieu-khong-sao-nhung-neu-ban-la-mot-ky-su-thi-khong-the-khong-hieu-202006243445464">https://anonystick.com/blog-developer/load-balancer-neu-ban-khong-hieu-khong-sao-nhung-neu-ban-la-mot-ky-su-thi-khong-the-khong-hieu-202006243445464</a></p></details></li></ul><ul id="ef1b17cc-5b1f-4925-9bb1-c7d89cb7b7ce" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Nginx</strong></mark></summary><ul id="8909e625-7d15-4eca-964a-dad2f4c60d6b" class="bulleted-list"><li style="list-style-type:disc">là một máy chủ web server, open source, được thiết kế hướng đến mục đích cải thiện tối đa hiệu năng và sự ổn định.</li></ul><ul id="2f82978d-7124-4b31-b8e2-9b11d01a8fc4" class="bulleted-list"><li style="list-style-type:disc">Ngoài ra nhờ vào khả năng của máy chủ http, nginx còn có thể hoạt động như proxy server cho email, reverse proxy, http caching hay load balancer cho các máy chủ http, tcp, udp</li></ul><ul id="ad46faf1-17b5-4f2c-94f4-4a1452f62824" class="bulleted-list"><li style="list-style-type:disc">Nginx được sử dụng kiến trúc đơn luồng và event driven (hướng sự kiện) vì thế nó hiệu quả hơn apache server nếu cấu hình chính xác. </li></ul><ul id="de0b9a4e-568f-4e67-ab7c-489637e6d062" class="bulleted-list"><li style="list-style-type:disc">NGINX được cấu hình theo kiểu bất đồng bộ (asynchronous): nghĩa là 1 NGINX process có thể xử lý nhiều request liên tục, dựa vào số lượng tài nguyên còn lại của hệ thống.</li></ul><ul id="617ff2b0-3f26-43a1-905a-cc690e7e9eb3" class="bulleted-list"><li style="list-style-type:disc">Nhờ kiểu cấu hình như vậy, NGINX có thể “nhúng” các file lập trình (như .php) vào process riêng của nó. Nghĩa là mọi request yêu cầu data được 1 process riêng của NGINX thực hiện, và trả data lại cho client bằng reverse proxy.</li></ul><ul id="e7221353-ed08-4e4a-98d0-38dd46bbceef" class="bulleted-list"><li style="list-style-type:disc">Bên cạnh đó, đối với những file tĩnh (file .txt, file .css hay các file hình ảnh), NGINX sẽ trả dữ liệu mà không cần sự can thiệp của các module server side.</li></ul></details></li></ul><ul id="31dd5e5c-5568-466f-90b6-bddd5cd2c2aa" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>TCP ≠ UDP</strong></mark></summary><ul id="542a24dc-b6b8-4557-a463-6567a0b84e76" class="bulleted-list"><li style="list-style-type:disc"><strong>TCP</strong> là giao thức truyền tải hướng kết nối (connection-oriented), nghĩa là phải thực hiện thiết lập kết nối với đầu xa trước khi thực hiện truyền dữ liệu. Tiến trình thiết lập kết nối ở TCP được gọi là tiến trình <em><strong>bắt tay 3 bước</strong></em> (<em>threeway handshake</em>).<ul id="9e424361-e519-44b3-b270-f9c227d66f26" class="bulleted-list"><li style="list-style-type:circle">Cung cấp cơ chế báo nhận (Acknowledgement) :Khi A gửi dữ liệu cho B, B nhận được thì gửi gói tin cho A xác nhận là đã nhận. Nếu không nhận được tin xác nhận thì A sẽ gửi cho đến khi B báo nhận thì thôi.</li></ul></li></ul><ul id="fdc4bcb9-4915-4e5f-b1ad-87ca77edde34" class="bulleted-list"><li style="list-style-type:disc"><strong>UDP</strong> là giao thức truyền tải hướng không kết nối (connectionless). Nó sẽ không thực hiện thao tác xây dựng kết nối trước khi truyền dữ liệu mà thực hiện truyền ngay lập tức khi có dữ liệu cần truyền (kiểu truyền best effort) =&gt; truyền tải rất nhanh cho dữ liệu của lớp ứng dụng.<ul id="50bd7cff-86b2-40c8-9a43-ede6aa628ea0" class="bulleted-list"><li style="list-style-type:circle">Không đảm bảo tính tin cậy khi truyền dữ liệu và không có cơ chế phục hồi dữ liệu ( nó không quan tâm gói tin có đến đích hay không, không biết gói tin có bị mất mát trên đường đi hay không) =&gt; dễ bị lỗi.</li></ul></li></ul><p id="d429e0e2-64cb-4a77-8f77-05655236f7e1" class=""><a href="https://viblo.asia/p/tim-hieu-giao-thuc-tcp-va-udp-jvEla11xlkw">https://viblo.asia/p/tim-hieu-giao-thuc-tcp-va-udp-jvEla11xlkw</a></p></details></li></ul><ul id="5625cc24-412b-43c8-a7ea-56d7a11a08d9" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Quy tác bắt tay 3 bước</strong></mark></summary><pre id="f5fd2b6f-2947-4d62-a7bd-24d2a45c6dcd" class="code"><code>* Gói dữ liệu với cờ SYN (synchronization &lt;=&gt; Sự đồng bộ) dùng để bắt đầu một connection.
+* ACK (acknowledgement &lt;=&gt; Xác nhận).
+* FIN (finish &lt;=&gt; hoàn thành) dùng để ngắt một connection.
+* ...</code></pre><ul id="72a82ef0-47bd-4d16-b85b-f203447704a1" class="bulleted-list"><li style="list-style-type:disc"><strong>B1</strong>:<ul id="c499b878-3337-45f1-afbc-82048be58526" class="bulleted-list"><li style="list-style-type:circle">SYN: các chương trình máy con (ví dụ yêu cầu từ browser, ftp client) bắt đầu connection với máy chủ bằng cách gửi một packet với cờ &quot;SYN&quot; đến máy chủ.</li></ul><ul id="59d0de3a-e042-4d38-8e58-d55f4f85cd74" class="bulleted-list"><li style="list-style-type:circle">SYN packet này thường được gửi từ các cổng cao (1024 - 65535) của máy con đến những cổng trong vùng thấp (1 - 1023) của máy chủ. </li></ul><ul id="b19b0dab-e45d-4a03-b1a7-2e16307f8d92" class="bulleted-list"><li style="list-style-type:circle">Chương trình trên máy con sẽ hỏi hệ điều hành cung cấp cho một cổng để mở connection với máy chủ. </li></ul><ul id="2952e83e-e069-4fc3-b12a-60aa0b8d008e" class="bulleted-list"><li style="list-style-type:circle">Những cổng trong vùng này được gọi là &quot;cổng máy con&quot; (client port range). </li></ul><ul id="4587af44-16d7-4069-a73f-7f0080ed49d1" class="bulleted-list"><li style="list-style-type:circle">Tương tự như vậy, máy chủ sẽ hỏi HĐH để nhận được quyền chờ tín hiệu trong máy chủ, vùng cổng 1 - 1023. </li></ul><ul id="70153ce1-8a57-4a64-beb6-08908b4da8f8" class="bulleted-list"><li style="list-style-type:circle">Vùng cổng này được gọi là &quot;vùng cổng dịch vụ&quot; (service port).<pre id="afb26fd6-a68f-424b-822b-8723792f1b40" class="code"><code>- Ví dụ (mặc định):
+    - Web Server sẽ luôn chờ tín hiệu ở cổng 80 và Web browser sẽ connect vào cổng 80 của máy chủ.
+    - FTP Server sẽ lắng ở port 21.
+    
+ Ngoài ra trong gói dữ liệu còn có thêm địa chỉ IP của cả máy con và máy chủ.</code></pre></li></ul></li></ul><ul id="8be39091-69fc-4351-83ae-49c7d6d40139" class="bulleted-list"><li style="list-style-type:disc"><strong>B2</strong>: <ul id="b77be362-6407-49f5-ae3a-bfaf1c217163" class="bulleted-list"><li style="list-style-type:circle">SYN/ACK: khi yêu cầu mở connection được máy chủ nhận được tại cổng đang mở, server sẽ gửi lại packet chấp nhận với 2 bit cờ là SYN và ACK.</li></ul><ul id="dd35ad91-406f-43f1-900a-69e0409ff85c" class="bulleted-list"><li style="list-style-type:circle">SYN/ACK packet được gửi ngược lại bằng cách đổi hai IP của server và client, client IP sẽ thành IP đích và server IP sẽ thành IP bắt đầu. Tương tự như vậy, cổng cũng sẽ thay đổi, server nhận được packet ở cổng nào thì cũng sẽ dùng cổng đó để gửi lại packet vào cổng mà client đã gửi.</li></ul><ul id="e6469d79-add5-426f-ad49-2ee9b26b1b49" class="bulleted-list"><li style="list-style-type:circle">Server gửi lại packet này để thông báo là server đã nhận được tín hiệu và chấp nhận connection, trong trường hợp server không chấp nhận connection, thay vì SYN/ACK bits được bật, server sẽ bật bit RST/ACK (Reset Acknowledgement) và gởi ngược lại RST/ACK packet.</li></ul><ul id="1b418673-9d1e-49b8-8a35-a37a92797f36" class="bulleted-list"><li style="list-style-type:circle">Server bắt buộc phải gửi thông báo lại bởi vì TCP là chuẩn tin cậy nên nếu client không nhận được thông báo thì sẽ nghĩ rằng packet đã bị lạc và gửi lại thông báo mới.</li></ul></li></ul><ul id="6afd3b96-067d-4d4a-83b1-ef2a8aeb9d2b" class="bulleted-list"><li style="list-style-type:disc"><strong>B3</strong>:<ul id="94963d47-0dfa-4f36-834e-1566eaaff794" class="bulleted-list"><li style="list-style-type:circle">ACK: khi client nhận được SYN/ACK packet thì sẽ trả lời bằng ACK packet. </li></ul><ul id="5a08785c-4028-413f-a4e0-c24d2cae51b9" class="bulleted-list"><li style="list-style-type:circle">Packet này được gởi với mục đích duy báo cho máy chủ biết rằng client đã nhận được SYN/ACK packet và lúc này connection đã được thiết lập và dữ liệu sẽ bắt đầu lưu thông tự do.</li></ul><ul id="7204f0e2-740d-4d94-ad5a-8679dbdb2eaa" class="bulleted-list"><li style="list-style-type:circle">Đây là tiến trình bắt buộc phải thực hiện khi client muốn trao đổi dữ liệu với server thông qua giao thức TCP. </li></ul><ul id="63af0d03-fec3-4446-9896-6eede602c73d" class="bulleted-list"><li style="list-style-type:circle">Một số thủ thuật dựa vào đặc điểm này của TCP để tấn công máy chủ (ví dụ DOS).</li></ul><p id="657ebe6c-f5db-46ae-b35c-d0e38fe8c822" class="">
+</p></li></ul></details></li></ul><ul id="09d193da-7a96-41c7-960f-a2dc4cba616f" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Reverse Proxy</strong></mark></summary><ul id="271aa21a-e4f0-4799-b122-80aad6774580" class="bulleted-list"><li style="list-style-type:disc">Reverse proxy là một loại proxy server trung gian giữa một máy chủ và các client gửi tới các yêu cầu. Nó kiểm soát yêu cầu của các client, nếu hợp lệ, sẽ luân chuyển đến các server thích ứng. </li></ul><ul id="537c4d71-617e-4c6c-96b6-7e6745941406" class="bulleted-list"><li style="list-style-type:disc">Trái ngược với một <strong>forward proxy</strong>, là một trung gian cho phép các client liên hệ với nó liên lạc với bất kỳ máy chủ ảo nào, reverse proxy là một trung gian cho các máy chủ liên hệ với nó được liên lạc bởi bất kỳ client nào. </li></ul><ul id="4b3f35c2-f2c5-4426-9b97-35bdb9fd8bd6" class="bulleted-list"><li style="list-style-type:disc">Ưu điểm lớn nhất của việc sử dụng reverse proxy là khả năng quản lý tập trung. Nó giúp kiếm soát mọi request do client gửi lên các server được bảo vệ.</li></ul><ul id="fb4b7864-9629-4d48-9953-832c8c40acf8" class="bulleted-list"><li style="list-style-type:disc">Reverse proxy server được dùng để làm gì?<ul id="4c2a3cb2-9cff-4da3-8538-737ef60c1203" class="bulleted-list"><li style="list-style-type:circle">Reverse proxy ở giữa client và network service, như là website. Một số tính năng mà nó mang lại như: <ul id="9749c20c-4bb3-4ad0-a100-c0d90053825a" class="bulleted-list"><li style="list-style-type:square">Bảo mật</li></ul><ul id="39ecdfe8-9fb3-45c7-91fb-3bb0014590f0" class="bulleted-list"><li style="list-style-type:square">Load balancing</li></ul><ul id="059be460-86aa-4acd-a3ff-aada4f4b9ebd" class="bulleted-list"><li style="list-style-type:square">Tăng tốc độ trang web</li></ul></li></ul></li></ul><p id="09c7b724-3b24-46e4-bed5-ad9d1f74b475" class=""><a href="https://viblo.asia/p/reverse-proxy-server-la-gi-eW65GW4P5DO">https://viblo.asia/p/reverse-proxy-server-la-gi-eW65GW4P5DO</a></p></details></li></ul><ul id="3c374dbd-1cf4-475f-b225-2fa1fffcd69e" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Cluster, Node, Container</strong></mark></summary><ul id="9160c852-de8a-4451-8fa4-a66d8ef17214" class="bulleted-list"><li style="list-style-type:disc"><strong>Clustering </strong>chính là 1 kiến trúc được tạo ra với mục đích đảm bảo nâng cao khả năng sẵn sàng cho những hệ thống mạng. Clustering bao gồm những server riêng lẻ được kết nối với nhau đồng thời hoạt động lại cùng nhau trong 1 hệ thống. Những server này giao tiếp với nhau với mục đích trao đổi thông tin và giao tiếp với cả những mạng bên ngoài để thực hiện những yêu cầu. Trong trường hợp có lỗi xảy ra những dịch vụ trong cluster hoạt động tương tác với nhau để duy trì tính ổn định và độ sẵn sàng cao cho hệ thống.</li></ul><ul id="3ab1784c-3855-456e-90fa-6b61ca86f35e" class="bulleted-list"><li style="list-style-type:disc"><strong>Node</strong> là những server con trong cụm cluster</li></ul><ul id="6a094f80-30a1-4bae-841c-3a75f677186c" class="bulleted-list"><li style="list-style-type:disc"><strong>Container</strong> là nơi chứa ứng dụng hoặc service của chúng ta</li></ul></details></li></ul><ul id="c3e8df40-a8aa-44f2-8fcd-39d66c8f0512" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Concurrent, latency, consistency</strong></mark></summary><ul id="6e6d6195-3dbd-4f4f-bb87-32027a00b179" class="bulleted-list"><li style="list-style-type:disc"><strong>Latency</strong> được biết tới như là khoảng thời gian từ lúc chúng ta yêu cầu tải trang web cho tới khi thật sự nhìn thấy nội dung trên trang web đó.</li></ul></details></li></ul><ul id="32d7f7d5-2f14-47f4-90c1-7f2f1ce371cb" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>10 mẹo cải thiện hiệu suất máy chủ</strong></mark></summary><ul id="f4dcad77-277a-40f6-91a1-be908ede0406" class="bulleted-list"><li style="list-style-type:disc">Sử dụng máy chủ proxy reverse để tăng tốc và bảo vệ các ứng dụng</li></ul><ul id="000878fa-7ec8-4b43-bcd0-d659646f59ed" class="bulleted-list"><li style="list-style-type:disc">Load balancing</li></ul><ul id="f1e66cde-268c-4493-b133-f390fb178ce5" class="bulleted-list"><li style="list-style-type:disc">Cache và content</li></ul><ul id="ba274d73-b083-457e-9692-7d89afa60855" class="bulleted-list"><li style="list-style-type:disc">Nén dữ liệu</li></ul><ul id="db64f3c7-2337-4da8-ae19-0eada3915b44" class="bulleted-list"><li style="list-style-type:disc">Tối ưu hóa SSL / TLS</li></ul><ul id="df5df812-03ed-4423-8531-39399d53be4e" class="bulleted-list"><li style="list-style-type:disc">Triển khai HTTP / 2 hoặc SPDY</li></ul><ul id="153bd1fc-1066-4e23-a938-05b792f649a7" class="bulleted-list"><li style="list-style-type:disc">Cập nhật phiên bản phần mềm liên tục</li></ul><ul id="d37cacbe-9f93-4d75-bbd7-38c7bf33e279" class="bulleted-list"><li style="list-style-type:disc">Tối ưu hóa hiệu suất Linux</li></ul><ul id="1b099b1d-3216-40f5-a8c8-fae34cd201c1" class="bulleted-list"><li style="list-style-type:disc">Tối ưu hóa hiệu suất của máy chủ Web</li></ul><ul id="4b89707c-999e-4dfe-a3e3-79f3d9c35bfe" class="bulleted-list"><li style="list-style-type:disc">Giám sát các hoạt động thời gian thực để giải quyết các vấn đề và tắc nghẽn</li></ul><ul id="151fa3f3-632e-4f6b-802e-933bc1a9c709" class="bulleted-list"><li style="list-style-type:disc"><a href="https://anonystick.com/blog-developer/10-meo-de-cai-thien-hieu-suat-cua-cac-ung-dung-web-len-10-lan-2020051556310698#t-2">https://anonystick.com/blog-developer/10-meo-de-cai-thien-hieu-suat-cua-cac-ung-dung-web-len-10-lan-2020051556310698#t-2</a></li></ul></details></li></ul><ul id="89a2bdff-4d3d-4024-9bfe-4c7521e93966" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Notification system</strong></mark></summary><ul id="e70f832d-3cc1-41bf-be00-99eb594b2be0" class="bulleted-list"><li style="list-style-type:disc"><strong>External software</strong> sẽ send một JSON message qua https với message data giống như address, type, message, ...</li></ul><ul id="3d319dcb-c091-420e-9b6b-7e70b4a2fd70" class="bulleted-list"><li style="list-style-type:disc"><strong>Rate limiter</strong> validate những rules để bảo vệ system khỏi bị overload và những vấn đề về bảo mật</li></ul><ul id="2b649bcd-2dca-4e58-826d-3b04184ee49e" class="bulleted-list"><li style="list-style-type:disc">Notification service sẽ nhận message và chuyển message đó đến với những message queue tương ứng và sau đó sẽ writes một số logs về notification xuống <strong>Data cache cluster </strong></li></ul><ul id="5d179760-195a-47e3-aeff-40549aec90e9" class="bulleted-list"><li style="list-style-type:disc">Các <strong>workers</strong> sẽ lấy message trong queue và connect đến với third part software để send message đến các thiết bị tương ứng</li></ul><ul id="681a0d60-c851-4144-a8ff-f505a5b150b7" class="bulleted-list"><li style="list-style-type:disc"><strong>Third part software </strong>sẽ call back bằng cách sử dụng web hook để nhận status và một số thông tin của message </li></ul><ul id="21ab9f2c-d4cb-4a39-9af7-83cb7f3058de" class="bulleted-list"><li style="list-style-type:disc">Sau đó có những <strong>workers</strong> sẽ chạy và lấy những thông tin response và lưu trữ vào <strong>data store</strong> </li></ul><ul id="33e7b5b3-b86d-4984-8c40-8636f7990f31" class="bulleted-list"><li style="list-style-type:disc">Thông tin về status và analytics data lúc này sẽ có sẵn trong <strong>Notification status &amp; analytics service</strong> và ta có thể truy cập service này từ bên ngoài với <strong>external service</strong></li></ul><p id="b729ab39-06f5-47f4-93a4-cd6ffb4bee3d" class="">⇒ <span style="border-bottom:0.05em solid"><strong>Lợi ích:</strong></span><div class="indented"><ul id="6fc11f53-74c4-418b-8e44-b2bb8bdece86" class="bulleted-list"><li style="list-style-type:disc"><strong>Reliability</strong>: giảm thiểu lỗi </li></ul><ul id="db68c544-659f-4d21-b633-1788047a72a6" class="bulleted-list"><li style="list-style-type:disc"><strong>Security</strong>: chạy trên https với appKey và appSecret để đảm bảo user đã authorized mới có thể send message</li></ul><ul id="74165e7a-2a06-4298-a424-7e15d723cff5" class="bulleted-list"><li style="list-style-type:disc"><strong>Tracking and monitoring</strong>: logs, status và analytics data sẽ được lưu trữ trên db có thể truy vấn cách dễ dàng</li></ul><ul id="0cac4163-28cd-49b2-82e0-2bda94586eba" class="bulleted-list"><li style="list-style-type:disc"><strong>Rate limiting</strong>: bảo vệ hệ thống khỏi overload, và những vấn đề bảo mật không mong muốn  </li></ul></div></p><p id="956d51fb-6e66-4591-8ed5-5069062c3878" class="">
+</p></details></li></ul><ul id="c0d0c9da-d755-4cde-8741-ad15d5f34ed4" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>HTTP status codes</strong></mark></summary><ul id="36ce7226-aa39-4b8b-944a-9a303f915ff7" class="bulleted-list"><li style="list-style-type:disc">1xx Informational</li></ul><ul id="8ec53f4f-ff10-4209-81da-ce299b12ed1f" class="bulleted-list"><li style="list-style-type:disc">2xx Succesful</li></ul><ul id="75586795-a94b-48e1-990e-ad9fa3e891b1" class="bulleted-list"><li style="list-style-type:disc">3xx Redirection</li></ul><ul id="f86af93e-664d-4f68-a96a-de169cc18963" class="bulleted-list"><li style="list-style-type:disc">4xx Client Error</li></ul><ul id="338cc532-0993-43e5-b5dd-e686415b569c" class="bulleted-list"><li style="list-style-type:disc">5xx Server Error</li></ul></details></li></ul><ul id="7f6a3afa-b09c-4f8a-ac9f-1d8a43412f2b" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Xử lý đồng thời và xử lý song song</strong></mark></summary><p id="ff85aa64-f4c8-43ad-9bab-a5e31f7194ae" class=""><a href="https://zalopay-oss.github.io/go-advanced/ch1-basic/ch1-05-concurrency-parallelism.html">https://zalopay-oss.github.io/go-advanced/ch1-basic/ch1-05-concurrency-parallelism.html</a></p><ul id="d2eb2ea7-b683-49e9-a703-797264b3387a" class="bulleted-list"><li style="list-style-type:disc"><strong>Xử lý đồng thời</strong> là khả năng phân chia và điều phối nhiều tác vụ khác nhau trong cùng một khoảng thời gian và tại một thời điểm chỉ có thể xử lý một tác vụ. Khái niệm này trái ngược với <strong>xử lý tuần tự</strong> (sequential processing). <ul id="6f7a8347-81bc-4a97-ab85-6d348788cf41" class="bulleted-list"><li style="list-style-type:circle"><strong>Xử lý tuần tự </strong>là khả năng xử lý chỉ một tác vụ trong một khoảng thời gian, các tác vụ sẽ được thực thi theo thứ tự hết tác vụ này sẽ thực thi tiếp tác vụ khác.</li></ul></li></ul><ul id="64da5e40-e10e-44e2-ae35-19323371bfc9" class="bulleted-list"><li style="list-style-type:disc"><strong>Xử lý song song</strong> là khả năng xử lý nhiều tác vụ khác nhau trong cùng một thời điểm, các tác vụ này hoàn toàn độc lập với nhau. <ul id="2469d00d-b335-471e-b585-d83c8515bbe7" class="bulleted-list"><li style="list-style-type:circle">Xử lý song song chỉ có thể thực hiện trên máy tính có số nhân lớn hơn 1. </li></ul><ul id="8238faa2-ab2f-4f16-be7e-c29ab8e31678" class="bulleted-list"><li style="list-style-type:circle">Thay vì một nhân CPU chúng ta chỉ có thể xử lý một tác vụ nhỏ tại một thời điểm thì khi số nhân CPU có nhiều hơn chúng ta có thể xử lý các tác vụ song song với nhau cùng lúc trên các nhân CPU.</li></ul></li></ul></details></li></ul><ul id="60db9f51-b15f-454a-a3ba-330dd6704607" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Processes &amp; Threads</strong></mark></summary><ul id="f9b1f375-89a2-49dd-9967-31049d2fe94f" class="bulleted-list"><li style="list-style-type:disc"><strong><strong>Process</strong></strong><ul id="bd64d34a-8a28-4091-8221-d585c7a4b0ab" class="bulleted-list"><li style="list-style-type:circle">Tiến trình có thể hiểu đơn giản là một chương trình đang chạy trong máy tính. </li></ul><ul id="7bf43299-40d2-49fc-b4fc-88ce66fae2ca" class="bulleted-list"><li style="list-style-type:circle">Khi chúng ta mở trình duyệt và truy cập một trang web thì đây được xem là một tiến trình. </li></ul><ul id="95403b63-f210-4235-8f8a-56e65e7f7753" class="bulleted-list"><li style="list-style-type:circle">Khi chúng ta viết 1 chương trình máy tính bằng ngôn ngữ lập trình như C, Java, hay Go, sau khi tiến hành biên dịch và chạy chương trình thì hệ điều hành sẽ cấp cho chương trình một không gian bộ nhớ nhất định, PID (process ID),... </li></ul><ul id="d864dba4-21b5-44d4-82e7-ab0b1e10400b" class="bulleted-list"><li style="list-style-type:circle">Mỗi tiến trình có ít nhất một luồng chính (main thread) để chạy chương trình, nó như là xương sống của chương trình vậy. Khi luồng chính này ngừng hoạt động tương ứng với việc chương trình bị tắt.</li></ul></li></ul><ul id="a30daf61-ea04-4e06-8ffc-924ca3d3b64c" class="bulleted-list"><li style="list-style-type:disc"><strong><strong>Thread</strong></strong><ul id="919f6447-d46e-43be-9495-fb06bed35215" class="bulleted-list"><li style="list-style-type:circle">Thread hay được gọi là tiểu trình nó là một luồng trong tiến trình đang chạy. </li></ul><ul id="5356b5b4-fb46-4c8e-9b9c-e006aa1e1794" class="bulleted-list"><li style="list-style-type:circle">Các luồng được chạy song song trong mỗi tiến trình và có thể truy cập đến vùng nhớ được cung cấp bởi tiến trình, các tài nguyên của hệ điều hành,...</li></ul><ul id="b01c6bfb-9cfa-4405-ab94-7c141d6a732e" class="bulleted-list"><li style="list-style-type:circle">Các thread trong process sẽ được cấp phát riêng một vùng nhớ <code>stack</code> để lưu các biến riêng của thread đó. </li></ul><ul id="5e9a015c-226c-47a1-ac9c-d8d102040b8e" class="bulleted-list"><li style="list-style-type:circle">Stack được cấp phát cố định khoảng <code>1MB-2MB</code>. Ngoài ra các thread chia sẻ chung vùng nhớ <code>heap</code> của process. </li></ul><ul id="4e4ce95c-b530-4a21-ba0d-c2207ac00333" class="bulleted-list"><li style="list-style-type:circle">Khi process tạo quá nhiều thread sẽ dẫn đến tình trạng <a href="https://en.wikipedia.org/wiki/Stack_overflow">stack overflow</a>. Khi các thread sử dụng chung vùng nhớ sẽ dễ gây ra hiện tượng <a href="https://en.wikipedia.org/wiki/Race_condition">race condition</a>. </li></ul></li></ul><p id="eb3d253f-9d93-4fbf-a4ef-fc920570997e" class=""><a href="https://zalopay-oss.github.io/go-advanced/ch1-basic/ch1-05-concurrency-parallelism.html">https://zalopay-oss.github.io/go-advanced/ch1-basic/ch1-05-concurrency-parallelism.html</a></p><p id="b4c05e6b-5398-41ef-9aca-0ec040592565" class=""><a href="https://stackoverflow.com/questions/200469/what-is-the-difference-between-a-process-and-a-thread/200543#200543">https://stackoverflow.com/questions/200469/what-is-the-difference-between-a-process-and-a-thread/200543#200543</a></p></details></li></ul><ul id="16b60556-0b9e-4269-b1f6-6e7ac9ed6841" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>CI/CD</strong></mark></summary><ul id="5a85b99e-6a53-4059-852a-92e31909fa6f" class="bulleted-list"><li style="list-style-type:disc"><strong>CI</strong> là Continuous Integration. Nó là phương pháp phát triển phần mềm yêu cầu các thành viên của team tích hợp công việc của họ thường xuyên, mỗi ngày ít nhất một lần. <ul id="50f519f9-8468-4050-a665-a8efdcdb4204" class="bulleted-list"><li style="list-style-type:circle">Mỗi tích hợp được “build” tự động (bao gồm cả test) nhằm phát hiện lỗi nhanh nhất có thể. </li></ul><ul id="44110743-90e7-41f2-b661-7b6bdf002b06" class="bulleted-list"><li style="list-style-type:circle">Cả team nhận thấy rằng cách tiếp cận này giảm thiểu vấn đề tích hợp và cho phép phát triển phần mềm nhanh hơn.</li></ul></li></ul><ul id="f6cfb9d2-fba5-463b-b7c3-bd8d5a1c5dda" class="bulleted-list"><li style="list-style-type:disc">Nếu CI đảm nhận nhiệm vụ xây dựng và kiểm tra một cách tự động thì CD lại có nhiệm vụ cao hơn một chút. CD được viết tắt bởi Continuous Delivery - chuyển giao liên tục. <ul id="5b9360fa-d540-4700-82b1-65a06f3cc3af" class="bulleted-list"><li style="list-style-type:circle">Đây là quá trình nâng cao hơn chút đó là kiểm tra tất cả những thay đổi về code đã được build và code trong môi trường kiểm thử. </li></ul><ul id="29c885d9-6eff-4ff0-8113-98aff34d5cbc" class="bulleted-list"><li style="list-style-type:circle">CD cho phép các lập trình viên tự động hóa phần mềm testing, kiểm tra phần mềm qua nhiều thước đo trước khi triển khai.</li></ul><ul id="7ad3b963-f2ff-4213-856f-3fffe77bd75d" class="bulleted-list"><li style="list-style-type:circle">Những bài test này có thể bao gồm UI testing, <a href="https://itnavi.com.vn/blog/integration-testing-la-gi/">integration testing</a>, API testing,... CD sử dụng Deployment Pipeline giúp chia quy trình chuyển giao thành các giai đoạn. </li></ul><ul id="c4ebe3bd-9130-43b6-b66a-3ba69f37ac6e" class="bulleted-list"><li style="list-style-type:circle">Mỗi giai đoạn có những mục tiêu riêng để xác minh chất lượng của các tính năng từ một góc độ vô cùng khác để có thể kiểm định được chức năng và tránh những lỗi phát sinh ảnh hưởng đến người dùng.</li></ul></li></ul><ul id="87da4505-f2bb-41d0-9de6-273b155f91b7" class="bulleted-list"><li style="list-style-type:disc">Trên thực tế thì <strong>CI/CD</strong> là một quy trình làm việc, code của bạn sẽ được build test và sau đó deploy trên server hoặc cloud một cách tự động luôn.</li></ul></details></li></ul><ul id="ad06cae2-37e5-4765-bf91-71b85163a1dd" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Docker</strong></mark></summary><ul id="85ee6f96-a28f-4366-a127-0f52940f96be" class="bulleted-list"><li style="list-style-type:disc"><strong>Khái niệm</strong>:<ul id="0f233f3f-c82c-4df3-82b3-0f30bf0d20cc" class="bulleted-list"><li style="list-style-type:circle">Docker là một nền tảng để cung cấp cách để building, deploying và running ứng dụng dễ dàng hơn bằng cách sử dụng các containers (trên nền tảng ảo hóa) để đóng gói ứng dụng.</li></ul><ul id="beb9b0de-9934-4a62-882c-1ad083c3803e" class="bulleted-list"><li style="list-style-type:circle">Docker sử dụng công nghệ ảo hóa containerization để triển khai các ứng dụng vào trong container ảo hóa.</li></ul><ul id="f35f3f37-f92e-4ecb-a864-4773d85ae8a1" class="bulleted-list"><li style="list-style-type:circle">Docker sử dụng nhân kernel linux để chạy các container, trên hệ điều hành Linux, Docker có thể sử dụng trực tiếp nhân của máy host; còn với các hệ điều hành Windows, MacOS – có thể vì lý do bảo mật nên docker không thể trực tiếp xài chung kernel với các hệ điều hành này nên trên các hệ điều hành này docker sẽ tạo ra một máy ảo virtual guest với nhân linux để chạy các container.</li></ul><ul id="639a4013-06b2-47d9-bb5c-65494acabf77" class="bulleted-list"><li style="list-style-type:circle">Container là đơn vị phần mềm cung cấp cơ chế đóng gói ứng dụng, mã nguồn, thiết lập, thư viện... vào một đối tượng duy nhất. Ứng dụng sau khi được đóng gói có thể hoạt động một cách nhanh chóng và hiệu quả trên các môi trường điện toán khác nhau. Từ đó nó có thể tạo ra một môi trường hoàn hảo nơi mà có mọi thứ để chương trình có thể hoạt động được, không chịu sự tác động từ môi trường của hệ thống cũng như không làm ảnh hưởng ngược lại về phía hệ thống chứa nó.</li></ul></li></ul><ul id="9c9f34f4-16c2-4130-a3b8-fefe3e86f373" class="bulleted-list"><li style="list-style-type:disc"><strong>Docker gồm có 3 thành phần chính:</strong><ul id="fb530747-33c6-4d14-86f7-3c74075399f1" class="bulleted-list"><li style="list-style-type:circle"><strong>Docker file: l</strong>à một file dạng text không có phần đuôi mở rộng, chứa các đặc tả về một trường thực thi phần mềm, cấu trúc cho Docker image. Docker image có thể được tạo ra tự động bằng cách đọc các chỉ dẫn trong Dockerfile. Từ những câu lệnh đó, Docker sẽ build ra Docker image</li></ul><ul id="239cff18-7d03-4d77-a36d-5d074111fa50" class="bulleted-list"><li style="list-style-type:circle"><strong>Image:</strong> là 1 đơn vị đóng gói chứa mọi thứ cần thiết để 1 ứng dụng chạy. Image được tạo thành từ nhiều layer xếp chồng lên nhau, bên trong image là 1 hệ điều hành bị cắt giảm và tất cả các phụ thuộc (dependencies) cần thiết để chạy 1 ứng dụng.</li></ul><ul id="73686fb7-bbe1-4830-b377-d7aca9168a9f" class="bulleted-list"><li style="list-style-type:circle"><strong>Container:</strong> là đơn vị phần mềm cung cấp cơ chế đóng gói ứng dụng, mã nguồn, thiết lập, thư viện... vào một đối tượng duy nhất. Ứng dụng sau khi được đóng gói có thể hoạt động một cách nhanh chóng và hiệu quả trên các môi trường điện toán khác nhau. Từ đó nó có thể tạo ra một môi trường hoàn hảo nơi mà có mọi thứ để chương trình có thể hoạt động được, không chịu sự tác động từ môi trường của hệ thống cũng như không làm ảnh hưởng ngược lại về phía hệ thống chứa nó.</li></ul></li></ul><p id="f0fdd51a-c74b-452d-ab8d-07be35bd6c9f" class="">Mỗi container bao gồm mọi thứ cần thiết để chạy được nó: code, runtime, system tools, system libraries, setting. Mỗi container như 1 hệ điều hành thực sự, bên trong mỗi container sẽ chạy 1 ứng dụng</p></details></li></ul><ul id="638a595f-fc30-42cd-9416-85d6d93d47b6" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>How work when clicking on a URL on the browser?</strong></mark></summary><p id="2aed5304-61dd-4194-b140-cc63e5ebdcb1" class="">Làm thế nào một trang web khi truy cập bằng địa chỉ url (Ví dụ: <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fgoogle.com%2F%3Ffbclid%3DIwAR03_V9cf917kqqfNq7dDzlp1YXZBg_P1EYP92m7RbCpST3zuHcTyGonduU&amp;h=AT17tX8oibgdPcu6V-4bbZ2kKmxz6xuYHvcmhIRAZiuzncytRsDjXms8UO5m8T94nSpxxQsbny-xu0thkunE9zr8NEQBgAhr_hSBUjZUKneWfPnXryY6BcDZKS91j9pwIamOumj7hQ&amp;__tn__=-UK-y-R&amp;c[0]=AT3ky3xYZTuqe1v9jH66i26DAda2I3MEpc7Kk6qlTSTW8Jzec-xgrAQ8z9E3Jlc9QIl1xjdDUXU70BnUu8Sd9-KISqTMxFyipcPGUPMgQe6nYT_-RY0KH21Am6y_E7h5QAk5ILWvxx7TDHkJ3S75vBTgNW9IubOyMKsYqyQBBNzWFz3B57QJ7wQlO1mvXbjkTs3YlzDtJ4C_txnF">https://google.com/</a>) lại có thể hiển thị được. Khi anh em bật trình duyệt lên, nhập địa chỉ một trang web (Ví dụ: <a href="https://google.com/?fbclid=IwAR1QkfKmXAPu02yzUiwSMcqAbTLofT8N78tsR39sfOGIhGL_qma4OiJWoNI">https://google.com/</a>) và bấm Enter, vài giây sau nội dung của trang web sẽ được hiện ra trên trình duyệt. Quá trình đó được tóm tắt như sau:</p><ol type="1" id="93dc2c53-2367-4d5f-973a-20c3fbdb3adf" class="numbered-list" start="1"><li>Từ tên miền (Ví dụ: <a href="https://google.com/?fbclid=IwAR3A6BbYjuJ6WJ3YebVnwkereX588wn4XT60UJH7sJAf_DRc7aCW2DcnFLc">https://google.com/</a>) máy của anh em sẽ sử dụng DNS để tìm ra địa chỉ IP thực sự của web server tương ứng chứa website có tên miền đó (Ví dụ: <a href="https://google.com/?fbclid=IwAR0Q_LcK3OXF7wccucw3ld4gkgeK9yDnVksknMYjoFLaAGrLegSRtS_fDgE">https://google.com/</a> tương ứng với IP: <a href="https://l.facebook.com/l.php?u=http%3A%2F%2F142.251.10.99%2F%3Ffbclid%3DIwAR2SmrXZXqZ3WFOHICENQ-MxT7rY3rtaDWG03VEKLsI9OrWv-RAUZLOMQL8&amp;h=AT2Tollf7RrBYvRAizU6zqvy4TWrFnKfUy43vVYKbq1hetHjfpWRNKluli3RNYlV77E7eaRsjaCU7JtW1a2H18dilNPtsHhNBxiJ3im1h9nQSf-SCfRxPZHb2hl4q-cZMnvGGVuwlA&amp;__tn__=-UK-y-R&amp;c[0]=AT3ky3xYZTuqe1v9jH66i26DAda2I3MEpc7Kk6qlTSTW8Jzec-xgrAQ8z9E3Jlc9QIl1xjdDUXU70BnUu8Sd9-KISqTMxFyipcPGUPMgQe6nYT_-RY0KH21Am6y_E7h5QAk5ILWvxx7TDHkJ3S75vBTgNW9IubOyMKsYqyQBBNzWFz3B57QJ7wQlO1mvXbjkTs3YlzDtJ4C_txnF">142.251.10.99</a>).</li></ol><ol type="1" id="84dccef2-857b-4baa-ab07-85558cdfc0de" class="numbered-list" start="2"><li>Sau khi đã tìm được địa chỉ IP, trình duyệt sẽ gửi gói tin yêu cầu – HTTP request đến địa chỉ của web server, yêu cầu trả về nội dung trang web. Gói tin yêu cầu đó cũng như tất cả các gói tin, dữ liệu khác trao đổi giữa máy chủ với máy chúng ta (gọi là máy khách) được thực hiện qua một bộ giao thức TCP/IP.</li></ol><ol type="1" id="ce2ff8e6-95c1-43a3-a814-83897928eea1" class="numbered-list" start="3"><li>Khi nhận được yêu cầu từ máy khách, máy chủ sẽ tiến hành trả về các tập tin HTML, CSS, JS,... để hiển thị trên trình duyệt. Các tập tin này có thể được chia thành nhiều gói tin (packets) nhỏ và gửi về cho trình duyệt của người dùng đang ở máy khách.</li></ol><ol type="1" id="f72d15eb-d72c-4b68-bade-83ae7b6ec453" class="numbered-list" start="4"><li>Khi nhận được, trình duyệt sẽ ghép những gói tin nhỏ nhận được thành những tập tin hoàn chỉnh và hiển thị lên màn hình. Như thế là chúng ta có một trang web hoàn chỉnh.</li></ol></details></li></ul><p id="a7bd9c42-7238-4319-8c9a-b5c970f90424" class="">
+</p></div></article></body></html>

@@ -1,0 +1,684 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>BACKEND</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="ab0fc59c-aa4e-4172-9bd9-68da457198b7" class="page sans"><header><h1 class="page-title">BACKEND</h1></header><div class="page-body"><hr id="199b1713-9c87-46b7-a00c-016386962434"/><ul id="077569a3-3a20-41f1-b23c-40005a7a8524" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Microservice ≠ Monolithic</strong></mark></summary><ul id="250def9e-0e9c-4a5f-b00a-f176ff6aefe4" class="toggle"><li><details open=""><summary><strong>Monolithic</strong> </summary><ul id="b3a6016c-12e7-4552-9fb7-2dc49234a331" class="bulleted-list"><li style="list-style-type:disc">là kiến trúc phần mềm dạng nguyên khối, nghĩa là mọi tính năng sẽ nằm trong một project. </li></ul><ul id="558d943e-e470-44df-801f-7c50914d7a60" class="bulleted-list"><li style="list-style-type:disc">Giả sử mình có một project web bán hàng triển khai theo kiến trúc monolithic, thì các module như khách hàng, đơn hàng, sản phẩm,… sẽ được gói gọn trong project đó.</li></ul><ul id="95b499be-6471-4f90-95b9-1d80f2d4ed3a" class="bulleted-list"><li style="list-style-type:disc"><strong>Ưu điểm: </strong><ul id="47853ad1-649e-44e4-81aa-96943ce846a6" class="bulleted-list"><li style="list-style-type:circle">Dễ phát triển vì các stack công nghệ thống nhất ở tất cả các layer.</li></ul><ul id="5a8cdf91-5be7-44f2-916c-3d157441899b" class="bulleted-list"><li style="list-style-type:circle">Dễ test do toàn bộ project được đóng gói trong một package nên dễ dàng chạy test integrantion và test end-to-end.</li></ul><ul id="805109c5-93e9-48ca-a496-e1c5f3307b95" class="bulleted-list"><li style="list-style-type:circle">Deploy đơn giản và nhanh chóng nếu bạn chỉ có một package để bận tâm.</li></ul><ul id="9fc373c1-01f0-40e4-a0d7-d571bef9792d" class="bulleted-list"><li style="list-style-type:circle">Dễ scale vì chúng ta có thể có nhiều instance cho load banlancer.</li></ul><ul id="395d2850-d44e-4d4c-9cad-0afc9aa18bb0" class="bulleted-list"><li style="list-style-type:circle">Yêu cầu team size nhỏ cho việc maintain app.</li></ul><ul id="61f58863-a8cf-4c04-87ec-b3735c45ae0d" class="bulleted-list"><li style="list-style-type:circle">Team member có thể chia sẻ ít nhiều về skill.</li></ul><ul id="62e2ca84-b407-435d-bf91-215e22611812" class="bulleted-list"><li style="list-style-type:circle">Tech stack đơn giản và đa số là dễ học.</li></ul><ul id="4d03f8fc-c81b-45c0-bb52-3def79c6d1c6" class="bulleted-list"><li style="list-style-type:circle">Phát triển ban đầu nhanh hơn do đó có thể đem sale hoặc marketing nhanh hơn.</li></ul><ul id="c8f94f65-b344-446c-a648-cacd6786b26f" class="bulleted-list"><li style="list-style-type:circle">Yêu cầu cơ sở hạ tầng đơn giản. Thậm chí một container đơn giản cũng đủ để chạy ứng dụng.</li></ul></li></ul><ul id="5df3b10f-95ca-4d39-8a52-f837f053b034" class="bulleted-list"><li style="list-style-type:disc"><strong>Nhược điểm:</strong><ul id="d24a6d78-1ea2-4cad-b552-61feb6bf4d03" class="bulleted-list"><li style="list-style-type:circle">Các component được liên kết chặt chẽ với nhau dẫn đến side effect không mong muốn như khi thay đổi một component ảnh hưởng đến một component khác.</li></ul><ul id="8ce7f446-ee94-4680-b847-88d7f34de7e1" class="bulleted-list"><li style="list-style-type:circle">Theo thời gian thì project trở nên phức tạp và lớn dần. Các tính năng mới sẽ mất nhiều thời gian hơn để phát triển và tái cấu trúc các tính năng hiện có sẽ nhiều khó khăn hơn.</li></ul><ul id="abf58ee9-491c-49f6-a27b-7c2b1ede15a7" class="bulleted-list"><li style="list-style-type:circle">Toàn bộ ứng dụng cần được triển khai lại cho bất kỳ thay đổi nào.</li></ul><ul id="c4b21eb5-5f09-4980-8ac6-a6f8ef6a22f5" class="bulleted-list"><li style="list-style-type:circle">Không hề dễ để hiểu project do các module liên quan chặt chẽ lẫn nhau. Một issue nhỏ cũng có thể làm chết toàn bộ ứng dụng.</li></ul><ul id="cbcbc447-352a-491e-8c78-31104ac9759b" class="bulleted-list"><li style="list-style-type:circle">Áp dụng công nghệ mới khó khăn vì toàn bộ ứng dụng phải thay đổi. Do đó nhiều ứng dụng một khối thường phụ thuộc một công nghệ cũ và lỗi thời.</li></ul><ul id="cc5ffe7d-ddf5-4947-a52c-37268f468a6a" class="bulleted-list"><li style="list-style-type:circle">Các service quan trọng không thể scale riêng dẫn đến lãng phí tài nguyên vì toàn bộ ứng dụng phải scale theo.</li></ul><ul id="88221e65-4b38-4995-a34c-ed8b0a11ef81" class="bulleted-list"><li style="list-style-type:circle">Các ứng dụng một khối lớn sẽ có thời gian khởi động lâu và tốn tài nguyên CPU cũng như bộ nhớ.</li></ul><ul id="5d50726a-446a-46cc-b4c4-4934fa998371" class="bulleted-list"><li style="list-style-type:circle">Các team tham gia vào dự án phải phụ thuộc lẫn nhau và tất khó để mở rộng quy mô team.</li></ul></li></ul></details></li></ul><ul id="3e7d91eb-b0ca-4c73-90d0-f12bea47c63d" class="toggle"><li><details open=""><summary><strong>Microservice</strong></summary><ul id="ed80c159-6710-4bfa-a662-52f514b49d09" class="bulleted-list"><li style="list-style-type:disc">là kiến trúc chia dự án thành nhiều service nhỏ</li></ul><ul id="35824fe5-6c1e-4d2b-86df-01cb3900c2c0" class="bulleted-list"><li style="list-style-type:disc">Các service trong kiến trúc microservice là độc lập với nhau, chúng có thể có kiến trúc khác nhau, sử dụng công nghệ khác nhau hoặc thậm chí có database riêng</li></ul><ul id="27de847f-9025-4d28-acbc-74eec08de138" class="bulleted-list"><li style="list-style-type:disc">Chúng trao đổi thông tin với nhau thông qua môi trường mạng (có thể bằng end point Restful API hoặc các message queue)</li></ul><ul id="4712ce95-e551-4e42-b807-94b74ec3d819" class="bulleted-list"><li style="list-style-type:disc"><strong>Ưu điểm:</strong><ul id="04afb779-895f-4bfa-93ee-5ec9ed2a180c" class="bulleted-list"><li style="list-style-type:circle">Các component có kết nối lỏng lẻo dẫn đến dễ cách ly, dễ test và khởi động nhanh.</li></ul><ul id="d675e6f5-39ad-4713-8b72-fd71039cd433" class="bulleted-list"><li style="list-style-type:circle">Vòng đời phát triển nhanh hơn. Tính năng mới được phát triển nhanh hơn và tính năng cũ được cấu trúc lại dễ hơn.</li></ul><ul id="9d99e520-5cb9-41c5-bfa2-787bc87f704b" class="bulleted-list"><li style="list-style-type:circle">Các service có thể deploy độc lập nên ứng dụng dễ đọc, dễ tạo các bản vá hơn.</li></ul><ul id="1d477b3e-dc61-4ce2-a272-a4d386c15f95" class="bulleted-list"><li style="list-style-type:circle">Những issue, ví dụ liên quan đến memory leak một trong các service, bị cô lập và có thể không làm sập ứng dụng.</li></ul><ul id="03424293-a4c9-40b6-bcc2-6bc3ff389279" class="bulleted-list"><li style="list-style-type:circle">Việc áp dụng các công nghệ mới dễ hơn. Các component có thể được nâng cấp độc lập với nhau.</li></ul><ul id="7029bcd2-92c7-4ed7-a4a0-642c93f649ef" class="bulleted-list"><li style="list-style-type:circle">Các mô hình scale phức tạp và hiệu quả hơn có thể được thiết lập. Các service quan trọng có thể scale hiệu quả hơn. Các component riêng sẽ khởi động nhanh hơn và cải thiện thời gian khởi động của cả hệ thống.</li></ul><ul id="1c27afee-7113-43c7-98ef-7e929327df24" class="bulleted-list"><li style="list-style-type:circle">Các team tham gia sẽ ít phụ thuộc lẫn nhau. Kiến trúc này rất thích hợp cho các đội Agile.</li></ul></li></ul><ul id="daa976d9-6a7f-471b-9e9e-d0d2ff4f310e" class="bulleted-list"><li style="list-style-type:disc"><strong>Nhược điểm:</strong><ul id="90f8b3c0-7fdd-45c3-a8c7-4f02162c86a5" class="bulleted-list"><li style="list-style-type:circle">Phức tạp hơn về mặt tổng thể vì các component khác nhau có các stack công nghệ khác nhau nên buộc team phải tập trung đầu tư thời gian để theo kịp công nghệ.</li></ul><ul id="8bb168b2-fad6-4392-ba84-2d267df0b069" class="bulleted-list"><li style="list-style-type:circle">Khó thực hiện test end-to-end và integration test vì có nhiều stack công nghệ khác nhau.</li></ul><ul id="8a175f73-8e9f-479d-97c9-1b7ad0fcd27b" class="bulleted-list"><li style="list-style-type:circle">Deploy toàn bộ ứng dụng phức tạp hơn vì có nhiều container và nền tảng ảo hóa liên quan.</li></ul><ul id="51af624c-435c-453c-92ae-e9c8214c05a2" class="bulleted-list"><li style="list-style-type:circle">Ứng dụng được scale hiệu quả hơn nhưng thiết lập nâng cấp sẽ phức tạp hơn vì nó sẽ yêu cầu nâng cao nhiều tính năng như truy tìm dịch vụ (service discovery), định tuyến DNS,…</li></ul><ul id="b0d55a43-3652-44ac-858c-16c29f58c01b" class="bulleted-list"><li style="list-style-type:circle">Yêu cầu một team-size lớn để maintain ứng dụng vì có nhiều component và công nghệ khác nhau.</li></ul><ul id="10abcd9b-2d38-4d92-a105-60cd9c9ab488" class="bulleted-list"><li style="list-style-type:circle">Các thành viên trong team chia sẻ các skill khác nhau dựa trên component họ làm nên sẽ tạo ra sự khó khăn khi thay thế và chia sẻ kiến thức.</li></ul><ul id="e91e289a-e81e-4c20-974c-3e4c7080d9c6" class="bulleted-list"><li style="list-style-type:circle">Stack công nghệ phức tạp và khó để học hơn.</li></ul><ul id="e513bc85-3008-435c-9e9c-e1bb6cb876cf" class="bulleted-list"><li style="list-style-type:circle">Thời gian phát triển ban đầu là chậm nên thời gian để có thể làm marketing lâu hơn.</li></ul><ul id="49c8501b-df7b-4845-8812-5291e7b65351" class="bulleted-list"><li style="list-style-type:circle">Yêu cầu cơ sở hạ tầng phức tạp. Thông thường sẽ yêu cầu nhiều container (Docker) và nhiều máy JVM để chạy.</li></ul></li></ul></details></li></ul></details></li></ul><ul id="c72d81fa-63d4-4d50-b7ba-a86140eb12aa" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Rest ≠ graph</strong></mark></summary><ul id="1cd679c1-e25e-4957-8b90-b345fb1f44cb" class="bulleted-list"><li style="list-style-type:disc"><a href="https://2kvn.com/graphql-vs-rest-apis-p5f31353330">https://2kvn.com/graphql-vs-rest-apis-p5f31353330</a></li></ul><ul id="ebade9c1-ee3c-4b5d-a035-c544b426ba62" class="bulleted-list"><li style="list-style-type:disc"><a href="https://viblo.asia/p/so-sanh-graphql-voi-rest-V3m5WLv8KO7">https://viblo.asia/p/so-sanh-graphql-voi-rest-V3m5WLv8KO7</a></li></ul><ul id="a3c7a889-c4f0-45e1-b6ba-b58c22e578cd" class="bulleted-list"><li style="list-style-type:disc"><a href="https://codelearn.io/sharing/graphql-va-uu-diem-so-voi-rest-api">https://codelearn.io/sharing/graphql-va-uu-diem-so-voi-rest-api</a></li></ul></details></li></ul><ul id="b67580d4-9e2d-47d9-bfb0-b3570aee2de8" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>CORS</strong></mark></summary><ul id="55b9951e-f78e-49f3-833a-885e058f785e" class="bulleted-list"><li style="list-style-type:disc">(Cross-Origin Resource Sharing) là một kĩ thuật được sinh ra để làm cho việc tương tác giữa client và server được dễ dàng hơn, nó cho phép JavaScript ở một trang web có thể tạo request lên một REST API được host ở một domain khác.</li></ul><ul id="f57a7ace-f83d-4b1e-991a-ae118d4a1941" class="bulleted-list"><li style="list-style-type:disc"><strong>Cơ chế hoạt động:</strong><ul id="ae0559d3-d63b-46ae-8689-611061842e31" class="bulleted-list"><li style="list-style-type:circle">Trong trường hợp đơn giản nhất, phía client (tức là cái web app chạy ở browser đó) sẽ tạo request GET, POST, PUT, HEAD, etc để yêu cầu server làm một việc gì đó. </li></ul><ul id="61c9ca25-44d6-4985-9ae0-869943a0f2b2" class="bulleted-list"><li style="list-style-type:circle">Những request này sẽ được đính kèm một header tên là <code>Origin</code> để chỉ định origin của client code (giá trị của header này chính là domain của trang web).</li></ul><ul id="cd6fef93-89d0-4e75-b787-5d67bf1c0610" class="bulleted-list"><li style="list-style-type:circle">Server sẽ xem xét <code>Origin </code>để biết được nguồn này có phải là nguồn hợp lệ hay không. </li></ul><ul id="7639f746-2b96-4c84-bd45-2c63e3143152" class="bulleted-list"><li style="list-style-type:circle">Nếu hợp lệ, server sẽ trả về response kèm với header <code>Access-Control-Allow-Origin</code>. </li></ul><ul id="e56cb06b-9620-48a4-b940-be5925824a1c" class="bulleted-list"><li style="list-style-type:circle">Header này sẽ cho biết xem client có phải là nguồn hợp lệ để browser tiếp tục thực hiện quá trình request.</li></ul><ul id="dd5e1549-3dfd-4c15-9435-b9bf5308ccd6" class="bulleted-list"><li style="list-style-type:circle">Trong trường hợp thông thường, <code>Access-Control-Allow-Origin</code> sẽ có giá trị giống như <code>Origin</code>, một số trường hợp giá trị của <code>Access-Control-Allow-Origin</code> sẽ nhìn giống giống như <a href="https://codeaholicguy.com/2017/10/31/tai-sao-developer-can-biet-regular-expression/">Regex</a> hay chỉ đơn giản là <code>*</code> </li></ul><ul id="adf44a8c-fe93-4a39-90a6-64a28d830674" class="bulleted-list"><li style="list-style-type:circle">Tuy nhiên thì cách dùng <code>*</code> thường được coi là không an toàn, ngoại trừ trường hợp API của bạn được public hoàn toàn và ai cũng có thể truy cập được.</li></ul><ul id="3760ab4f-3428-4e78-8dc3-8f0604b5298e" class="bulleted-list"><li style="list-style-type:circle">Nếu không có header <code>Access-Control-Allow-Origin</code> hoặc giá trị của nó không hợp lệ thì browser sẽ báo lỗi.</li></ul></li></ul><ul id="d13da3cd-2cb2-4391-984d-17418e519671" class="bulleted-list"><li style="list-style-type:disc"><strong>Pre-flight request:</strong><ul id="56e91006-c522-415f-b571-5fddb4ad126f" class="bulleted-list"><li style="list-style-type:circle">Khi thực hiện những request ảnh hưởng đến data như: POST, PUT, DELETE, ... thì browser sẽ tự động thực hiện một request gọi là <code>preflight request</code> trước khi thực sự thực hiện request để kiểm tra xem phía server đã thực hiện CORS hay chưa, cũng như để biết được rằng request này có hợp lệ hay không.</li></ul><ul id="a01e0787-e580-46ff-b110-0119b018f390" class="bulleted-list"><li style="list-style-type:circle">Ngoài ra thì nếu bạn có thêm những custom header vào trong request thì việc gửi một <code>preflight request</code> cũng là cần thiết.</li></ul><ul id="69b05268-2ae5-40c7-963e-af091096050f" class="bulleted-list"><li style="list-style-type:circle">Preflight request được gửi lên server với dạng là <code>OPTIONS</code> (đây là lý do tại sao khi bạn debug ở client bạn thường thấy có hai request giống nhau nhưng khác request method, một cái là <code>OPTIONS</code> một cái là method thật sự bạn muốn gửi).</li></ul><ul id="6138f30f-c7e7-4ce5-9a2d-093d97999ede" class="bulleted-list"><li style="list-style-type:circle"><span style="border-bottom:0.05em solid"><strong>Ví dụ:</strong></span> bạn muốn gửi request <code>DELETE</code> lên server. <ul id="1b3db134-f24e-454d-92b7-237cd2c70f19" class="bulleted-list"><li style="list-style-type:square">Browser sẽ tự tạo một request <code>OPTIONS</code> sẽ hỏi xem server có cho phép việc gửi request <code>DELETE</code> hay không. </li></ul><ul id="1f49a685-dff4-4823-a408-0e2e6a460b20" class="bulleted-list"><li style="list-style-type:square">Nếu server cho phép, nó sẽ gửi về response đính kèm những header như <code>Access-Control-Allow-Origin</code>, <code>Access-Control-Allow-Methods</code>, <code>Access-Control-Max-Age</code>, etc.<ul id="a34b07e0-726b-4df1-8b5e-f83e2e42be5e" class="bulleted-list"><li style="list-style-type:disc">Access-Control-Allow-Methods: mô tả những method nào client có thể gửi đi.</li></ul><ul id="dd6aef69-ce25-42e7-8826-e33991cd0355" class="bulleted-list"><li style="list-style-type:disc">Access-Control-Max-Age: mô tả thời gian hợp lệ của <code>preflight request</code>, nếu quá hạn, browser sẽ tự tạo một <code>preflight request</code> mới.</li></ul></li></ul><ul id="c0aa619c-1b6f-4a36-ba33-e6f0d3a51f12" class="bulleted-list"><li style="list-style-type:square">Sau đó browser sẽ có thể gửi request <code>DELETE</code> và nhận response như bình thường. Và ngược lại, browser sẽ báo lỗi</li></ul></li></ul></li></ul></details></li></ul><ul id="4722c420-2282-4802-ac87-fa5160f5648e" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Middleware</strong></mark></summary><ul id="6cc4441f-7212-4b9d-a927-e9d82607b479" class="bulleted-list"><li style="list-style-type:disc">Middleware đóng vai trò trung gian giữa <strong>request/response </strong>(tương tác với người dùng) và các xử lý logic bên trong web server.</li></ul><ul id="e9c1cb24-2f0b-41f9-a96e-2471a3c9efd4" class="bulleted-list"><li style="list-style-type:disc">Middleware sẽ là các hàm được dùng để tiền xử lý, lọc các request trước khi đưa vào xử lý logic hoặc điều chỉnh các response trước khi gửi về cho người dùng.</li></ul><ul id="bc0c21a9-9eb2-43dd-b5fe-43c8ee3e2dfa" class="bulleted-list"><li style="list-style-type:disc">Các hàm middleware có thê thực thi ở đầu, giữa, hoặc cuối vòng đời của một request. Trong stack các middleware function luôn được thêm vào theo thứ tự mà chúng ta mong muốn ngay ban đầu.</li></ul><ul id="5e85bb32-7fca-400b-aabd-c0d72b08dfb6" class="bulleted-list"><li style="list-style-type:disc">Một số middleware phổ biến trong nodejs như: route, cors, auth, logger, helmet, ... </li></ul></details></li></ul><ul id="dfe0a862-e2a1-4d84-abe3-455dc38923fe" class="toggle"><li><details open=""><summary><strong><mark class="highlight-red">Helmet</mark></strong></summary><ul id="79fdfbd4-f4b5-48d2-a6f3-cddfc6e7b6d3" class="bulleted-list"><li style="list-style-type:disc">Helmet là một package được viết để giúp bạn bảo vệ ứng dụng của mình khỏi những lỗ hổng đã biết bằng cách thiết lập các Http headers một cách phù hợp.</li></ul><ul id="1adc35a2-15bd-490a-8d55-7aceb2019f8a" class="bulleted-list"><li style="list-style-type:disc">Thực tế thì Helmet chỉ là một tập hợp các Middleware nhỏ làm nhiệm vụ thiết lập các Http headers liên quan đến bảo mật. </li></ul><ul id="de041c00-48a1-4972-b0b0-93a87c0edb98" class="bulleted-list"><li style="list-style-type:disc">Nó giúp ẩn đi những thông tin không cần thiết trong header và thiết lập lại một số thuộc tính giúp cho server an toàn hơn.</li></ul></details></li></ul><ul id="c4b4164c-c6fa-4004-afe9-9ca908d77986" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Cookies</strong></mark></summary><ul id="9c23e3fb-e7b0-4bea-8c08-5a3859754299" class="bulleted-list"><li style="list-style-type:disc"><strong>Cookie </strong>là những tập tin một trang web gửi đến máy người dùng và được lưu lại thông qua trình duyệt khi người dùng truy cập trang web đó. </li></ul><ul id="c4b5640c-4051-4a46-ab7e-a1d8209e9570" class="bulleted-list"><li style="list-style-type:disc">Cookie được dùng để lưu trữ với rất nhiều mục đích như lưu phiên đăng nhập, hoạt động của người dùng khi truy cập trang web.</li></ul><ul id="9bb458bb-e3e2-4336-be06-288b0d679d78" class="bulleted-list"><li style="list-style-type:disc"><strong>Cookie</strong> có nhiều loại khác nhau và phân chia theo từng mục đích sử dụng. Một số cookies phổ biến như:<ul id="0d6ea13b-da7c-4ca5-a7d6-3e1fdb5a5879" class="bulleted-list"><li style="list-style-type:circle"><strong>Session Cookie: </strong>chỉ tồn tại tạm thời trong bộ nhớ của trình duyệt và sẽ bị trình duyệt tự xóa khi người dùng hết phiên đăng nhập, thông thường loại cookie này không có thời hạn.</li></ul><ul id="17831da5-ca8e-492d-bff3-43239f660d20" class="bulleted-list"><li style="list-style-type:circle"><strong>Third-party cookie : </strong>thông thường cookie của trang web sẽ trùng với thanh địa chỉ của trình duyệt nhưng có một vài trường hợp sử dụng cookie bên thứ 3 có tên miền khác với url trang web</li></ul><ul id="66d810f0-9c5d-467c-aa1d-da0c029a42b6" class="bulleted-list"><li style="list-style-type:circle"><strong>Secure cookie: </strong>một loại cookie HTTP có bộ thuộc tính secure giới hạn phạm vi của cookie đối với trình duyệt web.</li></ul></li></ul></details></li></ul><ul id="fb677276-f6e9-4607-be7b-ed070057163b" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Sessions</strong></mark></summary><ul id="ec9e052e-5067-46bb-83b6-a48f9a6627f7" class="bulleted-list"><li style="list-style-type:disc">Session dùng để lưu trữ dữ liệu trên Server và đồng thời nó sẽ có một đoạn code dữ liệu được lưu trữ ở client (cookie).</li></ul><ul id="f9c090f5-a5ce-478a-b4a2-32f07a7d424c" class="bulleted-list"><li style="list-style-type:disc">Một số cách lưu trữ sessions ở server:<ul id="4e984174-096e-45f5-bd23-29bef69ed331" class="bulleted-list"><li style="list-style-type:circle"><strong>Cookie</strong>: Chúng ta có thể store sesion trên cookie session nodejs mỗi trình duyệt nhưng chú ý rằng tất cả đều nằm ở Clients. </li></ul><ul id="cdd363ff-990d-4075-bc3d-4d33a9222ca3" class="bulleted-list"><li style="list-style-type:circle"><strong>Memory Cache</strong>: Như chúng ta đã biết, Cache được lưu trữ trong bộ nhớ. Chúng ta cũng có thể sử dụng thêm những cache module như Redis và Memcached. </li></ul><ul id="7b304dc6-4b7d-414f-bd12-1f95117da42d" class="bulleted-list"><li style="list-style-type:circle"><strong>Database</strong>: (ít được sử dụng)</li></ul></li></ul></details></li></ul><ul id="381eb525-826e-4224-9b32-ce3047f3dc4c" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>WebSocket</strong></mark></summary><ul id="cb873609-6520-4d71-9586-e6cce1d06fb8" class="bulleted-list"><li style="list-style-type:disc"><strong>WebSocket</strong> là công nghệ hỗ trợ giao tiếp hai chiều giữa client và server bằng cách sử dụng một TCP socket để tạo một kết nối hiệu quả và ít tốn kém. </li></ul><ul id="b2411070-79ab-4df4-8bd9-9d5cfd08e8f0" class="bulleted-list"><li style="list-style-type:disc">Mặc dù được thiết kế để chuyên sử dụng cho các ứng dụng web, lập trình viên vẫn có thể đưa chúng vào bất kì loại ứng dụng nào</li></ul></details></li></ul><ul id="15291420-e433-4448-92be-9a11fc090bdf" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Cache</strong></mark></summary><ul id="3195d642-8f53-45f6-953c-af16e0a1d64f" class="bulleted-list"><li style="list-style-type:disc">Khi cache client cần truy cập data, việc đầu tiên là check cache. Khi request data tìm thấy dữ liệu cần thiết trong Cache, nó được gọi là <em><strong>Cache hit</strong></em>. Tỉ lệ của kết quả tìm kiếm <strong>cache hit</strong> được biết đến như là <em>cache hit rate</em> hay <em>ratio</em>.</li></ul><ul id="d506a364-55b7-4421-851c-6678abec2196" class="bulleted-list"><li style="list-style-type:disc">Nếu việc tìm kiếm data không thành công, nó gọi là <em><strong>Cache miss </strong></em>- từ đây dữ liệu sẽ được kéo từ bộ nhớ chính sang bộ nhớ cache. Việc giữ dữ liệu nào cần, hay xoá khỏi bộ nhớ điệm để nhường chỗ cho dữ liệu mới sẽ tùy thuộc vào thuật toán mà system sử dụng.</li></ul><ul id="9e207222-87ef-4099-9b9c-027b2c33479b" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong>Cache Replacement Policy</strong></mark> nghĩa nôm na là các thuật toán để thay thế giá trị hoặc xóa các giá trị cũ để thêm giá trị mới vào.<ul id="54a2f8e0-4e3f-4d3e-9874-344054be8a19" class="bulleted-list"><li style="list-style-type:circle">LRU, LFU, MRU, FIFO, LIFO, ...</li></ul></li></ul><hr id="b2e6a72a-8fc1-41bd-9d6d-205e52c3133b"/><ul id="67b685e8-c94c-4f7d-beb2-d61b6aa42aad" class="bulleted-list"><li style="list-style-type:disc"><strong>Memoization</strong> là một kỹ thuật tối ưu hóa, giúp tăng tốc các ứng dụng bằng cách lưu trữ kết quả của các lệnh gọi hàm (mà các hàm này được gọi là <code>expensive function</code>) và trả về kết quả được lưu trong bộ nhớ cache khi có cùng một đầu vào yêu cầu (đã được thực thi ít nhất 1 lần trước đó rồi).</li></ul><ul id="cfd5cfa0-208d-4bf9-847b-501c2e2a7ab6" class="bulleted-list"><li style="list-style-type:disc">Một số thuật toán điều khiển cache:<ul id="ce265b5e-79ea-4448-8075-bd7659b6cf39" class="bulleted-list"><li style="list-style-type:circle"><strong>Least Frequently Used (LFU)</strong> : theo dõi tần suất truy cập một dữ liệu. Các dữ liệu có số lần truy cập thấp nhất được loại bỏ đầu tiên.</li></ul><ul id="389c7b47-3f86-416d-b49c-9c624e73346b" class="bulleted-list"><li style="list-style-type:circle"><strong>Least Recently Used (LRU)</strong> : lưu trữ các dữ liệu được truy cập gần đây gần đầu bộ đệm. Khi bộ đệm đạt đến giới hạn của nó, các liệu được truy cập gần đây nhất sẽ bị xóa.</li></ul><ul id="2dab2f12-1a0a-4b5d-a96c-81fd1a5ce3a1" class="bulleted-list"><li style="list-style-type:circle"><strong>Most Recently Used (MRU)</strong> : loại bỏ các dữ liệu truy cập gần đây nhất đầu tiên. Cách tiếp cận này là tốt nhất khi các data cũ có nhiều khả năng được sử dụng.</li></ul></li></ul><ul id="c3b6dfb8-a6f1-423e-a02a-6d3cfe4fb543" class="bulleted-list"><li style="list-style-type:disc">Các loại cache hay sử dụng:<ul id="5b4f0081-71be-44c4-baaf-7e5021e8311f" class="bulleted-list"><li style="list-style-type:circle"><strong>cache server</strong> : Một dedicated network server hoặc dịch vụ chuyên dụng hoạt động như một máy chủ lưu các trang web hoặc nội dung internet khác cục bộ. Một cache server đôi khi được gọi là proxy cache.</li></ul><ul id="2dca82d8-92e4-4fb4-a5b1-5f15185e1afc" class="bulleted-list"><li style="list-style-type:circle"><strong>Cache memory</strong>: Random access memory, hay còn được gọi là <strong>RAM</strong>, Cache memory thường được gắn trực tiếp vào CPU và được sử dụng để cập nhanh các dữ liệu trong CPU.</li></ul><ul id="53e61b3e-4986-42a2-817f-59ac5fde06ee" class="bulleted-list"><li style="list-style-type:circle"><strong>Flash cache</strong>: Temporary storage of data on NAND flash memory chips -- thường được sử dụng ở **solid-state drives (SSDs) ** , thực hiện các request dữ liệu nhanh hơn có thể nếu bộ đệm nằm trên ổ đĩa cứng truyền thống (HDD)</li></ul><p id="c079e612-a8b4-4d4a-b18c-f4782efd4a9c" class=""><a href="https://pymi.vn/blog/memoization/">https://pymi.vn/blog/memoization/</a></p></li></ul></details></li></ul><ul id="c132be2d-26ea-4b24-9d9d-119401e56501" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Stream, Buffer, Pipe</strong></mark></summary><ul id="68100341-5398-4a44-be62-943588e941fe" class="bulleted-list"><li style="list-style-type:disc"><strong>Stream</strong>: là các đối tượng cho phép bạn đọc dữ liệu từ một nguồn và ghi dự liệu đến một đích (<em>là một chuỗi dữ liệu sẵn có qua thời gian, hay có thể hình dung stream là một đối tượng chứa dữ liệu sẽ được truyền đi từ nơi này đến nơi khác.</em>)<ul id="05cfd98a-cfe4-4635-b9b5-4aaf89ebe69a" class="bulleted-list"><li style="list-style-type:circle">Có 4 loại Stream trong Nodejs:<ul id="ab28853c-7ed2-462b-87cb-686493085d91" class="bulleted-list"><li style="list-style-type:square"><strong>Readable</strong>: Là Stream được sử dụng để cho hoạt động đọc</li></ul><ul id="0cb91306-b4da-43d3-9891-4bbe2c66dd6a" class="bulleted-list"><li style="list-style-type:square"><strong>Writable</strong>: Là Stream được sử dụng cho hoạt động ghi</li></ul><ul id="74f2764b-53ec-4588-95db-41a410124183" class="bulleted-list"><li style="list-style-type:square"><strong>Duplex</strong>: Là Stream được sử dụng cho cả mục đích ghi và đọc</li></ul><ul id="c073c309-61cd-40cb-ac01-d26357db630f" class="bulleted-list"><li style="list-style-type:square"><strong>Transform</strong>: Đây là một kiểu Duplex Stream, khác ở chỗ là kết quả đầu ra được tính toán dựa trên dữ liệu bạn đã nhập vào.</li></ul></li></ul><ul id="11dae1c4-e906-439f-a24c-6728fccda646" class="bulleted-list"><li style="list-style-type:circle">Mỗi loại Stream là một sự thể hiện của đối tượng <a href="https://viettuts.vn/nodejs/lop-event-emitter-trong-nodejs"><strong>EventEmitter</strong></a><strong> </strong>và ném một vài sự kiện tại các thời điểm khác nhau</li></ul><ul id="f9ddcff7-8589-4642-9985-d1a48fc2dc18" class="bulleted-list"><li style="list-style-type:circle"><strong><strong>Piping Stream: </strong></strong>là một kỹ thuật. Với kỹ thuật này, chúng ta cung cấp kết quả đầu ra của một Stream để làm dữ liệu đầu vào cho một Stream khác. Không có giới hạn nào về hoạt động Piping này, tức là quá trình trên có thể vẫn tiếp tục.</li></ul><ul id="d359d1cf-1aff-470e-8be1-28bc595410bc" class="bulleted-list"><li style="list-style-type:circle"><strong><strong>Chaining Stream: </strong></strong>là một kỹ thuật để kết nối kết quả đầu ra của một Stream tới một Stream khác và tạo một chuỗi bao gồm nhiều hoạt động Stream. Thường thì nó được sử dụng với các hoạt động Piping</li></ul></li></ul><ul id="26d14946-8726-4be3-89c5-a64f8bb72c56" class="bulleted-list"><li style="list-style-type:disc"><strong>Buffer</strong>: là một vùng dự trữ tạm thời chứa các dữ liệu đang được chuyển từ nơi này đến nơi khác. <ul id="a3a2005e-c1f9-46ec-ac70-691969bcf06e" class="bulleted-list"><li style="list-style-type:circle">Buffer có kích thước xác định và giới hạn. </li></ul><ul id="0c14db2d-e19b-4f5b-948f-73066ca19bc3" class="bulleted-list"><li style="list-style-type:circle">Kích thước của buffer được xác định bằng những thuật toán cho từng trường hợp cụ thể. </li></ul><ul id="b9767286-d20e-4a7b-8f64-2ad747b56df0" class="bulleted-list"><li style="list-style-type:circle">Buffer là một kỹ thuật được phát triển nhằm ngăn chặn sự tắc nghẽn dữ liệu khi truyền từ nơi này đến nơi khác.</li></ul><ul id="da35c831-737e-48ff-98c7-4e6773996422" class="bulleted-list"><li style="list-style-type:circle">Ví dụ: <ul id="878645a2-2ce8-4164-8b38-3bcdc32ec595" class="bulleted-list"><li style="list-style-type:square">Trong thực tế, khi chúng ta xem một đoạn phim trên mạng. </li></ul><ul id="199b7e86-7971-4284-9e30-84b46521281d" class="bulleted-list"><li style="list-style-type:square">Nếu đường truyền mạng chúng ta đủ nhanh thì tốc độ stream video sẽ kịp thời làm đầy các buffer (vùng nhớ tạm thời trên RAM) và đoạn dữ liệu này sẽ được gửi đến trình media player để chạy đoạn dữ liệu vừa được làm đầy trong buffer. </li></ul><ul id="5cdd78f0-1837-49a2-96bc-a9317886b2bf" class="bulleted-list"><li style="list-style-type:square">Trong lúc phát nội dung đó, buffer sẽ trống và lại được làm đầy. </li></ul><ul id="0593be20-f396-432b-9edb-70a8df1e041a" class="bulleted-list"><li style="list-style-type:square">Cứ như vậy cho đến khi kết thúc stream.</li></ul></li></ul></li></ul><p id="564df741-0e5e-4084-bdd0-3539c9929e18" class="">
+</p></details></li></ul><ul id="f20e9d3e-7ba7-4ed4-8277-9ce6cf791145" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Queue</strong></mark></summary><ul id="6ddff4b0-023f-4215-9b3b-3504b8f89ef3" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid"><strong>Khái niệm</strong></span>:<ul id="bdc044ec-98b2-441f-8f8c-cb7c52be3f37" class="bulleted-list"><li style="list-style-type:circle">Message Queue nôm na là Queue (hàng đợi), chứa Message (Tin nhắn) như hộp thư. </li></ul><ul id="9971c040-6951-409f-bace-7becc0d3ed4a" class="bulleted-list"><li style="list-style-type:circle">Và nó cho phép các thành phần/service trong một hệ thống (hoặc nhiều hệ thống), trao đổi thông tin cho nhau. </li></ul><ul id="263e1807-7d90-4f82-8302-f7531ad11880" class="bulleted-list"><li style="list-style-type:circle">Ý nghĩa của queue (hàng đợi) là nó thực hiện việc lấy message theo cơ chế vào trước thì ra trước ( First In First Out ). </li></ul></li></ul><ul id="edfc77f6-bf99-43d8-a562-924f59227404" class="bulleted-list"><li style="list-style-type:disc"><strong>Thành phần của 1 MQ: </strong><ul id="98eeb939-213c-438b-905b-ba5f45427871" class="bulleted-list"><li style="list-style-type:circle"><strong>Message</strong>: Thông tin được gửi đi (có thể là text, binary hoặc JSON)</li></ul><ul id="eaf8ca41-4e51-4c50-ac61-1f4523834c3d" class="bulleted-list"><li style="list-style-type:circle"><strong>Message Queue</strong>: Nơi chứa những message này, cho phép producer và consumer có thể trao đổi với nhau</li></ul><ul id="2089ba56-8346-4e0d-8f7e-c4bcffca4b5e" class="bulleted-list"><li style="list-style-type:circle"><strong>Producer</strong>: Chương trình/service tạo ra thông tin, đưa thông tin vào message queue</li></ul><ul id="a2ff8068-119b-4ca1-afb1-379b5c17f4ad" class="bulleted-list"><li style="list-style-type:circle"><strong>Consumer</strong>: Chương trình/service nhận message từ message queue và xử lý</li></ul><ul id="55ef89ea-7b49-4552-8f77-808eabd94789" class="bulleted-list"><li style="list-style-type:circle">Một chương trình/service có thể <strong>vừa là producer, vừa là consumer</strong></li></ul></li></ul><ul id="e7ae4ba2-87c2-4c9d-b44d-e62b399b4534" class="bulleted-list"><li style="list-style-type:disc"><strong>MQ giải quyết được các vấn đề:</strong><ul id="f3a305bf-6b8f-4332-94ae-fec20fb32e0b" class="bulleted-list"><li style="list-style-type:circle"><strong>Đảm bảo duration/recovery</strong>: Do message đã được lưu trong queue, khi 1 service đang xử lý nhưng bị crash hoặc lỗi, ta không lo bị mất dữ liệu. <ul id="fddb9d93-dc47-4ff7-b508-9120a00be6b4" class="bulleted-list"><li style="list-style-type:square">Vì có thể lấy message từ trong queue ra và chạy lại. </li></ul><ul id="1882a016-85b0-4ec5-bd55-d597ce3c86d6" class="bulleted-list"><li style="list-style-type:square">Trong 1 hệ thống có nhiều consumer, nếu 1, 2 consume bị crash cũng không làm sụp toàn hệ thống</li></ul></li></ul><ul id="07177057-2b1f-4241-ab3d-53c7e6c979c8" class="bulleted-list"><li style="list-style-type:circle"><strong>Phân tách hệ thống</strong>: Giúp phân tách hệ thống thành nhiều service nhỏ hơn, mỗi service chỉ xử lý 1 chức năng nhất định</li></ul><ul id="a3805c15-16ba-43c7-9429-aaa7094e1e56" class="bulleted-list"><li style="list-style-type:circle"><strong>Hỗ trợ rate limit, batching</strong>: Trong nhiều trường hợp, năng lực xử lý hệ thống có hạn (chỉ có thể xử lý 300 đơn hàng/s). <ul id="dc91cea2-c897-465e-bfc1-6129a697f40e" class="bulleted-list"><li style="list-style-type:square">Với message queue, ta có thể dần dần lấy đơn hàng trong queue ra xử lý, không sợ thất lại. </li></ul><ul id="802730d1-3bee-478f-8367-de992c68e9a9" class="bulleted-list"><li style="list-style-type:square">Hoặc thay vì mỗi lần gửi email mất thời gian lâu, ta có thể đợi message queue có yêu cầu gửi 200 email rồi gửi luôn 1 lượt.</li></ul></li></ul><ul id="e97011d4-6f1e-4457-8cee-89fc1b4b66d0" class="bulleted-list"><li style="list-style-type:circle"><strong>Dễ scaling hệ thống</strong>: Vào giờ cao điểm, nhiều truy vấn, ta có thể tăng số lượng consumer lên để xử lý được nhiều messege hơn. Khi không cần ta có thể giảm lại.</li></ul></li></ul><ul id="3de3364c-3d9c-422b-9a74-78561d91177d" class="bulleted-list"><li style="list-style-type:disc"><strong>Một số MQ phổ biến:</strong><ul id="7a48fd45-e4b5-42ef-8372-a7e1a2e002c3" class="bulleted-list"><li style="list-style-type:circle"><strong>Kafka  </strong></li></ul><ul id="8d0faf3e-2c39-4dc0-b5d8-802585abd74c" class="bulleted-list"><li style="list-style-type:circle"><strong>RabittMQ </strong></li></ul><ul id="7919ed59-be62-49b1-a136-1855aed2bcc2" class="bulleted-list"><li style="list-style-type:circle"><strong>Bull</strong></li></ul><ul id="d9ce54d7-ef66-4cbe-9270-dc7a94d6505c" class="bulleted-list"><li style="list-style-type:circle">...</li></ul></li></ul></details></li></ul><ul id="bd3afef0-f5b1-4525-82cf-759f8072690d" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Single sign-on</strong></mark></summary><ul id="f586b4b2-5247-4407-bb84-7d03459c4922" class="bulleted-list"><li style="list-style-type:disc"> <strong>SSO</strong> là viết tắt của Single Sign On, có nghĩa là bạn có thể đăng nhập vào một hệ thống trong một nhóm ứng dụng đa hệ thống (google, youtube, console...) và bạn có thể nhận ủy quyền trong tất cả các hệ thống khác mà không cần đăng nhập lại.</li></ul><ul id="c182a892-bea3-4ffc-93bf-a45cc280e22d" class="bulleted-list"><li style="list-style-type:disc"><em>SSO là cơ chế cho phép người dùng có thể truy cập nhiều trang web, ứng dụng mà chỉ cần đăng nhập một lần. Một khi đã được định danh ở một trang website A, thì cũng sẽ được định danh tương tự ở website B mà không cần lặp lại thao tác đăng nhập</em></li></ul><ul id="b95395fa-793b-4ba1-92ec-8ce6c4e75b3d" class="bulleted-list"><li style="list-style-type:disc">Ưu điểm:<ul id="0a7c3731-c778-4a53-9d42-5369e98dcb35" class="bulleted-list"><li style="list-style-type:circle">Giảm số lượng username và pasword mà người dùng cần phải ghi nhớ</li></ul><ul id="3ee2863a-5f93-4faf-b537-7b5a05f0663a" class="bulleted-list"><li style="list-style-type:circle">Giảm số lần phải nhập thông tin username và pasword</li></ul><ul id="f869f31f-c356-4573-bc9f-c6c8fb37cd30" class="bulleted-list"><li style="list-style-type:circle">Rủi ro về việc lộ thông tin người dùng cũng được tiết chế lại</li></ul></li></ul><ul id="200bab3d-125c-472c-9157-c651517e6891" class="bulleted-list"><li style="list-style-type:disc">Nhược điểm:<ul id="2e9e545c-54ca-46d9-94a8-6fe5b26cdd42" class="bulleted-list"><li style="list-style-type:circle">Chi phí phát triển khi thông qua service thứ ba</li></ul><ul id="38541392-1641-46e8-9c17-bd493e29092f" class="bulleted-list"><li style="list-style-type:circle">Phụ thuộc vào service bên ngoài</li></ul></li></ul><ul id="cdd7203b-fc10-4d24-80a8-4c85c293dced" class="bulleted-list"><li style="list-style-type:disc">SSO là một phần của hệ thống nhận dạng liên kết (<strong>Federated Identity Glossary</strong>), có liên quan chặt chẽ với việc xác thực thông tin người dùng. Nó sẽ định danh người dùng, và sau đó chia sẻ thông tin định danh được với các hệ thống con.<ul id="87aa7af2-13f0-459e-9c3a-e75a46a77e9f" class="bulleted-list"><li style="list-style-type:circle">Hệ thông nhận dang liên kết là nơi tập trung và liên kết thông tin người dùng. Có 4 yếu tố nền tảng cấu thành:<ul id="0d6c0a6f-87d3-4d4b-aa7a-96d9f49daa01" class="bulleted-list"><li style="list-style-type:square">Xác thực (Authentication)</li></ul><ul id="cf51bb51-f5aa-43f6-a478-0bdd9431a6d3" class="bulleted-list"><li style="list-style-type:square">Phân quyền (Authorization)</li></ul><ul id="48a8465f-c701-43dc-8f86-b23923cfaf6b" class="bulleted-list"><li style="list-style-type:square">Trao đổi thông tin người dùng (User attributes exchange)</li></ul><ul id="62865a84-80bf-478f-9cbd-7ebcfe0c7108" class="bulleted-list"><li style="list-style-type:square">Quản lí người dùng (User management)</li></ul></li></ul></li></ul><ul id="201157b3-a10c-4d33-911d-704166a76885" class="bulleted-list"><li style="list-style-type:disc"><strong>Cơ chế:</strong><ul id="2ec99735-8fd7-4fc5-9ac5-3fbaaaddab05" class="bulleted-list"><li style="list-style-type:circle"><a href="https://www.google.com/search?q=single+sign+on+la+gi&amp;oq=single&amp;aqs=chrome.0.69i59j69i57j69i60l3.1218j0j1&amp;sourceid=chrome&amp;ie=UTF-8">https://www.google.com/search?q=single+sign+on+la+gi&amp;oq=single&amp;aqs=chrome.0.69i59j69i57j69i60l3.1218j0j1&amp;sourceid=chrome&amp;ie=UTF-8</a></li></ul></li></ul></details></li></ul><ul id="70be6c7a-abec-4ee7-99dc-93be3138f84c" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>JWT, auth</strong></mark></summary><ul id="b6d35a49-2e98-453f-ab8e-7fb759726163" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.notion.so/Authentication-Authorization-d8562babcd034a4abe8ff30a8945a000">link</a></li></ul></details></li></ul><ul id="179cd6a0-1f2a-4fb1-a01e-3d7b9337bbe6" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Single thread, multiple threads</strong></mark></summary><ul id="4cc0a34a-2106-4918-9e49-082603a4f42a" class="bulleted-list"><li style="list-style-type:disc"><a href="https://viblo.asia/p/javascript-single-thread-lieu-da-loi-thoi-gAm5yxwkldb">https://viblo.asia/p/javascript-single-thread-lieu-da-loi-thoi-gAm5yxwkldb</a></li></ul><ul id="e6953ec5-ce26-48d7-8aaf-5a092bcbe1b1" class="bulleted-list"><li style="list-style-type:disc"><strong>Lấy một ví dụ để minh họa JS chạy trên môi trường trình duyệt web chrome là single thread?</strong><pre id="35cfd84f-92e6-4563-9dd0-ee27385f8b08" class="code code-wrap"><code>let loop = true;
+
+setTimeout(() =&gt; {  // callback execution is unreachable because main thread is still busy with below infinite loop code.
+    console.log(&#x27;It will never reach here :ohh&#x27;);
+    loop = false;
+});
+
+while (loop) {
+    console.log(&#x27;loop&#x27;, loop);  // Infinite loop
+}
+
+console.log(&#x27;after loop&#x27;);  // Unreachable code</code></pre></li></ul><ul id="0f8af7d2-e4df-4d7c-8ac4-220103b71960" class="bulleted-list"><li style="list-style-type:disc"><em>Single thread theo hướng event-driven nó vậy đó fence, các hoạt động i/o như gọi API thì js nó không tự tạo thread để xử lý mà bắn cho thằng khác(trình duyệt) lo còn bản thân js nó ngồi chơi xơi nước đợi kết quả không à. Ngược lại nếu gọi 1 hàm đệ quy tính toán nặng trong main thread(js tự thân vận động) thì web nó treo đến khi hàm đó chạy xong thì thôi. Đấy mới chính là cái khẳng định js trên browser đơn thuần là single thread. Còn việc có thể tạo lập các service worker thì nó là runtime của browser, browser có hỗ trợ thì dùng, không thì thôi nên không thể nói nó là của js đc.</em></li></ul><ul id="afcb9e68-4976-40d8-bc3f-abd94da9bb9e" class="bulleted-list"><li style="list-style-type:disc"></li></ul><ul id="1cd0ef71-7ce1-4b14-99f3-b74f5ee4945f" class="bulleted-list"><li style="list-style-type:disc"></li></ul></details></li></ul><ul id="03f1aad0-91f3-4c3b-929c-857b640d7ec8" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>pub &amp; sub system</strong></mark></summary><ul id="665f0cc7-8a28-4aaf-818b-6afebc5cf84d" class="bulleted-list"><li style="list-style-type:disc"><strong>Publish/subscribe messaging </strong>là một pattern mà đặc trưng bởi việc gửi (publisher) data (message) mà ko chỉ định người nhận rõ ràng . </li></ul><ul id="0c91caa9-5960-4c99-a6c3-b758cb6482cd" class="bulleted-list"><li style="list-style-type:disc">Thay vào đó người gửi sẽ phân loại tin nhắn thành các lớp và bằng cách nào đó mà người nhận (subscriber) phải đăng kí vào lớp nhất định để nhận tin nhắn ở lớp đấy. </li></ul><ul id="abcbf42d-1e96-4b7d-bc4f-97a185ce0bee" class="bulleted-list"><li style="list-style-type:disc">Hệ thống pub/sub thường có một broker (nhà phân phối) , là trung tâm nơi mà các message được phân phối.</li></ul></details></li></ul><ul id="5d60c16d-3348-4571-a887-418ccc7b71ac" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>ACL, RBAC </strong></mark></summary><ul id="14e2239a-aa86-4b66-a1a5-b9cc914cadb7" class="toggle"><li><details open=""><summary><strong>ACL</strong>: là hình thức phân quyền dựa trên một danh sách các quyền truy cập.</summary><ul id="13ff8ecb-5f5b-4682-876c-2d47724e6c72" class="bulleted-list"><li style="list-style-type:disc"><code>Subject</code> có thể <code>Action</code> tới <code>Object</code></li></ul><ul id="272ba2a4-925f-4714-8ec1-18002ee63c53" class="bulleted-list"><li style="list-style-type:disc">Dựa vào người dùng và nhóm người dùng</li></ul><ul id="bf8f1dae-7dc1-43a2-822f-3313ff43b88d" class="bulleted-list"><li style="list-style-type:disc"><strong>Ví dụ</strong>:<ul id="5379a8e5-4df2-48a8-8949-558f58645563" class="bulleted-list"><li style="list-style-type:circle">Cho phép Nguyễn Văn A tạo bài viết</li></ul><pre id="a2905949-e448-46e2-b095-af6efbdf8482" class="code"><code>&#x27;Subject&#x27; : &#x27;Nguyễn Văn A&#x27;
+&#x27;Action&#x27; : &#x27;Tạo&#x27;
+&#x27;Đối tượng&#x27; : &#x27;Bài viết&#x27;</code></pre><ul id="87bdd730-2f12-4a5f-9d4b-4dbb0b41e879" class="bulleted-list"><li style="list-style-type:circle">Nguyễn Văn A có thể tạo bài viết..</li></ul><ul id="f2b0115b-ee58-4a18-ba8a-16362d864225" class="bulleted-list"><li style="list-style-type:circle">Ví dụ : Phân quyền trong <code>MySql</code>.</li></ul></li></ul></details></li></ul><ul id="224acd58-5274-4359-9525-d6ec50e17c5f" class="toggle"><li><details open=""><summary><strong>RBAC</strong>: là hình thức phân quyền dựa vào vai, mỗi Subject sẽ thuộc một hoặc nhiều Role. Mỗi Role lại có một hoặc nhiều Permission thực thi Action tới Object.</summary><ul id="5c1c16f0-8395-4536-8ef1-c01fef17be69" class="bulleted-list"><li style="list-style-type:disc">Một <code>Subject</code> thuộc một hoặc nhiều <code>Role</code></li></ul><ul id="136e45c0-b6f8-498c-858d-c9bf32aec3a8" class="bulleted-list"><li style="list-style-type:disc">Một <code>Role</code> có một hoặc nhiều <code>Permission</code>.</li></ul><ul id="f223fdc6-89b1-47fa-bb32-0a93bc5b263e" class="bulleted-list"><li style="list-style-type:disc"><strong>Ví dụ</strong>:<ul id="0a6c651b-4665-47e9-b832-39a2d444865b" class="bulleted-list"><li style="list-style-type:circle">Người dùng Nguyễn Văn A có quyền Admin, User.</li></ul><ul id="e2a91264-d21b-484b-8dab-298647a47a65" class="bulleted-list"><li style="list-style-type:circle">Người dùng Lê Văn B có quyền User.</li></ul><ul id="ef8757a0-aa3a-4c65-9b99-9ca7d69c7c6a" class="bulleted-list"><li style="list-style-type:circle">User có quyền <code>Đọc</code> bài viết.</li></ul><ul id="ff3639c7-a00d-4516-9b85-683199a97be1" class="bulleted-list"><li style="list-style-type:circle">Admin có quyền <code>Đọc</code>, <code>Thêm</code>. <code>Sửa</code>, <code>Xóa</code> bài viết.</li></ul><p id="1a412691-8c71-4384-9386-a2fcd8b35659" class="">⇒  </p><ul id="89790aca-f373-4bbd-a21a-add988f5180d" class="bulleted-list"><li style="list-style-type:circle">Người dùng A có quyền <code>Đọc</code>, <code>Thêm</code>. <code>Sửa</code>, <code>Xóa</code> bài viết.</li></ul><ul id="3bd86165-2c67-45a0-951c-161519b154a3" class="bulleted-list"><li style="list-style-type:circle">Người dùng Lê Văn B có quyền <code>Đọc</code> bài viết.</li></ul></li></ul><p id="c67c49ad-3a61-4c63-be0c-210ee589c875" class=""><a href="https://www.phamduytung.com/blog/2021-07-02-mo-hinh-phan-quyen/">https://www.phamduytung.com/blog/2021-07-02-mo-hinh-phan-quyen/</a></p><p id="0ef00974-e5da-4f18-afe1-0a4a3ec52176" class=""><a href="https://kipalog.com/posts/Bai-toan-phan-quyen-van-de-muon-thuo-va-rat-kho-hieu">https://kipalog.com/posts/Bai-toan-phan-quyen-van-de-muon-thuo-va-rat-kho-hieu</a></p></details></li></ul></details></li></ul><ul id="dc94c993-3c45-4f86-9434-519a8d362405" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Một số cách secure trong nodejs</strong></mark></summary><ul id="a85e7fac-8508-482f-a51f-afc6e34e7daa" class="bulleted-list"><li style="list-style-type:disc">Validate user input to limit SQL injections and XSS attacks</li></ul><ul id="7c1ebe65-1bdd-4401-bf3a-25ae4814477f" class="bulleted-list"><li style="list-style-type:disc">Implement strong authentication</li></ul><ul id="ce56e61e-95c6-49df-be1d-5389d4a4968f" class="bulleted-list"><li style="list-style-type:disc">Avoid errors that reveal too much</li></ul><ul id="9e0a0625-a0ba-45bd-8332-4626231d67b5" class="bulleted-list"><li style="list-style-type:disc">Run automatic vulnerability scanning</li></ul><ul id="7bfb12fc-4639-48bb-8817-21855222aa2e" class="bulleted-list"><li style="list-style-type:disc">Avoid data leaks</li></ul><ul id="7173ddde-36e5-46bb-a63d-b8ef56bdcce6" class="bulleted-list"><li style="list-style-type:disc">Set up logging and monitoring</li></ul><ul id="5ded9b10-ba55-4a4d-8cb5-e511c6580776" class="bulleted-list"><li style="list-style-type:disc">Use security linters (eslint)</li></ul><ul id="14fa62a0-bbf8-4d99-bc85-a6507f0bcc1a" class="bulleted-list"><li style="list-style-type:disc">Avoid secrets in config files</li></ul><ul id="fb1d8ca3-aa65-4f42-aae9-fd09594d3a98" class="bulleted-list"><li style="list-style-type:disc">Implement HTTP response headers</li></ul><ul id="215e22c9-783d-4f0b-b82e-56588f281668" class="bulleted-list"><li style="list-style-type:disc">Don’t run Node.js as root</li></ul><ul id="df32bc8e-00ea-4559-8f39-794a720fe02c" class="bulleted-list"><li style="list-style-type:disc">Protect and observe your Node.js apps in production</li></ul><p id="bb987fe4-8f97-4a94-82ab-e905ba9c7f4e" class=""><a href="https://blog.sqreen.com/nodejs-security-best-practices/">https://blog.sqreen.com/nodejs-security-best-practices/</a></p><hr id="3b490bf8-8cbf-4305-b769-a384638f8d32"/><ul id="a21f9462-04b8-4092-a37e-033b2726dca4" class="bulleted-list"><li style="list-style-type:disc">Chống DOS, DDOS hay brute-force mật khẩu</li></ul><ul id="0aeff91e-d4b7-4429-845b-e246c264b787" class="bulleted-list"><li style="list-style-type:disc">Lọc dữ liệu người dùng gửi lên server</li></ul><ul id="b8cfc5b0-213a-4267-ac87-57c1b74f89fc" class="bulleted-list"><li style="list-style-type:disc">Sử dụng helmet</li></ul><ul id="aaf80973-006c-4396-aee6-3d7e7acaa9c4" class="bulleted-list"><li style="list-style-type:disc">Sử dụng <code>express-validator</code> để data gửi lên server</li></ul><ul id="a7fed4d7-6bc4-4a68-af11-591f7bb4a326" class="bulleted-list"><li style="list-style-type:disc">Sử dụng thư viện ORD/ODM để chống SQL/NoSQL Injection</li></ul><ul id="7bcdd2bf-cbff-46cc-9268-a7bc931dcad1" class="bulleted-list"><li style="list-style-type:disc">Sử dụng https</li></ul><ul id="5270b43c-d387-4397-98cd-bb7aca5c374f" class="bulleted-list"><li style="list-style-type:disc">Sử dụng biến môi trường</li></ul><ul id="a153f7d1-f9a2-4989-a1c3-3eeff50c64c9" class="bulleted-list"><li style="list-style-type:disc">Dùng <strong>bcrypt</strong> hoặc <strong>pbkdf2</strong> để băm mật khẩu</li></ul><ul id="4dbb11ae-9b4b-4a32-b9c6-9489b547a347" class="bulleted-list"><li style="list-style-type:disc">Giới hạn kích thước payload request gửi lên server</li></ul><p id="d219eb26-0e8b-4e65-88d4-26888906ebae" class=""><a href="https://hocweb.vn/toi-uu-bao-mat-app-nodejs-tot-hon">https://hocweb.vn/toi-uu-bao-mat-app-nodejs-tot-hon</a></p></details></li></ul><ul id="f4a4a095-d7ab-4657-b2b1-603aab29baed" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>CronJob</strong></mark></summary><ul id="52632a81-81f1-4ebd-baa4-5330d188d8bd" class="bulleted-list"><li style="list-style-type:disc">Cron là chương trình để xử lý các tác vụ lặp đi lặp lại ở lần sau. </li></ul><ul id="7879544e-a1e3-446b-981d-67dbf6f6594e" class="bulleted-list"><li style="list-style-type:disc">Cron Job đưa ra một lệnh để lên lịch “làm việc” cho một hành động cụ thể, tại một thời điểm cụ thể mà cần lặp đi lặp lại.<ul id="3c227663-75fd-487e-a02b-9f69d4b33de2" class="bulleted-list"><li style="list-style-type:circle">Giả sử ứng dụng của bạn có chức năng lưu tạm file, vậy mỗi lần người dùng lưu tạm miết vậy và không dùng, đến một lúc nào đó nó sẽ đầy và tốn dùng lượng. </li></ul><ul id="ddef3929-85a8-4c72-909d-9d8e6de31cd6" class="bulleted-list"><li style="list-style-type:circle">Lúc này bạn cần một công việc tự động là 3 ngày nó sẽ dọn các file tạm đó đi. </li></ul><ul id="c9c273f8-11b0-45fa-a394-01f14537a263" class="bulleted-list"><li style="list-style-type:circle">Do đó, đối với các công việc định kì, lặp đi lặp lại thì cron là giải pháp hoàn hảo.</li></ul></li></ul></details></li></ul><ul id="b00515aa-ccac-4393-a629-36d1f10e1a97" class="toggle"><li><details open=""><summary><strong>IoC</strong></summary><ul id="b3a1f54a-bd75-4d6b-a1f8-524f041f7b9d" class="bulleted-list"><li style="list-style-type:disc"><strong>Inversion of Control</strong> (<em>IoC - Đảo ngược điều khiển</em>) là một nguyên lý thiết kế trong công nghệ phần mềm trong đó các thành phần nó dựa vào để làm việc bị đảo ngược quyền điều khiển khi so sánh với lập trình hướng thủ thục truyền thống.</li></ul></details></li></ul><ul id="beab3ff6-d513-4225-91ee-26d20dba15ca" class="toggle"><li><details open=""><summary><strong>Dependency Injection</strong></summary><ul id="677a983e-9598-4bac-9c5a-9a8ec363b891" class="bulleted-list"><li style="list-style-type:disc"><a href="https://2kvn.com/di-la-gi">https://2kvn.com/di-la-gi</a></li></ul><ul id="3662f370-e56a-438b-8854-ddb9378ee392" class="bulleted-list"><li style="list-style-type:disc"><strong>Dependency Injection</strong> (DI) là 1 design pattern được sử dụng để thực hiện <a href="https://2kvn.com/ioc-la-gi">Inversion of Control(loC)</a>. DI giúp loại bỏ việc phụ thuộc trực tiếp của class với đối tượng.</li></ul><ul id="4bfbbd2b-0dc5-4114-83fc-f4e81aaf4c89" class="bulleted-list"><li style="list-style-type:disc">Có thể hiểu Dependency Injection một cách đơn giản như sau:<ul id="093545d6-cc71-4678-81ed-2b513085a9a2" class="bulleted-list"><li style="list-style-type:circle">Các module không giao tiếp trực tiếp với nhau, mà thông qua interface. Module cấp thấp sẽ implement interface, module cấp cao sẽ gọi module cấp thấp thông qua interface.</li></ul><ul id="4ae3cd33-6f03-44f7-b92a-309054429706" class="bulleted-list"><li style="list-style-type:circle">Việc khởi tạo các module cấp thấp sẽ do DI Container thực hiện.</li></ul><ul id="67805b5f-9e72-4f88-bfb7-56e8af093b4d" class="bulleted-list"><li style="list-style-type:circle">Việc Module nào gắn với interface nào sẽ được config trong code hoặc trong file XML</li></ul><ul id="1e8b6269-4cbc-40c6-adc2-164aa6a6b71f" class="bulleted-list"><li style="list-style-type:circle">DI được dùng để làm giảm sự phụ thuộc giữa các module, dễ dàng hơn trong việc thay đổi module, bảo trì code và testing.</li></ul></li></ul><p id="90aa444c-8a65-4b63-b775-b9d352bef318" class=""><a href="https://toidicodedao.com/2015/11/03/dependency-injection-va-inversion-of-control-phan-1-dinh-nghia/">https://toidicodedao.com/2015/11/03/dependency-injection-va-inversion-of-control-phan-1-dinh-nghia/</a></p><p id="518c5e1b-93c9-430d-9031-181616360a84" class="">
+</p><p id="b6ccb059-4592-4415-8909-f919d7aa7f12" class=""><a href="https://kipalog.com/posts/Dependency-injection---Nhung-thu-co-the-ban-bo-qua">https://kipalog.com/posts/Dependency-injection---Nhung-thu-co-the-ban-bo-qua</a></p></details></li></ul><ul id="224e81f9-d6f0-44e6-86e3-afe2e89aa73e" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Push notification &amp; real-time</strong></mark></summary><p id="9164ff44-a4fc-4102-ae70-e0e0ff65ba51" class=""><a href="https://kipalog.com/posts/Realtime--Pusher-va-ke-thay-the-Slanger">https://kipalog.com/posts/Realtime--Pusher-va-ke-thay-the-Slanger</a></p><ul id="5310af78-f191-4db1-aca6-e42130857e56" class="bulleted-list"><li style="list-style-type:disc">Một số cách push notification từ server đến client<ul id="e8af7206-dde2-40ec-b541-cfef9517991f" class="bulleted-list"><li style="list-style-type:circle">setInterval gọi 5s hay 10s gì đó thì call api lên server</li></ul><ul id="8397bd22-c746-46a2-8c42-a04a7d6d2b3b" class="bulleted-list"><li style="list-style-type:circle">Sử dụng Nodejs với websocket</li></ul><ul id="fbee3216-2ba1-4bba-bf45-70e0d4d7c76d" class="bulleted-list"><li style="list-style-type:circle">Sử dụng cơ chế pub sub của redis</li></ul><ul id="cb1a3858-b04f-4d73-852c-832b7d14f582" class="bulleted-list"><li style="list-style-type:circle">Sử dụng một Pusher (trả phí), Slanger (open source)</li></ul><ul id="abbb643c-54ff-495f-8fa4-a54ad5a4c326" class="bulleted-list"><li style="list-style-type:circle">Sử dụng firebase</li></ul><ul id="c0e5f0f5-b9f1-466f-832c-174d2562d993" class="bulleted-list"><li style="list-style-type:circle">...</li></ul></li></ul></details></li></ul></div></article></body></html>

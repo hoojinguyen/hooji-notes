@@ -1,0 +1,698 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Culture fit</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="18b18528-75ab-456d-a033-425cfbaae86c" class="page sans"><header><h1 class="page-title">Culture fit</h1></header><div class="page-body"><hr id="3cd61301-e4f6-42e6-a46d-8dfae535dcaa"/><p id="9f3550ab-b824-4dc1-8c0e-278b13f560aa" class="">
+</p><p id="ba8301e5-56d9-4510-b734-5ed9930724a2" class="">
+</p><h3 id="ecd88e00-f693-44f8-b68c-11bc302d8f17" class=""><strong><strong>Ability (Khả năng)</strong></strong></h3><hr id="bcadd048-00cd-431b-bb44-28caef3a6e2c"/><ul id="71aced62-2f2a-4500-ad13-16f4eeb81587" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>What excites you at work? 
+</strong></mark><strong>Điều gì làm bạn thấy hứng khởi trong công việc là gì? </strong></summary><ul id="c35b3ca5-1ad2-45e3-8442-d579079f7d09" class="bulleted-list"><li style="list-style-type:disc">Được làm việc với những project hay những công nghệ mới</li></ul><ul id="56d19e64-fcdc-4ef5-97ee-d6b34fd8eb73" class="bulleted-list"><li style="list-style-type:disc">Được làm việc với những đồng đội những leader, senior giỏi để có thể học hỏi thêm nhiều thứ và cải thiện kỹ năng của bản thân</li></ul></details></li></ul><ul id="4bcfc157-d1f4-4417-898c-acfc998e551e" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>What are your limits at work?</strong></mark><strong> 
+Đâu là giới hạn của bạn trong công việc?</strong></summary><ul id="9a392707-e3cb-4907-9ee8-b9a60ee0efc3" class="bulleted-list"><li style="list-style-type:disc"></li></ul></details></li></ul><ul id="e4e5d20e-4cfc-4af9-9241-08eae0167d51" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>How did you go through the most difficult time at work? 
+</strong></mark><strong>Bạn đã trải qua quãng thời gian khó khăn nhất trong công việc như thế nào?</strong></summary><ul id="75a5bef7-f1c6-48b1-a341-f4b5349bb845" class="bulleted-list"><li style="list-style-type:disc">Đôi khi tôi cảm thấy áp lực từ nhiều thứ trong cuộc sống, thì nó dẫn đến hiệu quả khi làm việc cũng không tốt. </li></ul><ul id="cc206766-23b6-43c8-8e36-82bed0f5540b" class="bulleted-list"><li style="list-style-type:disc">Tôi bị stress và mất cân bằng trong cuộc sống.  </li></ul><ul id="4504ddd3-e740-451c-82f3-2d58b187ea97" class="bulleted-list"><li style="list-style-type:disc">Tuy nhiên tôi đã vượt qua nó bằng cách mở lòng mình tâm sự với bạn bè, chơi thể thao và tìm những thú vui riêng cho bản thân.</li></ul></details></li></ul><ul id="81d933a9-6472-42ba-812e-05e8345868e4" class="toggle"><li><details open=""><summary><strong><mark class="highlight-red">Is there a proud achievement you would like to share?
+</mark></strong><strong>Có thành tựu nào đáng tự hào mà bạn muốn chia sẻ?</strong></summary><ul id="71e78aea-d51c-4618-aaa9-862916560876" class="bulleted-list"><li style="list-style-type:disc">Thực sự đối với bản thân tôi hiện tại thì chưa có thành tựu nào mà bản thân tôi coi là đáng để tự hào. </li></ul><ul id="ed1ae76a-a720-47c7-819e-c3a429f1506a" class="bulleted-list"><li style="list-style-type:disc">Và tôi vẫn đang trên con đường tìm kiếm những cái thành tựu thực sự cho bản thân.</li></ul></details></li></ul><ul id="24785e53-51b8-4407-9f86-e94ed9429664" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>How do you usually adopt when you arrive in a new environment?
+</strong></mark><strong>Bạn thường làm thế nào để hoà nhập khi đến một môi trường mới?</strong></summary><ul id="4ff4daec-00d4-47e9-b599-03bc62e4c044" class="bulleted-list"><li style="list-style-type:disc">Thường thì tôi sẽ chủ động làm quen với mọi người trong team trước và mọi người trong công ty sau đó</li></ul><ul id="58c4410c-4e15-4ca0-b921-311b11c14ae2" class="bulleted-list"><li style="list-style-type:disc">Tôi là người thích chơi thể thao đặc biệt là bóng đá nên tôi nghĩ khi đi chơi bóng đá cùng mọi người trong công ty cũng là cách tốt để hòa nhập và làm quen với mọi người.</li></ul></details></li></ul><p id="98083f05-51fd-4770-9f8b-fcbf3dbef323" class="">
+</p><h3 id="95127b2e-1d91-4f12-8305-e29c9c470fcf" class=""><strong><strong>Management (Quản lý)</strong></strong></h3><hr id="c4c90f83-cbdf-402d-8e2a-b90f5b3eeb81"/><ul id="ec033733-4022-41a6-b529-be5d493aeef5" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>When you have a task, how do you complete it?
+</strong></mark><strong>Khi có một đầu việc, bạn sẽ hoàn thành nó như thế nào? </strong></summary><ul id="8d4214fb-645f-49c8-9693-e64e531a8317" class="bulleted-list"><li style="list-style-type:disc">Check task</li></ul><ul id="2b371cc4-9739-461e-a099-01e015a704ab" class="bulleted-list"><li style="list-style-type:disc">Đọc requirement của task đó</li></ul><ul id="6175669b-f150-44a1-bf42-a86eb28fd7aa" class="bulleted-list"><li style="list-style-type:disc">Break task lớn thành nhiều task nhỏ hơn</li></ul><ul id="c7a517aa-516d-4031-850b-797d934410d0" class="bulleted-list"><li style="list-style-type:disc">Lựa chọn những task ưu tiên làm trước</li></ul><ul id="291bcd91-39f5-4790-8e35-5341b3f06fb4" class="bulleted-list"><li style="list-style-type:disc">Tạo branch mới </li></ul><ul id="288f99f6-76cd-48c5-91a6-00de77ca4351" class="bulleted-list"><li style="list-style-type:disc">Coding</li></ul><ul id="9bd5fcf2-4f46-4d30-9618-8c4477004a65" class="bulleted-list"><li style="list-style-type:disc">Testing</li></ul><ul id="e9f91127-a22e-4e50-8071-d90af96fedeb" class="bulleted-list"><li style="list-style-type:disc">Tạo merge request</li></ul><ul id="44ae1135-156c-48da-91b1-832ea667f150" class="bulleted-list"><li style="list-style-type:disc">Review code lại 1 lần nữa trên gitlab hoặc github</li></ul><ul id="030d9f49-bac6-436d-9881-72af28aed63f" class="bulleted-list"><li style="list-style-type:disc">Báo lại cho leader</li></ul></details></li></ul><ul id="7a302528-dc53-45b3-acc5-2d59d1d41869" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Do you make a checklist for what you need to do during the day and month?
+</strong></mark><strong>Bạn có lập checklist cho những gì cần làm trong ngày, tháng không? </strong></summary><ul id="9bf3f951-fdfb-42be-8ae9-2eef536eae2b" class="bulleted-list"><li style="list-style-type:disc">Có. Thường tối ngủ sẽ lên plan cho ngày mai trước.</li></ul></details></li></ul><ul id="d7efe3c1-c59d-4d30-88c9-fb48b458479c" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>What is the order of priority at work?
+</strong></mark><strong>Thứ tự ưu tiên trong công việc là gì? </strong></summary><ul id="deaaa498-bcdf-42d1-96f0-e6c62b8dab6a" class="bulleted-list"><li style="list-style-type:disc">Thường liệt kê ra danh sách các task sẽ làm trong ngày vào mỗi sáng sớm</li></ul><ul id="de315889-be35-4585-a815-7dfe95a7f7cf" class="bulleted-list"><li style="list-style-type:disc">Ưu tiên những task khó sẽ làm trước và làm vào buổi sáng</li></ul><ul id="7a254040-3f5c-4637-a230-8c383d5be99d" class="bulleted-list"><li style="list-style-type:disc">Buổi chiều sẽ làm những task nhẹ hơn</li></ul></details></li></ul><ul id="ef03d9b9-ca9c-4501-80f7-b19d6f2c28cb" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>What are some situations that you find the most difficult to deal with?
+</strong></mark><strong>Hãy nêu một vài tình huống mà bạn thấy khó giải quyết nhất? </strong></summary><ul id="f5437d62-36cf-433e-94a3-3fcb1ea81c40" class="bulleted-list"><li style="list-style-type:disc"></li></ul></details></li></ul><ul id="635d621a-e3e3-4f59-af6a-514f4d93d9ca" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>What do you do when you can&#x27;t meet the deadline?
+</strong></mark><strong>Bạn sẽ làm gì khi không thể hoàn thành deadline?</strong></summary><ul id="a0d6ccff-7ebb-4deb-a084-35373014b4e3" class="bulleted-list"><li style="list-style-type:disc">Trước deadline 1 2 ngày hoặc 1 2 tiếng chẳng hạn thì em nghĩ nên trình bày  cho leader trước về lý do mình không thể hoàn thành task đúng deadline để  họ có phương pháp giải quyết</li></ul><ul id="c0a5b6fb-024a-4ae6-8dca-2e115eb678cb" class="bulleted-list"><li style="list-style-type:disc">Còn không thì em phải tự bỏ thời gian riêng của bản thân để cố gắng hoàn thành task</li></ul></details></li></ul><p id="97efff95-fbd1-451d-a5c4-cdd1c7cbbffd" class="">
+</p><h3 id="f3581177-1ecc-4206-8d5f-556e614df742" class=""><strong><strong>Teamwork (Làm việc nhóm)</strong></strong></h3><hr id="1a0edc7a-9ac1-4979-ba59-f6016b53ab58"/><ul id="b6ca493a-684d-4efc-b66d-0d9e5c84c70f" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>What role do you usually play when working in a team?
+</strong></mark><strong>Bạn thường đóng vai trò gì khi làm việc theo nhóm? </strong></summary></details></li></ul><ul id="4484750c-7e55-4642-a4ee-31fa809e61e5" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>When there is a problem with a common project/assignment, what will you do?
+</strong></mark><strong>Khi project/bài tập chung xảy ra vấn đề bạn sẽ làm gì? </strong></summary><ul id="f30be349-a799-4fb2-8067-289597ac0a47" class="bulleted-list"><li style="list-style-type:disc">Họp team</li></ul><ul id="f3cb717e-db37-4816-b76d-65aac3984912" class="bulleted-list"><li style="list-style-type:disc">Lắng nghe ý kiến từng người</li></ul><ul id="d92ead92-e66c-4cbf-8d61-ca03fe3e7ca5" class="bulleted-list"><li style="list-style-type:disc">Gác bỏ tôi cá nhân</li></ul><ul id="738be272-c6d6-4ec9-b49f-4368d96e78a8" class="bulleted-list"><li style="list-style-type:disc">Cùng nhau lựa chọn phương pháp tối ưu nhất</li></ul></details></li></ul><ul id="d847c189-62b8-4efb-8a7b-54023d95aac2" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>What do you think about the problem of not being able to get along when working in groups?
+</strong></mark><strong>Bạn nghĩ thế nào về vấn đề không thể hoà đồng khi làm việc nhóm? </strong></summary><ul id="01b9aad3-68b1-491b-a2ba-8b61fa9f126d" class="bulleted-list"><li style="list-style-type:disc">Đó là vấn đề lớn, và ảnh hưởng đến dự án</li></ul><ul id="9a888525-69ee-4d24-b800-ac476ffe09f5" class="bulleted-list"><li style="list-style-type:disc">Cho nên cần phải giải quyết triệt để trước để tránh mẫu thuẫn sau này</li></ul><ul id="c29d7804-fd27-4624-9200-255b6b267608" class="bulleted-list"><li style="list-style-type:disc">Nếu là leader thì nên nói chuyện với từng người trước sau đó họp toàn bộ team để nói lên những vấn đề đang tồn đọng và giải quyết nó sớm nhất có thể.</li></ul></details></li></ul><ul id="13da2d8b-2b59-440d-b833-27e8964c6fcc" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Who will you notify when things have gone too far?
+</strong></mark><strong>Bạn sẽ báo cho ai khi mọi sự cố đã đi quá xa?</strong></summary><ul id="3555e7aa-e6eb-46e4-8706-3ee63424c62d" class="bulleted-list"><li style="list-style-type:disc">Leader, HR, hoặc những người có chức vụ cao hơn trong dự án</li></ul></details></li></ul><p id="d2b81b82-b033-4671-be0a-0fc0f540dc02" class="">
+</p><h3 id="7a9eb10b-130b-47fb-ba3a-0e52d330c9e9" class=""><strong><strong>Motivation (Động lực)</strong></strong></h3><hr id="c1967e4c-2eab-4e58-b79c-c78c1a5254f3"/><ul id="78183946-5262-4b19-a2fd-26f808d00484" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Tell me about a time when you made a mistake and were criticized. How do you react to that?
+</strong></mark><strong>Hãy kể về một lần bạn phạm sai lầm và bị chỉ trích. Bạn phản ứng thế nào với điều đó? </strong></summary><ul id="bea4e9ea-fd75-47c5-9ea3-011cceb1dd55" class="bulleted-list"><li style="list-style-type:disc">Có 1 lần làm task nhưng không làm đúng theo requirement của khách hàng nên bị sếp nhắc nhở.</li></ul><ul id="409d232c-5635-4ccf-8ec6-c0fb60582d44" class="bulleted-list"><li style="list-style-type:disc">Lúc đầu thì khá cứng rắn với cách làm của mình vì nghĩ rằng điều mình làm đúng và sẽ đem trải nghiệm cho khách hàng tốt hơn.</li></ul><ul id="077a1fac-f06e-46e9-b74d-4d05b5ee8506" class="bulleted-list"><li style="list-style-type:disc">Tuy nhiên thì leader lại không đồng ý và bắt buộc phải làm đúng theo yêu cầu của khách hàng đó. Và nói rõ cho mình biết đó là mọi sự thay đổi về yêu câu phải được đưa ra cho khách hàng xem trước và được duyệt mới được làm.</li></ul><ul id="175f475c-7176-48d3-a99d-15eef90c098a" class="bulleted-list"><li style="list-style-type:disc">Thì nhìn chung thì em cũng thấy mình sai nên em làm lại theo yêu cầu của khách hàng. Và rút nghiệm lần sau nếu muốn làm theo ý mình thì phải request lên leader và khách hàng trước.</li></ul></details></li></ul><ul id="7426f297-e150-4451-8933-b6f44791c27b" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Are you comfortable with being controlled (in terms of time, dress, routine, etc.)?
+</strong></mark><strong>Bạn có thoải mái với việc bị quản lí (về mặt thời gian, trang phục, nề nếp…) không? </strong></summary><ul id="598f052a-3a17-4901-afa7-cc5c7bad39b7" class="bulleted-list"><li style="list-style-type:disc">Không thoải mái cho lắm</li></ul></details></li></ul><ul id="f6492d31-38b8-4538-8fe4-cbe0bb48ae6c" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>What do you usually do when you&#x27;re stressed but can&#x27;t go out or do the things you love?
+</strong></mark><strong>Bạn thường làm gì khi stress nhưng lại không thể đi chơi hay làm những việc mình yêu thích?</strong></summary></details></li></ul><p id="70215854-c912-475a-87a7-1f3e438a0713" class="">
+</p><p id="2c6f9c7d-40e1-47a1-acff-65d9fb7c2e5a" class="">
+</p><h3 id="a4f2a7d8-5f0b-4e05-90e5-22ee0d4c2985" class=""><strong><strong>Desired working culture (Môi trường làm việc mong muốn)</strong></strong></h3><hr id="e35c270b-15fd-4ffd-93d2-3e7f28926787"/><ul id="16e68578-a4b5-4cb9-b5bb-c8b590221894" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Are there any difficulties in your life that the company can help you with?
+</strong></mark><strong>Có khó khăn nào trong cuộc sống mà công ty có thể hỗ trợ bạn không? </strong></summary></details></li></ul><ul id="26a9a1f5-2a2a-4524-ab56-aebade46f680" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>What does your ideal work day look like?
+</strong></mark><strong>Một ngày làm việc lý tưởng của bạn diễn ra như thế nào? </strong></summary><ul id="48320ef6-f9ef-46ef-962c-ec139633dcc5" class="bulleted-list"><li style="list-style-type:disc">Sáng thức dậy và đi làm với tâm trạng phấn khởi</li></ul><ul id="85140e4b-6ec1-4d1a-97a4-68862a8c8cf2" class="bulleted-list"><li style="list-style-type:disc">Là khi được làm việc mình thích tại cái môi trường làm việc mình mong muốn</li></ul></details></li></ul><ul id="b1c254e6-8636-4efe-916f-a785ae588e34" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Imagine you were going to start a company of your own, what would be the most outstanding thing about that company?</strong></mark><strong>
+Hãy tưởng tượng bạn sẽ mở một công ty của riêng mình, thì điểm nổi bật nhất về công ty đó sẽ là gì?</strong></summary><ul id="e1c852b0-ae31-4897-bb86-5b0ec007973d" class="bulleted-list"><li style="list-style-type:disc">Môi trường làm việc, vì nó sẽ kích thích sự sáng tạo và tinh thần làm việc của mọi người.</li></ul></details></li></ul><ul id="4af34715-32e3-4277-87f8-3f316c2c6af4" class="toggle"><li><details open=""><summary><strong>Bạn thường giải quyết mâu thuẫn trong team như thế nào?</strong></summary><p id="11b0ff76-b51c-4f70-a73d-7f8c82fd4013" class=""><strong><mark class="highlight-red">Có một số nguyên nhân dẫn đến việc xung đột nhóm như: </mark></strong><div class="indented"><ul id="3bcede48-7c32-4d68-8292-5c630aa7702c" class="bulleted-list"><li style="list-style-type:disc"><strong>Xung đột nhiệm vụ</strong><ul id="07385623-c233-49ea-8f67-68225ba5771a" class="bulleted-list"><li style="list-style-type:circle">Những bất đồng có nảy sinh khi công việc của các thành viên trong nhóm phụ thuộc lẫn nhau quá nhiều để có thể phối hợp và hoàn thành tốt mục tiêu đề ra.</li></ul><ul id="0ed9155c-b7df-4ff3-8207-0ab78ba251e2" class="bulleted-list"><li style="list-style-type:circle">Nếu không có những thỏa thuận và cách tổ chức sắp xếp công việc hợp lý, đội nhóm của bạn sẽ dễ gặp tình trạng xung đột nhiệm vụ</li></ul></li></ul><ul id="2ed887c0-588f-465d-90e3-6c2c85798432" class="bulleted-list"><li style="list-style-type:disc"><strong>Mâu thuẫn với leader</strong><ul id="0027cb9c-2c90-4873-920f-ea4e06471284" class="bulleted-list"><li style="list-style-type:circle">Với trọng trách tổng hợp và đưa ra quyết định, cũng như đưa ra góp ý về công việc cho nhóm viên. </li></ul><ul id="365a17a7-3a05-4fa2-bde3-74ff07048e33" class="bulleted-list"><li style="list-style-type:circle">Nhóm trưởng thường rất dễ khiến một số cá nhân không hài lòng với các nhận xét thẳng thắng hoặc khác với tư tưởng cá nhân.</li></ul></li></ul><ul id="37f15f7f-6fdb-4e8f-8b59-e40ce4cdab7f" class="bulleted-list"><li style="list-style-type:disc"><strong><strong>Phong cách làm việc không phù hợp</strong></strong><ul id="1d0b0957-7dc2-4578-bbf5-dffae35a2738" class="bulleted-list"><li style="list-style-type:circle">Mỗi một nhân viên là một cá thể, một tính cách riêng biệt.</li></ul><ul id="071cdbc9-d5a8-4b05-ac25-bb933e0ba5df" class="bulleted-list"><li style="list-style-type:circle">Nếu bạn không thể làm cho mình hòa hợp, kiểm soát cảm xúc và quan điểm với tập thể thì xung đột trong nhóm diễn ra cũng chỉ là chuyện sớm muộn.</li></ul></li></ul><ul id="46c4b96a-2f52-45c1-9cc2-d85e918a334f" class="bulleted-list"><li style="list-style-type:disc"><strong><strong>Sự phân biệt đối xử</strong></strong></li></ul><ul id="9eb8b242-f499-4356-9b87-d917f317750b" class="bulleted-list"><li style="list-style-type:disc"><strong>Xung đột ý tưởng</strong></li></ul></div></p><p id="bf8393fe-cf9a-4443-baab-d81c1aa26738" class=""><mark class="highlight-red"><strong><strong>Cách giải quyết xung đột trong nhóm</strong></strong></mark><div class="indented"><ul id="622d48ab-29ab-4a5c-ac46-6ada4b4bc77f" class="bulleted-list"><li style="list-style-type:disc"><strong><strong>Tạm gác “cái tôi” sang một bên</strong></strong><ul id="c853795c-749d-4d9c-8502-db5cdd394aa7" class="bulleted-list"><li style="list-style-type:circle">Bước đầu tiên trong cách giải quyết xung đột trong nhóm là hãy thử ngồi lại và lắng nghe nhiều hơn. </li></ul><ul id="560b94fc-56f8-451a-a32a-6e627d46fb3d" class="bulleted-list"><li style="list-style-type:circle">Trước khi phản biện điều gì, hãy tìm cách hiểu vấn đề của người đối diện.</li></ul></li></ul><ul id="3979ab73-2e72-43b4-b0ad-b42852ae5527" class="bulleted-list"><li style="list-style-type:disc"><strong><strong>Làm rõ vấn đề nằm ở đâu</strong></strong><ul id="4658a857-ae35-4b1b-be9b-eaaee56c56c9" class="bulleted-list"><li style="list-style-type:circle">Hãy liên tục đặt những câu hỏi xoay quanh việc xung đột khi làm việc nhóm để tìm hiểu chính xác đâu là vấn đề và đâu là giải pháp cho tất cả.</li></ul><ul id="2ca84ab9-d1aa-41dd-8849-afe71c81fcc4" class="bulleted-list"><li style="list-style-type:circle">Chỉ khi tìm ra được nguyên nhân cốt lõi, bạn và đồng đội mới đủ bình tĩnh để đánh giá phương án giải quyết.</li></ul><ul id="399b2ea1-a12a-4d86-b66a-171e337be550" class="bulleted-list"><li style="list-style-type:circle">Nhớ nhé, hãy cùng nhau làm rõ vấn đề. Đừng im lặng và bỏ qua, vì vấn đề nhỏ nếu tích tụ lâu dần sẽ hình thành vấn đề lớn; khiến những xung đột nhóm bùng nổ căng thẳng và khó giải quyết hơn.</li></ul></li></ul><ul id="22991542-4e05-4a48-85cc-3acecbfa5bae" class="bulleted-list"><li style="list-style-type:disc"><strong><strong>Tìm giải pháp cùng nhau</strong></strong><ul id="eb3ebc7e-c80f-4bc7-bf03-3e18471232a1" class="bulleted-list"><li style="list-style-type:circle">Khi đã làm rõ nguyên nhân của vấn đề, đây là lúc bạn cùng cộng sự của mình ngồi xuống để tìm ra phương án giải quyết tốt nhất cho xung đột nhóm đó.</li></ul><ul id="3f5cb7fe-b217-4bca-8d89-e8c1d72b8448" class="bulleted-list"><li style="list-style-type:circle">Lúc này, hai bên đã sẵn sàng để nhìn nhận ý kiến của đối phương, cũng như hiểu được điều gì là tốt nhất cho đội ngũ của mình.</li></ul><ul id="859029ed-1538-476f-aa3a-948a5a3ed90a" class="bulleted-list"><li style="list-style-type:circle">Trước tiên, hãy lắng nghe ý kiến của từng thành viên trong nhóm và hiểu về cách họ suy nghĩ về vấn đề mà nhóm đang gặp phải.</li></ul><ul id="224ede3c-9ab9-4b8d-b8c6-fc494f9f1416" class="bulleted-list"><li style="list-style-type:circle">Sau đó, hãy chọn ra một vài phương án phù hợp nhất và để mọi người lựa chọn theo dạng biểu quyết để thống nhất hướng giải quyết.</li></ul><ul id="76c180b4-eecb-492d-bda8-1882dce67107" class="bulleted-list"><li style="list-style-type:circle">Việc làm này sẽ giúp nhóm bạn đạt được tiếng nói chung một cách nhanh chóng và không ảnh hưởng đến kết quả chung.</li></ul></li></ul><ul id="fb995fe5-b79a-42eb-82cf-b995c1fab1f0" class="bulleted-list"><li style="list-style-type:disc"><strong><strong>Chủ động lắng nghe</strong></strong></li></ul><ul id="40bc9744-3a1e-41ef-a7fb-a2b0205f9db7" class="bulleted-list"><li style="list-style-type:disc"><strong><strong>Không thiên vị</strong></strong></li></ul><ul id="947f29f2-d9f7-4af8-82d2-0f90a81067c7" class="bulleted-list"><li style="list-style-type:disc"><strong><strong>Tham kiến HR (maybe)</strong></strong></li></ul></div></p><ul id="f669cf78-8376-47d5-b93c-673898bf9a73" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid"><strong>Tóm lại:</strong></span><ul id="804fcdf6-ec65-4299-bebf-b09ca2029267" class="bulleted-list"><li style="list-style-type:circle">Đừng quá bảo thủ với ý kiến cá nhân; mà hãy lắng nghe chia sẻ từ nhiều người trong nhóm để biết về suy nghĩ của họ.</li></ul><ul id="25ce02a5-3a1b-4e1b-a120-b0008707a674" class="bulleted-list"><li style="list-style-type:circle">Hãy tạo những cuộc họp để trao đổi và giải quyết vấn đề trực tiếp. Điều này sẽ tốt hơn là giữ im lặng và để nó trôi đi.</li></ul><ul id="23aacaed-5689-4690-b3d7-eb7a00b0086b" class="bulleted-list"><li style="list-style-type:circle">Tìm kiếm ý tưởng giải quyết và có phương án phòng bị nếu xung đột nhóm lên đến đỉnh điểm</li></ul><ul id="19c011bf-4cb2-42ee-a162-bac3c27364b5" class="bulleted-list"><li style="list-style-type:circle">Sau khi vấn đề được giải quyết, cần có thỏa thuận về cách thức làm việc cho những lần sau để tránh xung đột nhóm tiếp diễn lần nữa.</li></ul></li></ul><p id="ca71d834-259c-4a4b-84ff-c644f38d387f" class="">
+</p><p id="e1554e1e-4a08-4f40-ae24-a89203da8faf" class="">
+</p><hr id="bf34ac4f-2cd8-4003-934c-cf3cada62d25"/><ol type="1" id="0d20960b-b92f-4d34-b0b7-abb63e682ffb" class="numbered-list" start="1"><li>Em muốn biết rõ hơn về môi trường và văn hóa làm việc của công ty?</li></ol><ol type="1" id="b9a72def-3b6b-4475-8e81-941da604beae" class="numbered-list" start="2"><li>Công ty có hỗ trợ thêm về việc học thêm những kiến thức mới hoặc là có hay tổ chức những buổi seminar hay sharing về công nghệ để các thành viên có thể nâng cao hơn kiến thức của mình hay không?</li></ol><ol type="1" id="852da896-f895-4d80-b2a9-43144b57c7c6" class="numbered-list" start="3"><li>Sự hạn chế của công ty ?</li></ol><ol type="1" id="612c6274-2a12-4c43-9655-6213246e24c5" class="numbered-list" start="4"><li></li></ol></details></li></ul></div></article></body></html>
