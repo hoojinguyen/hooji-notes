@@ -123,8 +123,9 @@ alias glg="git log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold g
 alias gaa="git add ."
 alias gb="git branch"
 alias gbc="git branch --show-current | tr -d '\n' | pbcopy"
+alias gst="git stash"
+alias gst="git stash"
 alias gstp="git stash pop"
-alias lg="lazygit"
 alias lg="lazygit"
 
 # Docker
@@ -177,6 +178,22 @@ function cpc() {
     else
         echo "File not found: $1"
     fi
+}
+
+
+# copy a folder
+# Example usage
+# cpff "/path/to/source/folder" "/path/to/destination/folder"
+function cpff() {
+  local source_dir="$1"
+  local dest_dir="$2"
+
+  if [[ -d "$source_dir" ]]; then
+    cp -r "$source_dir" "$dest_dir"
+    echo "Folder copied from $source_dir to $dest_dir"
+  else
+    echo "Source directory does not exist: $source_dir"
+  fi
 }
 
 # Neovim
