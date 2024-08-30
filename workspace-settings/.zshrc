@@ -123,6 +123,8 @@ alias glg="git log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold g
 alias gaa="git add ."
 alias gb="git branch"
 alias gbc="git branch --show-current | tr -d '\n' | pbcopy"
+alias gstp="git stash pop"
+alias lg="lazygit"
 alias lg="lazygit"
 
 # Docker
