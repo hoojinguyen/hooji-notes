@@ -1,0 +1,677 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Introduce</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="7780d0aa-5805-4622-939c-ed2d39f7e6d1" class="page sans"><header><h1 class="page-title">Introduce</h1></header><div class="page-body"><hr id="b7322322-1fba-458e-aeaf-c9433efceba1"/><p id="55506e16-9c3c-4e68-b751-e0323691ec52" class="">Today I take a day off from the company to go for an interview.</p><p id="f97db0b0-2273-497f-ae63-d38c1715b407" class="">
+</p><ul id="f376a04d-4528-489b-9211-ff5e0f93f57a" class="bulleted-list"><li style="list-style-type:disc">What should I call you?</li></ul><ul id="62c5b872-3d87-4622-af52-4816e7ed08df" class="bulleted-list"><li style="list-style-type:disc">Can you repeat the question?</li></ul><ul id="a444d263-3a25-4918-81a8-4b04510cb373" class="bulleted-list"><li style="list-style-type:disc">I wonder if you can tell me the benefit when I join the company?</li></ul><ul id="e18fc949-7e3f-43c9-ba5f-995b57fbd922" class="bulleted-list"><li style="list-style-type:disc">Tell me something about yourself?</li></ul><ul id="d679df06-3808-4361-b0e0-7e56a933e800" class="bulleted-list"><li style="list-style-type:disc">What are your strengths and weaknesses?</li></ul><ul id="9fbd50a8-f724-4635-9187-86b40fd66109" class="bulleted-list"><li style="list-style-type:disc"><strong><strong>Why do you want to work for our company?</strong></strong></li></ul><ul id="46cfd984-6abe-4d7a-bb14-e9df569c16b2" class="bulleted-list"><li style="list-style-type:disc"><strong>i&#x27;m glad to meet you too</strong></li></ul><p id="22460031-f9b0-4ab5-b388-15d062217653" class="">
+</p><ul id="43d1e8e5-ebce-44b7-826e-d282dd08c9b1" class="toggle"><li><details open=""><summary><strong>Giới thiệu một chút về bản thân ?</strong></summary><ul id="7bbf9bd2-f044-4286-bb71-e6c70ea20144" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">Hi, My name is Hoi, I&#x27;m 24 years old. </mark></li></ul><ul id="ae2fc20e-9cd4-43b6-a1bb-785f576a7712" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">I graduated from the University of information technology in HCM city, majoring in software engineering. </mark></li></ul><ul id="b3401119-9dbb-422f-84eb-bc018a7f25e4" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">I want to develop further in this field, so I want to apply for this position at the company.</mark></li></ul></details></li></ul><ul id="d5ba72f6-720d-4a48-9236-8c98aecbde51" class="toggle"><li><details open=""><summary><strong>Giới thiệu về kinh nghiệm làm việc</strong></summary><ul id="4955cd4d-00db-4925-8eeb-1d584485523d" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">I have about 2.5 (two points five) years of experience working as a front-end developer. The main frameworks I use are reactJS and vueJS</mark></li></ul><ul id="4103da04-ac41-444c-a999-1a0ba26e0c00" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">I can also work back-end with Nodejs and some other technologies and frameworks like express, koa, nest</mark></li></ul></details></li></ul><ul id="d5f099ae-29f2-4b74-be7d-1aa8f09ad8eb" class="toggle"><li><details open=""><summary><strong>Giới thiệu về công ty đã từng làm việc</strong></summary><ul id="0bb47b59-3589-4178-a83c-720642b7aeeb" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">I have worked in 3 companies. </mark></li></ul><ul id="45d6f97d-723b-4871-bddf-72d67e3ab6a7" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">The first company was called Kickoff, I worked as an intern here about my 3rd year of college.</mark><ul id="9b2f367f-a57c-4cc5-819e-4f0028784e20" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-red">Here I learned about the software development process from very good seniors. </mark></li></ul><ul id="1b0cae4e-f86f-41a6-9c2b-45f477e52a03" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-red">However, because I studied too much, I quit my job. </mark></li></ul></li></ul><ul id="bb6b098c-b6d7-43e8-be47-822ab5a056fa" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">The second company is an e-commerce company named TVN group. </mark><ul id="d3ea8cf1-8ff8-4d07-818d-0318e8b4fc95" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-red">Here I was involved in building from scratch an e-commerce system similar to Shopify.  </mark></li></ul><ul id="853099fa-ee3a-41dd-bc93-2e80e57de291" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-red">The Shopify is one of the best platform in the field of e-commerce. </mark></li></ul><ul id="c38ca13f-2c86-4803-8714-3e06bb1dda43" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-red">I learned many technologies as well as teamwork processes. </mark></li></ul><ul id="866f8264-f165-4ccd-86d9-a240d5e61d98" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-red">However, due to the covid epidemic, the company did not have enough financial resources, so I had to stop the project and leave the company. </mark></li></ul></li></ul><ul id="844f5a7b-7d9e-47a6-a9a6-c76945bfeaaa" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">And the company I am currently working for is called Brickmate. </mark><ul id="3b7079db-3d06-424c-b2a0-87a6ae853d95" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-red">It is a Korean outsourcing company. </mark></li></ul><ul id="1d6b1ba7-9708-4a0c-8104-a073096987d7" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-red">It does projects for Korean customers in many fields.</mark></li></ul></li></ul></details></li></ul><ul id="88378b71-8f8f-4a99-a166-930e44b57bee" class="toggle"><li><details open=""><summary><strong>Cho biết điểm mạnh</strong></summary><ul id="4d7048dd-cf01-4c2e-b577-14919157a059" class="bulleted-list"><li style="list-style-type:disc">Điểm mạnh của em là tinh thần và thái độ làm việc tốt.<p id="806af510-59a6-4ef4-8776-a429c92a26bd" class=""><mark class="highlight-red">→ My strengths is the spirit and good working attitude. </mark></p></li></ul><ul id="9b566d41-21f7-48fe-bf50-01f1a5fac118" class="bulleted-list"><li style="list-style-type:disc">Em có khả năng làm việc độc lập cũng như hỗ trợ làm việc nhóm hiệu quả. <p id="ada9708d-71f3-4261-9bed-23ccb13affb6" class=""><mark class="highlight-red">→ I have the ability to work independently as well as support effective teamwork. </mark></p></li></ul><ul id="dc9e67bf-ab60-4b15-a222-f4d9639d55fc" class="bulleted-list"><li style="list-style-type:disc">Ngoài ra em còn có một số kỹ năng mềm khác như giao tiếp, teamwork, thuyết trình, sáng tạo và lắng nghe người khác.
+<mark class="highlight-red">→ In addition, I also have some other soft skills such as communication, teamwork, presentation, creativity, and listening to others.</mark></li></ul></details></li></ul><ul id="f7c4df6f-cafa-4dcf-9037-78a6bd9d92ef" class="toggle"><li><details open=""><summary><strong>Cho biết điểm yếu của bản thân</strong></summary><ul id="ce23771f-5e9c-4349-a747-f04c1e18baed" class="bulleted-list"><li style="list-style-type:disc">Điểm yếu của em là không quản lý được thời gian hiệu quả. Ngoài ra, trình độ tiếng anh của em chưa tốt, tuy nhiên em đang cố gắng trau dồi và học hỏi từng ngày.<p id="06cc14fa-cc54-4e1d-84e1-257f6dec1b03" class=""><mark class="highlight-red">→ My weakness is inefficient time management. In addition, my English is not good, but I am trying to improve and learn every day</mark></p></li></ul></details></li></ul><ul id="c8c39828-fa53-4c9c-b743-f089bfcbdfdb" class="toggle"><li><details open=""><summary><strong>Giới thiệu về sở thích cá nhân</strong></summary><ul id="9971a00b-82d7-4ec4-b971-a2aac923a3bd" class="bulleted-list"><li style="list-style-type:disc"><strong><mark class="highlight-red">I love playing sports to improve my health and my hobby is playing sports such as football, volleyball, badminton, running, and so on.</mark></strong></li></ul></details></li></ul><ul id="9655c98d-5e96-4837-93c0-1f2fb91df485" class="toggle"><li><details open=""><summary><strong>Thấy bạn có làm nhiều ngôn ngữ, không biết bạn làm cái nào chính</strong></summary><ul id="d5f71432-d6e7-446e-a797-130d5284a097" class="bulleted-list"><li style="list-style-type:disc">Tôi đã từng dùng qua nhiều ngôn ngữ như Java, c# hay php. Nhưng tôi chỉ sử dụng chúng khi tôi làm những đồ án nhỏ trong các môn học ở trường đại học.<p id="70cb13b6-8c59-44c6-8fbe-6ca5900c36ae" class=""><mark class="highlight-red">→ I have used many languages such as Java, c# or php. But I only use them when I do small projects on college subjects.</mark></p></li></ul><ul id="5aeb1d4d-7b83-48da-9870-5b6891aeb986" class="bulleted-list"><li style="list-style-type:disc">Hiện tại bây giờ  ngôn ngữ chính tôi sử dụng là JS<p id="903408b9-f889-421f-8f6c-acc1f461bc5a" class=""><mark class="highlight-red">→ Currently, the main language I use is JS</mark></p></li></ul></details></li></ul><ul id="ee50d4f9-8df8-4bbd-9966-5076759bc7da" class="toggle"><li><details open=""><summary><strong> Giới thiệu một số dự án bạn đã làm ? Và đâu là dự án bạn tâm đắc nhất</strong></summary><ul id="6a180100-889b-43a1-8360-3d4bb8c18e47" class="bulleted-list"><li style="list-style-type:disc">Về dự án cá nhân, dự án lớn nhất tôi từng làm là hệ thống thương mại điện tử khi tôi còn làm ở công ty cũ. Hệ thống đó tương tự như shopify, một trong những nền tảng thương mại điện tử  lớn nhất. Tôi đã làm đó hơn 1,5 năm. Tôi đã học được rất nhiều thứ từ dự án đó. <p id="c03aa5a1-72fb-48c2-8b17-d54bc6070426" class=""><mark class="highlight-red">→ Regarding personal projects, the biggest project I ever worked on was an e-commerce system when I was working at my old company. </mark></p><p id="8a7b79ee-dbad-4e94-a8ad-ec78a3073a0c" class=""><mark class="highlight-red">That system is similar to Shopify, one of the largest e-commerce platforms. </mark></p><p id="9d5aa1b4-603e-427a-be10-254ea3cc7667" class=""><mark class="highlight-red">I did it for more than 1.5 years. I learned a lot from that project.</mark></p></li></ul><ul id="e2baed17-dd29-435d-91c5-56cf27e9364a" class="bulleted-list"><li style="list-style-type:disc">Ngoài ra luận văn tốt nghiệp cũng là dự án tôi khá tâm đắc. <p id="bd3f5313-95fb-4bb6-a28c-b54c76857e3d" class=""><mark class="highlight-red">→ In addition, the graduation thesis is also a project that I am quite interested in. </mark></p><p id="74a45d37-0deb-4547-bb4a-16d4b656fe2f" class=""><strong>→ it&#x27;s called FLAD</strong></p></li></ul><ul id="bd576354-ddd3-4a43-9e3f-936c4dc86fd9" class="bulleted-list"><li style="list-style-type:disc">Ứng dụng giúp người bán Livestream trên nền tảng Facebook chốt đơn hàng nhanh chóng. <p id="b3528601-f047-4201-9267-90990a3c1168" class=""><strong>→ The application helps Livestream sellers on the Facebook platform to close orders quickly. </strong></p></li></ul><ul id="54afcf20-2377-4c79-be9f-7f6ad451f46f" class="bulleted-list"><li style="list-style-type:disc">Bạn cũng có thể quản lý hàng hóa và tạo bot tự động trả lời nhận xét hoặc tin nhắn.<strong>
+→ You can also manage merchandise and create bots that respond to comments or messages automatically.</strong></li></ul></details></li></ul><ul id="c8d1d47d-ff1a-4b39-a66a-db6ccf9e66dc" class="toggle"><li><details open=""><summary><strong>Làm việc với react lâu chưa, đã từng làm dự án nào với react</strong></summary><ul id="53bb0477-d9ca-44b1-bf13-b5afc2d477ff" class="bulleted-list"><li style="list-style-type:disc">Tôi đã làm việc với react hơn 1 năm. Trước đây tôi sử dụng vuejs. Nhưng công ty hiện tại tôi làm việc với react nhiều hơn.<p id="0dc3dfe7-c696-492b-8682-784eb969a72d" class=""><mark class="highlight-red">→ I have been working with react for over 1 year. Previously I used vuejs. But the current company I work with reacts more.</mark></p></li></ul></details></li></ul><ul id="a2dade2e-b996-4e30-97c1-fa6f958d65cc" class="toggle"><li><details open=""><summary><strong>Giới thiệu về những dự án đang làm tại công ty</strong></summary><ul id="baf08b23-e7da-4b9c-8794-906666fd4ee5" class="bulleted-list"><li style="list-style-type:disc">Công ty hiện tại tôi làm là công ty oursource và làm dự án cho khách hàng hàn quốc trong lĩnh vực thương mại điện tử và sức khỏe, …<p id="c1beb4c0-850a-41b1-8b4d-e630c04cb781" class=""><mark class="highlight-red">→ The company I currently work for is an outsourcing company and does projects for Korean customers in the field of e-commerce and health, …</mark></p></li></ul><ul id="cb59578f-4d90-4359-bfd4-0d5ea9ba3262" class="bulleted-list"><li style="list-style-type:disc">Một số dự án tôi từng làm ở đây như brickmall, apillz<p id="e66045c3-9513-4351-8755-70fa5cdd1f41" class=""><mark class="highlight-red">→ Some of the projects I used to do here like brickmall, apillz</mark></p></li></ul><ul id="edcdfd52-61b1-4a62-b512-9aef57145f6d" class="bulleted-list"><li style="list-style-type:disc">Chúng đều sử dụng reactJS và nodejs<p id="a68439d7-3a6b-4f1b-aaea-0ab4718fd65e" class=""><mark class="highlight-red">→ They both use reactJS and nodejs</mark></p></li></ul></details></li></ul><ul id="6ed16003-b291-4a6c-aeb3-78255df1682d" class="toggle"><li><details open=""><summary><strong>Tại sao lại biết đến công ty  và muốn làm việc tại công ty ?</strong></summary><p id="d4c4699e-9053-4cca-9bce-1f31efda8da7" class="">Tôi biết đến công ty từ một bài đăng tuyển dụng trên facebook. </p><p id="513f6777-b3e0-421a-8875-7efab74be686" class="">Sau đó tôi tìm hiểu và thấy công ty có môi trường làm việc rất tốt để tôi phát triển nên tôi muốn đầu quân cho công ty.</p><p id="8d649b12-b3a4-44f7-a7e1-a910962436ca" class=""><mark class="highlight-red">→ I knew about the company from a job posting on Facebook. </mark></p><p id="d8967aaa-cf2d-4d96-9460-763df97880d1" class=""><mark class="highlight-red">Then I researched and found that the company had a very good working environment for me to develop, so I wanted to join the company.</mark></p></details></li></ul><ul id="7f9b7a04-fa9e-422c-9e68-91d2ba59e72f" class="toggle"><li><details open=""><summary><strong>Dự định của bạn trong tương lai là gì ?</strong></summary><p id="7ef16d89-0598-4725-a67d-8ca29d5f6af4" class="">Mục tiêu của bản thân em trong tương lai là trở thành một developer giỏi, tạo ra nhiều sản phẩm tốt cho công ty mình làm việc cũng như đóng góp một điều gì đó cho cộng đồng.
+<mark class="highlight-red">→ My goal in the future is to become a good developer, create many good products for the company I work for as well as contribute something to the community.</mark></p></details></li></ul><ul id="8e643c21-851d-439c-b8de-2415f222147a" class="toggle"><li><details open=""><summary><strong>Tại sao bạn nghỉ việc tại công ty cũ ?</strong></summary><ul id="a75b990f-9dc9-4758-96df-5702d25ff6ff" class="bulleted-list"><li style="list-style-type:disc">Về cơ bản, tôi muốn phát triển bản thân nhiều hơn và thử các công nghệ mới. Đặc biệt tôi muốn được làm việc tại một công ty lớn, có môi trường tốt hơn. Đó là lý do của tôi<p id="155e6d65-5aa5-457b-984d-3b7f87d62417" class=""><mark class="highlight-red">→ Basically, I want to develop myself more and try new technologies. Especially I want to work at a big company with a better environment. That&#x27;s my reason</mark></p></li></ul></details></li></ul><ul id="a602d20e-9ef7-49c7-9d64-16a746038a13" class="toggle"><li><details open=""><summary><strong>Thời gian rảnh bạn thích làm gì ?</strong></summary><ul id="0f036a5e-a014-4fbf-90ea-b3ee548178cb" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">In my free time, especially on weekends, I like to meet and chat with friends, it&#x27;s a way for me to de-stress after a working week. </mark></li></ul><ul id="ba22d445-2763-47e9-9743-bdc0929b0d3e" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><em>Sometimes, I go to the coffee shop to learn new technologies or languages by myself.</em></mark></li></ul></details></li></ul><ul id="b49384d8-e347-4cf0-b7b7-6db531e2e95a" class="toggle"><li><details open=""><summary><strong>Bạn nghĩ sao về sếp cũ ?</strong></summary><ul id="3c2ddd9c-6ed7-4233-b032-2ea34cae399b" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">My former boss is a very nice and good person, he often helps me when I have errors in coding and solves problems that I don&#x27;t understand. He also really cares about the staff.</mark></li></ul></details></li></ul><ul id="0b97c648-81b5-4cec-968c-ad9b646703dd" class="toggle"><li><details open=""><summary><strong>Bạn tự học một ngôn ngữ mới như thế nào ?</strong></summary><ul id="68947df4-19af-46a4-983e-e485873c893c" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">Usually, when I learn a new language or technology, I read its official documentation.</mark></li></ul><ul id="e8c7954d-edc5-4d30-8169-f6c95202e19d" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">After that, I will apply it by doing some mini projects myself to understand and remember longer.</mark></li></ul></details></li></ul><ul id="e7228f0c-c080-4ee2-80d8-b07da29ddd00" class="toggle"><li><details open=""><summary><strong>Khi gặp vấn đề khó bạn sẽ giải quyết như thế nào ?</strong></summary><ul id="eb8be295-c7d8-4b25-91a0-f874a496ab68" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">First, I will think of solutions to solve it myself. </mark></li></ul><ul id="4e5104ae-4f21-4b8b-9d81-0c29d2811027" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">If I can&#x27;t think of it, I will search on google through some sites like StackOverflow. </mark></li></ul><ul id="40b823a6-a17f-4c33-88b5-20d47a48955f" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">If I still can&#x27;t find a solution, I will ask my friends and colleagues</mark></li></ul></details></li></ul><hr id="c5866f0f-df27-4d29-ba4d-489caaadb6d2"/><p id="4d3e4480-7e2e-42f3-970d-f12807045b79" class="">
+</p><ul id="63b661ec-c327-4af7-a04a-aa10c4dd72c7" class="toggle"><li><details open=""><summary><strong>Bạn đã làm việc với hooks chưa và bạn biết gì về hooks trong react</strong></summary><ul id="84829f42-5c6e-45be-b71c-e1e8456e969d" class="bulleted-list"><li style="list-style-type:disc">Hooks are the new feature introduced in the React 16.8 version. It <strong>allows you to use state and other React features without writing a class</strong></li></ul><ul id="4b44032f-666a-466e-aecf-a0599fbc368b" class="bulleted-list"><li style="list-style-type:disc">Hooks are the functions which &quot;hook into&quot; React state and lifecycle features from function components. It does not work inside classes.</li></ul><ul id="56c908b3-5b81-4984-a173-baffd63e9e66" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">It includes the basic hooks provided by reactJS such as useState, ... and custom hooks that are self-defined hooks for our own purposes.</mark></li></ul><ul id="123ab074-5201-4ed6-a244-5b9cd42608cc" class="bulleted-list"><li style="list-style-type:disc">the two general rules to follow with Hooks:<ul id="0f043711-e6d1-44d3-b47d-aea9dccdfb37" class="bulleted-list"><li style="list-style-type:circle"><strong>Only call Hooks at the </strong><em><strong>top level</strong></em></li></ul><ul id="310c694b-3a42-4eba-8b3d-93882c0a2359" class="bulleted-list"><li style="list-style-type:circle"><strong>Only call Hooks from React functions or custom hooks</strong></li></ul></li></ul></details></li></ul><ul id="d12c89ed-cf50-42b6-afd0-2855991a754d" class="toggle"><li><details open=""><summary><strong>useMemo ≠ useCallback</strong></summary><ul id="61d6222a-d6b3-4201-a6d5-0cda298b989e" class="bulleted-list"><li style="list-style-type:disc"><code>useMemo</code> is to memoize a calculation result between a function&#x27;s calls and between renders</li></ul><ul id="cb99fe7c-cceb-40a6-b895-32e928bc5fad" class="bulleted-list"><li style="list-style-type:disc"><code>useCallback</code> is to memoize a callback itself (referential equality) between renders</li></ul><ul id="8e578f3b-7c5c-4cdf-8743-cee030b4f4fa" class="bulleted-list"><li style="list-style-type:disc"><code>useRef</code> is to keep data between renders (updating does not fire re-rendering)</li></ul><ul id="55c49208-7d53-4044-a23d-a370fbe1a6c3" class="bulleted-list"><li style="list-style-type:disc"><code>useState</code> is to keep data between renders (updating will fire re-rendering)</li></ul><p id="e5a15b08-5f96-4ed1-938b-99d91ae6d7b4" class=""><code>useMemo</code> focuses on avoiding heavy calculation.</p><p id="c578d261-dac7-4f9f-b3f0-470573b4ca50" class=""><code>useCallback</code> focuses on a different thing: it fixes performance issues when inline event handlers like <code>onClick={() =&gt; { doSomething(...); }</code> cause <code>PureComponent</code> child re-rendering (because function expressions there are referentially different each time)</p><p id="183d9e7d-56fe-4c9f-a6ac-fed7d4eb8165" class="">This said, <code>useCallback</code> is closer to <code>useRef</code>, rather than a way to memoize a calculation result</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1fdc66b3-6b5e-4df2-a115-d94c5464243f"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><code>useCallback</code> will return a memoized version of the callback that only changes if one of the inputs has changed. This is useful <em>when passing callbacks to optimized child components that rely on reference equality to prevent unnecessary renders</em>
+ (e.g. shouldComponentUpdate)</div></figure></details></li></ul><ul id="b53f46d5-0537-43c6-a83c-f7c967cebf80" class="toggle"><li><details open=""><summary><strong>Microservice</strong></summary><ul id="170ef60e-05b2-49cc-8551-18ba219f4108" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">Microservice is a new architecture that divides the project into many small services. </mark></li></ul><ul id="45a4d3f6-e587-4253-a2da-0854b7fdce6e" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">Each service will be independent of the other. </mark></li></ul><ul id="d9c75766-12bf-4375-89a4-413c2f484a1e" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">It is possible to have different architectures, use different technologies, or use different databases. </mark></li></ul><ul id="44d0a72f-6155-496e-84fe-7b79e83054b9" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">They communicate with each other through a network environment such as a restful API or a message queue</mark></li></ul></details></li></ul><ul id="9c441cb5-e9f6-436a-9224-b4e4a5489700" class="toggle"><li><details open=""><summary><strong>Monolithic</strong></summary><ul id="f76f9246-c94e-40b0-9d4e-cd5ae43e523a" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">Monolithic is the old architecture often used, it is a monolithic architecture, meaning all features will be in one project.</mark></li></ul></details></li></ul><ul id="357e72a1-169a-4afc-9898-e39009ddb35d" class="toggle"><li><details open=""><summary><strong>Redux</strong></summary><ul id="c693b445-a4fb-4993-b353-c61d1cda4f8e" class="bulleted-list"><li style="list-style-type:disc">Redux is a library that helps us manage states better. Instead of passing state through each Component, Redux will create a single store used to change data.</li></ul><ul id="057d6337-94ec-44b9-b984-8745e59b79ce" class="bulleted-list"><li style="list-style-type:disc">Redux include: <ul id="72aea2dc-a3c1-4edf-930c-e679722b5200" class="bulleted-list"><li style="list-style-type:circle"><code>Store</code> includes:<ul id="1fc52d50-f428-4ba8-97cd-2855a886339e" class="bulleted-list"><li style="list-style-type:square"><code>State</code>: is the current data stored on the state</li></ul><ul id="baf2d595-3f41-4462-9388-e318b2d65a9d" class="bulleted-list"><li style="list-style-type:square"><code>Reducer</code>: is a function that converts old state into new state</li></ul><ul id="fd2ffa88-b1ca-459d-a79c-205f2703c8e8" class="bulleted-list"><li style="list-style-type:square">Dispatcher: manage <code>middlewares</code> and pass data down to reducer.</li></ul></li></ul><ul id="607426d5-6aaf-4964-8e06-2a38391e8b94" class="bulleted-list"><li style="list-style-type:circle"><code>Action</code>: create actions used to describe user-generated events</li></ul><ul id="dd5ed278-df73-4570-8986-5b255bb9d83f" class="bulleted-list"><li style="list-style-type:circle"><code>View</code>: display data provided by Store.</li></ul></li></ul></details></li></ul><ul id="0f484f71-1dfa-4995-9cc2-2a51bf21ebca" class="bulleted-list"><li style="list-style-type:disc">middleware is a class between Reducers and Dispatch Actions, it will modify and be called before the action is dispatched. Commonly used in logging, reporting, async api, routing, …</li></ul><ul id="0c8385a9-af6a-43e3-b163-39100d343015" class="bulleted-list"><li style="list-style-type:disc">Redux-Saga is a redux middleware library that makes managing side effects in redux apps simpler. By taking full advantage of ES6&#x27;s Generators (function*) feature, it allows us to write async code that looks like synchronous.</li></ul><ul id="3a2e63cb-c664-4224-8ff8-fa8ad416f759" class="toggle"><li><details open=""><summary><strong>Context ?</strong></summary><ul id="e8b421c9-9d6a-4397-a86c-a3246c05180f" class="bulleted-list"><li style="list-style-type:disc">Context provides a method of passing data through the component tree without having to manually pass props through each level.</li></ul></details></li></ul><h3 id="cea6ba81-00c8-48e1-80a8-a958212734fc" class="">Một số câu xã giao</h3><hr id="5f1ec8c3-d60b-40f2-9cbd-9e94aeba8577"/><p id="1b7583bc-2cbf-426b-9ec4-778985499f97" class="">
+</p></div></article></body></html>

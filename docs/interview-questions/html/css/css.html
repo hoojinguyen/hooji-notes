@@ -1,0 +1,740 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>CSS</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="6f81aa66-2cb6-4ec6-acbc-eba8aefd416c" class="page sans"><header><h1 class="page-title">CSS</h1></header><div class="page-body"><hr id="5faaf4fa-601c-4d04-90d0-69e01c74daf8"/><ul id="2b3b7347-26b6-4816-8653-4aa25cd0183c" class="toggle"><li><details open=""><summary><strong>inline ≠ block ≠ inline-block trong display</strong></summary><ul id="d463029a-dc1f-4305-8845-29198a9c925c" class="bulleted-list"><li style="list-style-type:disc"><strong>inline</strong>: item nằm trên 1 dòng, vượt quá độ dài sẽ tự động xuống dòng. Chỉ điều chỉnh được margin và padding của left, right (span)</li></ul><ul id="a44f99bf-44c8-4df9-91ad-da7070f7537f" class="bulleted-list"><li style="list-style-type:disc"><strong>block</strong>: item luôn được xuống dòng và chiếm toàn bộ width nếu không được set. Ta điều chỉnh được margin, padding của cả 4 hướng (div)</li></ul><ul id="95cbd0f2-1aa5-4d4b-bd5a-00f70bd0d892" class="bulleted-list"><li style="list-style-type:disc"><strong>inline-block</strong>: các item được sắp xếp trên cùng 1 hàng như inline nhưng sẽ có thuộc tính của block như có thể điều chỉnh 4 hướng của margin và padđing</li></ul></details></li></ul><ul id="b91878df-b7d6-4c09-9950-c4004e12ff19" class="toggle"><li><details open=""><summary><strong>BEM là gì ?</strong></summary><ul id="012681a9-fdaf-4557-8f3f-49e9a24a1596" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.notion.so/BEM-CSS-8ab91526913641aa962258d72bea2b83">BEM</a> viết tắt của Blocks, Elements, Modifiers, là một phương pháp đặt tên class cho HTML và CSS. </li></ul><ul id="75cf5068-33b2-4852-b122-7b6ea180c231" class="bulleted-list"><li style="list-style-type:disc">Được phát triển tại Yandex giúp lập trình viên hiểu rõ hơn mối quan hệ giữa HTML và CSS trong dự án front end</li></ul><pre id="e905bf10-db34-405a-81fc-3fa9626bd03f" class="code"><code>/* Một Block (khối) độc lập */
+.btn {}
+
+/* Element (phần tử) con, phụ thuộc vào Block ở trên */
+.btn__price {}
+
+/* Modifier (bộ điều chỉnh) thay đổi trạng thái của Block hoặc Element */
+.btn--orange {}
+.btn--big {}
+.btn__price--bold {}</code></pre></details></li></ul><ul id="cc75bb78-8354-43ed-a23a-d598392c7d62" class="toggle"><li><details open=""><summary><strong>Box-model là gì ?</strong></summary><ul id="77b2b178-cec8-4298-b441-ddd4f13bba11" class="bulleted-list"><li style="list-style-type:disc">là một hộp chữ nhật bao quanh mọi element trong HTML</li></ul><ul id="2fad64fc-563a-415b-9a29-58d801e8031a" class="bulleted-list"><li style="list-style-type:disc">được dùng để xác định chiều cao và rộng cảu </li></ul><ul id="db40645c-32bd-4e93-8252-3e11cc34841e" class="bulleted-list"><li style="list-style-type:disc">CSS Box Model giống như là một cái hộp bao quanh element của chúng ta và trong đó có rất nhiều lớp dày mỏng khác nhau, các lớp dày mỏng đó bao gồm: margins, border, padding và cuối cùng là phần nội dung của chúng ta (text và ảnh).</li></ul><ul id="978fa9dd-4f14-4b87-bc03-10f0bea7e5c4" class="bulleted-list"><li style="list-style-type:disc">Nó bao gồm:<ul id="65806ef4-f02c-4228-8878-cec631500bee" class="bulleted-list"><li style="list-style-type:circle"><strong>Content:</strong> như đã nói ở trên đây là phần mà text và hình ảnh của chúng ta xuất hiện</li></ul><ul id="0b79f344-2390-4541-8466-0ba3cb9d8cf0" class="bulleted-list"><li style="list-style-type:circle"><strong>Padding:</strong> là một khoảng trống kế tiếp bọc xung quanh <strong>content</strong></li></ul><ul id="cbf5e463-488c-4165-962e-8acb1d30cd26" class="bulleted-list"><li style="list-style-type:circle"><strong>Border</strong>: phần khung bao bọc xung quanh <strong>padding</strong> và <strong>content</strong></li></ul><ul id="e8aa4efb-23d3-40ee-9f69-292a5cd7239d" class="bulleted-list"><li style="list-style-type:circle"><strong>Margin</strong>: cuối cùng, <strong>margin</strong> là phần ngoài cùng của Box Model, chỉ là một khoảng trống không màu</li></ul></li></ul></details></li></ul><ul id="1023878c-1c19-4b07-b80f-c4b7ed481dd2" class="toggle"><li><details open=""><summary><strong><strong>Sự khác biệt giữa các thuộc tính Box Sizing?</strong></strong></summary><ul id="6e1de0ae-cc6e-49a5-b7d3-1af53d9e4ba4" class="bulleted-list"><li style="list-style-type:disc">Thuộc tính CSS box-sizing quy định cách tính tổng chiều rộng và chiều cao của một phần tử.<ul id="2dee884b-fe95-4c87-abf9-912a237c8aaf" class="bulleted-list"><li style="list-style-type:circle"><strong>Context-box:</strong> Giá trị chiều rộng và chiều cao mặc định chỉ áp dụng cho nội dung của phần tử. Padding và border nằm ở bên ngoài hộp.</li></ul><ul id="0f868c39-b006-4bd0-9bf8-d31c3584d64a" class="bulleted-list"><li style="list-style-type:circle"><strong>Padding-box:</strong> Giá trị chiều rộng và chiều cao mặc định chỉ áp dụng cho nội dung của phần tử và padding của nó. Border nằm ở bên ngoài hộp. Hiện tại chỉ có Firefox hỗ trợ padding-box.</li></ul><ul id="544204d4-f57d-4e5c-84c8-03f9f51b044c" class="bulleted-list"><li style="list-style-type:circle"><strong>Border-box:</strong> Giá trị chiều rộng và chiều cao áp dụng cho nội dung, padding và border.</li></ul></li></ul></details></li></ul><ul id="438bde4b-950a-412a-bad8-f8da75bdd997" class="toggle"><li><details open=""><summary><strong><strong></strong></strong><code><strong><strong>* { box-sizing: border-box }</strong></strong></code><strong><strong> là gì?</strong></strong></summary><ul id="c82746ca-cb47-4545-8022-be14238aaf19" class="bulleted-list"><li style="list-style-type:disc">Nó điều chỉnh tất cả phần tử có bao gồm padding, border trong không gian phần tử cho tính toàn chiều dài và chiều rộng.</li></ul><ul id="feca6574-fc64-42ea-86d0-704f8f9b3228" class="bulleted-list"><li style="list-style-type:disc">Trong <code>box-sizing: border-box</code>, chiều cao phần tử được tính toán với: height + padding dọc + độ dài border dọc. Còn chiều dài là width + padding ngang + độ dài border ngang.</li></ul></details></li></ul><ul id="0423fc21-292f-480c-9e23-5c38acc69128" class="toggle"><li><details open=""><summary><strong>CSS selector là gì ?</strong></summary><ul id="0333948b-4701-416c-8e17-4df228a24834" class="bulleted-list"><li style="list-style-type:disc">CSS Selector giống như là đường đẫn, chỉ định để cho CSS biết bạn đang muốn điều chỉnh, tạo kiểu cho phần tử HTML nào vậy.</li></ul><ul id="d51cf59e-aee5-4529-a90a-6216b6d82a5a" class="toggle"><li><details open=""><summary><strong><span style="border-bottom:0.05em solid">Một số loại selector:</span></strong></summary><ul id="b94ee44a-7dfa-4580-9fa7-858898d3b7b4" class="bulleted-list"><li style="list-style-type:disc"><strong>Universal Selector:</strong> hoạt động như một ký tự đại diện cho tất cả phần tử trong trang. <pre id="4c201017-0fa2-4e7b-9d37-29bb61d06519" class="code"><code>* {
+    color: &quot;green&quot;;
+}</code></pre></li></ul><ul id="e4f1648f-d04b-498a-a7f8-4ffe02801a1b" class="bulleted-list"><li style="list-style-type:disc"><strong>Element Type Selector: </strong>selector loại này ứng với một hoặc nhiều phần tử HTML cùng tên.<pre id="a0189f9e-8b25-435a-9e38-473bff950d4e" class="code"><code>ul {
+    line-style: none;
+}</code></pre></li></ul><ul id="c85dcaa8-2c07-4eca-981b-787444f63fb9" class="bulleted-list"><li style="list-style-type:disc"><strong>ID Selector: </strong>selector này ứng với bất kỳ phần tử HTML nào có thuộc tính ID có cùng giá trị với giá trị của selector.<pre id="71ffe775-aff0-41e1-8b86-0e5dd01267e9" class="code"><code>#container {
+    width: 960px;
+}</code></pre></li></ul><ul id="37fd71ce-05ac-44da-a2e1-243412d9adbb" class="bulleted-list"><li style="list-style-type:disc"><strong>Class Selector: </strong>tương tự như ID Selector nhưng thay vì ứng với ID thì nó ứng với thuộc tính class.<pre id="0013256a-6bd2-42c9-9882-ee9ad752f1c7" class="code"><code>.box {
+    padding: 10px;
+}</code></pre></li></ul><ul id="d19d003c-c0fc-4b9e-a8b3-ca9dbb4ed5d1" class="bulleted-list"><li style="list-style-type:disc"><strong>Descendant Combinator: </strong>giúp bạn kết hợp hai hoặc nhiều selector để có thể chỉ định phần tử cụ thể.<pre id="a5e84463-be10-426d-8696-0263463f6030" class="code"><code>#container .box {
+	float: left;
+}</code></pre></li></ul><ul id="2ca5c5db-8a69-419d-8e12-2863967521b9" class="bulleted-list"><li style="list-style-type:disc"><strong>Child Combinator: </strong>selector sử dụng bộ child combinator tương tự như descendant combinator, ngoại trừ việc nó chỉ nhắm đến các phần tử con.<pre id="9308dc6c-9436-456c-9100-bfd5947fc103" class="code"><code>#container&gt; .box {
+	float: left;
+	padding-bottom: 15px;
+}</code></pre></li></ul><ul id="18f9f468-0067-46c0-ab49-f02f490c7b71" class="bulleted-list"><li style="list-style-type:disc"><strong>General Sibling Combinator: </strong>selector này so với các phần tử có quan hệ anh chị em với phần tử tương ứng.<pre id="eb5220a0-4fd3-4600-975b-e84ffcd531a3" class="code"><code>h2 ~ p {
+	margin-bottom: 20px;
+}</code></pre></li></ul><ul id="38cbd1d8-32fb-4b08-8d4a-c061337a8183" class="bulleted-list"><li style="list-style-type:disc"><strong>Adjacent Sibling Combinator:</strong> selector sử dụng ký tự <code>+</code> và gần giống với General Sibling Combinator. Sự khác biệt là phần tử được nhắm phải là anh chị ruột thịt chứ không phải anh chị em chung chung.<pre id="2fccea02-679f-4eab-9d63-0d65df409ea0" class="code"><code>p + p {
+	margin-bottom: 0;
+}</code></pre></li></ul><ul id="7809fe3a-8d04-416a-82c3-3792c75e922d" class="bulleted-list"><li style="list-style-type:disc"><strong>Attribute Selector:</strong> nhắm đến các phần tử dựa trên sự xuất hiện và giá trị của thuộc tính HTML. Được khai báo bằng dấu ngoặc vuông.<pre id="9b7666b9-cea1-4ea8-aea1-f6e96c86446f" class="code"><code>input [type=”text”] {
+	width: 200px;
+}</code></pre></li></ul></details></li></ul></details></li></ul><ul id="8e15ee78-2e84-4bc2-99f2-487df2bc6a98" class="toggle"><li><details open=""><summary><strong>Có thể hiện thị 1 trang web trong 1 trang web khác không ?</strong></summary><ul id="eaf2fec2-93e6-4ede-a3d8-d0a7d60702b6" class="bulleted-list"><li style="list-style-type:disc">Có</li></ul><ul id="46c344c5-970a-4fcd-860f-200e414a27e1" class="bulleted-list"><li style="list-style-type:disc">Sử dụng iframe để nhúng 1 web khác vào</li></ul><ul id="28011f45-50c3-4bfc-a6c2-f00d73dafe5e" class="bulleted-list"><li style="list-style-type:disc">Có thể nhúng 1 website, video hoặc image, …</li></ul></details></li></ul><ul id="ba65779d-d948-4ab4-9e98-69425e9234db" class="toggle"><li><details open=""><summary><strong>z-index dùng để làm gì ?</strong></summary><ul id="0f3a91e0-cbf9-40a6-8b8c-7512ec40624e" class="bulleted-list"><li style="list-style-type:disc">z-index được sử dụng để chỉ định cách xếp chồng theo chiều sâu của các phần tử chồng lên nhau xảy ra tại thời điểm định vị nó. </li></ul><ul id="260a5a94-29a8-40b7-b5b1-a1fa6b4a9d7e" class="bulleted-list"><li style="list-style-type:disc">Nó chỉ định thứ tự ngăn xếp theo chiều sâu của các phần tử được định vị giúp xác định cách hiển thị các phần tử diễn ra như thế nào trong trường hợp chồng chéo.</li></ul></details></li></ul><ul id="b3e56c18-778b-4dd5-89c4-ceef2de46d1e" class="toggle"><li><details open=""><summary><strong><strong>Sự khác biệt giữa reset và normalize CSS?</strong></strong></summary><ul id="df822a02-1210-4797-b500-2c4ff305c816" class="bulleted-list"><li style="list-style-type:disc"><strong>Reset CSS:</strong> nhằm mục đích xoá tất cả thiết lập style mặc định từ trình duyệt. Ví dụ như margin, padding, font-size của tất cả phần tử đó được reset lại giống nhau.</li></ul><ul id="eec9a7d0-58d7-4d8a-a852-309465dcf54d" class="bulleted-list"><li style="list-style-type:disc"><strong>Normalize CSS:</strong> nhằm mục đích làm cho các style mặc định nhất quán trên trình duyệt. Nó cũng sửa các lỗi phổ biến trên trình duyệt.</li></ul></details></li></ul><ul id="8eebd755-be92-45c3-926a-3b760e22088b" class="toggle"><li><details open=""><summary><strong>Float là gì ?</strong></summary><ul id="ddfd6482-0dc2-45a5-a278-0a9a34274c4c" class="bulleted-list"><li style="list-style-type:disc">dùng để định vị phần tử theo chiều ngang về bên trái hoặc phải</li></ul></details></li></ul><ul id="1a95f0ec-d252-434f-a044-c0d38a648ad1" class="toggle"><li><details open=""><summary><strong><strong>Phần tử Pseudo và các lớp Pseudo là gì?</strong></strong></summary><ul id="943a8d25-cb28-4d9a-bbda-88cfba7a2959" class="bulleted-list"><li style="list-style-type:disc"><strong>Phần tử pseudo</strong> cho phép ta tạo các mục thường không tồn tại trong DOM.<ul id="b164f2b7-3b0f-4030-b493-83350a1b5519" class="bulleted-list"><li style="list-style-type:circle">::before</li></ul><ul id="56f6c028-29ea-4529-80d2-00bb7ba26143" class="bulleted-list"><li style="list-style-type:circle">::after</li></ul><ul id="b35f14e1-a017-4e19-9fe4-735f624bf9a5" class="bulleted-list"><li style="list-style-type:circle">::first-letter</li></ul><ul id="de143be9-4ab4-4f54-bbdf-a1f4dc9092fb" class="bulleted-list"><li style="list-style-type:circle">::first-line</li></ul><ul id="490653dd-f031-4c77-8c61-27dd6a55b816" class="bulleted-list"><li style="list-style-type:circle">::selection</li></ul></li></ul><ul id="2f770e51-b1a7-4c65-b5fc-7b5fa8da61f5" class="bulleted-list"><li style="list-style-type:disc"><strong>Lớp pseudo</strong> chọn các phần tử thông thường nhưng trong các điều kiện nhất định như khi người dùng di chuột qua liên kết.<ul id="9269005e-17de-4478-abd6-ba7347113812" class="bulleted-list"><li style="list-style-type:circle">:link</li></ul><ul id="28b897c9-bb0a-45fb-ad93-695bf25d1823" class="bulleted-list"><li style="list-style-type:circle">:visited</li></ul><ul id="852646fc-d9b7-401a-a2ad-eec1bcd0f057" class="bulleted-list"><li style="list-style-type:circle">:hover</li></ul><ul id="5601ec6e-f458-4ce6-87dc-e3cbfc337dab" class="bulleted-list"><li style="list-style-type:circle">:active</li></ul><ul id="20ebf916-0c8c-4a39-ac29-7451afc4dcf5" class="bulleted-list"><li style="list-style-type:circle">:focus</li></ul></li></ul></details></li></ul><ul id="e6c7fcda-5781-47d4-b879-6359d552ebe8" class="toggle"><li><details open=""><summary><strong>CSS sprite là gì ?</strong></summary><ul id="6ca57734-d001-43b8-aa32-50db912adca2" class="bulleted-list"><li style="list-style-type:disc">CSS Sprite dùng cho kết hợp nhiều hình ảnh thành một hình ảnh lớn. Nó thường dùng cho biểu diễn icons. Các ưu điểm của nó là:<ul id="00466e2c-f8b2-4b29-ada3-27c8d0cffeef" class="bulleted-list"><li style="list-style-type:circle">Giảm số lượng yêu cầu HTTP để lấy nhiều ảnh vì nó cho phép chỉ gửi một yêu cầu.</li></ul><ul id="c674cf4f-7de9-4702-9fb5-1d1de65b6639" class="bulleted-list"><li style="list-style-type:circle">Nó giúp tải trước các nội dung giúp hiển thị các icon hoặc hình ảnh khi di chuột và các pseudo-state khác.</li></ul><ul id="e442e2e9-938c-465b-adb4-2e0a5fb741ad" class="bulleted-list"><li style="list-style-type:circle">Khi có nhiều hình ảnh, trình duyệt sẽ thực hiện các lệnh gọi riêng biệt để lấy hình ảnh cho từng hình ảnh đó.</li></ul></li></ul></details></li></ul><ul id="036ba6d9-24c3-4559-a4c1-5d43f516a75e" class="toggle"><li><details open=""><summary><strong>Tích hợp css vào HTML có bao nhiêu cách ?</strong></summary><ul id="fb7e454f-0ad5-4da3-a3bc-652cbd50b8b5" class="bulleted-list"><li style="list-style-type:disc">inline: css trực tiếp trong element bằng thuộc tính style</li></ul><ul id="c18d83fc-98d6-49e8-9d09-7b3731ea782f" class="bulleted-list"><li style="list-style-type:disc">external: tạo 1 file css riêng và nhúng vào</li></ul><ul id="5867cfe3-f930-4a95-be8c-14303c4a2609" class="bulleted-list"><li style="list-style-type:disc">internal: style thông qua thẻ &lt;style&gt; đặc ở &lt;head&gt;</li></ul></details></li></ul><ul id="0e3098e3-a251-433d-9051-481303532a17" class="toggle"><li><details open=""><summary><strong><strong>Lợi thế của dùng translate() thay vì position absolute?</strong></strong></summary><ul id="71bcb7f4-f6d1-4c35-892c-2842c239ec76" class="bulleted-list"><li style="list-style-type:disc">Translate() không làm cho trình duyệt kích hoạt repaint layout, mà chỉ thực hiện soạn thảo.</li></ul><ul id="5ef757c7-b85b-4638-9133-85d836ed46b2" class="bulleted-list"><li style="list-style-type:disc">Còn position: absolute làm trình duyệt phải vẽ lại các luồng DOM. </li></ul><p id="2518966d-3f85-443a-b9e1-e6dd749d2720" class="">→ Thế nên <code>translate()</code> đem về hiệu suất tốt hơn</p></details></li></ul><ul id="defc2780-ca8e-417d-adab-78b5a162d7a8" class="toggle"><li><details open=""><summary><strong><strong>Liệu margin-top hoặc margin-bottom có ảnh hưởng đến các phần tử inline không?</strong></strong></summary><ul id="b2fa49c3-0917-49ad-8b62-2f1b20d386be" class="bulleted-list"><li style="list-style-type:disc">Không, nó không ảnh hưởng đến các phần tử inline. Các phần tử inline ở cùng dòng với nội dung của trang.<strong></strong></li></ul></details></li></ul><ul id="68a42c48-26db-4f32-b4a8-927fc02c8006" class="toggle"><li><details open=""><summary><strong>Khi nào xảy ra DOM-reflow ?</strong></summary><ul id="12500bab-72b3-4fcf-8253-22b19fc5b796" class="bulleted-list"><li style="list-style-type:disc">Dom-reflow là quá trình browser tính toán lại vị trí và hình dạng của element trong document, nhằm mục đích hiển thị lại 1 phần hoặc toàn bộ DOM</li></ul><ul id="c27a0815-99f8-4785-bc1c-9eb950001323" class="bulleted-list"><li style="list-style-type:disc">Reflow xảy ra khi: <ul id="504f05bb-c753-4e8a-91e8-071cdb8a35c1" class="bulleted-list"><li style="list-style-type:circle">Chèn, xóa, update element trong DOM</li></ul><ul id="bce31b8c-5fe3-4e68-a647-79a60769d84d" class="bulleted-list"><li style="list-style-type:circle">Sửa đổi nội dung trang</li></ul><ul id="9d84012d-d30a-48d1-8b0a-a489e3502192" class="bulleted-list"><li style="list-style-type:circle">Thay đổi style css</li></ul></li></ul></details></li></ul><ul id="eecc4d99-7829-4bc3-b788-c8b7bbabfa59" class="toggle"><li><details open=""><summary><strong>Làm thế nào để căn giữa 1 thẻ p trong thẻ div ?</strong></summary><pre id="7234f79f-fbaf-4afd-92c7-24606c91b127" class="code"><code>&lt;div&gt;
+	&lt;p&gt;Hello&lt;/p&gt;
+&lt;/div&gt;</code></pre><pre id="ccda4b44-fff1-40f0-9df9-447d4772e84e" class="code"><code>// can giua theo chieu ngang
+div {
+	text-align: center;
+}
+
+// can giua theo chieu doc
+div {
+	position: relative;
+	
+	p {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: auto;
+	}
+}</code></pre></details></li></ul><ul id="c37d09a5-9d0f-4c73-bfe7-62114d7657af" class="toggle"><li><details open=""><summary><strong><strong>Làm sao để căn giữa một div trong một div khác?</strong></strong></summary><ul id="4f4f3a80-eb20-4baf-8e84-a8381a95874d" class="toggle"><li><details open=""><summary>transform</summary><pre id="408f411f-f405-4bc2-b284-9ffd8dd90119" class="code"><code>.cn {
+	position: relative;
+	width: 500px;
+	height: 500px;
+}
+
+.inner {
+	position: absolute;
+	top: 50%; left: 50%;
+	transform: translate(-50%,-50%);
+	width: 200px;
+	height: 200px;
+}</code></pre></details></li></ul><ul id="e2afef56-d6b5-49f3-988a-f2b176e3a098" class="toggle"><li><details open=""><summary>flex-box</summary><pre id="9fd43b42-b4c3-44da-93ea-d6faae751e3c" class="code"><code>.cn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}</code></pre></details></li></ul><ul id="d653fa63-3c77-4e3e-945c-c9207061593d" class="toggle"><li><details open=""><summary>grid</summary><pre id="1d70b74c-271a-491b-97e4-7147ffc40754" class="code"><code>&lt;div class=&quot;wrap_grid&quot;&gt;
+	&lt;div id=&quot;container&quot;&gt;vertical aligned text&lt;br /&gt;some more text here
+	&lt;/div&gt;
+&lt;/div&gt;</code></pre><pre id="cb4ffaf3-6fb8-400e-825b-da9ce076f84d" class="code"><code>.wrap-grid {
+	display: grid;
+	place-content: center;
+}</code></pre></details></li></ul></details></li></ul><ul id="861d08c2-a2a0-422a-882b-dbf19dba5bcf" class="toggle"><li><details open=""><summary><strong>Các các ẩn đi 1 phần tử trong css </strong></summary><ul id="9da62368-915c-43d6-ae98-d98faa5d1629" class="bulleted-list"><li style="list-style-type:disc">display: none → phần tử sẽ không xuất hiện trong DOM</li></ul><ul id="75c887e4-032b-4e1e-9225-e5d0b7404908" class="bulleted-list"><li style="list-style-type:disc">visibility: hidden → phần tử có xuất hiện trong DOM nhưng không hiển thị lên màn hình</li></ul><ul id="f9ce0f25-6c83-470a-972c-d3aa946b6b0b" class="bulleted-list"><li style="list-style-type:disc">position: absolute → set top, right, bottom hoặc left về số âm để di chuyển element ra ngoài màn hình</li></ul><ul id="8638a6d8-8560-458e-86bf-1bf61579b6f3" class="bulleted-list"><li style="list-style-type:disc">transform: translateX(-999px) | translateY(-999px) | scale(0)</li></ul><ul id="0243b361-627f-4c01-91cd-c9f36429efd3" class="bulleted-list"><li style="list-style-type:disc">opacity: 0 → ẩn đi, nó chỉ vô hình nhưng ta vẫn có thể add event lên nó</li></ul></details></li></ul><ul id="27efb956-9a8d-484d-b0fe-3386784e6ba3" class="toggle"><li><details open=""><summary><strong>grid và flex khác nhau gì ?</strong></summary><ul id="bb703183-8ce0-4b16-9dfe-2784177d7933" class="bulleted-list"><li style="list-style-type:disc">grid là bố cục 2 chiều cả ngang và dọc → tiếp cận theo hướng layout</li></ul><ul id="9bf4a4b8-93d1-4ba1-93e4-585a72694d4d" class="bulleted-list"><li style="list-style-type:disc">flex 1 chiều, theo chiều ngang hoặc dọc → tiếp cận theo hướng nội dung</li></ul><ul id="1a3c91f8-19af-4f3c-b6b4-2404549894dc" class="bulleted-list"><li style="list-style-type:disc">Nếu biết rõ nội dung ta cần trình bày thì nên dùng flex ngược lại dùng grid</li></ul><ul id="4d63c34d-0256-4e73-b7e6-2f2857f92fe1" class="bulleted-list"><li style="list-style-type:disc">Flex phù hợp web có bố cục đơn giản, grid thì phù hợp UI phức tạp</li></ul></details></li></ul><ul id="bc05e0fa-52f6-4863-8ab7-5400731e97e0" class="toggle"><li><details open=""><summary><strong>Grid là gì?</strong></summary><ul id="513fab08-b3fa-4f02-ac30-e1d99232db20" class="bulleted-list"><li style="list-style-type:disc">hệ thống layout 2 chiều theo trục x và y</li></ul><ul id="f7cab11f-7647-419e-a666-6443bab2e1ab" class="bulleted-list"><li style="list-style-type:disc">tổ hợp của đường ngang và dọc cắt nhau bao gồm các hàng và cột</li></ul><ul id="c87dc0ca-dab4-4a93-aa0d-16f6854d3cff" class="bulleted-list"><li style="list-style-type:disc">Các phần tử sẽ được đặt trên các hàng và cột này</li></ul></details></li></ul><ul id="30d58167-4d09-40e5-8bc5-3f09688e4143" class="toggle"><li><details open=""><summary><strong>Flexbox là gì?</strong></summary><ul id="e2bf7e6c-5f85-459f-b640-07ab9ccac60c" class="bulleted-list"><li style="list-style-type:disc">là hệ thống bố cục một chiều (ngang hoặc dọc)</li></ul><ul id="e5096e03-9b04-4665-bcfe-d318cf9400f6" class="bulleted-list"><li style="list-style-type:disc">giúp căn chỉnh bố trí những item trong container một cách linh hoạt ngay cả khi kích thước chưa xác định hoặc kích thước động</li></ul><ul id="1eae8094-22eb-43d1-8609-6009aea334c4" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.notion.so/Flexbox-686ee4ef94394e80b355b25425dbfa94">Flex</a> bao gồm: <ul id="beb08c3a-4af4-4e1a-8256-4d156a8bcf91" class="bulleted-list"><li style="list-style-type:circle">flex-container (parent)<ul id="d323f3ea-eae3-447e-890e-d835c9fe325b" class="bulleted-list"><li style="list-style-type:square">flex-direction</li></ul><ul id="6a4e4fac-4544-48a2-9138-c601f86a82c3" class="bulleted-list"><li style="list-style-type:square">flex-wrap</li></ul><ul id="2b8cd57e-5783-4d7c-8b6b-8179b9a92106" class="bulleted-list"><li style="list-style-type:square">flex-content</li></ul><ul id="5a98c4e4-0565-4e8e-a5e8-e5d1c3cf114b" class="bulleted-list"><li style="list-style-type:square">align-items</li></ul><ul id="a9850d12-13b9-46be-adb2-36c502980835" class="bulleted-list"><li style="list-style-type:square">align-content</li></ul></li></ul><ul id="53b7efaf-9224-4bee-9f17-c85033a629ec" class="bulleted-list"><li style="list-style-type:circle">flex-item (child)<ul id="aac6e36a-c88d-480a-9f4a-ad26b79052ee" class="bulleted-list"><li style="list-style-type:square">order</li></ul><ul id="ff5a6d6f-3271-4dd8-93d1-71e890a3eb49" class="bulleted-list"><li style="list-style-type:square">align-self</li></ul><ul id="293269be-8cc8-484c-af01-223555680486" class="bulleted-list"><li style="list-style-type:square">flex-grow</li></ul><ul id="5b21d252-12d5-4c34-9bef-ec8843cda472" class="bulleted-list"><li style="list-style-type:square">flex-shink</li></ul><ul id="d280a916-4c45-4842-8932-aac38df19939" class="bulleted-list"><li style="list-style-type:square">flex-basis</li></ul></li></ul></li></ul></details></li></ul><ul id="a1fa6a77-afe0-4300-85d8-bedd88d3c425" class="toggle"><li><details open=""><summary><strong><mark class="highlight-red">Giải thích Position trong css?</mark></strong></summary><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="5e30f8ff-8cf8-4eaf-b936-a67fd7705149"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Normal flow là cách trình duyệt hiển thị những block element từ trên xuống dưới và mỗi block sẽ chiếm toàn bộ chiều ngang của container (div, p), ngược lại thì là inline(a, span, img)</div></figure><ul id="bc53ec36-07d0-4f0b-a2e8-fcce0ca6eea9" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong>static</strong></mark>: vị trí mặc định, theo dòng chảy thông thường của trang, tuy nhiên ta không thể set <strong>L, T, R, B, z-index </strong>cho nó</li></ul><ul id="98bebb93-271e-43a1-a8a2-5b7638a47e0c" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong>relative</strong></mark>: tuân theo quy luật của dòng chảy thông thường của trang nhưng có thể set các giá trị <strong>L, T, R, B, z-index</strong></li></ul><ul id="2503d9fd-5b64-4e1d-91c8-c8c4757eff20" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong>absolute</strong></mark>: element sẽ bị loại bỏ khỏi normal flow và nó sẽ nằm tương đối so với thuộc tính cha gần nhất của nó mà element cha đó phải có thuộc tính position là <strong>relative</strong>, <strong>absolute</strong>, <strong>fixed</strong> hoặc <strong>sticky</strong>. <ul id="5a906dc0-a3a0-4188-ad0f-01cf1df903c8" class="bulleted-list"><li style="list-style-type:circle">Nếu không có thằng element cha nào mà có các thuộc tính trên thì nó sẽ nằm tương đối với root-element là thẻ html</li></ul></li></ul><ul id="ccf1e61a-cfe7-4117-9660-f5bcdac4811a" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong>fixed</strong></mark>: tương tự absolute nhưng khác là nó chỉ hiện thị tương đối so với thẻ html (root-element)</li></ul><ul id="887a5178-1c32-42dd-b802-3996e1750e4c" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong>sticky</strong></mark>: là sự kết hợp giữa <strong>relative</strong> và <strong>fixed</strong>. Tức là nó vẫn nằm trong normal flow của trang như <strong>relative</strong> nhưng nó sẽ trở thành <strong>fixed</strong> nếu ta cuộn xuống đúng vị trí của nó. Và nó chỉ hoạt động trên container chứa nó. </li></ul></details></li></ul><ul id="c172d360-1632-4983-87c4-15f5589263f1" class="toggle"><li><details open=""><summary><strong>overflow là gì ?</strong></summary><ul id="a09d32ed-4859-476b-b5f6-bcfe0aeddfc6" class="bulleted-list"><li style="list-style-type:disc">dùng để xử lý khi kích thước nội dung vượt quá kích thược container</li></ul></details></li></ul><ul id="49609e86-210e-4f51-b515-b892cb7c75de" class="toggle"><li><details open=""><summary><strong>Độ đặc hiệu, độ cụ thể trong css là gì ?</strong></summary><ul id="9f8a3ed8-a394-4b19-b4dd-323a9ced3d8b" class="bulleted-list"><li style="list-style-type:disc">Tính đặc hiệu hay độ ưu tiên (specificity) là cách mà trình duyệt quyết định sẽ áp dụng thuộc tính css nào với một phần tử khi có nhiều quy tắc css cùng trỏ đến phần tử đó.</li></ul><ul id="72581161-5bd2-455a-9d8b-70a73d46adc5" class="bulleted-list"><li style="list-style-type:disc">Inline style sẽ được ưu tiên so với ID rồi đến giá trị lớp (pseudo-class hoặc attribute selector), universal selector <strong>(*)</strong> sẽ không có độ ưu tiên. ID Selector có độ ưu tiên cao hơn attribute selector.</li></ul></details></li></ul><ul id="8807fdd6-e223-449e-8152-d1bc46f88054" class="toggle"><li><details open=""><summary><strong>Đơn vị trong CSS?</strong></summary><ul id="65cd1f3a-b997-41bd-bbd5-5ce8e211f3bc" class="bulleted-list"><li style="list-style-type:disc">Absolute units: px, pt, cm, mm, …</li></ul><ul id="1f0e326c-156a-495c-a2fb-dc3246ae626c" class="bulleted-list"><li style="list-style-type:disc">Relative units: rem, em, %, vw, vh, vmin, vmax, …<ul id="f6c6fd4b-3217-4f96-b47b-53ec7985d43f" class="bulleted-list"><li style="list-style-type:circle">em: giá trị phụ thuộc vào phần tử cha gần nhất hoặc chính nó, được xác định thông qua thuộc tính font-size</li></ul><ul id="2855486e-4ea9-4b62-a835-615ee0b05222" class="bulleted-list"><li style="list-style-type:circle">rem: tương tự như em nhưng phụ thuộc vào root</li></ul><ul id="ce33f94e-ffc6-49d5-83ee-3a80d567d97a" class="bulleted-list"><li style="list-style-type:circle">vw: tính theo tỉ lệ <strong>chiều rộng khung nhìn </strong>thiết bị. 1 vw = 1/100 width view-port. <ul id="079bbdb6-064e-4f51-9417-37440c97c266" class="bulleted-list"><li style="list-style-type:square">Ví dụ: màn hình của bạn có chiều rộng 1100px thì 1vw = 11px</li></ul></li></ul><ul id="fed963e1-bbd0-4771-a1ba-d6964b805b2e" class="bulleted-list"><li style="list-style-type:circle">vh: tương tự vw nhưng theo height view-port</li></ul></li></ul></details></li></ul><ul id="cf4421a6-d429-44fa-a32d-cd7facffc149" class="toggle"><li><details open=""><summary><strong>Cách css hoạt động?</strong></summary><ul id="d441ab98-cdfa-4acc-99c9-b49c4959e852" class="bulleted-list"><li style="list-style-type:disc">Ngôn ngữ CSS được thiết kế để sử dụng cùng với ngôn ngữ &quot;đánh dấu&quot; như HTML. </li></ul><ul id="d6445a66-48c9-49b6-bfaa-759267a8fd3f" class="bulleted-list"><li style="list-style-type:disc">CSS xác định cách các phần tử HTML được định dạng - kiểm soát bố cục, màu sắc, phông chữ của chúng, ... </li></ul><ul id="dfbf3642-b68f-43ac-b2b8-47fddd726332" class="bulleted-list"><li style="list-style-type:disc">Khi trình duyệt hiển thị một document, nó phải kết hợp nội dung của document với thông tin style của nó. </li></ul><ul id="cd611782-c236-45e6-9517-c39767ce9624" class="bulleted-list"><li style="list-style-type:disc">Nó xử lý document theo một số giai đoạn, mà chúng ta đã liệt kê bên dưới.<ol type="1" id="c1ca1b7e-b4c5-4b5c-ba1f-f7b4ced91ae4" class="numbered-list" start="1"><li>Trình duyệt tải HTML (ví dụ: nhận nó từ mạng).</li></ol><ol type="1" id="9537d768-fc1a-4711-967c-ae18f2272f1c" class="numbered-list" start="2"><li>Nó chuyển đổi HTML thành DOM.</li></ol><ol type="1" id="2dc84343-7646-4229-aef5-bf4b0ffaaecf" class="numbered-list" start="3"><li>Sau đó, trình duyệt sẽ tìm nạp hầu hết các tài nguyên được liên kết với tài liệu HTML, chẳng hạn như hình ảnh và video được nhúng và CSS được liên kết.</li></ol><ol type="1" id="bfb9f002-3eb0-4b4b-b7c0-3782b66a6edb" class="numbered-list" start="4"><li>Trình duyệt phân tích cú pháp CSS đã nạp và sắp xếp các quy tắc khác nhau theo kiểu selector của chúng thành các &quot;nhóm&quot; khác nhau, ví dụ: phần tử, lớp, ID, ... Dựa trên các selector mà nó tìm thấy, nó sẽ tìm ra các quy tắc nên được áp dụng cho các nút nào trong DOM và đính kèm kiểu cho chúng theo yêu cầu (bước trung gian này được gọi là cây render).</li></ol><ol type="1" id="29dc9910-9f8e-4361-97fb-5460790b9265" class="numbered-list" start="5"><li>Cây render được bố trí trong cấu trúc mà nó sẽ xuất hiện sau khi các quy tắc đã được áp dụng cho nó.</li></ol><ol type="1" id="5fed037d-a311-4337-a717-206c98368676" class="numbered-list" start="6"><li>Hiển thị trực quan của trang được hiển thị trên màn hình.</li></ol></li></ul></details></li></ul><p id="d4f2bd3c-7f92-4cfd-b02f-525554bab255" class="">
+</p><p id="d0ac760f-9d50-41e8-8919-bf44ce9f7203" class="">
+</p></div></article></body></html>

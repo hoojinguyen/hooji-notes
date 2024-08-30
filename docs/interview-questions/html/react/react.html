@@ -1,0 +1,674 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>REACT</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="6e890835-c4aa-4727-8017-fbd0e939cc8b" class="page sans"><header><h1 class="page-title">REACT</h1></header><div class="page-body"><hr id="c330ee53-920e-4062-8410-fac30539328a"/><ul id="0954bcf5-0f94-4f36-9236-4bd9b3edd6dd" class="toggle"><li><details open=""><summary><strong>React là gì, ưu điểm, hạn chế?</strong></summary><ul id="3e919cfc-b4c3-473e-97fd-7de6fe1487ae" class="bulleted-list"><li style="list-style-type:disc">React là một lib, open source đùng để phát triển giao diện người dùng. Dùng cho các app SPA. Nó hữu ích trong việc tạo các UI phức tạp và có thể tái sử dụng tuân theo mô hình component.</li></ul><ul id="e2bf1299-952f-45b4-a925-04390ed02729" class="bulleted-list"><li style="list-style-type:disc">Một số tính năng của react như: <ul id="f97c844b-f739-43ba-a6c0-e9205cf0da72" class="bulleted-list"><li style="list-style-type:circle">Tăng hiệu suất của app bằng việc sử dụng Virtual DOM</li></ul><ul id="b65491b7-c1c2-452b-9655-b7db13da4b89" class="bulleted-list"><li style="list-style-type:circle">JSX giúp code dễ đọc và dễ viết</li></ul><ul id="8b664ea9-7c18-481f-8bf8-c5064f5ec0a3" class="bulleted-list"><li style="list-style-type:circle">Có thể render cả 2 phía client và server</li></ul><ul id="f8ccfd84-dfd0-45fd-8202-bdb6af3128cd" class="bulleted-list"><li style="list-style-type:circle">Dễ testing hoặc kết hợp với những framework khác</li></ul><ul id="daf3cf3e-23c4-476b-8a69-b4b58ef167dc" class="bulleted-list"><li style="list-style-type:circle">Cộng đồng lớn và được hậu thuẫn bởi facebook</li></ul></li></ul><ul id="fb2fad0c-6044-439d-8d18-870f16986bbf" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid"><strong>Ưu điểm</strong></span><ul id="9af2b057-c2f9-40ac-bbbe-4238439c3f26" class="bulleted-list"><li style="list-style-type:circle">Viết code dễ dàng hơn khi sử dụng JSX có thể nhúng mã HTML CSS và JS</li></ul><ul id="77d46d0b-8246-4d88-a584-44747ee7c1e3" class="bulleted-list"><li style="list-style-type:circle">Sử dụng component, giúp chia nhỏ ứng dụng thành phần những thành phần nhỏ hơn và có thể tái sử dụng được</li></ul><ul id="0c3a8bdd-21ef-4ec9-899f-ada6205191db" class="bulleted-list"><li style="list-style-type:circle">Hệ sinh thái đa dạng từ app CSR, SSR, app native, hay app desktop với electron, …</li></ul></li></ul><ul id="46703806-d5ec-4420-8969-27c25a0c25fd" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid"><strong>Nhược điểm:</strong></span><ul id="5071a569-4bc5-4799-810b-1102f7794001" class="bulleted-list"><li style="list-style-type:circle">React không phải là 1 framework hoàn chỉnh mà chỉ là thư viện, phụ thuộc vào cộng đồng và LIB bên ngoài nhiều</li></ul></li></ul></details></li></ul><ul id="832ea931-1a04-477b-bd2a-9bc7ff948729" class="toggle"><li><details open=""><summary><strong>Vòng đời life cycle của REACT</strong></summary><p id="20cf8f0d-e940-49a7-8965-df46d43a61a5" class=""><strong>Có 3 giai đoạn trong vòng đời component React.</strong></p><ul id="3a8d1b2a-bd83-40bb-9bc5-4226bcbfdc3a" class="bulleted-list"><li style="list-style-type:disc"><strong>Mounting</strong>: đề cập đến việc đưa phần tử vào DOM của trình duyệt. Vì React dùng virtual DOM, toàn bộ DOM của trình duyệt đã render sẽ không được làm mới. Bao gồm các phương thức trong giai đoạn này như: <code>constructor</code> và <code>componentDidMount</code>.</li></ul><ul id="434b1a5c-e9d2-4c6b-b055-d52cb7298905" class="bulleted-list"><li style="list-style-type:disc"><strong>Updating</strong>: Trong giai đoạn này, component sẽ được cập nhật khi có thay đổi state hoặc props của component. Các phương thức trong giai đoạn này: <code>getDerivedStateFromProps</code>, <code>shouldComponentUpdate</code>, <code>render</code>, và <code>componentDidUpdate</code>.</li></ul><ul id="e5520506-4fec-44bd-a60a-e24c267f2ba6" class="bulleted-list"><li style="list-style-type:disc"><strong>Unmounting</strong>: Ở giai đoạn cuối, component sẽ bị xoá khỏi DOM. Giai đoạn này sẽ có phương thức là <code>componentWillUnmount</code></li></ul><p id="12cf44ba-c0a4-477e-9119-c478aaad7851" class="">
+</p><p id="7e737d89-6448-4b47-8c32-60d83804c6cd" class="">Ngoài ra còn có nhiều method khác nữa nhưng đây là những method hay dùng nhất trong vòng đời react</p><hr id="24afd88c-2b92-4d2f-bd07-2deac6cdea52"/><p id="2bf934e5-5c98-404e-9e6b-f9d764236385" class=""><strong>Các phương thức trong vòng đời:</strong></p><ul id="aed3e16e-8a7f-482d-acdd-29f078b35d68" class="bulleted-list"><li style="list-style-type:disc"><code>constructor()</code>: phương thức được gọi khi component được tạo trước khi thực hiện bất kỳ hành động gì. Nó giúp tạo state và props.</li></ul><ul id="e103c4bb-cece-4cf9-b7d7-e65e9e57d4b9" class="bulleted-list"><li style="list-style-type:disc"><code>getDerivedStateFromProps()</code>: nó sẽ gọi trước khi phần tử được render vào DOM. Nó giúp thiết lập đối tượng state dựa trên props khởi tạo. Phương thức <code>getDerivedStateFromProps</code> sẽ có một state như đối số và trả về một đối tượng để thay đổi state. Nó sẽ là phương thức đầu tiên được gọi khi thực hiện cập nhật.</li></ul><ul id="c47a261b-c1b1-4c88-9d7d-6addae8ff657" class="bulleted-list"><li style="list-style-type:disc"><code>render()</code>: phương thức này sẽ render HTML từ DOM với thay đổi mới nhất. Phương thức <code>render</code> sẽ được gọi mỗi khi có thay đổi đến component.</li></ul><ul id="8eb4944f-feee-4632-8dcb-fc944a7d2fe6" class="bulleted-list"><li style="list-style-type:disc"><code>componentDidMount()</code>: phương thức sẽ được gọi sau khi render component. Ta có thể chạy lệnh cần component đã được lưu trong DOM.</li></ul><ul id="92eaddf7-6324-429d-9887-25db4878ec77" class="bulleted-list"><li style="list-style-type:disc"><code>shouldComponentUpdate()</code>: trả về giá trị boolean để quyết định xem có render hay không. Mặc định sẽ là True.</li></ul><ul id="5cd40c1a-1473-4bd7-aea5-fd9131636df6" class="bulleted-list"><li style="list-style-type:disc"><code>getSnapshotBeforeUpdate()</code>: cung cáp truy cập cho props cung như state trước khi cập nhật. Nó dùng cho kiểm tra giá trị trước khi cập nhật.</li></ul><ul id="c63d539d-fab8-4d34-9f43-350ce6a88ed1" class="bulleted-list"><li style="list-style-type:disc"><code>componentDidUpdate()</code>: được gọi sau khi cập nhật component trong DOM.</li></ul><ul id="a1951e7d-e634-471d-b1e6-ea533a441a6e" class="bulleted-list"><li style="list-style-type:disc"><code>componentWillUnmount()</code>: phương thức được gọi khi component bị xoá khỏi DOM.</li></ul></details></li></ul><ul id="7ed16762-bc5a-485c-a154-266ecadbb41c" class="toggle"><li><details open=""><summary><strong>Virtual DOM và Real DOM</strong></summary><ul id="532ef47a-3120-4a49-9dac-0a41033bb30a" class="bulleted-list"><li style="list-style-type:disc"><code>DOM</code> là viết tắt của Document Object Model (Mô hình Đối tượng Tài liệu) dùng để truy xuất các tài liệu dạng HTML và XML. DOM đại diện cho một tài liệu như là một cây cấu trúc dữ liệu. Còn node thì đại diện cho một phần tử trong DOM.</li></ul><ul id="166f24c7-f3a6-42ad-ae0c-71ff449ac3cc" class="bulleted-list"><li style="list-style-type:disc"><code>Virtual DOM</code> (VDOM hay DOM ảo) , là cách thể hiện DOM thật của một trang web dưới dạng các Javascript object. Khi thay đổi state của app thì VDOM sẽ được cập nhật lại và so sánh với VDOM cũ (VDOM cũ được đồng bộ hóa với DOM thật trước đó) bằng thuật toán gọi là diffing hay change detection để tìm ra những node cần thay đổi. Cuối cùng nó sẽ cập nhật những node đó trên DOM thật.</li></ul></details></li></ul><ul id="20960bbb-3631-4343-b030-f7761d8a3bbb" class="toggle"><li><details open=""><summary><strong>Tại sao cần VirtualDom ?</strong></summary><ul id="ee3433da-8b59-41e2-b931-9b94e83a6fa2" class="bulleted-list"><li style="list-style-type:disc">Thao tác DOM là 1 phần không thể thiếu của bất ký app nào. Tuy nhiên thao tác DOM khá chậm so với các thao tác trong JS</li></ul><ul id="8ad4427b-6924-4e04-80e6-d11f2d097095" class="bulleted-list"><li style="list-style-type:disc">Dẫn đến hiệu năng của app bị ảnh hưởng khi thực hiện thao tác trực tiếp trên DOM</li></ul><ul id="c7399401-da62-46d4-b983-dd6a579438b8" class="bulleted-list"><li style="list-style-type:disc">Trước đó thì những Framework JS sẽ cập nhật toàn bộ lại DOM dù cho ta chỉ có thay đổi 1 hoặc 1 vài thành phần</li></ul><ul id="bef11bf9-cbe2-45b7-87a4-41183e17361e" class="bulleted-list"><li style="list-style-type:disc">React đưa ra khái niệm VD để giải quyết vấn đề đó</li></ul><ul id="207c2399-d2fb-45ce-b707-af8f9c7ee94b" class="bulleted-list"><li style="list-style-type:disc">Đối với mỗi đối tượng DOM sẽ có 1 VD tương ứng, nó có các tính giống nhau. </li></ul><ul id="3c03b69c-349a-4258-bfab-8604cb64bf52" class="bulleted-list"><li style="list-style-type:disc">Sự khác nhau cơ bản là khi có sự thay đổi trên VD nó sẽ không phản ánh trực tiếp lên màn hình.</li></ul><ul id="c2b766bc-c0b3-476c-9e39-c97d3d6db4d6" class="bulleted-list"><li style="list-style-type:disc">React sử dụng 2 VD để hiển thị. Một cái dùng để lưu trữ trạng thái hiện tại và 1 cái là trước đó. </li></ul><ul id="3a57157e-bbd4-4a84-8a9a-0d3df98a3bc0" class="bulleted-list"><li style="list-style-type:disc">Khi có sự cập nhật trên VD nó sẽ so sánh 2 bản VD đó để tìm ra node cần thay đổi.</li></ul><ul id="9fcecb4e-0754-4915-b98c-fea9aeb73961" class="bulleted-list"><li style="list-style-type:disc">Và chỉ cập nhật những node đó trên DOM thật, thay vì toàn bộ.</li></ul></details></li></ul><ul id="dbdcf39d-a335-4427-af5e-a520b579bebd" class="toggle"><li><details open=""><summary>N<strong>guyên tắc </strong><mark class="highlight-red"><strong><em>single source of truth</em></strong></mark><strong><em> </em></strong><strong>ở trong React là gì ?</strong></summary><ul id="90b38566-1f39-4817-897e-d3b988b243d7" class="bulleted-list"><li style="list-style-type:disc">Thông thường với việc sử dụng HTML + JS thì state hoặc value của thẻ <code>&lt;input /&gt;</code>
+ được điều khiển bằng <strong>browser</strong> chứ không phải là do <strong>JS</strong>. </li></ul><ul id="5eb02880-5d81-4e56-bdfe-603454f8d02d" class="bulleted-list"><li style="list-style-type:disc">Nếu bạn cũng giữ giá trị của đầu vào như vậy trong JS thì nó có nghĩa rằng có ít nhất &quot;two sources of truth - 2 nguồn của sự thật&quot;</li></ul><ul id="36ff9316-e05a-4f26-b718-396ab59f38b4" class="bulleted-list"><li style="list-style-type:disc">Với controlled component trong React thì <strong>state</strong> và <strong>value</strong> luôn luôn khớp với nhau. </li></ul><ul id="03f98be9-ec11-45df-ae5c-bce09468f0ed" class="bulleted-list"><li style="list-style-type:disc">Bởi vì, React luôn đảm bảo rằng giá trị của element input trong browser bằng với giá trị bạn cung cấp từ JS. </li></ul><p id="c184234a-0fef-4f20-95e3-cd52af379df0" class="">→ Nó chính là &quot;single source of truth&quot;.</p></details></li></ul><ul id="0a792cb2-a38d-43f0-9e3d-cd4cb6187ddf" class="toggle"><li><details open=""><summary><strong>Controlled component khác gì uncontrolled component?</strong></summary><ul id="b54fff6a-a06a-4a04-b0d7-c98705763d42" class="bulleted-list"><li style="list-style-type:disc"><strong>Controlled component: </strong><ul id="0a6dc774-245c-4114-829f-86bbea2db817" class="bulleted-list"><li style="list-style-type:circle">giá trị của phần tử <strong>input</strong> được điều khiển bởi <strong>React</strong></li></ul><ul id="848bc3b8-d37a-4be9-9ad9-b4ab6242d6c7" class="bulleted-list"><li style="list-style-type:circle">Ta lưu trữ trạng thái của phần tử input trong code, và sử dụng <strong>callback, </strong>với bất kỳ thay đổi nào đến input sẽ được phản ánh tương tự trong code.</li></ul><ul id="8a14462b-8433-4b2f-a65d-0f8f79da7575" class="bulleted-list"><li style="list-style-type:circle">Khi người dùng nhập dữ liệu vào phần tử input trong controlled component, hàm <code>onChange </code>kích hoạt </li></ul><ul id="edb01100-aa27-417b-bd5f-b0d5dd10f08e" class="bulleted-list"><li style="list-style-type:circle">và ta kiểm tra giá trị nhập vào là hợp lệ hay không. Nếu hợp lệ, ta thay đổi trạng thái và re-render phần tử input với giá trị mới.</li></ul></li></ul><ul id="85d80b36-fe8f-4bdd-894b-f0911ab6387d" class="bulleted-list"><li style="list-style-type:disc"><strong>Uncontrolled component:</strong><ul id="7a69ff22-7249-41fe-bea8-c2f3035eedb6" class="bulleted-list"><li style="list-style-type:circle">gái trị của phần tử input được xử lý bởi DOM</li></ul><ul id="0c97db21-592d-4424-a002-0fd93f164c3c" class="bulleted-list"><li style="list-style-type:circle">các phần tử input này hoạt động giống như phần tử input HTML.</li></ul><ul id="9b5fd565-526c-4ae2-a5dc-6414639016c4" class="bulleted-list"><li style="list-style-type:circle">trạng thái của phần tử input được xử lý bởi DOM. </li></ul><ul id="9652521c-7af0-491a-bf0d-8829c762a6d2" class="bulleted-list"><li style="list-style-type:circle">Nên khi giá trị input thay đổi, callback sẽ không được gọi. </li></ul><ul id="d2e46fc1-eeef-4c27-937c-7c7c169a19f6" class="bulleted-list"><li style="list-style-type:circle">Hoặc có thể nói là React không thực hiện bất cứ hành động nào khi xảy ra thay đổi.</li></ul><ul id="a48fb2b6-4fad-45c4-a924-7ee164552c2b" class="bulleted-list"><li style="list-style-type:circle">Khi người dùng nhập dữ liệu vào trường input, dữ liệu cập nhật được hiển thị trực tiếp. </li></ul><ul id="58a87bc4-4a1a-4c0b-b7ed-ba02fe450938" class="bulleted-list"><li style="list-style-type:circle">Để truy cập giá trị phần tử input, ta có thể dùng <strong>ref</strong>.</li></ul></li></ul></details></li></ul><ul id="fd38302b-8b3c-4917-997e-cef686e68009" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>state</strong></mark><strong> và </strong><mark class="highlight-red"><strong>props</strong></mark><strong> trong react là gì ?</strong></summary><ul id="69366dbe-1e52-4b9f-ad01-8efb15b39ad9" class="bulleted-list"><li style="list-style-type:disc"><strong>State </strong>là đối tượng bên trong 1 component dùng để chứa thông tin hoặc dữ liệu về component. Bất cứ sự thay đổi nào về state trong component cũng dẫn đến việc re-render.  Chỉ được khởi tạo và chỉnh sửa chỉ chính bản thân component chứa nó</li></ul><ul id="b58a5415-45b0-45c9-80a1-d250ce5d3c65" class="bulleted-list"><li style="list-style-type:disc"><strong>Props</strong> là đối tượng nhận vào của 1 component, cho phép giao tiếp những component với nhau bằng cách truyền tham số qua lại giữa các component </li></ul><p id="b9cec4f9-5f9b-4bf9-949c-deb241f0c8dc" class="">→ Điểm khác nhau lớn nhất giữa props và state đó là props không thể thay đổi, còn state có thể thay đổi do đó hiệu năng của props tốt hơn state.</p></details></li></ul><ul id="5ad6c9b8-d10f-4232-8bf8-aa4e2c89a7ba" class="toggle"><li><details open=""><summary><strong>stateless và stateful component là gì ?</strong></summary><ul id="fbd724fb-e4ee-4e0d-b103-c9ac76dc393a" class="bulleted-list"><li style="list-style-type:disc">Stateless component là các component chỉ chứa props, các component loại này chỉ dùng để render() thì sẽ hiệu quả hơn.</li></ul><ul id="93c37029-517f-44b4-899d-b8a5227150c3" class="bulleted-list"><li style="list-style-type:disc">Stateful Component là các component chứa cả props và state, các component này được dùng xử lý data, phản hỏi yêu cầu người dùng, phù hợp cho mô hình client server…</li></ul></details></li></ul><ul id="8cc502d8-0dd3-41c1-b546-6fedc4098e7a" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>JSX</strong></mark><strong> là gì ?</strong></summary><ul id="b4ae2a29-9924-41d9-85d6-bb5daa890ab1" class="bulleted-list"><li style="list-style-type:disc">JSX là viết tắt của JavaScript XML. </li></ul><ul id="cbb5e6dc-ac07-4ab0-9c81-8dc1d42e2478" class="bulleted-list"><li style="list-style-type:disc">Nó cho phép ta viết HTML trong JS và đặt nó vào DOM mà không cần dùng <code>appendChild()</code> hay <code>createElement()</code>.</li></ul></details></li></ul><ul id="7bdd7611-8c54-422f-9701-cb476f89625f" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Keys</strong></mark><strong> trong react dùng để làm gì </strong></summary><ul id="542f6e4b-666a-470d-9f59-2c7ce1d11bbf" class="bulleted-list"><li style="list-style-type:disc">Key là một thuộc tính đặc biệt trong element được dùng khi render ra danh sách các phần tử</li></ul><ul id="d927bc28-b651-46b2-ac11-dd9f45c0cd0f" class="bulleted-list"><li style="list-style-type:disc">Key giúp chúng ta định danh các phần tử trong 1 danh sách, mỗi phần tử là unique trong danh sách</li></ul><ul id="2bcd335c-0a41-4f32-965d-aa9cd4dd50f6" class="bulleted-list"><li style="list-style-type:disc">Nếu không dùng key thì react nó sẽ không hiểu được thứ tự của từng phần từ trong danh sách.</li></ul></details></li></ul><ul id="1921542b-3077-4bd6-b097-67a4906b091e" class="toggle"><li><details open=""><summary><strong>Sự khác nhau giữa class component và function component?</strong></summary><ul id="294b3957-5063-4c3e-a544-78d56a2acf3e" class="bulleted-list"><li style="list-style-type:disc">Trước đây, các function component được gọi là stateless component và ít dùng trong react.</li></ul><ul id="6252ed5b-62fb-40f2-968b-e12e5a833363" class="bulleted-list"><li style="list-style-type:disc">Sau khi hooks ra đời ở những phiên bản sau thì việc sử dụng function component ngày càng nhiều</li></ul><ul id="bb0d6905-576c-4fb5-a287-b323b082a5ce" class="bulleted-list"><li style="list-style-type:disc">Dù function component đang là trend hiện tại, nhưng class component vẫn còn rất quan trọng.</li></ul><ul id="431f5464-60d5-4eee-b048-cc253bff8ea3" class="bulleted-list"><li style="list-style-type:disc">Một số điểm khác biệt đến từ<ul id="314ae9f9-ac14-4daf-a8ee-8dc8445015ff" class="bulleted-list"><li style="list-style-type:circle">Cách khai báo: function thay vì class</li></ul><ul id="9537d32e-c64f-44a4-b765-36d7b1eafcdb" class="bulleted-list"><li style="list-style-type:circle">Cách xử lý props, state </li></ul><ul id="26e0ca0d-b3b7-46cb-9345-ee39984b4f31" class="bulleted-list"><li style="list-style-type:circle">Cú pháp</li></ul></li></ul></details></li></ul><ul id="9700b810-b2d3-4f42-8e08-5caca7e9e37a" class="toggle"><li><details open=""><summary><strong>React hook là gì và tại sao cần dùng nó?</strong></summary><ul id="97c5ac5c-74f1-48d4-9cd6-fe3f40a57560" class="bulleted-list"><li style="list-style-type:disc">RH là một tính năng mới của react được giới thiệu ở phiên bản 16. </li></ul><ul id="00fdc9f1-a8d0-46aa-9afb-610b1dbc9e17" class="bulleted-list"><li style="list-style-type:disc">Giúp chúng ta viết component bằng function thay vì sử dụng class như các phiên bản trước.</li></ul><ul id="c0140b81-2d03-4094-a8fd-4855c9acdbad" class="bulleted-list"><li style="list-style-type:disc">Nó giúp chúng ta viết code linh hoạt và ngắn gọn hơn</li></ul><ul id="e5310e47-1a00-4f0f-8072-15464dc45c65" class="bulleted-list"><li style="list-style-type:disc">Nó không thay thế hoàn toàn class, nó chỉ là cách viết component mới, những tính năng của class đều có trên hooks tuy nhiên cú pháp khác nhau mà thôi.</li></ul></details></li></ul><ul id="464adbf8-e209-4555-ab89-68a8a3834487" class="toggle"><li><details open=""><summary><strong>Tại sao dùng hooks thay vì class ?</strong></summary><ul id="0c0e7761-94f8-478c-9db4-00a9fb9c045a" class="bulleted-list"><li style="list-style-type:disc">Trước đây, các function component được gọi là stateless component. </li></ul><ul id="76b9b037-b185-4454-b585-27b2d83be43b" class="bulleted-list"><li style="list-style-type:disc">Chỉ các class component mới được sử dụng cho các phương thức quản lý trạng thái và vòng đời. Nhưng vì class component quá nặng nếu như chỉ cần thay đổi một vài state hay phương thức trong lifecycle. </li></ul><ul id="7831ce58-2a46-4c8a-bf32-14de990ffbf9" class="bulleted-list"><li style="list-style-type:disc">Điều đó dẫn đến sự ra đời của React Hooks.</li></ul></details></li></ul><ul id="68e9b8ad-ef51-4cae-a554-e0008031d9d2" class="toggle"><li><details open=""><summary><strong>Hiệu suất của hooks so với class ?</strong></summary><ul id="ff3685b3-2157-4dff-b2cf-00f41c527c49" class="bulleted-list"><li style="list-style-type:disc">React Hooks sẽ tránh được rất nhiều chi phí như tạo thực thể, liên kết các sự kiện, .., có trong các lớp.</li></ul><ul id="f21d9558-e604-44d2-8280-e7811916a49a" class="bulleted-list"><li style="list-style-type:disc">Các hook trong React sẽ dẫn đến các cây component nhỏ hơn vì chúng sẽ tránh được việc lồng nhau tồn tại trong HOC và sẽ render props dẫn đến việc React phải thực hiện ít công việc hơn</li></ul></details></li></ul><ul id="440aeb9a-b6cc-459f-a35f-feadef81045e" class="toggle"><li><details open=""><summary><strong>Các quy tắc sử dụng hooks?</strong></summary><ul id="561e9c87-0e66-4160-a3a2-63ef14c0380b" class="bulleted-list"><li style="list-style-type:disc">Chỉ có thể gọi hooks trong function component (không thể dùng trong class).</li></ul><ul id="9b7e67af-1a5d-4263-9fda-5d3aa357a67e" class="bulleted-list"><li style="list-style-type:disc">Chỉ được gọi hooks ở top level, không được gọi trong 1 loop, condition hay trong 1 nested function </li></ul></details></li></ul><ul id="0fb281a6-7b24-48b7-8611-2b624de63326" class="toggle"><li><details open=""><summary><strong>Giới thiệu một số </strong><mark class="highlight-red"><strong>hooks</strong></mark><strong> cơ bản của react</strong></summary><p id="89128dc6-2fd2-46ec-8c33-6b55d38e7b5e" class="">Trong react hooks nó sẽ gồm 2 loại:</p><ul id="d9502433-42c1-493a-8543-4291b6865005" class="bulleted-list"><li style="list-style-type:disc"><strong>Hooks được cung cấp sẵn từ react: </strong><ul id="0c32de25-70b9-4bea-a018-60c1e15ae00e" class="bulleted-list"><li style="list-style-type:circle"><a href="https://www.notion.so/useState-b74ce41625144ded8c3c4085f204aa80"><strong>useState()</strong></a>: dùng để thiết lập và chỉnh sửa state trong component</li></ul><ul id="102b80da-3e0a-44a4-8765-30082c9d30ff" class="bulleted-list"><li style="list-style-type:circle"><a href="https://www.notion.so/useEffect-b4496e52cc9c41f2bd22cf995f07294c"><strong>useEffect()</strong></a>: dùng để thực hiện những side effects trên function component</li></ul><ul id="87e3584b-94bd-4eab-a20c-8ff7c62a0b86" class="bulleted-list"><li style="list-style-type:circle"><a href="https://www.notion.so/useContext-f1a3ec097efc4b2590bc3c9092e528df"><strong>useContext()</strong></a>: dùng để tạo dữ liệu chung có thể truy cập trong hệ thống phân cấp component mà không cần truyền dữ liệu từ trên xuống dưới.</li></ul><ul id="b505b5f3-6317-434e-b336-e64521287035" class="bulleted-list"><li style="list-style-type:circle"><strong><a href="https://www.notion.so/useReducer-4897121664e34026a6ef97f9d33a5fd5">useReducer()</a></strong>: dùng khi các logic state của component trở nên phức tạp thì dùng nó sẽ giúp quản lý trở nên dễ dàng hơn. Nó có thể được xem là phiên bản nâng cấp của useState()</li></ul><ul id="331c849d-64c6-4bdc-8a3a-b40dc5cae162" class="bulleted-list"><li style="list-style-type:circle"> <a href="https://www.notion.so/useMemo-useCallback-cb68b5dcaf12488b99a321f9d25cdd1b">useMemo()</a>: được sử dụng để tính toán lại giá trị đã ghi nhớ khi có sự thay đổi trong một trong các dependencies, giúp tránh các tính toán tốn kém trên mỗi lần render.</li></ul><ul id="30c615b3-b051-4f1a-9e10-fd9a8e172d09" class="bulleted-list"><li style="list-style-type:circle"><a href="https://www.notion.so/useMemo-useCallback-110185c6de454248866c29eb8a220bfd">useCallback()</a>: giúp tránh một số trường hợp useEffect từ các component con thực thi lại khi nhận callback là một dependencies từ phía component cha. Nó mất 1 vùng nhớ nhất định để ghi nhớ được function mà chúng ta bọc ở trong useCallback. </li></ul><ul id="7c9d9384-7233-4e68-80ce-1906bbaa5b9c" class="bulleted-list"><li style="list-style-type:circle"><a href="https://www.notion.so/useRef-c5f3ef2b2792478b9c743c74d9078e52"><strong>useRef():</strong></a> nó sẽ cho phép tạo một tham chiếu đến phần tử DOM trực tiếp trong function component. Ngoài ra nó còn là 1 function trả về object với thuộc tính current được khởi tạo thông qua tham số truyền vào.<em> </em>Object được trả về này có thể mutable và sẽ tồn tại xuyên suốt vòng đời của component.</li></ul><ul id="96fd7076-4e95-42bc-b7ad-7efaf43250e5" class="bulleted-list"><li style="list-style-type:circle"><strong>useLayoutEffect()</strong>: dùng cho đọc bố cục từ DOM và re-render bất đồng bộ</li></ul></li></ul><ul id="f2b242ca-6e65-4b56-a368-4154dc4f7c74" class="bulleted-list"><li style="list-style-type:disc"><strong>Custom hooks</strong>: là một hook đặc biệt do mình tự định nghĩa ra, giúp ta tách biệt logic ra khỏi UI và có thể chia sẻ logic giữa các component.<ul id="dbd80e32-bec3-4795-919f-edf40aa0b3e7" class="bulleted-list"><li style="list-style-type:circle">Trong custom hook ta có thể sử dụng lại các hook có sẵn hoặc kết hợp với những custom hook khác.</li></ul><ul id="3b798465-d979-4b8a-b673-906dd8e2db86" class="bulleted-list"><li style="list-style-type:circle">Đặt tên custom hook với prefix là use.</li></ul><ul id="22b965cc-9f68-4ec9-87c2-51236dc4b17c" class="bulleted-list"><li style="list-style-type:circle">Custom hooks return data thay vì JSX như component.</li></ul><ul id="2c8b55a7-d68c-4b6f-ab16-b913ba6eb43c" class="bulleted-list"><li style="list-style-type:circle">Khi nào cần dùng:<ul id="1c501d4f-16fb-4662-928d-7d20eedbb1c4" class="bulleted-list"><li style="list-style-type:square">Khi một đoạn code (logic) được tái sử dụng nhiều nơi (dễ thấy khi bạn copy cả 1 đoạn code mà không cần sửa gì, trừ tham số truyền vào. Tách như cách mà bạn tách một function).</li></ul><ul id="55effb41-5afc-4bd5-a486-38f99fb7c952" class="bulleted-list"><li style="list-style-type:square">Khi logic quá dài và phức tạp. Bạn muốn viết nó ở 1 file khác, để component của bạn ngắn hơn và dễ đọc hơn vì không cần quan tâm đến logic của hook đó nữa.</li></ul></li></ul><ul id="9b6c39c3-0c35-48b1-8faa-9e1700395379" class="bulleted-list"><li style="list-style-type:circle">Một số custom hooks như: useAuthentication, useAuthorization, useNotification, useScroll, useFetch, …</li></ul></li></ul></details></li></ul><ul id="08cfd224-2329-4e79-bc04-f8de0a54e120" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>useCallback khác gì useMemo ?</strong></mark></summary><ul id="201c4ab4-d149-4fd8-89d7-82514e60f9ae" class="bulleted-list"><li style="list-style-type:disc">useCallback: ghi nhớ 1 function, thường được sử dụng để tránh việc function của component cha gây ra tình trạng re-render của 1 component con</li></ul><ul id="be5ae8f2-0fa2-4a57-a849-3ae7d706e0c1" class="bulleted-list"><li style="list-style-type:disc">useMemo: ghi nhớ 1 giá trị, thường được sử dụng để tránh việc thực hiện lại các tính toán phức tạp khi dữ liệu đầu vào không hề thay đổi</li></ul></details></li></ul><ul id="cd750f47-10c8-438b-8526-15a282099220" class="toggle"><li><details open=""><summary><strong><strong>Trường hợp sử dụng </strong></strong><mark class="highlight-red"><strong><strong>useEffect</strong></strong></mark><strong><strong> và </strong></strong><mark class="highlight-red"><strong><strong>useLayoutEffect</strong></strong></mark><strong><strong> như thế nào?</strong></strong></summary><ul id="3ab05889-9fcd-469d-9e21-f7ea99816fce" class="bulleted-list"><li style="list-style-type:disc">Sự khác nhau giữa <strong>useEffect</strong> và <strong>useLayoutEffect</strong> là thời điểm chúng được gọi. Để hiểu được khi nào chúng được gọi, chúng ta theo dõi các render của DOM. </li></ul><ul id="6bd3bb2c-d976-4579-959e-f29992b432a3" class="bulleted-list"><li style="list-style-type:disc">Giả sử chúng ta triển khai một hook <strong><mark class="highlight-red">useEffect</mark></strong> sau:<ul id="37ed28cf-0b43-480b-8c64-1eda77b11526" class="bulleted-list"><li style="list-style-type:circle">User tương tác với App. VD: Click vào một button</li></ul><ul id="97aa46c4-652a-4a48-8174-8bb1b8c5e341" class="bulleted-list"><li style="list-style-type:circle"><code>State</code> của component sẽ thay đổi</li></ul><ul id="364815bd-6ea8-4278-bb2d-409c7f9c580e" class="bulleted-list"><li style="list-style-type:circle">DOM sẽ thay đổi</li></ul><ul id="c2798f77-7058-483e-87c8-f911c46de49d" class="bulleted-list"><li style="list-style-type:circle">UI được thay đổi trên màn hình</li></ul><ul id="ff453c24-0450-48de-90c7-c3091bab04d9" class="bulleted-list"><li style="list-style-type:circle">Hàm <code>cleanup</code> sẽ được gọi để <code>clean</code> những <code>effect</code> đã render trước đó nếu đối số thứ 2 của <code>useEffect</code> thay đổi.</li></ul><ul id="27fe26c2-5ff1-4347-a98f-b3599726ae60" class="bulleted-list"><li style="list-style-type:circle"><code>useEffect</code> hook sẽ được gọi</li></ul></li></ul><ul id="21b438d0-b7e4-4167-bbf7-2aef7998e0a9" class="bulleted-list"><li style="list-style-type:disc">Đối với <mark class="highlight-red"><strong><strong>useLayoutEffect: </strong></strong></mark><ul id="d076eb5c-458a-4ed2-849d-e0e8956067bc" class="bulleted-list"><li style="list-style-type:circle">User tương tác với App. VD: Click vào một button</li></ul><ul id="f0c1f27b-801e-4929-813b-7b5de9fb7b6f" class="bulleted-list"><li style="list-style-type:circle"><code>State</code> của component sẽ thay đổi</li></ul><ul id="b06b155b-fbc6-470e-8eb3-7e2e52a75f8d" class="bulleted-list"><li style="list-style-type:circle">DOM sẽ thay đổi</li></ul><ul id="44fe2872-7b96-495e-86b5-02b5a4cb3a6e" class="bulleted-list"><li style="list-style-type:circle">Hàm <code>cleanup</code> sẽ được gọi để <code>clean</code> những <code>effect</code> đã render trước đó nếu đối số thứ 2 của <code>useEffect</code> thay đổi.</li></ul><ul id="d70996a8-5dd6-485d-8931-02f7b2d12073" class="bulleted-list"><li style="list-style-type:circle"><code>useLayoutEffect</code> hook sẽ được gọi</li></ul><ul id="eed0068c-a8b0-442d-9eb3-63b7e35d5faf" class="bulleted-list"><li style="list-style-type:circle">UI được thay đổi trên màn hình</li></ul></li></ul></details></li></ul><ul id="a89eb9c0-bc6c-4a70-b633-82a838c6abc0" class="toggle"><li><details open=""><summary><strong>Tại sao </strong><mark class="highlight-red"><strong>setState</strong></mark><strong> không trả về </strong><mark class="highlight-red"><strong>async</strong></mark></summary><ul id="81b67e96-fb3a-4978-8bce-8ac7b7d3db65" class="bulleted-list"><li style="list-style-type:disc"><strong>setState</strong>: KHÔNG TRẢ VỀ ASYNC mà nó trả về 1 dispatch function. Vì:<ul id="976e54d6-b876-4e42-ba25-3d949d52a144" class="bulleted-list"><li style="list-style-type:circle">Khi gọi useState, kết quả trả về là 1 mảng gồm: 1 giá trị  + 1 dispatch function</li></ul><ul id="c2873dfb-9c3f-4e61-ad0b-414981bb8d0c" class="bulleted-list"><li style="list-style-type:circle"><strong>dispatch function</strong>: nhận vào 1 giá trị và trả về void (lưu ý, là trả về <code>void</code>, không phải <code>promise</code>) nên <code>setState</code> không phải <code>async</code></li></ul></li></ul><ul id="edbffe84-be0c-4f58-bfc5-16b5796f6445" class="bulleted-list"><li style="list-style-type:disc"><strong>Nếu không phải async thì tại sao nó không thể update giá trị ngay?</strong><ul id="92cd302a-bdbd-409b-9e3b-41ed84ba4556" class="bulleted-list"><li style="list-style-type:circle">Theo như reactjs có nói: Sau khi giá trị được truyền vào, thì nó sẽ đi vào 1 hàng đợi, và chờ được xử lý</li></ul><ul id="bf5eb447-344c-4621-9459-2280e3e516fd" class="bulleted-list"><li style="list-style-type:circle">Đến khi component <strong>re-render</strong> thì giá trị mới sẽ được cập nhật</li></ul></li></ul></details></li></ul><ul id="82b4b9a5-4f25-41c7-849a-0cd8f6d61d43" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong><strong>Redux, Context API, Hooks có thực sự giống nhau ?</strong></strong></mark></summary><p id="8ddec040-5e15-4bf8-9b20-e90e76e344d5" class=""><mark class="highlight-red">Thực sự 3 thứ này là khác hoàn toàn, chúng có thể bổ trợ cho nhau nhưng về bản chất thì khác.</mark></p><ul id="3d568554-4f43-4783-9ceb-6a5a11ace3f4" class="bulleted-list"><li style="list-style-type:disc">Redux là thư viện để quản lý state và chia sẻ state giữa các component</li></ul><ul id="1423a7a2-c33d-49b5-b5ad-2d85dee1e715" class="bulleted-list"><li style="list-style-type:disc">Bản thân redux cũng có dựa trên context API</li></ul><ul id="9e45706f-4345-4c65-8eba-436bf6ef27e9" class="bulleted-list"><li style="list-style-type:disc">Về mặt nào đó thì Context API cũng có thể làm phần việc của redux nhưng không phải là tất cả, bởi phải xử lý nhiều mới tối ưu được như thằng redux nếu dùng Context API thô</li></ul><ul id="073b7f3c-28c1-491d-a239-f49258c3039d" class="bulleted-list"><li style="list-style-type:disc">Còn đối với hooks thì đó là cách implement mới của react giúp việc functional component thuận tiện hơn.</li></ul><ul id="8e6ea78b-4d1a-4631-b8fd-2030a73f676e" class="bulleted-list"><li style="list-style-type:disc">Cơ bản thì vẫn có những hook để xử lý local state như useReducer, useState, useRef.</li></ul><ul id="11900964-1817-4cc7-8c0d-cf4ec6612a12" class="bulleted-list"><li style="list-style-type:disc">Ngoài ra còn có những hook để xử lý context như useContext. Vậy nếu muốn dùng context bạn vẫn phải qua Context API và hook chỉ là phương tiện hỗ trợ cho dễ dàng hơn thôi</li></ul></details></li></ul><ul id="db6b11a0-a55d-4020-91c3-d4377627d017" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Context </strong></mark><strong>trong React</strong></summary><ul id="6d6fb8a5-c496-4aaa-b60c-84ef4e6f80d7" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.notion.so/useContext-f1a3ec097efc4b2590bc3c9092e528df">Context</a> cung cấp phương pháp truyền data xuyên suốt component tree mà không cần phải truyền props một cách thủ công qua từng level. <a href="https://vi.reactjs.org/docs/context.html">link</a></li></ul><ul id="32407644-a83b-41a5-9bc7-f606cf73c781" class="bulleted-list"><li style="list-style-type:disc">Khi nào nên dùng:<ul id="75038c48-9771-4f22-8e23-c5bce4cd2e50" class="bulleted-list"><li style="list-style-type:circle">Context được thiết kế để chia sẽ data khi chúng được xem là “global data” của toàn bộ ứng dụng React, chẳng hạn như thông tin về user hiện tại đang đăng nhập, theme, hoặc ngôn ngữ mà người dùng đã chọn</li></ul><ul id="2c385318-ae64-48c7-9169-8dbf374534ee" class="bulleted-list"><li style="list-style-type:circle">Sử dụng context, chúng ta có thể tránh được việc truyền props qua các elements trung gian</li></ul></li></ul></details></li></ul><ul id="da034d45-fbb2-43b8-af13-3ca2faf793e9" class="toggle"><li><details open=""><summary><strong><strong>React hook có làm việc với static typing?</strong></strong></summary><ul id="21319320-7413-4573-a6b5-29ba3bd69cad" class="bulleted-list"><li style="list-style-type:disc">Static typing đề cập đến quá trình kiểm tra code trong suốt thời gian biên dịch để đảm bảo mọi biến đề sẽ được nhập. <strong></strong></li></ul><ul id="3ea7e316-6452-46f1-b0ae-7bb3dc25a844" class="bulleted-list"><li style="list-style-type:disc">React Hook là hàm được thiết kế để đảm bảo mọi thuộc tính sẽ được nhập tĩnh. Để thực thi nhập tĩnh chặt chẽ hơn trong code, ta có thể sử dụng API React với các Hook tùy chỉnh.</li></ul></details></li></ul><ul id="74e000ae-15ad-46a2-9ffc-aca64a2c231f" class="toggle"><li><details open=""><summary><strong>Làm thế nào để giữ được </strong><mark class="highlight-red"><strong>state</strong></mark><strong> trước đó với </strong><mark class="highlight-red"><strong>hooks</strong></mark><strong> ?</strong></summary><ul id="74d288e9-dafb-4e35-bcd5-da7ddab0c125" class="bulleted-list"><li style="list-style-type:disc">Nếu dùng state khi thay đổi nó sẽ trigger re-render, còn nếu dùng local variable thì nó sẽ bị reset sau mỗi lần re-render</li></ul><ul id="b3293e35-dc1f-403c-8ea8-1741c26b528c" class="bulleted-list"><li style="list-style-type:disc">Ta có thể dùng global variable để giữ state trước đó tuy nhiên thì cách này không khuyến khích dùng.</li></ul><p id="2c3e2c6d-7a1b-4647-b627-26e018f6072d" class="">→ Sử dụng <strong>refs</strong>, hoặc <strong>useRef</strong> của hooks<div class="indented"><ul id="96e7b48d-2c29-4e72-bc96-86ee03e3f4d3" class="bulleted-list"><li style="list-style-type:disc">Khi giá trị của ref thay đổi, nó không trigger re-render</li></ul></div></p></details></li></ul><ul id="6f3409b8-1fdb-4304-8c1b-f3399c18bbad" class="toggle"><li><details open=""><summary><strong>So sánh component và Pure component? Pure componet và React.Memo có giống nhau?</strong></summary><ul id="a96f952f-683a-48e7-b753-28b8271a5879" class="bulleted-list"><li style="list-style-type:disc"><code><em>React.Component</em></code><em> cho phép dev override lại </em><code><em>shouldComponentUpdate</em></code><em> hook, mặc định hook này reference compare để quyết định re-render lại hay không.</em></li></ul><ul id="a30e8c28-3333-47cb-885a-cc34d247ec99" class="bulleted-list"><li style="list-style-type:disc"><code><em>React.PureComponent</em></code><em> không cho phép dev override lại </em><code><em>shouldComponentUpdate</em></code><em> hook, nếu bạn cố tình override thì bạn sẽ ăn ngay warning. Hook này shallow compare để quyết định re-render lại hay không.</em></li></ul><ul id="59535435-8520-45ee-a6a4-7ea91b68826b" class="bulleted-list"><li style="list-style-type:disc"><strong>PureComponent</strong> giúp chúng ta kiểm tra props và state xem có sự thay đổi về giá trị không để cho phép render lại UI cần thiết. Bản chất PureComponent đã override lại hàm shouldComponentUpdate và kiểm tra giá trị ở props và state để trả về true/false cho việc render UI này.</li></ul><ul id="f85cd718-9c00-4398-82c7-3f28c5c4fa6d" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong>React.memo(): </strong></mark>là một HOC, chứ không phải là hooks, tương tự như là PureComponent, chỉ render lại component nếu props có sự thay đổi, sử dụng cơ chế shallow comparison.</li></ul><ul id="7c1d7ff2-daa2-4304-a4c9-9d68eed23fab" class="bulleted-list"><li style="list-style-type:disc">Shallow comparison là chỉ so sánh những giá trị của các thuộc tính ngoài cùng của đối tượng, những thuộc tính lồng nhau và tham chiếu đến đối tượng khác sẽ không so sánh được</li></ul><ul id="de7cdd7f-e85f-4080-9f0c-d56f553169b6" class="bulleted-list"><li style="list-style-type:disc">Deep comparison cũng giống như shallow nhưng nó so sánh luôn những giá trị đối tương lồng nhau trong các thuộc tính</li></ul><ul id="ad513a85-16d6-4aab-bc07-2ed773606b3e" class="bulleted-list"><li style="list-style-type:disc">Reference compare thì nó so sánh địa chỉ của đối tượng trong bộ nhớ thay vì so sánh giá trị của đối tượng.</li></ul></details></li></ul><ul id="3e8bf8fa-ca98-48bd-bb87-a763882958f9" class="toggle"><li><details open=""><summary><strong>Các kiểu side effects trong component là gì ?</strong></summary><ul id="fd1b36af-31c3-4a5b-a95b-d2cd346c2dab" class="bulleted-list"><li style="list-style-type:disc">Side effects dùng để: <ul id="2d1d8c9e-5347-4c96-847f-2f3ae27d21cc" class="bulleted-list"><li style="list-style-type:circle">Gọi API lấy dữ liệu</li></ul><ul id="e170ef8b-8343-43bd-a266-34da03ff7ad7" class="bulleted-list"><li style="list-style-type:circle">Tương tác với DOM</li></ul><ul id="07c4090a-f9e6-4a1e-87b2-ab049c3e7696" class="bulleted-list"><li style="list-style-type:circle">Subscriptions</li></ul><ul id="c1cd4d35-79fd-45c5-9bd6-95aa7a632ee9" class="bulleted-list"><li style="list-style-type:circle">setTimeOut, setInterval</li></ul></li></ul><ul id="ed7aaf99-9ee3-4c5f-8f84-ac3808536b03" class="bulleted-list"><li style="list-style-type:disc">Có 2 loại side effects:<ul id="cad781f9-f246-4423-94a4-c33260f9ad20" class="bulleted-list"><li style="list-style-type:circle">Effects <strong><mark class="highlight-yellow_background">không cần clean up</mark></strong>: gọi API, tương tác với DOM</li></ul><ul id="089dfd5d-4b2d-4dd6-95bd-c4bd0f1ca4c3" class="bulleted-list"><li style="list-style-type:circle">Effects <mark class="highlight-yellow_background"><strong>cần clean up</strong></mark>: subscriptions, setTimeOut, setInterval. Để dọn dẹp bộ nhớ khi unmouting tránh sự cố rò rĩ bộ nhớ hoặc những lỗi không rõ nguyên nhân.</li></ul></li></ul></details></li></ul><ul id="d9640813-37cf-41fb-8b6f-7873daf3a4cc" class="toggle"><li><details open=""><summary><strong><mark class="highlight-red">Prop drilling</mark></strong><strong> trong react là gì ?</strong></summary><ul id="509b8e9e-668c-4dce-885d-9de09688a15a" class="bulleted-list"><li style="list-style-type:disc">Đôi khi trong react ta cần phải truyền dữ liệu từ component cao hơn xuống sâu component bên dưới. Để truyền được như vậy ta phải truyền qua rất nhiều component trung gian cho đến khi đến component cần nhận props. Đó là prop drilling. </li></ul><ul id="1145d1ad-67d0-4d16-813a-001b16c15432" class="bulleted-list"><li style="list-style-type:disc">Tuy nhiên khi app càng lớn prop drilling làm cho việc truy cập dữ liệu hết sức phức tạp</li></ul></details></li></ul><ul id="fce9957f-8a83-4d59-add8-dbe7c354f15e" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Strict mode</strong></mark><strong> trong react là gì ?</strong></summary><ul id="b5f20c2e-b844-4b2b-b613-0f9571789bf4" class="bulleted-list"><li style="list-style-type:disc">StrictMode là công cụ được thêm vào ở React v16.3 để highlight các vấn đề tiềm ẩn trong React. Nó thực hiện kiểm tra bổ sung lên ứng dụng.</li></ul><ul id="a933d24f-efb6-4d95-887f-3a8fceb9d174" class="bulleted-list"><li style="list-style-type:disc">StrictMode giúp giải quyết các vấn đề sau:<ul id="5e07e2fb-ecb8-411f-a677-da1375a581ba" class="bulleted-list"><li style="list-style-type:circle">Khi chúng ta gọi hàm bất đồng bộ tại 1 lifecycle không an toàn. Strictmode sẽ cung cấp cho ta cái cảnh báo về việc sử dụng đó.</li></ul><ul id="83c47cae-4a53-4b50-965c-1a6d25877166" class="bulleted-list"><li style="list-style-type:circle">Cảnh báo khi chúng ta sử dụng findDom() để tìm cây của node trong DOM. Vì phương thức này react không còn hỗ trợ cho nên sẽ đưa ra cảnh báo.</li></ul></li></ul><ul id="802e2976-a7ff-4f66-b5c3-662a2160a6fb" class="bulleted-list"><li style="list-style-type:disc">Nói chung thì nó giúp chúng ta tránh những lỗi tiểm ẩn có thể xảy ra trong quá trình chạy. </li></ul></details></li></ul><ul id="8b3af797-668e-4a26-9a8a-2eae428ebcf9" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Higher order component</strong></mark><strong> trong react là gì ? (</strong><mark class="highlight-red"><strong>HOC</strong></mark><strong>)</strong></summary><ul id="0955dbf8-8aba-4c9c-8d1b-32dd2f78b5d9" class="bulleted-list"><li style="list-style-type:disc"><strong>Higher order function</strong> là một function mà nó nhận vào tham số là function hoặc return về một function. </li></ul><ul id="b7f3965d-c30f-4b4e-b0d5-e89dc80c54c3" class="bulleted-list"><li style="list-style-type:disc"> <strong>Higher order component</strong> là 1 function và nó nhận vào tham số là 1 component nó sẽ return về một component.</li></ul><p id="32a6ad32-c43f-4d5e-8c0e-aa09d46ca1c5" class="">⇒ Khi sử dụng <strong>HOC</strong> thì có 3 điểm bạn cần lưu ý khi sử dụng là:<div class="indented"><ul id="af913514-0e8c-4468-807f-e1ab4f432a39" class="bulleted-list"><li style="list-style-type:disc">Không sử dụng <strong>HOC</strong> trong phương thức render()</li></ul><ul id="864217a7-2366-4ed2-87d3-a0a011d66c89" class="bulleted-list"><li style="list-style-type:disc">Các phương thức static cần phải được copy lại</li></ul><ul id="b7f0655c-eedc-4b4f-a114-21b407b4d0c6" class="bulleted-list"><li style="list-style-type:disc">Refs không được truyền qua <strong>HOC</strong></li></ul></div></p><p id="f3907300-0656-44e4-8a23-aa47ba09aa30" class="">⇒ Có thể gặp HOC ở: <div class="indented"><ul id="83bf7698-4d91-4abe-ac92-cd5af1429c80" class="bulleted-list"><li style="list-style-type:disc"><strong>withRouter</strong> của React Route</li></ul><ul id="2971f4b8-b506-48ce-81a7-ad1dc70aa1b5" class="bulleted-list"><li style="list-style-type:disc">hàm <strong>connect</strong> của React-redux</li></ul></div></p></details></li></ul><ul id="fa4e54ee-f7df-4963-8cc1-0bcdccfaecb6" class="toggle"><li><details open=""><summary><strong>Các cách khác nhau để chỉnh </strong><mark class="highlight-red"><strong>style component </strong></mark><strong>trong react?</strong></summary><ul id="ba61d2b5-578c-4839-ac45-1d46160407ed" class="bulleted-list"><li style="list-style-type:disc"><strong>Inline Styling: </strong>ta có thể chỉnh style trực tiếp lên phần tử bằng cách dùng thuộc tính style. Nhớ giá trị của style luôn là đối tượng JavaScript</li></ul><ul id="d1be2c56-1634-49e3-b13d-d7ffab2a1d90" class="bulleted-list"><li style="list-style-type:disc"><strong>Javascript Object</strong>: ta có thể tạo đối tượng JavaScript và tập mô tả thuộc tính style. Các đối tượng có thể dùng như giá trị của thuộc tính style.</li></ul><ul id="1ace305e-e0b0-40e1-ab3e-13ce62fbd746" class="bulleted-list"><li style="list-style-type:disc"><strong>CSS Stylesheet:</strong> Ta sẽ tạo một file CSS riêng và viết tất cả style cho component trong file đó. Sau đó import nó vào file React.</li></ul><ul id="b06c8b9a-7a8d-406c-a4f9-be5944cba993" class="bulleted-list"><li style="list-style-type:disc"><strong>CSS Module:</strong> Tương tự như file CSS, nhưng ta sửa thành <code>.module.css</code>, với cách này tên lớp sẽ được mã hoá, đồng thời nó hỗ trợ kiểu viết tương tự <strong>sass</strong>.</li></ul></details></li></ul><ul id="f2413469-14ac-45d9-b451-38ab86cb4249" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Error boundary</strong></mark><strong> là gì ?</strong></summary><ul id="7760f142-5edc-4696-888d-0d92e2754e78" class="bulleted-list"><li style="list-style-type:disc">Được giới thiệu ở React v16, error boundary cung cấp một cách để xử lý lỗi xảy ra trong giai đoạn render.</li></ul><ul id="6d281a49-a8e1-4990-845e-5681b97b155e" class="bulleted-list"><li style="list-style-type:disc">Bất kỳ component nào sử dụng các phương thức lifecycle cũng được xem là một error boundary. Các vị trí mà error boundary có thể được phát hiện:<ul id="701638a9-3e58-447e-b14d-22b3fc7b0fd3" class="bulleted-list"><li style="list-style-type:circle">Giai đoạn render</li></ul><ul id="f37a86b7-9268-4314-88fa-458289405c20" class="bulleted-list"><li style="list-style-type:circle">Trong một phương thức lifecycle</li></ul><ul id="7e1e1268-0c0c-45e3-b56f-84c4f33cae76" class="bulleted-list"><li style="list-style-type:circle">Trong constructor</li></ul></li></ul><ul id="c2e17d19-5505-4c26-951e-984cc10733d1" class="bulleted-list"><li style="list-style-type:disc">Khi không dùng error boundary khi có error xảy ra như ở trên ta sẽ thấy một trang trống thay vì lỗi. </li></ul><ul id="cb338690-a1b3-435a-86db-96c5804568c2" class="bulleted-list"><li style="list-style-type:disc">Bất cứ lỗi nào trong phương thức render đều dẫn đến unmounting component. </li></ul><ul id="d6561b37-0e50-4e05-ad5e-645ceb200934" class="bulleted-list"><li style="list-style-type:disc">Để hiển thị lỗi khi đó, ta sử dụng error boundary. Là một component bọc ngoài các component.</li></ul></details></li></ul><ul id="32dd2f49-7e00-4864-aaa9-e77c9f76db63" class="toggle"><li><details open=""><summary><strong>Làm thế nào để ngăn chặn </strong><mark class="highlight-red"><strong>re-render</strong></mark><strong> trong react ?</strong></summary><ul id="ad26393f-0b1f-490d-84ed-077f87f92f69" class="bulleted-list"><li style="list-style-type:disc">Nguyên nhân của việc gây ra re-render là có sự thay đổi của 1 state hoặc props trên component</li></ul><ul id="27f527e2-67f9-4a9c-bd48-c470331d6b5f" class="bulleted-list"><li style="list-style-type:disc">Ta có thể overide lại hook <strong>shouldComponentUpdate() </strong>để ngăn chặn việc re-render</li></ul><ul id="f4ef7894-4917-439c-b549-b4fe113497fa" class="bulleted-list"><li style="list-style-type:disc">Hoặc sử dụng một số kỹ thuật như useMemo, useCallBack, …<strong> </strong></li></ul></details></li></ul><ul id="3be0d0b1-c68e-45c4-80a3-644470373505" class="toggle"><li><details open=""><summary><strong>Các kỹ thuật tối ưu </strong><mark class="highlight-red"><strong>hiệu suất</strong></mark><strong> (optimize performance) trong react là gì ?</strong></summary><ul id="0a3b4198-e093-4248-8ab6-3905a8eea7ad" class="bulleted-list"><li style="list-style-type:disc"><strong>useMemo()</strong><ul id="778592ac-6f89-4923-aa80-70222f784116" class="bulleted-list"><li style="list-style-type:circle">Là hook dùng cho caching CPU.</li></ul><ul id="219be1b6-20be-4262-aa1d-2c257c8382d5" class="bulleted-list"><li style="list-style-type:circle">Đôi khi trong các ứng dụng web, các hàm đắt (tính toán nhiều, tốn bộ nhớ) được gọi liên túc do re-render đẫn đến tốc độ render chậm, hiệu suất kém.</li></ul><ul id="21375569-48e3-4044-a353-f82fe6954456" class="bulleted-list"><li style="list-style-type:circle">useMemo() có thể sử dụng cho cache cám hàm như vậy. Bằng cách dùng useMemo() các hàm đó chỉ được gọi khi cần thiết.</li></ul></li></ul><ul id="117bebef-1b2a-4887-a8d8-0077b5810ac3" class="bulleted-list"><li style="list-style-type:disc"><strong>React.PureComponent</strong><ul id="7d5933da-93e2-472b-995e-74c8b36ee25e" class="bulleted-list"><li style="list-style-type:circle">Là class component cơ sở để kiểm tra state và props của một component để biết khi nào nó nên được cập nhật.</li></ul><ul id="0a14265b-e5a3-411b-9469-ea408ab88d0a" class="bulleted-list"><li style="list-style-type:circle">Thay vì dùng React.Component, ta có sử dụng React.PureComponent để giảm việc re-render không cần thiết.</li></ul></li></ul><ul id="841b631d-739d-4412-9658-d8cda79e11c4" class="bulleted-list"><li style="list-style-type:disc"><strong>Duy trì vị trí state</strong><ul id="19576dc3-0ab9-4ad5-a033-136eb40bc1a2" class="bulleted-list"><li style="list-style-type:circle">Đây là quá trình chuyển state đến nơi bạn nhất có thể.</li></ul><ul id="464b6833-3a12-4280-aa3b-4cd3060fc8ab" class="bulleted-list"><li style="list-style-type:circle">Thỉnh thoảng ta có các state không cần thiết nằm trong component cha để gây khó đọc và bảo trì hơn, thậm chí là dẫn đến re-render không cần thiết.</li></ul><ul id="48f38584-2145-4e89-80d0-7c38d2b9b10d" class="bulleted-list"><li style="list-style-type:circle">Để tốt hơn, ta chuyển các state vô nghĩa ở component cha sang một component riêng biệt.</li></ul></li></ul><ul id="b67b0b67-de91-42cf-8d6a-63289ed909b8" class="bulleted-list"><li style="list-style-type:disc"><strong>Lazy Loading</strong><ul id="6e8d8f4e-3fe0-4aae-8c35-28a531e64cbc" class="bulleted-list"><li style="list-style-type:circle">Đây là kỹ thuật dùng để giảm thời gian tải của ứng dụng React. Lazy loading giúp tối ưu hiệu suất ứng dụng web bằng cách chỉ tải khi cần thiết.</li></ul></li></ul></details></li></ul><ul id="e9abce26-ba2a-45f8-b200-414294207eff" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Những phương pháp giúp tối ưu performance?</strong></mark></summary><ul id="843a2603-5176-4c4c-8b4d-69c2e0edc2e0" class="bulleted-list"><li style="list-style-type:disc"><strong>Code splitting</strong>: chỉ load những page hoặc component cần thiết lúc render, không nên load hết tất cả lên, vd: khi vào homepage ta chỉ cần load page home và component liên quan đến page đó thôi</li></ul><ul id="442d4391-a698-499d-baf4-53181dd4b251" class="bulleted-list"><li style="list-style-type:disc">Lazy load image: thay vì load hết tất cả img thì ta nên load những img hiển thị trên viewport, khi scroll thì tiếp tục load những hình ảnh còn lại</li></ul><ul id="7880a159-e9a1-43c3-8199-66352bdcd3fc" class="bulleted-list"><li style="list-style-type:disc">Lazy size image: với mỗi screen device sẽ có những size ảnh khác nhau thay vì chỉ load 1 size ảnh cho all device</li></ul><ul id="de23d261-35d6-4568-82fc-6a8740af617e" class="bulleted-list"><li style="list-style-type:disc">Server side rendering</li></ul><ul id="b5b58e3d-4452-4a99-b126-ad9a1869e82f" class="bulleted-list"><li style="list-style-type:disc">Sử dụng CDN</li></ul><ul id="fe89197b-1251-411d-8a13-c7a5b91ac475" class="bulleted-list"><li style="list-style-type:disc">Tối ưu CSS</li></ul><ul id="7d588cc5-02f9-4f44-ac36-828318390ee5" class="bulleted-list"><li style="list-style-type:disc">Minified HTML, CSS, JS with webpack</li></ul><ul id="e9ff25d5-ce87-4ba0-b680-c3e571ebbdb2" class="bulleted-list"><li style="list-style-type:disc">Tránh việc re-render nhiều lần trong app</li></ul><ul id="db8ea9b1-6219-4144-8b38-a787f1d18c34" class="bulleted-list"><li style="list-style-type:disc">Thêm loading hoặc skeleton để tăng trải nghiệm người dùng</li></ul></details></li></ul><ul id="d04399fa-74da-431e-a80c-7129db92d320" class="toggle"><li><details open=""><summary><strong>React </strong><mark class="highlight-red"><strong>Router</strong></mark><strong> là gì ?</strong></summary><ul id="70c1ac7a-d634-4f3f-ae8b-9fe38f196e99" class="bulleted-list"><li style="list-style-type:disc">Là một thư viện dùng để routing trong react. Cho phép điều hướng các trang trong app mà không cần làm mới  (reload) lại toàn bộ trang. </li></ul><ul id="d2cc7ff0-f0b4-4516-8e98-bd629c152c09" class="bulleted-list"><li style="list-style-type:disc">Nó cho phép ta thay đổi URL của trình duyệt nhưng vẫn giữ UI đồng bộ với URL </li></ul></details></li></ul><ul id="62502837-2875-41f5-a7eb-96c1aeca96ce" class="toggle"><li><details open=""><summary><strong>withRouter trong react-router-dom là gì?</strong></summary><ul id="fbd6347a-168d-4c38-b6da-0d72df4ea900" class="bulleted-list"><li style="list-style-type:disc"><code>withRouter()</code> là một HOC cho phép truy cập thuộc tính đối tượng <code>history</code> ứng với <code>&lt;Route&gt;</code> gần nhất. Nó sẽ truyền <code>match</code>, <code>location</code> và <code>history</code> như props đến component được bọc bất cứ khi nào nó render.</li></ul></details></li></ul><ul id="14be89ab-7027-46e0-b653-b7c5eee9a80b" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Link</strong></mark><strong> và </strong><mark class="highlight-red"><strong>NavLink</strong></mark><strong> khác nhau gì ?</strong></summary><ul id="b65804f2-d131-4892-b0b3-a439b7b0ad2c" class="bulleted-list"><li style="list-style-type:disc"><code>&lt;Link&gt; </code>dùng cho điều hướng sang các trang khác nhau trong ứng dụng web, tương tự thẻ a</li></ul><ul id="1c8ebcdd-c70e-4d9d-984d-a6cec380c608" class="bulleted-list"><li style="list-style-type:disc"><code>&lt;NavLink&gt;</code> khá giông link về cách sử dụng nhưng nó hỗ trợ thêm các thuộc tính như <strong>activeClassName </strong>và<strong> activeStyle , </strong>2 thuộc tính này giúp cho khi mà nó trùng khớp thì nó sẽ được active lên và chúng ta có thể style cho nó.</li></ul></details></li></ul><ul id="0f911838-7f3a-43b6-8dfd-2b2db98df624" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Nested routing </strong></mark><strong>là gì ? Khi nào cần dùng ?</strong></summary><ul id="559aa8cc-acb9-48c7-97ea-adbe1b88c3fa" class="bulleted-list"><li style="list-style-type:disc">Sử dụng <strong>nested</strong> route trong React Router giúp dễ dàng tạo các <strong>nested</strong> route trong trang web của chúng ta, giúp dễ dàng hiển thị và quản lý theo <strong>component</strong>.</li></ul><ul id="5f4427d2-49a2-47cd-a813-018e3ceaefdb" class="bulleted-list"><li style="list-style-type:disc">Ví dụ: khi cần làm một <strong>sub menu</strong> chúng ta có nhiều menu đa cấp thì ta sử dụng nested route giúp ta phân chia các code thành những component nhỏ bên trong, giúp ta dễ dàng quản lý và phân chia code</li></ul></details></li></ul><ul id="49589491-101f-4c41-b67a-38dba33a1def" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Setup routing</strong></mark><strong> cho mấy trang </strong><mark class="highlight-red"><strong>login</strong></mark><strong> như thế nào ?</strong></summary><ul id="90b35a59-8027-4b6f-8320-09c57a6cefa1" class="bulleted-list"><li style="list-style-type:disc">Tạo ra một <strong>custom route extend</strong> từ route thông thường, trong đó ta check xem nếu chưa login thì ta redirect sang trang login, còn login rồi thì thôi</li></ul><ul id="ba1798fb-a7f4-4a33-a7e9-83e7ef578b65" class="bulleted-list"><li style="list-style-type:disc">Hoặc tạo một middleware check, nếu chưa login thì redirect sang trang login</li></ul></details></li></ul><ul id="959dd274-f475-4b3a-93dd-7c8d848b9c35" class="toggle"><li><details open=""><summary><strong>Handle phần </strong><mark class="highlight-red"><strong>authentication</strong></mark><strong> trong app như thế nào ? Cách lưu các token ?</strong></summary><ul id="2b5c2a1d-154c-4559-82f8-69d8ac23d9b0" class="bulleted-list"><li style="list-style-type:disc"><strong>B1</strong>: Check cookies nếu có JWT payload thì vào các trang member nếu không redirect ra trang login</li></ul><ul id="75654edf-5356-43a7-91e7-c3b44c3dc9f7" class="bulleted-list"><li style="list-style-type:disc"><strong>B2</strong>: Ở trang login khi user hoàn tất nhập username, pass, ta gửi lên server để thực hiện việc login, nếu thành công thì lấy mã token và lưu vào cookie sau đó redirect về trang home</li></ul><ul id="0ff85986-6791-43bf-b0dc-c265d6a10c6c" class="bulleted-list"><li style="list-style-type:disc"><strong>B3</strong>: Nếu trang /login dùng chuẩn xác thực bằng OpenID thông qua một cơ chế OAuth. Theo authorization code grant flow, trang /login sẽ redirect browser về /backend/auth/&lt;provider&gt;. Sau đó nếu flow OAuth xong và hợp lệ (user grant đăng nhập với Facebook), server response sẽ set authentication cookie với JWT bên trong. Sau đó browser sẽ redirect về trang của SPA. SPA sẽ quay lại check như bước 1.</li></ul></details></li></ul><ul id="dd922303-2eb9-46c1-b2a2-d09cb4912073" class="toggle"><li><details open=""><summary><strong>Bạn thường dùng thư viện nào để quản lý form ?</strong></summary><ul id="3bd08187-4509-437f-8205-e629769423b2" class="bulleted-list"><li style="list-style-type:disc"><strong>Formik</strong></li></ul><ul id="d21bda16-7c3b-4f45-a206-4d4b79bc6611" class="bulleted-list"><li style="list-style-type:disc"><strong>Redux-Form </strong></li></ul><ul id="0e03ad15-4251-4e23-a764-d8be7c24053b" class="bulleted-list"><li style="list-style-type:disc"><strong>React-Hook-Form</strong></li></ul></details></li></ul><ul id="b03fd82a-0740-494d-a7e8-f38c49f74340" class="toggle"><li><details open=""><summary><strong>Render có điều kiện (</strong><mark class="highlight-red"><strong>condition</strong></mark><strong>) trong react ?</strong></summary><ul id="e904bd5a-f320-4625-8b22-0a333655b228" class="bulleted-list"><li style="list-style-type:disc">Giúp ta hiển thị kết quả dynamic dựa vào điều kiện state, hay dữ liệu chúng ta truyền vào.</li></ul><ul id="aaec098f-e5b4-47bc-b1ee-346dc238f7f7" class="bulleted-list"><li style="list-style-type:disc">Một số cách:<ul id="06b0be50-cb5c-4694-949a-72b86b2f96d7" class="bulleted-list"><li style="list-style-type:circle">Sử dụng if else</li></ul><ul id="7a94a753-9183-4b39-b7e9-0537e9259bd4" class="bulleted-list"><li style="list-style-type:circle">Toán tử 3 ngôi</li></ul><ul id="39b48157-30b8-4a44-a22a-d6f2d8f1fed1" class="bulleted-list"><li style="list-style-type:circle">Sử dụng một biến phần tử</li></ul></li></ul></details></li></ul><ul id="ddb7516e-6a83-424b-8134-49d676a51cdb" class="toggle"><li><details open=""><summary><strong>Cách hiển thị dữ liệu API với axios?</strong></summary><ul id="6dbafb99-2c79-49b4-845c-9f87de1dbae5" class="bulleted-list"><li style="list-style-type:disc">Axios là một promise dựa trên HTTP để tạo yêu cầu HTTP đến trình duyệt hay web server.</li></ul><ul id="bf18360b-33ce-4841-8fa3-474058cc7d1e" class="bulleted-list"><li style="list-style-type:disc"><strong>Tính năng</strong><ul id="f3a07e8e-90e0-4ba5-878a-e4a74b957852" class="bulleted-list"><li style="list-style-type:circle"><strong>Interceptors</strong>: Truy cập cấu hình yêu cầu hoặc phản hồi (header, dữ liệu, v.v.) khi chúng gửi đến hoặc đi. Các hàm này có thể hoạt động như các cổng để kiểm tra cấu hình hoặc thêm dữ liệu.</li></ul><ul id="70c007cc-3950-4ba8-87d7-f0f0d70d18d1" class="bulleted-list"><li style="list-style-type:circle"><strong>Instances</strong>: Tạo thực thể có thể tái sử dụng như baseUrl, headers, và cấu hình khác đã thiết lập.</li></ul><ul id="a73aa102-1d99-47e2-bd75-8b9be0611e5d" class="bulleted-list"><li style="list-style-type:circle"><strong>Defaults</strong>: Thiết lập giá trị chung cho header chung (như Authorization) với các yêu cầu. Nó hữu ích khi bạn cần xác thực đến server trên mọi yêu cầu.</li></ul></li></ul></details></li></ul><ul id="f31cad11-c8ba-4c86-b044-f83948908e0e" class="toggle"><li><details open=""><summary><strong>Caching trong react?</strong></summary><ul id="f00c43d7-74f1-4e63-a535-0aa1de84a429" class="bulleted-list"><li style="list-style-type:disc">Ta có thể caching dữ liệu trong React bằng nhiều cách như:<ul id="facdc843-a92e-4328-807f-085de03c78dd" class="bulleted-list"><li style="list-style-type:circle">Local Storage</li></ul><ul id="ce5c9914-2300-4614-8c82-edd1508ae47b" class="bulleted-list"><li style="list-style-type:circle">Redux Store</li></ul><ul id="59bea2aa-9eb3-466e-ad96-366830084d53" class="bulleted-list"><li style="list-style-type:circle">Giữ dữ liệu giữa mounting và unmounting</li></ul></li></ul></details></li></ul><ul id="be073ff1-3e81-4984-be34-6386b76a7e09" class="toggle"><li><details open=""><summary><strong>Có thể dùng đc component mà không </strong><mark class="highlight-red"><strong>extends</strong></mark><strong> không ?</strong></summary><ul id="503f4a66-07c5-4082-9920-5255fdd46602" class="bulleted-list"><li style="list-style-type:disc">Có thể được, miễn là không sử dụng <strong>JSX</strong></li></ul><ul id="15edc0c1-c93d-4534-9302-cc3cdd8504e8" class="bulleted-list"><li style="list-style-type:disc">Tuy nhiên sẽ không sử dụng được những lifecycle methods, cũng như các props, state và render </li></ul></details></li></ul><ul id="eecb0690-317c-4744-ab88-de70df08d9b6" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>window.reloaded </strong></mark><strong>vs</strong><mark class="highlight-red"><strong> dom.reloaded</strong></mark><strong> khác gì nhau ?</strong></summary><ul id="2d70aaf5-265c-482e-9bcb-391faf74dce3" class="bulleted-list"><li style="list-style-type:disc"> <strong>window</strong> là gọi khi cả html, js đc load xong </li></ul><ul id="7f5d3c78-57d0-4d66-8e64-775f022aabfd" class="bulleted-list"><li style="list-style-type:disc">còn <strong>dom</strong> là khi mới chỉ có html chưa có gì</li></ul></details></li></ul><ul id="ae0f17c3-68d6-4242-a469-568bb58866aa" class="toggle"><li><details open=""><summary><strong>Redux là gì ? Thành phần trong redux ? Cách hoạt động ? Nguyên tắc?</strong></summary><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="86e12bf0-c88c-4a22-9da8-08d51b3db9a4"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><em>Redux là 1 thư viện giúp chúng ta quản lý các state 1 cách tốt hơn. Thay vì phải truyền state qua từng Component thì Redux sẽ tạo ra 1 store duy nhất dùng để thay đổi dữ liệu.</em></div></figure><ul id="7ee643ae-97e8-4afb-af77-98d6e6310e66" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid"><strong>Đặt điểm:</strong></span><ul id="77aeac6c-2af6-4fda-aa9e-f75fc46e316a" class="bulleted-list"><li style="list-style-type:circle">State trong redux là có thể dự đoán được</li></ul><ul id="37300000-5290-4de6-8083-d302fda49a5a" class="bulleted-list"><li style="list-style-type:circle">Redux sử dụng kiến trúc 1 chiều: uni-directional data flow</li></ul><ul id="87bfeb47-0e0a-41c1-9c80-27c6751b405d" class="bulleted-list"><li style="list-style-type:circle">Redux state là READ-ONLY. Muốn update phải dispatch một action (js object)</li></ul><ul id="fa496a0f-c8f9-4e52-b4b4-5f3b5722f489" class="bulleted-list"><li style="list-style-type:circle">Những thay đổi của redux state được thực hiện bởi Pure functions (reducer)</li></ul><ul id="7f960119-d4a5-40bc-b7a5-796e035c4649" class="bulleted-list"><li style="list-style-type:circle">Redux có thể dùng cho các javascript apps, không chỉ riêng gì ReactJS.</li></ul></li></ul><ul id="5617bc3c-95b6-41c7-a496-3ba6ecb06567" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid"><strong>Thành phần: </strong></span><ul id="60da3cd8-c0f4-4462-8982-63233302012e" class="bulleted-list"><li style="list-style-type:circle"><code>Store</code> gồm có: <ul id="46e5a6f0-2898-4985-9fff-5b017dffc96d" class="bulleted-list"><li style="list-style-type:square"><code>State</code>: là dữ liệu hiện tại được lưu trên state</li></ul><ul id="e2d56265-ea34-48c9-a454-81cf6f926b08" class="bulleted-list"><li style="list-style-type:square"><code>Reducer</code>: là hàm biến đổi state cũ thành state mới</li></ul><ul id="df4b63dc-085f-462d-a506-b31d075861b4" class="bulleted-list"><li style="list-style-type:square">Dispatcher: quản lý <code>middlewares</code> và chuyển dữ liệu xuống reducer.</li></ul></li></ul><ul id="b46cb2a0-cc75-496d-85ff-1b6be30c4970" class="bulleted-list"><li style="list-style-type:circle"><code>Action</code>: tạo ra các action dùng để mô tả event do người dùng tạo ra</li></ul><ul id="08cc49a4-806e-4cbd-a25c-d64fbbb7cd8d" class="bulleted-list"><li style="list-style-type:circle"><code>View</code>: hiển thị dữ liệu được cung cấp bởi Store.</li></ul></li></ul><ul id="58bccf7b-8438-405b-b072-d8527f87ec3d" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid"><strong>Nguyên lý hoạt động của Redux: </strong></span><ul id="9f080972-42c2-4b76-a39a-14a91d256371" class="bulleted-list"><li style="list-style-type:circle"><span style="border-bottom:0.05em solid"><strong>B1</strong></span>: Khi có 1 sự kiện (event) như là GET, POST, UPDATE, DELETE... thì thằng <code>action</code> creators sẽ sinh ra 1 action mô tả những gì đang xảy ra.</li></ul><ul id="46567fd2-ab47-4cfa-ae9c-714e342a279d" class="bulleted-list"><li style="list-style-type:circle"><span style="border-bottom:0.05em solid"><strong>B2</strong></span>: <code>Action</code> sẽ thực hiện điều phối <code>Reducer</code> xử lý event thông qua hàm <code>dispatch(action)</code>.</li></ul><ul id="d86efefe-f81d-4fc3-a51e-76918626b6b3" class="bulleted-list"><li style="list-style-type:circle"><span style="border-bottom:0.05em solid"><strong>B3</strong></span>: <code>Reducer</code> dựa vào những mô tả của <code>Action</code> để biết cần thực hiện thay đổi gì trên <code>State</code> và thực hiện update.</li></ul><ul id="ac6590cf-5c07-4820-962b-af441e8c3582" class="bulleted-list"><li style="list-style-type:circle"><span style="border-bottom:0.05em solid"><strong>B4</strong></span>: Khi <code>State</code> được update thì các trigger đang theo dõi state đó sẽ nhận được thông tin update và tiến hành render lại phần <code>view</code> để hiển thị ra cho người dùng</li></ul></li></ul><ul id="81f5d912-bc5a-461a-9174-32d4227f8f9c" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid"><strong>3 Nguyên tắc trong redux:</strong></span><ul id="aaa838f3-a138-4a6b-a2e8-04b10052724d" class="bulleted-list"><li style="list-style-type:circle"><strong>Store</strong> luôn là nguồn dữ liệu đúng và tin cậy duy nhất.</li></ul><ul id="90a8719b-48ae-4370-bf0e-82573050e1f8" class="bulleted-list"><li style="list-style-type:circle"><strong>State</strong> chỉ được phép đọc, cách duy nhất để thay đổi <strong>State</strong> là phát sinh một Action, và để Reducer thay đổi State.</li></ul><ul id="e0f486ea-74a1-4472-ad2a-f4ec724a9523" class="bulleted-list"><li style="list-style-type:circle">Các function Reducer phải là <strong>Pure function</strong> (với cùng 1 đầu vào chỉ cho ra 1 đầu ra duy nhất)</li></ul></li></ul><ul id="9644839e-df75-4674-ade6-4e6a812f539c" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid"><strong>Khi nào cần sử dụng Redux:</strong></span><ul id="c4fc3a79-4dba-4cfa-8e51-3b6f658b86f4" class="bulleted-list"><li style="list-style-type:circle">Dữ liệu được sử dụng ở nhiều nơi</li></ul><ul id="eca6a424-7698-4f40-b2b4-96574ba678fd" class="bulleted-list"><li style="list-style-type:circle">Có hỗ trợ chức năng <code>undo</code>/<code>redo</code></li></ul><ul id="6d34fcae-fbca-4285-9620-3406aa31878f" class="bulleted-list"><li style="list-style-type:circle">Cần <code>cache</code> dữ liệu để tái sử dụng cho những lần sau.</li></ul></li></ul></details></li></ul><ul id="6910c80c-233f-427a-9d26-f07b39dd8b50" class="toggle"><li><details open=""><summary><strong>Một số middleware trong redux ?</strong></summary><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="b2539d98-7043-4bbe-ae63-38db21772fcb"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"> <code><em>middleware</em></code><em> là một lớp nằm giữa </em><code><em>Reducers</em></code><em> và </em><code><em>Dispatch Action</em></code><em>, nó sẽ modify và được gọi trước khi action được dispatch. Thường được dùng trong việc logging, reporting, async api, routing, ...</em></div></figure><ul id="3e39048d-8f64-42ae-a153-c2641e88d88a" class="bulleted-list"><li style="list-style-type:disc"><strong><strong>Logging, Reporting, Redux-saga, Redux-thunk, redux-persist</strong></strong></li></ul></details></li></ul><ul id="430fde88-3247-4e9d-91e6-e73a7048c5af" class="toggle"><li><details open=""><summary><strong>Tại sao phải sử dụng middleware như redux-saga hay redux-thunk?</strong></summary><p id="ba9a9411-30e5-4853-95d6-e54f6e2d2479" class="">Khi sử dụng Redux ta gặp một số ràng buộc như: </p><ul id="27d796a2-83d7-4dd1-9d47-fdf62af1f6d7" class="bulleted-list"><li style="list-style-type:disc">Các xử lý trong <code>Reducers</code> phải là các hàm đồng bộ và pure, trả về state mới</li></ul><ul id="5e6b71b7-f9bb-4de1-a620-a63490e52d3b" class="bulleted-list"><li style="list-style-type:disc"><code>Reducers</code> sẽ không được sử dụng các hàm <code>async</code> vì không được thay đổi <code>global state</code></li></ul><p id="f7ad4335-f402-4cad-b900-dc2cd3bf582c" class="">⇒ Để giải quyết các side effects cần phải thực hiện ở <code>middleware</code></p></details></li></ul><ul id="9d1ac618-37ed-4aa4-a455-4c87820a77bc" class="toggle"><li><details open=""><summary><strong>Redux saga là gì?</strong></summary><p id="fa3d6c0f-04ed-40a5-98ae-e71686b8dce5" class=""><code>Redux-Saga</code> là một thư viện redux middleware, giúp quản lý những side effect trong ứng dụng redux trở nên đơn giản hơn. Bằng việc sử dụng tối đa tính năng Generators (function*) của ES6, nó cho phép ta viết async code nhìn giống như là synchronous.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="b7ec04ae-5360-42a4-a6cd-2da11c1be549"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><em> </em><code><em>Generator function</em></code><em><strong> </strong></em><em>là function có khả năng hoãn lại quá trình thực thi mà vẫn giữ nguyên được context. ( Nói một cách đơn giản thì generator function là 1 function có khả năng tạm ngưng trước khi hàm kết thúc và có thể tiếp tục chạy tại một thời điểm khác, khác với pure function khi được gọi sẽ thực thi hết các câu lệnh trong hàm)</em></div></figure></details></li></ul><ul id="feb9c81d-e77f-47e8-904a-10b8826dc420" class="toggle"><li><details open=""><summary><strong>Một số </strong><mark class="highlight-red"><strong>helper</strong></mark><strong> trong redux-sage ?</strong></summary><ul id="36a2c2ec-9192-4e72-9506-f9a1082ad74a" class="bulleted-list"><li style="list-style-type:disc"><code>takeEvery()</code> : thực thi và trả lại kết quả của mọi actions được gọi.</li></ul><ul id="5e7a5c9d-2fd9-49ea-8944-d27471c95223" class="bulleted-list"><li style="list-style-type:disc"><code>takeLastest()</code> : có nghĩa là nếu chúng ta thực hiện một loạt các actions, nó sẽ chỉ thực thi và trả lại kết quả của của actions cuối cùng.</li></ul><ul id="7f133c04-2584-4177-89bd-e7061b7ff092" class="bulleted-list"><li style="list-style-type:disc"><code>take()</code> : tạm dừng cho đến khi nhận được action</li></ul><ul id="d024d327-8ca8-447e-82ad-3128c7135198" class="bulleted-list"><li style="list-style-type:disc"><code>put()</code> : dispatch một action.</li></ul><ul id="de232193-4304-4800-aea0-33d0a33089d6" class="bulleted-list"><li style="list-style-type:disc"><code>call()</code>: gọi function. Nếu nó return về một promise, tạm dừng saga cho đến khi promise được giải quyết.</li></ul><ul id="891a1af8-6e89-4690-8022-8421ed09798e" class="bulleted-list"><li style="list-style-type:disc"><code>race()</code> : chạy nhiều effect đồng thời, sau đó hủy tất cả nếu một trong số đó kết thúc</li></ul></details></li></ul><ul id="dec85032-7726-4ba3-b5f6-19dd45049fb7" class="toggle"><li><details open=""><summary><strong>Redux thunk là gì?</strong></summary><ul id="3a93b99e-8df0-4f0d-9f79-086571cbf54f" class="bulleted-list"><li style="list-style-type:disc">Redux Thunk là một Middleware cho phép bạn viết các Action trả về một function thay vì một plain javascript object bằng cách trì hoãn việc đưa action đến reducer.</li></ul><ul id="0176f6cc-b61d-4ba0-a089-0a95b36ffc4e" class="bulleted-list"><li style="list-style-type:disc">Redux Thunk được sử dụng để xử lý các logic bất đồng bộ phức tạp cần truy cập đến Store hoặc đơn giản là việc lấy dữ liệu như từ server</li></ul></details></li></ul><ul id="015bdb4d-d6cc-448e-ab7d-cd9c54908bd0" class="toggle"><li><details open=""><summary><strong>Tại sao lại cần dùng redux toolkit ?</strong></summary><p id="fb49436f-8403-4bc1-8e2b-c6fc41fe1db5" class=""><a href="https://www.notion.so/Redux-toolkit-232b0dd9706a419181540db11c3a0e4d">Redux tool kit </a>là một thư viện giúp chúng ta viết redux tốt hơn, dễ hơn và đơn giản hơn (tiêu chuẩn để viết redux).</p><p id="c0652b61-5d1d-46e3-b244-f5312a0d0880" class="">Ba vấn đề làm nền tảng để RTK ra đời: </p><ul id="9b1b65ad-b009-407b-a5fb-8d05c0f74e73" class="bulleted-list"><li style="list-style-type:disc">Việc Configure một store trong redux rất phức tạp.</li></ul><ul id="6dda0cab-e5b5-4af0-94be-7ba3cdb7cc61" class="bulleted-list"><li style="list-style-type:disc">Phải cài thêm nhiều package để làm việc với redux tốt hơn.</li></ul><ul id="65f5fc5c-71ad-4a17-b544-2e13821054eb" class="bulleted-list"><li style="list-style-type:disc">Redux yêu cầu quá nhiều boilerplate code</li></ul></details></li></ul><ul id="66fbd6cd-125b-4d23-91ff-e499c27354c2" class="toggle"><li><details open=""><summary><strong>Ngoài redux ra còn có thư viện nào hỗ trợ quản lý state?</strong></summary><ul id="938ec11b-6c5d-47a3-95dc-95e101bacaff" class="bulleted-list"><li style="list-style-type:disc">CÓ </li></ul><ul id="87ead4c9-c850-4aa5-8667-b2c844b764b1" class="bulleted-list"><li style="list-style-type:disc">Như: mobx, zustand, Context API của react, recoil </li></ul></details></li></ul><ul id="58d821f9-ef98-48a5-9dc1-0926bffce429" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Làm thế nào để tạo menu đa cấp bằng đệ quy trong react ?</strong></mark></summary></details></li></ul><ul id="c324b8ea-e9e7-4bb7-adc7-cb51910a4c04" class="toggle"><li><details open=""><summary><strong>Tree shaking là gì?</strong></summary><ul id="351ac77c-8086-41c2-841b-8a41450ae642" class="bulleted-list"><li style="list-style-type:disc">“Tree shaking&quot; là một tối ưu hóa hiệu suất bắt buộc phải có khi đóng gói JavaScript. </li></ul><ul id="2a870da5-28dc-43c4-9dda-9db87e0b1dce" class="bulleted-list"><li style="list-style-type:disc">Nói một cách đơn giản, Tree shaking có nghĩa là xóa code mà không sử dụng đến, hay gọi là code thừa.</li></ul></details></li></ul><ul id="796efdc6-c7a2-4166-8ddf-39bd07387d2f" class="toggle"><li><details open=""><summary><strong>Webpack là gì?</strong></summary><ul id="cd9d74b1-fa94-4448-9f5c-f99045090cf4" class="bulleted-list"><li style="list-style-type:disc">Webpack được biết đến là một công cụ phần mềm được sử dụng để quản lý các module JavaScript. Nó sẽ đóng gói tất cả các mã nguồn của chương trình cũng như CSS, font, image,... khi nó hoạt động. Assets chính là tên để gọi những thứ được đóng gói này và chúng sẽ được Webpack đóng gói thành 1 file hoặc một vài file.</li></ul><ul id="da60076e-d3ba-463a-be23-5baada93d289" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid"><strong>Tác dụng:</strong></span> mặc dù đóng gói rất nhiều dữ liệu nhưng chúng được đóng gói một cách rất cẩn thận, bài bản và ngăn nắp, nó được sắp xếp với cấu trúc tương tự như viết mã code. Những dữ liệu này được lập trình sẵn xem cái nào chạy trước, cái nào chạy sau và phần nào sẽ phụ thuộc vào nhau.</li></ul></details></li></ul><ul id="bcf3eec9-4d0e-4e0f-a193-fbca289db9c2" class="toggle"><li><details open=""><summary><strong>Data binding trong react</strong></summary><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="3dc16204-bc27-4b36-a4e4-28027293cdd0"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Dữ liệu trong React sẽ được truyền theo một chiều duy nhất, đó là từ component cha đến component con, mà không có chiều ngược lại. Việc truyền dữ liệu theo hướng ngược lại được hiểu là &quot;truyền sự kiện&quot;. Việc truyền dữ liêụ theo 1 hướng duy nhất sẽ giúp ứng dụng hoạt động một cách có kiểm soát hơn</div></figure><hr id="d4810ee4-6cee-458f-8195-40363cfe2ed9"/><ul id="2f3a75b9-a100-44bc-af51-bc2dc4721517" class="bulleted-list"><li style="list-style-type:disc">Dữ liệu trong React sẽ chỉ được truyền theo 1 chiều duy nhất, đó là từ <code>component</code>cha đến <code>component</code> con thông qua <code>props</code>. Không có chiều ngược lại (thực ra là bạn có thể làm ngược lại nhưng như vậy là trái với quan điểm của React).</li></ul><ul id="01eecebe-2d26-465c-bbe9-ecc64810cb55" class="bulleted-list"><li style="list-style-type:disc">Câu hỏi đặt ra, liệu dữ liệu có thực sự được truyền theo 1 chiều duy nhất? <ul id="33018ede-7fa4-4adf-9f55-93f6c2001785" class="bulleted-list"><li style="list-style-type:circle">Thường là không! Nhưng trong React, chúng ta coi việc truyền &quot;thông tin&quot; từ component con đến component cha là truyền &quot;sự kiện&quot;. </li></ul><ul id="5cb28bcd-943a-4d56-9418-4c82b440be8b" class="bulleted-list"><li style="list-style-type:circle">Trong sự kiện đó component con có thể đính kèm các thông tin của sự kiện (có thể là dữ liệu). Quá trình đó được hiểu là truyền sự kiện, không phải truyền dữ liệu.</li></ul></li></ul><ul id="adf84100-595d-4033-a41e-93157cb09c1e" class="bulleted-list"><li style="list-style-type:disc">Tóm lại, trong React, dữ liệu sẽ được truyền từ trên xuống, và sự kiện được truyền từ dưới lên.</li></ul></details></li></ul><ul id="89d7a7d3-d251-44d9-a691-b920fece7800" class="toggle"><li><details open=""><summary><strong>Style design (css, scss, styled), The ways struct css module?</strong></summary><ul id="7d465dac-ad63-4f9d-ac9a-68e87195f755" class="bulleted-list"><li style="list-style-type:disc">Có 4 cách để style css trong react:<ul id="123ec90f-1973-4a79-a5e6-b0b27db6b664" class="bulleted-list"><li style="list-style-type:circle"><strong>CSS stylesheet</strong>: đơn giản là viết 1 file css và import vào component bạn muốn style</li></ul><ul id="65c85752-f20e-4da7-8170-8a642acb4047" class="bulleted-list"><li style="list-style-type:circle"><strong>Inline styling</strong>: với react thì inline style không được thể hiện bằng 1 string mà là 1 object. Ta có thể tạo một biến để lưu trữ những style object và truyền vào element bất kỳ bằng cú pháp style={name_variable}</li></ul><ul id="25bfa410-1c40-4ea5-b994-3ac5c6252c32" class="bulleted-list"><li style="list-style-type:circle"><strong>CSS module</strong>: <ul id="64015747-8578-4ffe-af39-2eec1972ee59" class="bulleted-list"><li style="list-style-type:square">Là kiểu viết module hóa stylesheet thành từng file nhỏ, không còn sử dụng một file stylesheet tập trung nữa. Thêm vào đó, tất cả tên class lúc này sẽ được scope lại local.</li></ul><ul id="16225a50-f2a7-4ba9-bf76-c3fab262e237" class="bulleted-list"><li style="list-style-type:square">Nói tóm lại, Module CSS sẽ được viết ở cùng folder với Component.</li></ul><ul id="969b2539-5a4d-466d-83b6-fca10bfe1c94" class="bulleted-list"><li style="list-style-type:square">Một số lợi ích khi dùng css module: <ul id="393e911a-e44b-4ffc-94ff-59c0ee689a6f" class="bulleted-list"><li style="list-style-type:disc">Chỉ tồn tại ở một nơi</li></ul><ul id="1a006930-854b-446d-9723-41d6c7121c42" class="bulleted-list"><li style="list-style-type:disc">Chỉ được sử dụng ở component đó mà không sử dụng ở bất kì chỗ nào </li></ul><ul id="675c0de8-3661-4420-8d57-e91e10408d2b" class="bulleted-list"><li style="list-style-type:disc">Không nhất thiết phải dùng scss (muốn dùng vẫn được) vì bản chất css module đã chia nhỏ từng file css theo từng component khác nhau</li></ul><ul id="be486b1d-e018-4b6a-9315-eb9a2a778d70" class="bulleted-list"><li style="list-style-type:disc">Không sợ bị trùng tên giữa các class vì khi build với webpack tên class của CSS và element đều là duy nhất với hash code đi kèm.<blockquote id="f6d493f3-22a9-4b32-a3c4-64a954a6f039" class=""><code><strong>[Tên component]_[Tên value trong file css]__[hash string]</strong></code></blockquote></li></ul></li></ul></li></ul><ul id="a79369d3-3918-444e-a1a5-5616c54ad2cb" class="bulleted-list"><li style="list-style-type:circle"><strong>styled component</strong>: <ul id="bb38faf3-0b5f-47a3-9569-e5296589515c" class="bulleted-list"><li style="list-style-type:square">là một lib giúp bạn có thể tổ chức và quản lý code css 1 cách dễ dàng và hiệu quả.</li></ul><ul id="204afe5d-0f5d-4f1c-b8ae-7c6375ad2c27" class="bulleted-list"><li style="list-style-type:square">Nó được xây dựng với mục tiêu giữ cho các style của component trong react gắn liền với các component đó </li></ul><ul id="3eb72803-3d30-4ae3-ad5a-25f9a9743fce" class="bulleted-list"><li style="list-style-type:square">Không chỉ thay đổi việc implement các component mà còn thay đổi cả tư duy trong việc xây dựng styles cho các component đó.</li></ul><ul id="5906ead0-d96c-4aae-aed0-e909d61e341d" class="bulleted-list"><li style="list-style-type:square">Lợi ích: <ul id="ec3bcb39-7a28-40de-8c51-f1c47fa99e00" class="bulleted-list"><li style="list-style-type:disc">cho phép ta encapsulate (đóng gói) style vào trong component trong js nhưng vẫn giữ được các tính năng của css như nesting, media query, pseudo-selector, ... Nó giải quyết được vấn đề global scope của css vì ta không cần phải viết selector cho class hay id, bởi styled component sẽ generate class ngẫu nhiên và truyền component thông qua property là className</li></ul><ul id="6f5f4fab-5b78-4720-b26b-f616ff7583af" class="bulleted-list"><li style="list-style-type:disc">Thay đổi style dựa trên thuộc tính hoặc trạng thái của component dễ dàng hơn. Ta có thể truyền props để thực hiện việc thay đổi style dễ dàng hơn</li></ul></li></ul><ul id="09577e81-58d0-4f46-bfe6-77952875b557" class="bulleted-list"><li style="list-style-type:square">Bất lợi:<ul id="d6754b3a-d8fd-4f01-a1d4-749cc33c939b" class="bulleted-list"><li style="list-style-type:disc">Tên class được generate ngẫu nhiên nên sẽ gây khó chịu cho người quen debug css bằng tên class. (ta có thể giải quyết bằng việc kết hơp css selector với styled component)</li></ul><ul id="b99acbd7-9a3c-4823-9aa4-76a4c3105149" class="bulleted-list"><li style="list-style-type:disc">Còn khá non trẻ nên chưa được kiểm duyệt tính scale trong các project lớn</li></ul><ul id="e799cc93-7ed1-47b1-97d0-a485097fdbb5" class="bulleted-list"><li style="list-style-type:disc">Nhiều người vẫn không thích css trong js</li></ul><ul id="5efbb7c4-67f2-4c79-bde2-2b59f3ffd231" class="bulleted-list"><li style="list-style-type:disc">Không được dùng<code>ref</code> trên component phải chuyển sang <code>innerRef</code>bởi vì <a href="https://www.styled-components.com/docs/advanced#refs">ref sẽ được truyền vào wrapper của styled component thay vì component mình muốn.</a></li></ul></li></ul></li></ul></li></ul></details></li></ul><ul id="00719802-08ba-48d1-b6ca-4de3288a6df9" class="toggle"><li><details open=""><summary><strong>State management (flux, redux)</strong></summary><ul id="81c895e7-7914-485e-b570-fb262da30fa3" class="bulleted-list"><li style="list-style-type:disc"><strong>FLUX</strong> là một kiến thức quen thuộc được thêm bởi Facebook để sử dụng và làm việc với React. <ul id="eed526d0-27e6-4a09-b812-3f834e2c5c30" class="bulleted-list"><li style="list-style-type:circle"><a href="https://kipalog.com/posts/Huong-dan-va-giai-thich-Flux-bang-hinh-ve">https://kipalog.com/posts/Huong-dan-va-giai-thich-Flux-bang-hinh-ve</a></li></ul><ul id="0ab39375-dbe4-47bd-b73d-c9c19e53126b" class="bulleted-list"><li style="list-style-type:circle">Flux không được xem là một Framework hay thư viện mà nó chỉ đơn giản là một kiểu kiến trúc hỗ trợ thêm cho React. </li></ul><ul id="5741252c-dd54-4a9d-8eb6-9082d4b08310" class="bulleted-list"><li style="list-style-type:circle">Đồng thời, nó xây dựng các ý tưởng về luồng dữ liệu một chiều (tên tiếng anh là Unidirectional Data Flow).</li></ul><ul id="01232d69-3e5d-436d-9f0d-0dd72dfc3aa0" class="bulleted-list"><li style="list-style-type:circle">Cấu trúc Flux bao gồm: <ul id="796fbf11-8558-427a-9b39-e6d4efb4dc83" class="bulleted-list"><li style="list-style-type:square">Actions: Có nhiệm vụ làm dẫn truyền dữ liệu đến với Dispatcher (nó được xem tương tự như Helper Method).</li></ul><ul id="0f7b76b6-79a0-4072-8a94-1c072437ec29" class="bulleted-list"><li style="list-style-type:square">Dispatcher: Nhận những thông tin truyền đạt từ Actions để truyền tải dữ liệu tới các nơi đã thực hiện đăng ký nhận các thông tin.</li></ul><ul id="629b5a50-eb55-4175-84a3-dcb5b9c024ac" class="bulleted-list"><li style="list-style-type:square">Stores: Là nơi có nhiệm vụ lưu trữ cho trạng thái và các logic của hệ thống, đây là một trong những nơi có nhiệm vụ nhận đăng ký dữ liệu với Dispatcher.</li></ul><ul id="23a9cb78-e636-4719-bb37-01339bc0aa59" class="bulleted-list"><li style="list-style-type:square">Controller Views: Được cho là các React Components có nhiệm vụ nhận các trạng thái từ Stores và truyền dữ liệu cho các thành phần con.</li></ul></li></ul></li></ul><ul id="3388c747-fa6b-4ab2-b542-101d3d9b66ad" class="bulleted-list"><li style="list-style-type:disc"><strong>REDUX:</strong></li></ul><ul id="fd8c62e6-49ea-4ace-99e5-48323d2f9a7b" class="bulleted-list"><li style="list-style-type:disc"><strong>FLUX ≠ REDUX</strong><ul id="85d3f57c-b145-44b8-b921-786035d0e9e4" class="bulleted-list"><li style="list-style-type:circle">Flux có kiến trúc mang tính tổng quát còn redux thì lại chi tiết hơn vì là một phiên bản được implement từ flux và sử dụng immutable state.</li></ul><ul id="d81e72ea-0c7c-44da-92eb-e7a232191c53" class="bulleted-list"><li style="list-style-type:circle">Mặc dù phát triển dựa trên flux nhưng redux chỉ có duy nhất 1 store và đã lược bỏ đi dispatcher</li></ul></li></ul></details></li></ul><ul id="3d8c277a-8ba0-4fef-9fe7-ea1714d60811" class="toggle"><li><details open=""><summary><strong>SPA, SSA, PWA</strong></summary><p id="b33c8eb4-49ce-4068-b0e4-186d13f39a99" class=""><a href="https://haodev.wordpress.com/2019/03/20/ssr-vs-csr/">https://haodev.wordpress.com/2019/03/20/ssr-vs-csr/</a></p><ul id="4076a1d7-88ea-452e-8b3d-1d34a8b302d9" class="bulleted-list"><li style="list-style-type:disc"><strong>Single Page Aplication</strong>: <ul id="d4542cd2-f733-4bf7-a278-bac49c91d114" class="bulleted-list"><li style="list-style-type:circle">Ứng dụng sẽ render HTML, CSS ở phía client, FE sẽ xử lý nhưng logic cơ bản như như get data, validation, navigate và render. Còn BE sẽ xử lý logic để lấy data và trả về cho client thông qua API.</li></ul><ul id="b3839b01-b7aa-488f-b096-a93b9d58e651" class="bulleted-list"><li style="list-style-type:circle">Pros:<ul id="2737a0ac-f78a-49c2-ae36-3a220ef48df8" class="bulleted-list"><li style="list-style-type:square">Ít tốn tài nguyên của hệ thống, vì client sẽ chịu trách nhiệm render</li></ul><ul id="2cba9034-ec51-4de0-b665-c6a3b128fca2" class="bulleted-list"><li style="list-style-type:square">Vì giao tiếp qua API nên lượng request đến server sẽ được giảm thiểu</li></ul><ul id="9014ff62-16d7-4957-b0d3-5962618cf393" class="bulleted-list"><li style="list-style-type:square">Nhanh, vì các HTML, css, JS, chỉ được tải 1 lần duy nhất</li></ul><ul id="b4237790-3b79-47a4-80da-ba5df082006d" class="bulleted-list"><li style="list-style-type:square">Không cần phải load lại trang, làm tăng trải nghiệm người dùng.</li></ul></li></ul><ul id="d808a0e7-9c48-4aa4-a090-c072193ddd79" class="bulleted-list"><li style="list-style-type:circle">Cons:<ul id="1e7363a0-93a3-402f-9136-4ef342a0336f" class="bulleted-list"><li style="list-style-type:square">Khó SEO vì nội dung web được render phía client</li></ul><ul id="d983e3b8-7f8c-4f7c-92d8-10087c370ec2" class="bulleted-list"><li style="list-style-type:square">Trình duyệt sẽ xử lý nhiều, nên vấn đề hiệu năng cần được chú ý</li></ul><ul id="d669f6e2-41f5-4ad2-841e-063c07f08386" class="bulleted-list"><li style="list-style-type:square"></li></ul></li></ul></li></ul><ul id="41ba8901-af9c-4d51-afb6-4d61920bd997" class="bulleted-list"><li style="list-style-type:disc"><strong>Server Side Rendering</strong>: <ul id="529dea60-5de9-40a7-b5d8-8701cea29ea5" class="bulleted-list"><li style="list-style-type:circle">Mọi logic về validation, đọc dữ liệu, navigate, hay render đều được xử lý ở phía server </li></ul><ul id="812655aa-f05b-4b2c-8131-6609effcd484" class="bulleted-list"><li style="list-style-type:circle">Cơ chế hoạt động: <ul id="dab2682f-5ace-4cad-9e36-03997acb7993" class="bulleted-list"><li style="list-style-type:square">Khi user vào trang web, browser gửi GET request tới server</li></ul><ul id="78cf64a5-6e1e-45a0-87f4-9aee74900e9e" class="bulleted-list"><li style="list-style-type:square">Server nhận request, đọc dữ liệu, truy vấn database, xử lí logic, ... </li></ul><ul id="d3cc89d0-1819-46a6-9f9e-552b78d5349e" class="bulleted-list"><li style="list-style-type:square">Server sẽ render ra HTML và trả về cho client</li></ul></li></ul><ul id="7369907d-cb56-4b50-8d36-9c6b9742bb2b" class="bulleted-list"><li style="list-style-type:circle">Pros: <ul id="36e4ebaa-e520-4c43-b6c3-36b319cc3ffb" class="bulleted-list"><li style="list-style-type:square">Hỗ trợ mạnh về SEO vì khi bot google, bing vào web sẽ thấy toàn bộ dữ liệu dưới dạng html</li></ul><ul id="e7085e89-a67a-46d2-abb6-88c7caac7b84" class="bulleted-list"><li style="list-style-type:square">Initial load nhanh, dễ optimize vì toàn bộ dữ liệu đều đã được xử lý ở phía server, client chỉ render lại.</li></ul><ul id="24198c6b-414b-48d8-bf6e-28f0a2dde33e" class="bulleted-list"><li style="list-style-type:square">Sẽ rất thích hợp với những static page, có dữ liệu ít bị thay đổi</li></ul><ul id="27558fdc-7d9c-4fb7-b68a-361466840c62" class="bulleted-list"><li style="list-style-type:square">Chỉ cần code trong 1 project ko cần tách biệt ra FE và BE</li></ul></li></ul><ul id="97b6c5ad-15f2-43ca-b551-5352bddf6c75" class="bulleted-list"><li style="list-style-type:circle">Cons: <ul id="c10f2178-75fd-4a30-be44-62dac5fd6c39" class="bulleted-list"><li style="list-style-type:square">Web sẽ xử lý và load lại hoàn toàn nếu có một thay đổi nhỏ xảy ra</li></ul><ul id="25494426-6701-49e4-81f8-e9c67de8483a" class="bulleted-list"><li style="list-style-type:square">Khi lượng traffic quá lớn, làm cho server nặng và quá tải vì mọi logic đều xử lý phía server </li></ul><ul id="eb06f03a-c04e-47ab-8aba-62e122603785" class="bulleted-list"><li style="list-style-type:square">Trải nghiệm người dùng không tốt, vì trang web phải refresh và load lại nhiều lần</li></ul></li></ul></li></ul><ul id="ee098ba3-edf8-4816-a95a-7e685e53d834" class="bulleted-list"><li style="list-style-type:disc"><strong>Progressive web apps</strong><ul id="759c2486-87e8-4c91-b21b-ca2df60782b2" class="bulleted-list"><li style="list-style-type:circle">Hiểu đơn giản PWA là cách làm cho web app trở nên ngon hơn, ngon ở đây là khả năng web app chưa làm được. </li></ul><ul id="69ed0431-2384-4965-85f0-83a019fdc2f3" class="bulleted-list"><li style="list-style-type:circle">Hiện tại vấn đề lớn nhất mà web app chưa làm được đó là trải nghiệm chưa được mượt mà như native app</li></ul><ul id="e359a746-f8ed-4b8f-9816-9fc2623853ef" class="bulleted-list"><li style="list-style-type:circle">Để làm được điều này PWA phải đảm bảo được 3 yếu tố:<ul id="c70ffcb8-c56c-4763-9eb3-47859313fbec" class="bulleted-list"><li style="list-style-type:square">Reliable: app load nhanh và có thể dụng offline</li></ul><ul id="9ababfab-f789-4067-bc1c-7c9a42c37eb0" class="bulleted-list"><li style="list-style-type:square">Fast: app phải load rất nhanh, nhấn cái chuyển trang liền hoặc animation load vù vù</li></ul><ul id="08412ea2-e89c-45d2-a509-2b77152d435f" class="bulleted-list"><li style="list-style-type:square">Engaging: có khả năng dụ user sử dụng. Có thể gửi notification, badge</li></ul></li></ul><ul id="2bd37187-7afb-483d-a0ec-fc148209daff" class="bulleted-list"><li style="list-style-type:circle">Nếu vậy sao không làm native app cho nhanh ? <ul id="1d23e744-2767-4e8a-b20d-2fb0df62f4c9" class="bulleted-list"><li style="list-style-type:square">Trên thực tế số lượng người dùng mobile sẽ nhiều hơn web, tuy nhiên thì mỗi user thường chỉ dùng những app top chart và trung bình 1 tháng chỉ cài thêm từ 1 hoặc 2 app.</li></ul><ul id="61f7e2ec-d7b4-4ef0-8230-aa37f392749b" class="bulleted-list"><li style="list-style-type:square">Chi phí để tiếp cận 1 user và dụ user đó dùng app trên web sẽ rẻ hơn trên app (việc chạy quảng cáo trên web sẽ dễ dàng hơn)</li></ul><ul id="5c83d740-893c-403b-b41f-0eb7cf50762f" class="bulleted-list"><li style="list-style-type:square">Về mặt kỹ thuật: đỡ học 2 ngôn ngữ ios và android, có thể tạo bằng RN nhưng PWA sẽ tận dụng src code của web, RN thì không </li></ul></li></ul></li></ul></details></li></ul><ul id="601a5109-8c7a-47e5-8a31-3808117ce707" class="toggle"><li><details open=""><summary><strong>Phương pháp SEO</strong></summary><ul id="e0fe62dc-dff3-49f6-b926-e652515f860c" class="bulleted-list"><li style="list-style-type:disc">Sử dụng thẻ &lt;title /&gt;</li></ul><ul id="de23cb50-a0a1-4a45-9930-29bbe2721842" class="bulleted-list"><li style="list-style-type:disc">Sử dụng thẻ meta description</li></ul><ul id="91a05a44-10d0-4c02-990b-854c1d03a373" class="bulleted-list"><li style="list-style-type:disc">Sử dụng những thẻ heading (h1 → h6)</li></ul><ul id="8ac3f763-e88f-40ff-a68b-ed86f18b6364" class="bulleted-list"><li style="list-style-type:disc">Broken links: không nên để link của các trang ngừng hoạt động vì ảnh hưởng đến trải nghiệm người dùng cũng như ranking của trang</li></ul><ul id="7eb3f80d-b129-437b-9709-a0459856d9ad" class="bulleted-list"><li style="list-style-type:disc">Alt attribute image: khi image không thể hiển thị thì alt của image sẽ cung cấp thông tin thay thế</li></ul><ul id="b18aac39-4b15-4727-8b91-b3712a9207ac" class="bulleted-list"><li style="list-style-type:disc">Sử dung các thẻ HTML5 như header, footer, main, section, nav, ... thay các thẻ div, span truyền thống để trang có ngữ nghĩa hơn cho các search engines</li></ul><ul id="cf62b2d2-27db-4208-b772-5d6d0d199b83" class="bulleted-list"><li style="list-style-type:disc">Loại bỏ inline css trong các thẻ html</li></ul><ul id="a6d60022-9840-4e22-a3f9-18dd3cd82791" class="bulleted-list"><li style="list-style-type:disc">Tối ưu hoá url cho page, url nên chứa keyword liên quan, không nên chứa space hay kí tự đặc biệt</li></ul></details></li></ul><ul id="445e5267-6294-4bb8-b0ec-1d963082389b" class="toggle"><li><details open=""><summary><strong>Immutable và mutable trong react</strong></summary><ul id="e0cb3243-7c51-4a6a-9155-3b796f0b1595" class="bulleted-list"><li style="list-style-type:disc">Mutable trạng thái/ dữ liệu của Object có thể thay đổi được.<ul id="81fa6f93-3ed0-433b-93b9-bba47adb1da2" class="bulleted-list"><li style="list-style-type:circle"><code>Object</code> và <code>Array</code> trong JavaScript mặc định đã được <em>mutate</em></li></ul><ul id="669b8198-a5ba-40ec-8cb7-ac535dd43353" class="bulleted-list"><li style="list-style-type:circle"><span style="border-bottom:0.05em solid"><strong>Pros</strong></span>: Mutate Object tạo ra side effect dẫn tới nhiều bugs không mong muốn.</li></ul></li></ul><ul id="ffded0ce-349b-417e-ae79-4d7f57d421fb" class="bulleted-list"><li style="list-style-type:disc">Immutable trạng thái/ dữ liệu không thể bị thay đổi.<ul id="d5a36a2e-48a0-48e4-84fc-53ca5a46478f" class="bulleted-list"><li style="list-style-type:circle">Trong JavaScript, tất cả các kiểu dữ liệu nguyên thủy (primitive) đều là immutability.</li></ul><ul id="f38eb828-8805-47b3-a7e4-7ee51defcee0" class="bulleted-list"><li style="list-style-type:circle">Mỗi khi chúng ta thay đổi dữ liệu, nó sẽ tạo ra một instance mới hoàn toàn và không ảnh hưởng tới instance cũ.</li></ul><ul id="ac2cbf1c-8036-49e5-93a4-15700b3e2c87" class="bulleted-list"><li style="list-style-type:circle"><span style="border-bottom:0.05em solid"><strong>Pros</strong></span>: Immutability là rất tốt, nó tránh được nhiều bugs nhưng vô hình chung lại làm giảm performance của app. Immutability tạo ra một bản sao giống hoàn toàn so với bản gốc, sau đó edit dữ liệu mà chúng ta muốn thay đổi trên bản sao này. Điều có có nghĩa là nó sẽ tốn rất nhiều memory cho việc copy các <code>Object</code>
+ hoặc <code>Array. </code>Thử tưởng tượng chúng ta muốn thay đổi 1 giá trị trong một Array bao gồm 1 triệu phần tử thì sẽ tốn nhiều memory như thế nào nhỉ 🤔</li></ul><p id="28845573-adbc-48fd-8f5f-af2e72901846" class="">⇒ Để giải quyết được vấn đề memory lead. Immutable sử dụng 1 cấu trúc dữ liệu có lên là <strong>“trie data structures”</strong>. Cấu trúc dữ liệu này sử dụng một concept là <strong>Structure Sharing</strong> (tối ưu memory bằng cách tái sử dụng).</p><p id="206b2d85-c6a1-4903-81f0-b9219730f813" class="">Theo cách Immutability thông thường, mỗi khi thay đổi một thuộc tính nào đó, chúng ta phải clone toàn bộ <code>Object</code> hoặc <code>Array</code> thành một bản sao, sau đó thực hiện modify trên chính bản sao đó.</p><p id="13ac5907-7f52-4897-b8e4-50c6b99db8ce" class=""><strong>Hiện tại có khá nhiều thư viện hỗ trợ chúng ta thực hiện công việc này. </strong><strong><a href="https://github.com/immutable-js/immutable-js">Immutablejs</a></strong><strong> và </strong><strong><a href="https://github.com/swannodette/mori">mori</a></strong><strong> là 2 thư viện phổ biến nhất implement immutability sử dụng cấu trúc Structure Sharing.</strong></p><p id="8e0f8383-2ca7-43e8-ba15-92831b5f4513" class=""><a href="https://blog.daovanhung.com/post/ban-da-thuc-su-hieu-mutable-va-immutable">https://blog.daovanhung.com/post/ban-da-thuc-su-hieu-mutable-va-immutable</a></p><p id="7cbca5a1-3719-44cf-a756-012982ae9a59" class="">
+</p><p id="f96693ec-82e0-491e-ab47-974650186755" class="">
+</p><hr id="2b370568-36bc-43f2-bd41-91afd2cab0e2"/><p id="0b1af479-bc9c-45f6-b627-f24e2c0fce81" class="">Link tham khảo:</p><ul id="35397594-2c64-4f42-8a0d-b60e638e3871" class="bulleted-list"><li style="list-style-type:circle"><strong><a href="https://www.patterns.dev/posts/">Pattern in react</a></strong></li></ul><ul id="db0ce12b-9609-4b73-a997-ee48a20bbf1b" class="bulleted-list"><li style="list-style-type:circle"><a href="https://vi.reactjs.org/docs/hooks-faq.html"><strong>Câu hỏi hooks thường gặp</strong></a></li></ul><ul id="bfb9807e-a83f-4347-b37b-f54e1c91ac5f" class="bulleted-list"><li style="list-style-type:circle"><a href="https://dmitripavlutin.com/simple-but-tricky-javascript-interview-questions/"><strong>Trick interview JS</strong></a></li></ul><ul id="840e71e3-202b-48e8-abb0-fa9541af1a30" class="bulleted-list"><li style="list-style-type:circle"><a href="https://ren0503.github.io/posts/"><strong>Một số bài viết hay với react</strong></a></li></ul><ul id="8eb25bc6-e254-42ba-803c-0112efbfb98e" class="bulleted-list"><li style="list-style-type:circle"><strong><a href="https://viblo.asia/p/mot-so-khai-niem-can-biet-trong-react-924lJYOWZPM">Một số khái niệm cần biết trong react</a></strong></li></ul><ul id="f930dec3-6a8f-4cfd-a4a6-6131dd0bbaa4" class="bulleted-list"><li style="list-style-type:circle"><a href="https://2kvn.com/react-js-nhung-cau-hoi-phong-van-thuong-gap-phan-1-p5f33393635">https://2kvn.com/react-js-nhung-cau-hoi-phong-van-thuong-gap-phan-1-p5f33393635</a></li></ul></li></ul></details></li></ul></div></article></body></html>

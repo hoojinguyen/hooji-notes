@@ -1,0 +1,670 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>DATABASE</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="bd04a14e-e09e-4ae4-abb9-2be332322148" class="page sans"><header><h1 class="page-title">DATABASE</h1></header><div class="page-body"><hr id="8c53d3a7-cb00-4413-a87d-c758685f75f6"/><ul id="5f7023cd-ede4-420f-a74d-74508160f9d5" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>SQL ≠ NO SQL</strong></mark></summary><p id="82b9cbec-f131-4feb-9801-cdfbe92d0a4e" class=""><a href="https://viblo.asia/p/nhung-diem-khac-biet-giua-sql-va-nosql-gGJ59b4rKX2">https://viblo.asia/p/nhung-diem-khac-biet-giua-sql-va-nosql-gGJ59b4rKX2</a></p><p id="31d2cfa0-117e-4b9f-8f73-c1310bc62590" class=""><a href="https://viblo.asia/p/sql-vs-nosql-dau-la-lua-chon-phu-hop-cho-du-an-cua-ban-Qbq5QWAzZD8">https://viblo.asia/p/sql-vs-nosql-dau-la-lua-chon-phu-hop-cho-du-an-cua-ban-Qbq5QWAzZD8</a></p></details></li></ul><ul id="3aee3b33-a813-44ff-841d-6b4039421f01" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Transaction, ACID</strong></mark></summary><ul id="6a086257-d9fc-4ee1-adce-52afb8a7da98" class="toggle"><li><details open=""><summary><strong>Transaction</strong> là một tiến trình xử lý có xác định điểm đầu và điểm cuối, được chia nhỏ thành các operation (phép thực thi), tiến trình được thực thi một cách tuần tự và độc lập các operation đó theo nguyên tắc hoặc tất cả đều thành công hoặc một operation thất bại thì toàn bộ tiến trình thất bại. Nếu việc thực thi một operation nào đó bị fail (hỏng) đồng nghĩa với việc dữ liệu phải rollback (trở lại) trạng thái ban đầu.</summary><ul id="9056915f-b50e-436b-8b44-783913bfd250" class="bulleted-list"><li style="list-style-type:disc">Một transaction đòi hỏi phải có 4 tính chất ACID. </li></ul><ul id="b3314ea4-6998-4412-a1bf-0fb219a4657a" class="bulleted-list"><li style="list-style-type:disc">ACID là viết tắt của cụm từ Atomicity (nguyên tử), Consistency (nhất quán), Isolation (Cô lập), và Durability (Lâu bền). </li></ul><ul id="4045d792-a3e0-4fdb-9631-8c21cc4ec1da" class="bulleted-list"><li style="list-style-type:disc">Đây là các thuộc tính mà mọi transaction đều được đảm bảo bởi SQL Server.<ul id="72e09503-32f8-4f2f-b7c4-94af7a17b96d" class="bulleted-list"><li style="list-style-type:circle"><strong>Atomicity</strong>: Mọi thay đổi về mặt dữ liệu phải được thục hiện trọn vẹn khi transaction thực hiện thành công hoặc không có bất kì sự thay đổi nào về mặt dữ liệu nếu có xẩy ra sự cố. <strong><em>Giải thích thêm:</em></strong><ul id="f23507e1-9ad1-4f1b-910d-1139ca62c4c2" class="bulleted-list"><li style="list-style-type:square">Một giao dịch là đơn vị cơ bản của quá trình xử lý. Tất cả các hoạt động của nó đều được thực thi, hoặc không có hoạt động nào trong số chúng. Giả sử rằng hệ thống bị treo sau thao tác Ghi (A) (nhưng trước khi ghi (B).)</li></ul><ul id="d5573958-3d3e-45c3-81d6-28294772af95" class="bulleted-list"><li style="list-style-type:square">Cơ sở dữ liệu phải có khả năng khôi phục các giá trị cũ của A và B (hoặc hoàn thành toàn bộ giao dịch)</li></ul></li></ul><ul id="28c9500c-60e9-4e2c-81e4-d9d244812907" class="bulleted-list"><li style="list-style-type:circle"><strong>Consistency</strong>: Sau khi một transaction kết thúc thì tất cả dữ liệu phải được nhất quán dù thành công hay thất bại. <strong><em>Giải thích thêm:</em></strong><ul id="ed295c5f-118f-461f-a3af-e3a403fd85da" class="bulleted-list"><li style="list-style-type:square">Việc thực hiện một giao dịch một mình phải di chuyển cơ sở dữ liệu từ trạng thái nhất quán này sang trạng thái nhất quán khác. </li></ul><ul id="ed297c1e-f8ac-42da-addf-e35f6c7942a5" class="bulleted-list"><li style="list-style-type:square">Tổng của A và B phải không thay đổi khi thực hiện giao dịch</li></ul></li></ul><ul id="90f49eb4-0d6c-4460-8876-8fdb89d1c81b" class="bulleted-list"><li style="list-style-type:circle"><strong>Isolation</strong>: Các transaction khi đồng thời thực thi trên hệ thống thì không có bất kì ảnh hưởng gì tời nhau.<ul id="f3cc9f22-ef16-4061-8eb4-bfe207308ee9" class="bulleted-list"><li style="list-style-type:square">Một giao dịch không được để các giao dịch khác biết đến ảnh hưởng của nó cho đến khi nó được commit. </li></ul><ul id="4264915e-072a-46b4-9569-5b1fe03f2efe" class="bulleted-list"><li style="list-style-type:square">Nếu hai giao dịch thực hiện đồng thời, có vẻ như một giao dịch đã hoàn thành trước khi giao dịch kia bắt đầu. <strong><em>Giải thích thêm:</em></strong></li></ul><ul id="b071ed38-b7b3-4ac0-ad16-b1876fb3635f" class="bulleted-list"><li style="list-style-type:square">Nếu một giao dịch khác đang thực hiện đồng thời đang đọc (và / hoặc ghi vào) tài khoản A và B, nó sẽ không thể đọc dữ liệu ở trạng thái không nhất quán (sau khi ghi vào A và trước khi ghi vào B)</li></ul></li></ul><ul id="c40fbd9f-7857-4e2e-a575-5457722f9d54" class="bulleted-list"><li style="list-style-type:circle"><strong>Durability</strong>: Sau khi một transaction thành công thì tác dụng mà nó tạo ra phải bền vững trong cơ sở dữ liệu cho dù hệ thống có xẩy ra lỗi. <strong><em>Giải thích thêm:</em></strong><ul id="0c049cc2-ba37-4274-9e48-1e95c51ae420" class="bulleted-list"><li style="list-style-type:square">Sau khi giao dịch được cam kết, các thay đổi đối với cơ sở dữ liệu không thể bị mất do lỗi trong tương lai. </li></ul><ul id="04bd37e5-c057-4a77-97a4-4f930a886cc0" class="bulleted-list"><li style="list-style-type:square">Khi giao dịch hoàn tất, chúng tôi sẽ luôn có các giá trị mới của A và B trong cơ sở dữ liệu</li></ul></li></ul></li></ul><hr id="761a1ae2-e2ec-4636-b4b3-0653ac47e45a"/></details></li></ul><ul id="f0641ce0-7802-4579-a5bd-bd13f544480e" class="toggle"><li><details open=""><summary><strong>Transaction</strong> là một loạt các câu lệnh SQL hoạt động giống như một đơn vị duy nhất. </summary><ul id="f4066eed-8c56-4e04-ac41-625a63fdbf95" class="bulleted-list"><li style="list-style-type:disc">Nói một cách dễ hiểu, giao dịch là một đơn vị mà một chuỗi công việc được thực hiện để hoàn thành toàn bộ hoạt động. <ul id="d2704b76-1fe7-4be0-8195-b2973910d992" class="bulleted-list"><li style="list-style-type:circle">Chúng ta có thể lấy ví dụ về Giao dịch ngân hàng để hiểu điều này.</li></ul></li></ul><ul id="efa44427-de3a-41e9-accd-d7358fd8aa04" class="bulleted-list"><li style="list-style-type:disc">Khi chúng ta chuyển tiền từ tài khoản “A” sang tài khoản “B”, một giao dịch sẽ diễn ra. </li></ul><ul id="469c2646-f365-45cf-88df-ce23936ca9fa" class="bulleted-list"><li style="list-style-type:disc">Mỗi giao dịch đều có bốn đặc điểm, chúng được gọi là thuộc tính ACID.<ul id="c943a70f-3d25-4c5b-a6a6-c7baf5237939" class="bulleted-list"><li style="list-style-type:circle"><strong>Atomicity: </strong>Mọi giao dịch đều tuân theo mô hình tính nguyên tử, có nghĩa là nếu một giao dịch được bắt đầu, thì giao dịch đó phải được hoàn tất hoặc quay trở lại. <ul id="08836527-1f77-4106-8cf9-a5e3f5d87fbe" class="bulleted-list"><li style="list-style-type:square">Ví dụ: nếu một người đang chuyển số tiền từ tài khoản “A” sang tài khoản “B”, thì số tiền đó sẽ được ghi có vào tài khoản B sau khi hoàn tất giao dịch. </li></ul><ul id="f403d1b1-2701-4332-a995-663d68d83802" class="bulleted-list"><li style="list-style-type:square">Trong trường hợp nếu có bất kỳ lỗi nào xảy ra, sau khi ghi nợ số tiền từ tài khoản “A”, thay đổi sẽ được hoàn lại.</li></ul></li></ul><ul id="3e684660-e43c-49c2-952b-06d4f052e226" class="bulleted-list"><li style="list-style-type:circle"><strong>Consistency: </strong>Tính nhất quán nói rằng sau khi hoàn thành một giao dịch, các thay đổi được thực hiện trong quá trình giao dịch phải nhất quán. <ul id="a3ea9433-ddc5-4367-a94d-e1d8093f4427" class="bulleted-list"><li style="list-style-type:square">Ví dụ: nếu tài khoản “A” đã được ghi nợ 200 USD thì sau khi hoàn thành giao dịch, tài khoản “B” sẽ được ghi có 200 USD </li></ul><ul id="3d291c65-1866-4b0c-af23-631b12afe186" class="bulleted-list"><li style="list-style-type:square">Nó có nghĩa là các thay đổi phải nhất quán.</li></ul></li></ul><ul id="47b94ce7-aaf9-4761-a708-c71b250028ed" class="bulleted-list"><li style="list-style-type:circle"><strong>Isolation: </strong>nói rằng mọi giao dịch nên được cách ly với nhau, không nên có bất kỳ sự can thiệp nào giữa hai giao dịch.</li></ul><ul id="43ca9409-8100-493a-a1ad-43de8805f1a2" class="bulleted-list"><li style="list-style-type:circle"><strong>Durability: </strong>có nghĩa là một khi giao dịch được hoàn thành, tất cả các thay đổi sẽ là vĩnh viễn, có nghĩa là trong trường hợp hệ thống bị lỗi, các thay đổi sẽ không bị mất</li></ul></li></ul></details></li></ul></details></li></ul><ul id="de45f7d5-4533-4221-8ead-a8079673a1f3" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Master &amp; Slave</strong></mark></summary><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="8c7a152d-4e0c-44fe-a290-fec3ca3eb029"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><em>Hệ thống sẽ có 2 (hoặc nhiều hơn) database giống hệt nhau, mỗi database được cài trên 1 server khác nhau. Trong số các db đó, có 1 db được gọi là master (ông chủ), các db còn lại được gọi là slave (nô lệ). Khi db master xảy ra một sự kiện làm thay đổi dữ liệu (thêm, sửa, xóa) thì db master sẽ log ra một file, các db slave thì liên tục lắng nghe file log này, và thực hiện việc thay đổi dữ liệu trên db slave như thay đổi trên db master.</em></div></figure><ul id="e4ae961a-79a4-4b71-9206-71c1fd1a98b2" class="bulleted-list"><li style="list-style-type:disc"><a href="https://viblo.asia/p/gioi-thieu-ve-mysql-replication-master-slave-bxjvZYwNkJZ">https://viblo.asia/p/gioi-thieu-ve-mysql-replication-master-slave-bxjvZYwNkJZ</a></li></ul></details></li></ul><ul id="a90e92be-437d-4b54-bb7e-888083e6b678" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Các mô hình database phổ biến</strong></mark></summary><ul id="2bbdf7af-c3c7-4ae9-8ade-1fab352ccad8" class="bulleted-list"><li style="list-style-type:disc"><strong><strong>Replication:</strong></strong> Hiểu nôm na thì đây là kiến trúc nhân bản. Chúng ta có 1 server Master và 1 hoặc nhiều server Slave. Master dùng chủ yếu để ghi dữ liệu (có thể dùng để đọc trong trường hợp cần thiết), Slave dùng để dọc dữ liệu và không thể ghi dữ liệu.</li></ul><ul id="cf4f1c50-8250-4f5e-bd37-59f52a4fa97c" class="bulleted-list"><li style="list-style-type:disc"><strong><strong>Partitioning: </strong></strong>đây là phương pháp giúp tối ưu truy vấn khi dữ liệu trong một bảng quá lớn hàng tram triệu bản ghi. Để dễ hình dung thì 1 bảng dữ liệu gióng như một chiếc hộp nhiều ngăn. Mỗi partition là một ngăn, mỗi một ngăn sẽ chưa một số lượng bản ghi theo một quy luật nào đó. Các cách chia thường theo id của bản ghi, hoặc theo thời gian tạo bản ghi theo ngày tháng</li></ul><ul id="8b9fff38-5dd3-4c84-8621-34d726482349" class="bulleted-list"><li style="list-style-type:disc"><strong><strong>Cluster: </strong></strong>là mô hình dư liệu phân tán, kết hợp replication + sharding. Dữ liệu đươc lưu ở các datanode, truy vấn qua các sql node, và có 1 node là manager quản lý toàn bộ các sqlnode và datanode</li></ul><ul id="4f3afb51-163c-441e-a90f-6d677da36f92" class="bulleted-list"><li style="list-style-type:disc"><strong><strong>Sharding:</strong></strong> là mô hình tương tự như partition, partition chia dữ liệu theo chiều dọc thì sharding chia dữ liệu theo chiều ngang. Mỗi một partition giờ sẽ là 1 server.</li></ul><p id="b835037d-1bca-47f7-b744-3071bf694123" class=""><a href="https://kipalog.kaopiz.com/posts/Cac-mo-hinh-database-nen-biet">https://kipalog.kaopiz.com/posts/Cac-mo-hinh-database-nen-biet</a></p></details></li></ul><ul id="34c16010-4717-4982-9d59-e5959b216072" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Index</strong></mark></summary><ul id="a40bde76-c884-41d3-8bdc-8342dad1b909" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.notion.so/Index-f8e3ac712e3c4d069d1fb6a81919d2e8">Link</a></li></ul></details></li></ul><ul id="a602ed9e-0ca1-4ce9-948a-c63f60c9d619" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Store Procedure</strong></mark></summary><ul id="bac17110-e4ec-43aa-9787-29747ae0ffdc" class="bulleted-list"><li style="list-style-type:disc"><strong>Stored Procedure</strong> là một tập hợp các câu lệnh SQL dùng để thực thi một nhiệm vụ nhất định. Nó hoạt động giống như một <em>hàm</em> trong các ngôn ngữ lập trình khác.</li></ul><ul id="b219bbea-1acc-4abc-8992-aefd8d949d13" class="bulleted-list"><li style="list-style-type:disc">Stored procedure là một khái niệm khá phổ biến và được hầu hết các hệ quản trị cơ sở dữ liệu (DBMS) hỗ trợ, tuy nhiên không phải tất cả đều hỗ trợ Stored Procedure.</li></ul><ul id="af8ec34f-4110-4fab-ad9c-888e741258d2" class="bulleted-list"><li style="list-style-type:disc">Lợi ích:<ul id="e31be5b1-8052-4946-86a8-f4f67edd9590" class="bulleted-list"><li style="list-style-type:circle">Module hóa: bạn chỉ cần viết SP 1 lần, sau đó có thể gọi nhiều lần trong ứng dụng</li></ul><ul id="3bca8b30-f365-4f0b-9394-d58e5688b8b4" class="bulleted-list"><li style="list-style-type:circle">Hiệu suất: SP thực thi mã nhanh hơn và giảm tải băng thông.</li></ul><ul id="f420defc-033c-4e49-8d40-7eab4e99338f" class="bulleted-list"><li style="list-style-type:circle">Bảo mật:</li></ul></li></ul><p id="9422fb4b-1a4b-48d5-9739-a3421f48f64f" class=""> <a href="https://viblo.asia/p/gioi-thieu-stored-procedure-trong-sql-server-m68Z0VpM5kG">https://viblo.asia/p/gioi-thieu-stored-procedure-trong-sql-server-m68Z0VpM5kG</a></p></details></li></ul><ul id="be70194b-03e9-4b29-acbf-473d5aea27d4" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Trigger</strong></mark></summary><ul id="3310b254-5911-4384-a594-78f2bc0f11dc" class="bulleted-list"><li style="list-style-type:disc">Hiểu đơn giản thì Trigger là một stored procedure không có tham số. Trigger thực thi một cách tự động khi một trong ba câu lệnh Insert, Update, Delete làm thay đổi dữ liệu trên bảng có chứa trigger</li></ul><ul id="17f7dc06-4aba-4861-a9aa-6c5019908530" class="bulleted-list"><li style="list-style-type:disc">Tác dụng:<ul id="ea7700c7-9a8e-4994-9bd7-fcc6c9a15791" class="bulleted-list"><li style="list-style-type:circle">Trigger thường được sử dụng để kiểm tra ràng buộc (check constraints) trên nhiều quan hệ (nhiều bảng/table) hoặc trên nhiều dòng (nhiều record) của bảng.</li></ul><ul id="5ea3e3d7-6c99-4c51-b648-27083d40e218" class="bulleted-list"><li style="list-style-type:circle">Ngoài ra việc sử dụng Trigger để chương trình có những hàm chạy ngầm nhằm phục vụ nhưng trường hợp hữu hạn và thường không sử dụng cho mục đích kinh doanh hoặc giao dịch</li></ul></li></ul><p id="c0d30ba6-b5a7-47fa-88d9-561ee6163ca4" class=""><a href="https://viblo.asia/p/su-dung-trigger-trong-sql-qua-vi-du-co-ban-aWj538APK6m">https://viblo.asia/p/su-dung-trigger-trong-sql-qua-vi-du-co-ban-aWj538APK6m</a></p><p id="e619b05f-ca77-46c7-94ff-4e1204b9151f" class=""><a href="https://www.ibm.com/docs/en/informix-servers/12.10?topic=triggers-when-use">https://www.ibm.com/docs/en/informix-servers/12.10?topic=triggers-when-use</a></p></details></li></ul><ul id="51a4f589-e700-4451-9376-c61f050d24e2" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>function ≠ procedure</strong></mark></summary><ul id="e8c7a301-8168-4903-8e5b-70d4a44d7982" class="bulleted-list"><li style="list-style-type:disc">Cả stored procedure và function đều là các đối tượng cơ sở dữ liệu chứa một tập các câu lệnh SQL để hoàn thành một tác vụ.</li></ul><ul id="aa482397-a2f9-4cc7-a36c-de721e31ed7d" class="bulleted-list"><li style="list-style-type:disc">Một stored procedure (thủ tục lưu trữ) có thể sử dụng lại nhiều lần. Vì vậy, nếu bạn có một truy vấn SQL mà bạn có ý định sử dụng nhiều lần thì hãy lưu nó dưới dạng một SP, sau đó chỉ cần gọi nó để nó thực thi truy vấn SQL của bạn. Ngoài ra, bạn củng có thể truyền tham số cho một SP</li></ul><ul id="b0a298b0-8c36-4fca-8c4d-b14acc9d90c2" class="bulleted-list"><li style="list-style-type:disc">Một function (hàm) được biên dịch và thực thi mỗi khi hàm đó được gọi. Hàm phải trả về giá trị...</li></ul><ul id="c76f507f-ddb6-4be8-8231-e0aab83b04e6" class="bulleted-list"><li style="list-style-type:disc">Khác nhau:<ul id="acea5059-3033-4c03-b4f9-5b1425d12a74" class="bulleted-list"><li style="list-style-type:circle">Thủ tục lưu trữ có thể trả về giá trị zero, một hoặc nhiều giá trị. Trong khi hàm phải trả về một giá trị duy nhất (có thể là bảng).</li></ul><ul id="a6bfc1ad-5318-41ac-ba07-f2876d84ac44" class="bulleted-list"><li style="list-style-type:circle">Các hàm chỉ có thể có các tham số đầu vào cho nó trong khi thủ tục lưu trữ có thể có các tham số đầu vào hoặc đầu ra.</li></ul><ul id="6bc9dda4-997b-4da0-9362-000363f5ee26" class="bulleted-list"><li style="list-style-type:circle">Hàm có thể được gọi từ thủ tục lưu trữ trong khi thủ tục lưu trữ không thể được gọi từ hàm.</li></ul><ul id="fe1f2aef-04ce-4249-acbc-bace795c262a" class="bulleted-list"><li style="list-style-type:circle">Một ngoại lệ có thể được xử lý bằng <strong>try-catch</strong> trong thủ tục lưu trữ, đối với hàm thì không thể.</li></ul><ul id="a4697342-2705-4ce0-bf56-8b7f0b18975d" class="bulleted-list"><li style="list-style-type:circle">Có thể sử dụng <strong>transaction</strong> trong thủ tục lưu trữ, với hàm thì không thể.</li></ul></li></ul><p id="c64269ef-b7fe-4a21-b063-b510a562d540" class=""><a href="https://itworld.forumvi.net/t688-topic">https://itworld.forumvi.net/t688-topic</a></p></details></li></ul><ul id="842ad41e-e4e4-4adc-a80d-38e0294cf633" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Aggregate</strong></mark></summary><ul id="c4d4dfb2-9f94-49b0-be24-765f33b53a94" class="bulleted-list"><li style="list-style-type:disc">Aggregation có thể hiểu là sự tập hợp. Các <strong>Aggregation </strong>operation xử lý các bản ghi dữ liệu và trả về kết quả đã được tính toán. Các phép toán tập hợp nhóm các giá trị từ nhiều Document lại với nhau, và có thể thực hiện nhiều phép toán đa dạng trên dữ liệu đã được nhóm đó để trả về một kết quả duy nhất. </li></ul><ul id="6359758e-354e-4bad-977c-7f9efe04646f" class="bulleted-list"><li style="list-style-type:disc">Trong SQL, count(*) và GROUP BY là tương đương với Aggregation trong MongoDB.</li></ul></details></li></ul><ul id="152ca31c-86d6-4d89-a5bb-72e48e012509" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>distinct ≠ group by</strong></mark></summary><ul id="e3a94304-7515-4c54-b7cc-4543f21ca35e" class="bulleted-list"><li style="list-style-type:disc"><strong>DISTINCT </strong>trong SQL được sử dụng kết hợp với câu lệnh SELECT để loại bỏ tất cả các bản ghi trùng lặp và chỉ lấy các bản ghi duy nhất.</li></ul><ul id="99c717f9-eabc-4a64-a794-df5f943d0211" class="bulleted-list"><li style="list-style-type:disc"><strong>GROUP BY</strong> trong SQL được sử dụng hợp tác với câu lệnh SELECT để sắp xếp dữ liệu giống nhau thành các nhóm. Mệnh đề GROUP BY này tuân theo mệnh đề WHERE trong câu lệnh SELECT và đứng trước mệnh đề ORDER BY.</li></ul><ul id="5d52c634-16b7-45a3-9ef9-3d947bd04b2b" class="bulleted-list"><li style="list-style-type:disc">Cả hai mệnh đề đều làm giảm số lượng record trả về bằng cách loại bỏ các bản ghi trùng lặp</li></ul><ul id="bf2c4a99-4c1c-4bb2-b0a3-8ef5015f2f15" class="bulleted-list"><li style="list-style-type:disc">Nhưng khi dùng <strong>group by</strong> ta có thể dùng kết hợp thêm một số aggregate như sum, count, ... còn <strong>distinct</strong> thì không</li></ul></details></li></ul><ul id="8eed7066-b77a-4d9b-be50-f0b2d378ba6c" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Inner, outer, left, right join</strong></mark></summary><ul id="f354ae67-7399-4eee-ba4d-a63eefdcbbeb" class="bulleted-list"><li style="list-style-type:disc"><strong>JOIN</strong> trong SQL được sử dụng để kết hợp các bản ghi từ hai hay nhiều bảng trong cơ sở dữ liệu. JOIN là một phương tiện để kết hợp các trường từ hai bảng bằng cách sử dụng các giá trị chung cho mỗi bảng.</li></ul><ul id="11c4e4bd-2080-4f20-b218-3da1b34b6f9a" class="bulleted-list"><li style="list-style-type:disc"><strong>INNER JOIN</strong>: Trả về các bản ghi có những giá trị phù hợp trong cả hai bảng.</li></ul><ul id="46b8c0a2-64c3-4100-aaa6-09d74eb0ed72" class="bulleted-list"><li style="list-style-type:disc"><strong>LEFT (OUTER) JOIN</strong>: Trả về tất cả bản ghi từ bảng bên trái và bản ghi trùng với bảng bên phải.</li></ul><ul id="f02d0d00-ffcd-4955-a055-daa51645ad69" class="bulleted-list"><li style="list-style-type:disc"><strong>RIGHT (OUTER) JOIN</strong>: Trả về tất cả bản ghi từ bảng bên phải và bản ghi trùng với bản bên trái.</li></ul><ul id="a5e3f234-f32e-4dcc-a974-d21e001fe89c" class="bulleted-list"><li style="list-style-type:disc"><strong>FULL (OUTER) JOI</strong>N: Trả về tất cả bản ghi khi có một kết quả phù hợp trong bảng bên trái hoặc bên phải.</li></ul></details></li></ul><ul id="a2237515-6c2c-4cde-891a-193c9d2a11ed" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>where ≠ having clause</strong></mark></summary><ul id="d0034864-b5ea-4366-aac3-c99a9148ba53" class="bulleted-list"><li style="list-style-type:disc">WHERE - filter kết quả theo dòng</li></ul><ul id="4a4ec7e8-31c4-4bda-920e-db55cc434ab4" class="bulleted-list"><li style="list-style-type:disc">HAVING - filter kết quả theo GROUP</li></ul><hr id="b5794a81-79de-4f40-bdfb-9c45ae141ae0"/><ul id="7ff71225-7935-44cd-add3-906c7eda8aea" class="bulleted-list"><li style="list-style-type:disc">Where : Là câu lệnh điều kiện trả kết quả đối chiếu với từng dòng</li></ul><ul id="a26cc59c-c284-476c-a458-61f345c58f62" class="bulleted-list"><li style="list-style-type:disc">Having : Là câu lệnh điều kiện trả kết quả đối chiếu cho nhóm (Sum,AVG,COUNT,…)</li></ul><p id="bbe8cce6-f01b-44cb-bb1c-52fc998a6d49" class="">⇒ Vì vậy mà sau GROUP BY thì sẽ chỉ dùng được Having còn Where thì KHÔNG dùng được sau GROUP BY</p><p id="26a6c8ef-dfc4-4dd7-8305-e6492b200f49" class="">(HAVING có thể thay thế vị trí dùng cho WHERE nhưng ngược lại WHERE thì KHÔNG thể thay thế vị trí cho HAVING)</p><p id="d296614d-cec7-406c-9e9e-5a5f89b34cb7" class=""><a href="https://daynhauhoc.com/t/su-khac-nhau-giua-where-va-having/21676/2">https://daynhauhoc.com/t/su-khac-nhau-giua-where-va-having/21676/2</a></p></details></li></ul><ul id="67f24649-c6d7-42c3-8bca-81295e264361" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>delete ≠ truncate ≠ drop</strong></mark></summary><ul id="5fd38a39-637e-47ea-98ee-f017dc94ce67" class="bulleted-list"><li style="list-style-type:disc">DELETE : Xóa một hay tất cả dòng trong một bảng theo một điều kiện nhất định, dữ liệu có thể phục hồi lại</li></ul><ul id="cf234241-318c-4917-a027-b376a5e7dfda" class="bulleted-list"><li style="list-style-type:disc">TRUNCATE : Xóa toàn bộ các dòng của bảng, giải phóng bộ nhớ và không thể phục hồi lại</li></ul><ul id="cf55421a-e52e-4359-a7e4-418ce36fb057" class="bulleted-list"><li style="list-style-type:disc">DROP : Xóa một bảng khỏi database</li></ul><ul id="1f313c8a-8e0e-4786-a829-3040822be22f" class="bulleted-list"><li style="list-style-type:disc">Truncate và drop không thể dùng mệnh đề Where</li></ul></details></li></ul><ul id="4d953b4f-f42e-4ab4-838b-7dd56d3cd421" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Subqueries?</strong></mark></summary><ul id="9cddd166-fafb-4462-a806-48b5808fc03d" class="bulleted-list"><li style="list-style-type:disc">Subquery hay còn gọi là truy vấn con, đây là cách viết một câu lệnh SQL mà trong đó có lồng thêm một hoặc nhiều câu truy vấn khác, và thường được sử dụng trong bốn lệnh: SELECT, INSERT, UPDATE hoặc DELETE. Cùng với đó là các toán tử ví dụ như =, &lt;, &gt;, &gt;=, &lt;=, IN, BETWEEN…</li></ul><ul id="bfc908f8-488d-433a-b829-98d6c9b00047" class="bulleted-list"><li style="list-style-type:disc">Có một vài quy tắc mà Sub query phải tuân theo:<ul id="f5a67891-5592-4ed0-beb5-752dcb87a291" class="bulleted-list"><li style="list-style-type:circle">Sub query phải được đặt trong dấu ngoặc đơn.</li></ul><ul id="5e712a56-6ac7-4d66-8097-936ad6b1040e" class="bulleted-list"><li style="list-style-type:circle">Một sub query có thể chỉ có một cột trong mệnh đề SELECT, trừ khi nhiều cột trong truy vấn chính cho sub query để so sánh các cột đã chọn của nó.</li></ul><ul id="204460d6-081a-433c-aa06-3119ed0f3b4d" class="bulleted-list"><li style="list-style-type:circle">Không thể sử dụng lệnh ORDER BY trong sub query, mặc dù truy vấn chính có thể sử dụng ORDER BY. Lệnh GROUP BY có thể được sử dụng để thực hiện chức năng giống như ORDER BY trong một sub query.</li></ul><ul id="8b815d4e-bb8b-47fa-af9b-4a3eb0480210" class="bulleted-list"><li style="list-style-type:circle">Sub query trả về nhiều hơn một hàng chỉ có thể được sử dụng với toán tử nhiều giá trị như toán tử IN.</li></ul><ul id="6db218c9-40df-4bc6-8840-6f546e80695d" class="bulleted-list"><li style="list-style-type:circle">Danh sách SELECT không được bao gồm bất kỳ tham chiếu nào đến các giá trị đánh giá BLOB, ARRAY, CLOB hoặc NCLOB.</li></ul><ul id="2dba02b3-1900-4524-a268-e8385e4d9100" class="bulleted-list"><li style="list-style-type:circle">Một sub query không thể được chứa trực tiếp một chức năng set.</li></ul><ul id="0f5abe53-c3a9-4a03-970d-b655804ae4a9" class="bulleted-list"><li style="list-style-type:circle">Toán tử BETWEEN không thể được sử dụng với một sub query. Tuy nhiên, toán tử BETWEEN có thể được sử dụng trong sub query.</li></ul></li></ul></details></li></ul><ul id="96a41444-e8ed-43ce-94c7-3f4a6e539b90" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Union?</strong></mark></summary><ul id="c214fe61-baf5-479c-bce1-01120303fe23" class="bulleted-list"><li style="list-style-type:disc">Toán tử UNION được sử dụng để kết hợp tập hợp kết quả của hai hoặc nhiều câu lệnh SELECT. Mỗi câu lệnh SELECT với UNION phải có cùng số lượng cột, các cột phải có cùng kiểu dữ liệu, các cột trong mỗi câu lệnh SELECT phải có cùng trật tự.</li></ul><hr id="534da69e-4e76-4b04-91f5-a57ffb6c8a86"/><ul id="805caa14-5beb-4b6e-a429-f46c74efab10" class="bulleted-list"><li style="list-style-type:disc">Mệnh đề <strong>UNION </strong>trong SQL được sử dụng để kết hợp các kết quả của hai hoặc nhiều câu lệnh SELECT mà không cần trả về bất kỳ hàng trùng lặp nào.</li></ul><ul id="568135ec-2aa5-4a72-b22d-c7a47b12a387" class="bulleted-list"><li style="list-style-type:disc">Để sử dụng mệnh đề UNION này, mỗi câu lệnh SELECT cần phải có<ul id="fb4fc12b-b58b-4339-a550-9c974edd40a8" class="bulleted-list"><li style="list-style-type:circle">Cùng một số cột được chọn</li></ul><ul id="e24271e8-191c-4400-ba21-871a33761711" class="bulleted-list"><li style="list-style-type:circle">Cùng một số biểu thức cột</li></ul><ul id="342d5954-8d6e-4414-82de-76e42622ac25" class="bulleted-list"><li style="list-style-type:circle">Cùng kiểu dữ liệu</li></ul><ul id="7c78d3c0-d0d5-401e-9e97-3187aa6e6ee9" class="bulleted-list"><li style="list-style-type:circle">Có chúng trong cùng một trật tự</li></ul></li></ul><hr id="d7d12904-a588-4f4c-bf51-4ee932c93088"/><ul id="1590d19a-4fdd-47c0-ad78-fb1909db660a" class="bulleted-list"><li style="list-style-type:disc"><strong>UNION</strong> kết hợp lại nhưng loại bỏ trùng nhau</li></ul><ul id="77cfda5b-3e5e-464c-9eaa-593e602d1651" class="bulleted-list"><li style="list-style-type:disc"><strong>UNION ALL</strong> kết hợp lại nhưng không loại bỏ trùng nhau</li></ul></details></li></ul><ul id="67079101-6b0f-4aae-8ebb-d261d49006f9" class="toggle"><li><details open=""><summary><mark class="highlight-red"><strong>Connection pool</strong></mark></summary><ul id="290e5d9f-7423-4e1c-ae21-a9c30cb6ff9d" class="bulleted-list"><li style="list-style-type:disc">Connection pool (vùng kết nối) : là kỹ thuật cho phép tạo và duy trì 1 tập các kết nối dùng chung nhằm tăng hiệu suất cho các ứng dụng bằng cách sử dụng lại các kết nối khi có yêu cầu thay vì việc tạo kết nối mới.</li></ul><ul id="db78f51b-3307-44f8-8204-803ceb008715" class="bulleted-list"><li style="list-style-type:disc">Connection Pool Manager (CPM) là trình quản lý vùng kết nối, một khi ứng dụng được chạy thì Connection pool tạo ra một vùng kết nối, trong vùng kết nối đó có các kết nối do chúng ta tạo ra sẵn. Và như vậy, một khi có một request đến thì CPM kiểm tra xem có kết nối nào đang rỗi không? Nếu có nó sẽ dùng kết nối đó còn không thì nó sẽ đợi cho đến khi có kết nối nào đó rỗi hoặc kết nối khác bị timeout. Kết nối sau khi sử dụng sẽ không đóng lại ngay mà sẽ được trả về CPM để dùng lại khi được yêu cầu trong tương lai.</li></ul></details></li></ul><ul id="684152e7-eda4-430b-983a-5b2a9be9128d" class="toggle"><li><details open=""><summary>Data warehouse ≠ Data lake</summary></details></li></ul><p id="05287e86-c462-44e1-a146-3dac428ca2c0" class="">
+</p><hr id="dd1990ff-5ef5-4d20-b07f-ff0572b02bba"/><p id="f1b6b8f8-b7ba-4a0d-825c-846b5c2c364f" class=""><a href="https://techtfq.com/blog/top-20-sql-interview-questions?ref=morioh.com&amp;utm_source=morioh.com">https://techtfq.com/blog/top-20-sql-interview-questions?ref=morioh.com&amp;utm_source=morioh.com</a></p></div></article></body></html>
