@@ -1,8 +1,0 @@
-[user]
-	name = Hooji Nguyen
-	email = vanhoinguyen98@gmail.com
-[core]
-	editor = code --wait
-	excludesfile = /Users/hoojinguyen/.gitignore_global
-[color]
-	ui = auto
